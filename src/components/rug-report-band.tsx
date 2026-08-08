@@ -61,12 +61,20 @@ export default function RugReportBand() {
     <section
       aria-labelledby="rug-report-heading"
       style={{
-        background: "var(--dark)",
-        color: "var(--dark-text)",
-        padding: "40px 24px",
+        padding: "48px 24px",
+        background: "var(--paper)",
+        color: "var(--ink)",
       }}
     >
-      <div style={{ maxWidth: 640, margin: "0 auto" }}>
+      <div
+        style={{
+          maxWidth: 640,
+          margin: "0 auto",
+          border: "1px solid var(--ink)",
+          padding: "36px 32px 32px",
+          textAlign: "center",
+        }}
+      >
         <p
           id="rug-report-heading"
           style={{
@@ -74,24 +82,31 @@ export default function RugReportBand() {
             fontSize: 12,
             fontWeight: 600,
             letterSpacing: ".05em",
-            color: "var(--orange)",
+            color: "var(--meta)",
             margin: 0,
           }}
         >
-          THE RUG REPORT
+          THE WEEKLY DEBRIEF
         </p>
         <h2
           style={{
             ...display,
-            fontSize: 24,
+            fontSize: 32,
             lineHeight: 1.25,
-            color: "var(--paper)",
+            color: "var(--ink)",
             margin: "8px 0 0",
           }}
         >
-          The weekly anti-scam briefing.
+          The Rug Report
         </h2>
-        <p style={{ fontSize: 16, lineHeight: 1.5, margin: "12px 0 0" }}>
+        <p
+          style={{
+            fontSize: 16,
+            lineHeight: 1.5,
+            margin: "12px 0 0",
+            color: "var(--meta)",
+          }}
+        >
           One incident deep-dive, the Dangerous-right-now list, one protection
           tip. Weekly. Plain, dated, sourced, zero hype.
         </p>
@@ -161,10 +176,10 @@ export default function RugReportBand() {
                   flex: "1 1 220px",
                   fontSize: 16,
                   padding: "10px 12px",
-                  background: "transparent",
-                  border: "1px solid var(--dark-text)",
+                  background: "var(--paper)",
+                  border: "1px solid var(--ink)",
                   borderRadius: 0,
-                  color: "var(--paper)",
+                  color: "var(--ink)",
                 }}
               />
               <button
@@ -176,9 +191,9 @@ export default function RugReportBand() {
                   fontWeight: 600,
                   letterSpacing: ".05em",
                   padding: "10px 20px",
-                  background: "var(--orange)",
-                  color: "var(--ink)",
-                  border: "1px solid var(--orange)",
+                  background: "var(--ink)",
+                  color: "var(--paper)",
+                  border: "1px solid var(--ink)",
                   opacity: status === "submitting" ? 0.7 : 1,
                 }}
               >
@@ -190,12 +205,12 @@ export default function RugReportBand() {
               style={{
                 ...mono,
                 fontSize: 12,
-                color: status === "error" ? "var(--tick-down)" : "var(--dark-text)",
+                color: status === "error" ? "var(--danger)" : "var(--meta)",
                 marginTop: 12,
                 marginBottom: 0,
               }}
             >
-              {status === "error" ? message : "FREE · UNSUBSCRIBE ANY TIME"}
+              {status === "error" ? message : "FREE · NO SPAM · UNSUBSCRIBE ANYTIME"}
             </p>
           </>
         )}

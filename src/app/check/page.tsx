@@ -54,7 +54,10 @@ const SOURCES: { name: string; covers: string; note: string }[] = [
   },
 ];
 
-export default function CheckPage() {
+export default async function CheckPage({
+  searchParams,
+}: PageProps<"/check">) {
+  const q = String((await searchParams).q ?? "").slice(0, 300);
   const live = hasSupabase();
 
   return (
@@ -126,7 +129,7 @@ export default function CheckPage() {
 
       <SectionRule label="RUN A CHECK" />
       <div style={{ marginTop: 24 }}>
-        <CheckForm />
+        <CheckForm initialValue={q} />
       </div>
 
       <SectionRule label="WHAT THIS DESK CHECKS" />

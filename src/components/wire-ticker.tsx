@@ -1,6 +1,7 @@
 import { getAllIncidents } from "@/lib/incidents";
 import { hasSupabase } from "@/lib/db";
 import { fetchAllIncidents, fetchTickerItems } from "@/lib/incidents-db";
+import type { PriceItem } from "@/lib/prices";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 
@@ -111,16 +112,56 @@ function ItemPrefix({ kind }: { kind: TickerKind }) {
   return null;
 }
 
+function PriceEntry({ p }: { p: PriceItem }) {
+  return (
+    <span>
+      <span style={{ color: "var(--meta)", marginRight: 6 }}>{p.sym}</span>
+      <span style={{ color: "#fff", fontWeight: 600 }}>{p.px}</span>{" "}
+      <span style={{ color: p.up ? "var(--tick-up)" : "var(--tick-down)" }}>
+        {p.chg}
+      </span>
+    </span>
+  );
+}
+
+type WireEntry =
+  | { t: "item"; item: TickerItem }
+  | { t: "price"; price: PriceItem };
+
+/** v4 rhythm: a few prices, an alert, a few prices, an alert… */
+function interleave(items: TickerItem[], prices: PriceItem[]): WireEntry[] {
+  const out: WireEntry[] = [];
+  let pi = 0;
+  for (const item of items) {
+    for (let k = 0; k < 3 && pi < prices.length; k++, pi++) {
+      out.push({ t: "price", price: prices[pi] });
+    }
+    out.push({ t: "item", item });
+  }
+  while (pi < prices.length) out.push({ t: "price", price: prices[pi++] });
+  return out;
+}
+
 /**
  * The Wire — front-page marquee band. Server component; drop-in replacement
  * for the inline ticker markup in page.tsx:
  *
- *   <WireTicker items={await getTickerItems()} />
+ *   <WireTicker items={await getTickerItems()} prices={await fetchPrices()} />
+ *
+ * Prices are optional and live (see src/lib/prices.ts); the v4 design
+ * interleaves them between scam alerts.
  */
-export default function WireTicker({ items }: { items: TickerItem[] }) {
+export default function WireTicker({
+  items,
+  prices = [],
+}: {
+  items: TickerItem[];
+  prices?: PriceItem[];
+}) {
+  const entries = interleave(items, prices);
   // Same speed as the original 4-item/30s band, scaled so a fuller wire
   // stays readable instead of whipping past.
-  const durationSeconds = Math.max(30, items.length * 6);
+  const durationSeconds = Math.max(30, entries.length * 5);
 
   return (
     <div
@@ -146,12 +187,16 @@ export default function WireTicker({ items }: { items: TickerItem[] }) {
             <span>
               THE WIRE <span style={{ color: "var(--tick-up)" }}>●</span> LIVE
             </span>
-            {items.map((item, idx) => (
-              <span key={`${item.kind}-${idx}`}>
-                <ItemPrefix kind={item.kind} />
-                {item.label}
-              </span>
-            ))}
+            {entries.map((e, idx) =>
+              e.t === "price" ? (
+                <PriceEntry key={`p-${idx}`} p={e.price} />
+              ) : (
+                <span key={`i-${idx}`}>
+                  <ItemPrefix kind={e.item.kind} />
+                  {e.item.label}
+                </span>
+              ),
+            )}
           </span>
         ))}
       </div>

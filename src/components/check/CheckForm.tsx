@@ -393,7 +393,7 @@ function OfflinePanel({
   );
 }
 
-export function CheckForm() {
+export function CheckForm({ initialValue = "" }: { initialValue?: string }) {
   const [result, formAction, pending] = useActionState(runCheck, null);
 
   return (
@@ -424,6 +424,7 @@ export function CheckForm() {
             className="cf-field"
             required
             maxLength={300}
+            defaultValue={initialValue}
             autoComplete="off"
             autoCapitalize="off"
             spellCheck={false}
