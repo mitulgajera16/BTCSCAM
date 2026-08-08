@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, IBM_Plex_Mono } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -21,6 +22,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "BTCSCAM — The Anti-Scam Paper of Record",
     template: "%s — BTCSCAM",

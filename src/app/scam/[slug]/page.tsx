@@ -7,9 +7,11 @@ import {
   TRUST_LABEL,
   SEVERITY_LABEL,
 } from "@/lib/incidents";
+import { SITE_URL } from "@/lib/site";
+import RugReportBand from "@/components/rug-report-band";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
-const display = { fontFamily: "var(--font-fraunces), serif" };
+const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
 
 export function generateStaticParams() {
   return getAllIncidents().map((i) => ({ slug: i.slug }));
@@ -20,9 +22,14 @@ export async function generateMetadata({
 }: PageProps<"/scam/[slug]">) {
   const { slug } = await params;
   const incident = getIncidentBySlug(slug);
-  return incident
-    ? { title: incident.title, description: incident.summary }
-    : {};
+  if (!incident) return {};
+  const name = incident.title.split(":")[0];
+  return {
+    // Growth-playbook title pattern; layout template appends "— BTCSCAM".
+    title: `${name}: what happened and what's verified`,
+    description: incident.summary,
+    alternates: { canonical: `/scam/${incident.slug}` },
+  };
 }
 
 const CLAIM_STATUS_LABEL: Record<string, string> = {
@@ -58,11 +65,44 @@ export default async function IncidentPage({
   const incident = getIncidentBySlug(slug);
   if (!incident) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: incident.title,
+    description: incident.summary,
+    datePublished: incident.published,
+    dateModified: incident.lastUpdated,
+    url: `${SITE_URL}/scam/${incident.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/scam/${incident.slug}`,
+    },
+    author: {
+      "@type": "Organization",
+      name: "BTCSCAM",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "BTCSCAM",
+      url: SITE_URL,
+    },
+  };
+
   return (
+    <>
     <main style={{ maxWidth: 780, margin: "0 auto", padding: "0 24px 64px" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <nav style={{ ...mono, fontSize: 12, padding: "16px 0" }}>
         <Link href="/">← FRONT PAGE</Link>
-        <span style={{ color: "var(--meta)" }}> / THE REGISTRY / DOSSIER</span>
+        <span style={{ color: "var(--meta)" }}> / </span>
+        <Link href="/registry">THE REGISTRY</Link>
+        <span style={{ color: "var(--meta)" }}> / DOSSIER</span>
       </nav>
 
       {isStale(incident) && (
@@ -315,5 +355,7 @@ export default async function IncidentPage({
         </>
       )}
     </main>
+    <RugReportBand />
+    </>
   );
 }

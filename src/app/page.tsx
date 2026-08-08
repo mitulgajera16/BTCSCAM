@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getAllIncidents, TRUST_LABEL } from "@/lib/incidents";
+import StampMark from "@/components/stamp-mark";
+import RugReportBand from "@/components/rug-report-band";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif" };
@@ -162,26 +164,37 @@ export default function Home() {
           <span>EST. 2026 · READER-FUNDED</span>
         </div>
         <div style={{ textAlign: "center", padding: "40px 24px 28px" }}>
-          <h1
+          <div
             style={{
-              fontSize: "clamp(40px, 8vw, 88px)",
-              fontWeight: 900,
-              letterSpacing: 0,
-              lineHeight: 1,
-              margin: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 24,
+              flexWrap: "wrap",
             }}
           >
-            <span style={{ color: "var(--orange)" }}>BTC</span>
-            <span
+            <h1
               style={{
-                textDecoration: "line-through",
-                textDecorationColor: "var(--danger)",
-                textDecorationThickness: "6px",
+                fontSize: "clamp(40px, 8vw, 88px)",
+                fontWeight: 900,
+                letterSpacing: 0,
+                lineHeight: 1,
+                margin: 0,
               }}
             >
-              SCAM
-            </span>
-          </h1>
+              <span style={{ color: "var(--orange)" }}>BTC</span>
+              <span
+                style={{
+                  textDecoration: "line-through",
+                  textDecorationColor: "var(--danger)",
+                  textDecorationThickness: "6px",
+                }}
+              >
+                SCAM
+              </span>
+            </h1>
+            <StampMark size={56} />
+          </div>
           <p
             style={{
               ...mono,
@@ -199,7 +212,8 @@ export default function Home() {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: 32,
+            flexWrap: "wrap",
+            gap: "12px 28px",
             padding: "12px 24px",
             fontSize: 14,
             fontWeight: 700,
@@ -207,9 +221,11 @@ export default function Home() {
           }}
         >
           <Link href="/">FRONT PAGE</Link>
-          <Link href="/#registry">THE REGISTRY</Link>
-          <Link href="/#guides">PROTECT YOURSELF</Link>
-          <Link href="/#report">REPORT A SCAM</Link>
+          <Link href="/registry">REGISTRY</Link>
+          <Link href="/guides">GUIDES</Link>
+          <Link href="/report">REPORT</Link>
+          <Link href="/store">STORE</Link>
+          <Link href="/rug-report">RUG REPORT</Link>
         </nav>
         <div className="double-rule" />
       </header>
@@ -333,17 +349,23 @@ export default function Home() {
             Dice-roll seeds survived. 50 rolls for 12 words, 99 for 24 — and how
             to verify the math yourself.
           </p>
-          <span style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}>
-            READ THE GUIDE → (content/guides/seed-phrase-entropy.md — page port pending)
-          </span>
+          <Link
+            href="/guides/seed-phrase-entropy"
+            style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}
+          >
+            READ THE GUIDE →
+          </Link>
         </article>
       </section>
+
+      <RugReportBand />
 
       <footer
         id="report"
         style={{
           background: "var(--dark)",
           color: "var(--dark-text)",
+          borderTop: "1px solid var(--dark-text)",
           padding: "32px 24px",
           ...mono,
           fontSize: 12,
@@ -354,7 +376,12 @@ export default function Home() {
             BTC<span style={{ textDecoration: "line-through" }}>SCAM</span> ·
             THE ANTI-SCAM PAPER OF RECORD
           </span>
-          <span>PAID LISTINGS 0 · CORRECTIONS PUBLIC · SOURCES OR IT DIDN&apos;T HAPPEN</span>
+          <span style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <Link href="/standards" style={{ fontWeight: 600 }}>
+              STANDARDS →
+            </Link>
+            <span>PAID LISTINGS 0 · CORRECTIONS PUBLIC · SOURCES OR IT DIDN&apos;T HAPPEN</span>
+          </span>
         </div>
       </footer>
     </main>

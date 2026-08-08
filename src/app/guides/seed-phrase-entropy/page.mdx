@@ -1,0 +1,119 @@
+import {
+  Kicker,
+  Dek,
+  Byline,
+  GuideTable,
+  WhyThisMatters,
+  SourceNote,
+} from "@/components/guides/guide-kit";
+
+export const metadata = {
+  title: "How to generate a seed phrase with entropy you can actually trust",
+  description:
+    "In July 2026, $116M+ (rising estimate, as of 2026-08-05) was stolen from people who did everything 'right' — hardware wallet, offline seed, careful storage — because the device's random number generator silently wasn't random. Here's how to generate a seed no bug can weaken, and how to verify it yourself.",
+};
+
+<Kicker>PROTECT YOURSELF · GUIDE</Kicker>
+
+# How to generate a seed phrase with entropy you can actually trust
+
+<Dek>In July 2026, $116M+ (rising estimate, as of 2026-08-05) was stolen from people who did everything "right" — hardware wallet, offline seed, careful storage — because the device's random number generator silently wasn't random. Here's how to generate a seed no bug can weaken, and how to verify it yourself.</Dek>
+
+<Byline published="2026-08-08" sourcesVerified="2026-08-08" />
+
+## Why this guide exists
+
+The [Coldcard seed-entropy flaw](/scam/coldcard-rng-seed-entropy-flaw-2026) proved the uncomfortable thing security researchers had warned about for years: **when a wallet says "generating random seed…", you are trusting code you cannot see.** A one-line preprocessor bug meant five years of Coldcards generated seeds weak enough to brute-force. Owners of dice-generated seeds on the same devices lost nothing — Coinkite's own advisory lists them as unaffected.
+
+The lesson is not "Coldcard bad." Libbitcoin's `bx seed` had the [same class of bug in 2023](/scam/milk-sad-libbitcoin-explorer-weak-entropy) ($900K+ stolen, estimated). The lesson is: **entropy you can verify beats entropy you must trust.**
+
+<WhyThisMatters ids={["2026-coldcard-rng-seed-flaw", "2023-milk-sad-libbitcoin"]} />
+
+## The math, in one paragraph
+
+A BIP39 seed phrase encodes raw randomness ("entropy"): **12 words = 128 bits, 24 words = 256 bits**, plus a checksum the wallet computes ([BIP39 spec](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)). One roll of a fair six-sided die yields log₂(6) ≈ **2.585 bits**. So:
+
+<GuideTable head={["Target", "Dice rolls (D6)", "Coin flips"]}>
+  <tr>
+    <td>12 words (128 bits)</td>
+    <td>**50 rolls** (49.5 exact)</td>
+    <td>128 flips</td>
+  </tr>
+  <tr>
+    <td>24 words (256 bits)</td>
+    <td>**99 rolls** (99.03 exact)</td>
+    <td>256 flips</td>
+  </tr>
+</GuideTable>
+
+128 bits is already unbrute-forceable; the Coldcard bug was catastrophic because effective entropy silently dropped to 40–72 bits. Dice can't have that bug: the randomness happens in your hand, on your table, where you can see it.
+
+## Recommended methods (best first)
+
+### 1. Hardware wallet dice-roll mode — best for most people
+
+Roll physical dice, key the results into the device; the device only does the (deterministic, checkable) math.
+
+- **Coldcard**: New Seed Words → Advanced → 12/24 Word Dice Roll. Coinkite [publishes the exact derivation and a reference `rolls.py` script](https://coldcard.com/docs/verifying-dice-roll-math/) so you can reproduce the mnemonic on a separate offline computer — this verification step is the whole point. ([Paranoid-mode docs](https://coldcard.com/docs/paranoid/), [independent verifier](https://github.com/andreashuber69/verify-coldcard-dice-seed))
+- **SeedSigner** (stateless DIY signer): dice + guided coin-flip entropy, [externally verifiable](https://github.com/SeedSigner/seedsigner/blob/dev/docs/dice_verification.md) — [seedsigner.com](https://seedsigner.com/)
+- **Krux** (open firmware): D6 (50/99 rolls) or D20 (30/60 rolls), plus camera-snapshot entropy with a live quality indicator — [docs](https://selfcustody.github.io/krux/getting-started/usage/generating-a-mnemonic/)
+- **Blockstream Jade**: strong multi-source entropy accumulator by default ([how it works](https://help.blockstream.com/hc/en-us/articles/9640569620761-How-does-Blockstream-Jade-generate-it-s-recovery-phrase-)) and accepts externally generated dice seeds via SeedQR.
+
+**Cross-device verification trick:** Coldcard, SeedSigner, and Krux all produce the *same mnemonic from the same rolls*. Enter your rolls on two independent devices; matching output means neither is lying to you.
+
+**Dice tips:** use casino/precision dice if you can (cheap dice have bias, though with 50+ rolls the margin is enormous); actually roll every roll — don't type a "random-looking" pattern from your head (heads, your head is a terrible PRNG); let no one and no camera see the rolls.
+
+### 2. Fully offline software (advanced users)
+
+- **Ian Coleman BIP39 tool** — the standard, [open source](https://github.com/iancoleman/bip39). Correct usage is strict: download `bip39-standalone.html` from GitHub releases, run it on a machine that is **permanently offline or booted from amnesic media (e.g. Tails)**, generate, write words on paper, never reconnect that environment. Using it in an online browser tab defeats the entire exercise.
+- **SeedPicker** — draw 23 words from a physical card deck, compute the checksum 24th word with their [offline calculator](https://seedpicker.net/calculator/last-word.html) — [seedpicker.net](https://seedpicker.net/)
+- **Border Wallets** — offline entropy-grid generation with a memorable pattern; a backup/memorization layer on top of real entropy, not a substitute for it — [borderwallets.com](https://www.borderwallets.com/)
+
+## Never do these
+
+<GuideTable head={["Don't", "Why"]}>
+  <tr>
+    <td>Brain wallets (passphrase → key)</td>
+    <td>Brainflayer cracks 130K guesses/sec; an [academic study](https://www.cs.unm.edu/~vasek/papers/vasekfc16.pdf) found essentially all brain wallets drained, most within days, by 14+ competing bots</td>
+  </tr>
+  <tr>
+    <td>Online seed generators / random websites</td>
+    <td>You just emailed your keys to a stranger</td>
+  </tr>
+  <tr>
+    <td>CLI tools not built for wallets</td>
+    <td>[Milk Sad](https://milksad.info/): `bx seed` used a 32-bit-seeded PRNG; $900K+ stolen (estimated)</td>
+  </tr>
+  <tr>
+    <td>Trusting device RNG blindly</td>
+    <td>[Coldcard 2026](/scam/coldcard-rng-seed-entropy-flaw-2026): $116M+ (rising estimate, as of 2026-08-05)</td>
+  </tr>
+  <tr>
+    <td>Buying a device with a pre-filled seed card</td>
+    <td>Always a scam — [fake pre-seeded Trezors](https://cointelegraph.com/news/trusted-seller-vends-fake-trezor-wallets-stealing-crypto-kaspersky) documented by Kaspersky</td>
+  </tr>
+  <tr>
+    <td>Typing your seed into ANY website or "checker"</td>
+    <td>The [post-Coldcard phishing wave](/scam/coldcard-hardware-audit-phishing-2026) exists precisely to harvest scared users' seeds</td>
+  </tr>
+  <tr>
+    <td>Photos, screenshots, cloud notes of the seed</td>
+    <td>Your seed's security becomes your Google account's security</td>
+  </tr>
+  <tr>
+    <td>Buying hardware from marketplaces/resellers</td>
+    <td>Supply-chain tampering; buy direct from the vendor, type the URL yourself</td>
+  </tr>
+</GuideTable>
+
+## The 10-minute recipe (24 words, verifiable)
+
+1. Buy the hardware wallet **direct from the vendor**; verify the device's genuineness checks on arrival.
+2. Update to current firmware (typed URL, no search ads).
+3. Get 1–2 casino dice. Roll **99 times**, entering each roll in dice mode.
+4. Write the 24 words on paper (later: steel). No camera in the room, no digital copy, ever.
+5. **Verify**: reproduce the same rolls on a second device or the vendor's published offline script; confirm identical words.
+6. Add a BIP39 passphrase if you can operate it reliably (it saved Coldcard users in 2026 — but a forgotten passphrase is its own total loss).
+7. Send a small test amount in, wipe the device, restore from your paper words, confirm you can spend. Only then move real funds.
+
+<SourceNote>This guide cites primary sources throughout and was fact-checked on 2026-08-08. Found an error? We correct in public — [report it](/report).</SourceNote>
