@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://btcscam.com/schemas/incident.schema.json",
+  "title": "BTCSCAM Incident",
+  "description": "One verified-or-tracked incident in the BTCSCAM registry. Editorial law: no sources, no publish; severity and trust state are separate axes; every claim above 'reported' needs a primary source.",
+  "type": "object",
+  "required": ["id", "slug", "title", "summary", "trustState", "severity", "categories", "firstObserved", "published", "lastUpdated", "actions", "sources"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "URL: /scam/<slug> — permanent, never changes" },
+    "title": { "type": "string", "maxLength": 120 },
+    "summary": { "type": "string", "maxLength": 400, "description": "Plain-language, dated, no hype. What happened + who should care." },
+    "trustState": {
+      "enum": ["reported", "corroborated", "verified", "resolved", "disputed"],
+      "description": "reported = user/media reports only; corroborated = 2+ independent sources; verified = primary source (vendor advisory, on-chain proof, regulator filing); resolved = fixed/ended, kept for record; disputed = credible counter-evidence exists"
+    },
+    "severity": {
+      "enum": ["S1", "S2", "S3", "S4"],
+      "description": "S1 = active, large-scale fund loss; S2 = active, targeted/limited loss; S3 = patched/contained, residual risk; S4 = historical, educational"
+    },
+    "ongoing": { "type": "boolean", "default": false },
+    "categories": {
+      "type": "array", "minItems": 1,
+      "items": { "enum": ["vulnerability", "theft", "phishing", "impersonation", "supply-chain", "rug-pull", "ponzi", "malware", "social-engineering", "fake-device", "recovery-scam", "exchange-failure"] }
+    },
+    "firstObserved": { "type": "string", "format": "date" },
+    "published": { "type": "string", "format": "date" },
+    "lastUpdated": { "type": "string", "format": "date", "description": ">90 days triggers staleness banner in UI" },
+    "entities": {
+      "type": "object",
+      "properties": {
+        "vendor": { "type": "string" },
+        "products": { "type": "array", "items": { "type": "string" } },
+        "domains": { "type": "array", "items": { "type": "string" }, "description": "malicious domains, defanged: example[.]com" },
+        "addresses": { "type": "array", "items": { "type": "string" }, "description": "attacker addresses, if published by a citable source" }
+      }
+    },
+    "impact": {
+      "type": "object",
+      "properties": {
+        "lossUSD": { "type": "number" },
+        "lossNative": { "type": "string", "description": "e.g. '~1,816 BTC'" },
+        "victims": { "type": "string", "description": "e.g. '5,200+ addresses'" },
+        "confidence": { "enum": ["confirmed", "estimated", "rising"], "description": "never state losses without a source; 'rising' requires asOf" },
+        "asOf": { "type": "string", "format": "date" },
+        "source": { "type": "string", "format": "uri" }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "event"],
+        "properties": {
+          "date": { "type": "string" },
+          "event": { "type": "string" },
+          "source": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "affected": { "type": "array", "items": { "type": "string" } },
+    "notAffected": { "type": "array", "items": { "type": "string" }, "description": "who can stand down — as important as who's affected" },
+    "actions": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Imperative, ordered, doable-today steps. This block is the product."
+    },
+    "claims": {
+      "type": "array",
+      "description": "Per-claim trust labeling for anything not vendor/primary-confirmed. This is the legal armor: attribute, don't assert.",
+      "items": {
+        "type": "object",
+        "required": ["claim", "status"],
+        "properties": {
+          "claim": { "type": "string" },
+          "status": { "enum": ["primary-confirmed", "reported-unconfirmed", "disputed", "retracted"] },
+          "attribution": { "type": "string", "description": "who says so" },
+          "sources": { "type": "array", "items": { "type": "string", "format": "uri" } }
+        }
+      }
+    },
+    "relatedGuides": { "type": "array", "items": { "type": "string" }, "description": "guide slugs — every incident should teach something" },
+    "relatedIncidents": { "type": "array", "items": { "type": "string" } },
+    "sources": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["url", "publisher", "type"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "publisher": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "type": { "enum": ["primary", "vendor", "research", "news", "onchain", "regulator", "community"] }
+        }
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "description": "Public and permanent. We are wrong out loud.",
+      "items": {
+        "type": "object",
+        "required": ["date", "note"],
+        "properties": { "date": { "type": "string", "format": "date" }, "note": { "type": "string" } }
+      }
+    },
+    "tags": { "type": "array", "items": { "type": "string" } }
+  }
+}

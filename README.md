@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BTCSCAM.com
 
-## Getting Started
+**The anti-scam paper of record.** A newsroom-with-tools: verified scam/incident registry, wallet checks, and plain-language protection guides for Bitcoin self-custody.
 
-First, run the development server:
+## Repo map
+
+| Path | What |
+|---|---|
+| `PRD.md` | Product strategy, releases R1–R3, north star, pre-mortem — read this first |
+| `docs/growth-playbook.md` | Community + distribution loops (SEO, incident-day ritual, Rug Report, Watchmen) |
+| `docs/data-sources.md` | Verified external APIs/feeds + ingestion stack |
+| `design-reference/` | Exported Claude Design v4 (the design contract — tokens, type, 26 screens) |
+| `data/schemas/incident.schema.json` | The incident contract; every registry entry validates against it |
+| `data/incidents/*.json` | Launch incidents (Coldcard RNG flaw, phishing wave, Milk Sad) |
+| `content/guides/*.md` | Guides (launch: seed-phrase entropy) |
+| `src/` | Next.js 15 app (App Router, TS, Tailwind) |
+
+## Dev
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editorial law (enforced in code where possible)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. No sources, no publish. 2. Severity ≠ verification (separate chips). 3. Staleness labeled at >90 days. 4. Corrections public + permanent. 5. Honest numbers only. 6. No paid listings, no recovery-service ads, house-product links disclosed.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Design identity is locked — see `design-reference/README.md`. **No italics anywhere.**
