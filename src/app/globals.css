@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
+/* ── BTCSCAM DESIGN TOKENS — ported verbatim from design-reference/BTCSCAM Portal v4.dc.html
+   Identity is locked: no italics anywhere; letter-spacing 0 or .05em only;
+   type scale 16/18/21/24/32/40; one action color (orange); red is danger-only. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #fcfbf9;
+  --ink: #101010;
+  --rule: #e4e1db;
+  --meta: #6e6a60;
+  --link: #9c5a06;
+  --orange: #f7931a;
+  --danger: #d2322e;
+  --danger-bg: #fbeae9;
+  --danger-ink: #8c1f1b;
+  --warm: #fef3e2; /* Orange Paper header zone */
+  --dark: #0e0e0c; /* wire ticker band */
+  --dark-text: #cfc7b8;
+  --tick-up: #3fbf6f;
+  --tick-down: #e0574f;
+  --panel: #f6f3ec;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-rule: var(--rule);
+  --color-meta: var(--meta);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-plex-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+button:active {
+  transform: translateY(1px);
+}
+
+::selection {
+  background: var(--orange);
+  color: var(--ink);
+}
+
+em,
+i {
+  font-style: normal; /* editorial law: no italics */
+}
+
+@keyframes tickmove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* newspaper rules */
+.double-rule {
+  border-top: 3px double var(--ink);
+  border-bottom: none;
 }
