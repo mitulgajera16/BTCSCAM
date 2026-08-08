@@ -4,6 +4,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { useActionState } from "react";
 import { submitReport } from "@/app/report/actions";
 import { SCAM_CATEGORIES, CATEGORY_LABEL } from "./categories";
+import { EvidenceChips } from "./EvidenceChips";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -106,6 +107,15 @@ export function ReportForm() {
           registry, the dossier is updated and your report becomes part of the
           public record. We never publish your contact details.
         </p>
+        {state.chipCount > 0 && (
+          <p style={{ fontSize: 16, lineHeight: 1.55 }}>
+            {state.chipsAttached
+              ? `Your ${state.chipCount} evidence chip${
+                  state.chipCount === 1 ? " is" : "s are"
+                } attached to the report and read in the same pass.`
+              : "The report itself is filed, but its evidence chips hit a database error and did not attach. If you left a contact email, triage will ask for them; otherwise file a second report carrying just the chips and say it supplements this one."}
+          </p>
+        )}
         <a href="/" style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}>
           ← BACK TO THE FRONT PAGE
         </a>
@@ -437,6 +447,18 @@ export function ReportForm() {
             style={{ ...field, ...mono, fontSize: 14, resize: "vertical" }}
           />
         </Field>
+
+        <div style={{ marginBottom: 24 }}>
+          <p style={{ ...labelStyle, marginBottom: 8 }}>
+            EVIDENCE CHIPS — TYPED, OPTIONAL
+          </p>
+          <p style={{ ...hintStyle, marginTop: 0, marginBottom: 12 }}>
+            Pin your strongest pieces as typed chips so triage can check them
+            first: a URL, a transaction id, a screenshot link, or an exact
+            quote. Add them one at a time.
+          </p>
+          <EvidenceChips name="chips" defaultValue={values?.chips ?? ""} />
+        </div>
 
         <button
           type="submit"

@@ -156,6 +156,18 @@ export default function ReportPage() {
       </div>
 
       <SectionRule label="YOUR REPORT" />
+      <p
+        style={{
+          ...mono,
+          fontSize: 13,
+          fontWeight: 600,
+          color: "var(--meta)",
+          margin: "12px 0 0",
+        }}
+      >
+        Accounts are for credit, not a gate — anonymous reports carry the same
+        weight in triage.
+      </p>
       <div style={{ marginTop: 24 }}>
         <ReportForm />
       </div>

@@ -186,6 +186,7 @@ export default async function Home() {
           <Link href="/report">REPORT</Link>
           <Link href="/store">STORE</Link>
           <Link href="/rug-report">RUG REPORT</Link>
+          <Link href="/account">ACCOUNT</Link>
         </nav>
         <div className="double-rule" />
       </header>
@@ -340,6 +341,9 @@ export default async function Home() {
           <span style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Link href="/standards" style={{ fontWeight: 600 }}>
               STANDARDS →
+            </Link>
+            <Link href="/reports/open" style={{ fontWeight: 600 }}>
+              OPEN REPORTS →
             </Link>
             <span>PAID LISTINGS 0 · CORRECTIONS PUBLIC · SOURCES OR IT DIDN&apos;T HAPPEN</span>
           </span>

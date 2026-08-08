@@ -30,9 +30,8 @@ export type DeskReport = {
 
 export type IncidentRef = { id: string; slug: string; title: string };
 
-export type DeskActionResult =
-  | { ok: true; message: string }
-  | { ok: false; error: string };
+/** The shared action-result shape, aliased so desk code reads desk-local. */
+export type DeskActionResult = import("@/components/ui").ActionResult;
 
 export const SOURCE_LABEL: Record<string, string> = {
   llama: "DEFILLAMA HACKS",

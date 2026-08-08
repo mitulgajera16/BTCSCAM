@@ -44,6 +44,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.5,
     },
+    {
+      url: `${SITE_URL}/reports/open`,
+      changeFrequency: "daily",
+      priority: 0.6,
+    },
+    {
+      url: `${SITE_URL}/account/sign-in`,
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
   ];
 
   const incidentPages: MetadataRoute.Sitemap = incidents.map((i) => ({

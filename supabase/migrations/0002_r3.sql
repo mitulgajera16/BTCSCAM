@@ -63,23 +63,34 @@ create policy "profiles_self_read" on public.profiles
   for select to authenticated
   using (id = auth.uid());
 
--- profiles: self update — restricted to the handle column via column-level
--- privileges below. role and accepted_reports are service_role-only writes.
+-- profiles: self update — restricted by the column-level privileges below.
+-- role and accepted_reports are service_role-only writes.
 drop policy if exists "profiles_self_update" on public.profiles;
 create policy "profiles_self_update" on public.profiles
   for update to authenticated
   using (id = auth.uid())
   with check (id = auth.uid());
 
--- Column-level restriction: authenticated may only UPDATE handle.
+-- Column-level restriction: authenticated gets NO update columns from this
+-- migration. handle is deliberately NOT granted — its rules (the reserved-
+-- word impersonation blocklist and the one-change-ever shape rule, both in
+-- src/components/account/handle.ts) are enforced by the updateHandle server
+-- action, which writes via the service client. A browser-key UPDATE would
+-- bypass both, so that path is closed at the grant level; uniqueness alone
+-- is not the impersonation control. 0003 grants the two harmless preference
+-- flags (onboarded, show_credit) and nothing else.
 revoke update on public.profiles from authenticated;
-grant update (handle) on public.profiles to authenticated;
 
 -- Row creation is service_role-only for now (no insert policy); R3 will add a
 -- security-definer trigger on auth.users signup.
 
--- verify_votes: insert only by corroborator/watchman/mod, only as themselves.
--- The profiles subquery runs under profiles RLS; self-read covers it.
+-- verify_votes: insert only by corroborator/watchman/mod, only as themselves,
+-- and NEVER on their own report — corroboration must be independent, so a
+-- self-vote is refused at the database as well as in the castVote action.
+-- The profiles subquery runs under profiles RLS (self-read covers it); the
+-- reports subquery runs under reports RLS ("reports_owner_read", 0001) which
+-- makes exactly the caller's own reports visible — the not-exists therefore
+-- fails precisely on self-votes.
 drop policy if exists "verify_votes_trusted_insert" on public.verify_votes;
 create policy "verify_votes_trusted_insert" on public.verify_votes
   for insert to authenticated
@@ -90,6 +101,12 @@ create policy "verify_votes_trusted_insert" on public.verify_votes
       from public.profiles p
       where p.id = auth.uid()
         and p.role in ('corroborator','watchman','mod')
+    )
+    and not exists (
+      select 1
+      from public.reports r
+      where r.id = report_id
+        and r.user_id = auth.uid()
     )
   );
 

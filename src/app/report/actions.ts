@@ -3,11 +3,17 @@
 import { headers } from "next/headers";
 import { SCAM_CATEGORIES } from "@/components/report/categories";
 import { clientKeyFrom, takeToken } from "@/lib/rate-limit";
+import { getServiceClient, hasServiceRole, hasSupabase } from "@/lib/db";
+import { getSession } from "@/lib/auth";
 
 // ── R1 intake: manual triage. Every report enters as REPORTED and is never
 // auto-verified. If Supabase env vars are present we store the report; if not,
 // we hand the reporter a prefilled GitHub issue so the intake queue stays
 // public and nothing is silently lost.
+//
+// R3 adds typed evidence chips (url / txid / screenshot / quote) and, when a
+// session exists, credit: the report row carries user_id. Anonymous reporting
+// is unchanged — accounts are for credit, not a gate.
 
 export type ReportValues = {
   description: string;
@@ -18,10 +24,20 @@ export type ReportValues = {
   observed: string;
   evidence: string;
   contact: string;
+  // Serialized evidence chips (JSON array of {kind, value}) from the chips
+  // widget's hidden field. Kept in values so a redraft never loses them.
+  chips: string;
 };
 
 export type ReportResult =
-  | { ok: true; mode: "stored" }
+  | {
+      ok: true;
+      mode: "stored";
+      // Honest chip accounting for the confirmation panel: how many chips
+      // rode along, and whether they actually reached the database.
+      chipCount: number;
+      chipsAttached: boolean;
+    }
   | {
       ok: true;
       mode: "github";
@@ -47,6 +63,127 @@ const MAX_CONTACT = 254; // RFC 5321 upper bound for an address
 // GitHub 414s around ~8KB of request URI; stay well under it.
 const MAX_ISSUE_URL_LENGTH = 6000;
 
+// ── Evidence chips (R3) ─────────────────────────────────────────────────────
+// Kinds mirror supabase/migrations/0002_r3.sql (evidence_chips.kind check).
+const CHIP_KINDS = ["url", "txid", "screenshot", "quote"] as const;
+type ChipKind = (typeof CHIP_KINDS)[number];
+type EvidenceChipInput = { kind: ChipKind; value: string };
+const MAX_CHIPS = 12;
+const MAX_QUOTE_CHARS = 280;
+const CHIP_ISSUE_LABEL: Record<ChipKind, string> = {
+  url: "URL",
+  txid: "TXID",
+  screenshot: "SCREENSHOT",
+  quote: "QUOTE",
+};
+
+/**
+ * Server-side chip validation. The client widget enforces the same rules, but
+ * a Server Action is a public POST endpoint — everything is re-checked here.
+ * Malformed payloads become validation problems, never crashes.
+ */
+function parseChipsField(serialized: string): {
+  chips: EvidenceChipInput[];
+  problems: string[];
+} {
+  if (!serialized) return { chips: [], problems: [] };
+
+  let raw: unknown;
+  try {
+    raw = JSON.parse(serialized);
+  } catch {
+    return {
+      chips: [],
+      problems: [
+        "The evidence chips arrived malformed — remove and re-add them, or put the links in the evidence box instead.",
+      ],
+    };
+  }
+  if (!Array.isArray(raw)) {
+    return {
+      chips: [],
+      problems: [
+        "The evidence chips arrived malformed — remove and re-add them, or put the links in the evidence box instead.",
+      ],
+    };
+  }
+
+  const problems: string[] = [];
+  if (raw.length > MAX_CHIPS) {
+    problems.push(
+      `Keep evidence chips to ${MAX_CHIPS} or fewer — lead with the strongest.`,
+    );
+  }
+
+  const chips: EvidenceChipInput[] = [];
+  const seen = new Set<string>();
+  for (const item of raw.slice(0, MAX_CHIPS)) {
+    if (!item || typeof item !== "object") {
+      problems.push("One evidence chip is malformed — remove and re-add it.");
+      continue;
+    }
+    const rec = item as Record<string, unknown>;
+    const kind = rec.kind;
+    const value = typeof rec.value === "string" ? rec.value.trim() : "";
+    if (
+      typeof kind !== "string" ||
+      !(CHIP_KINDS as readonly string[]).includes(kind)
+    ) {
+      problems.push(
+        "One evidence chip has an unknown type — chips are URL, TXID, SCREENSHOT-URL, or QUOTE.",
+      );
+      continue;
+    }
+    const k = kind as ChipKind;
+
+    if (!value) {
+      problems.push(`An empty ${CHIP_ISSUE_LABEL[k]} chip was removed — chips need a value.`);
+      continue;
+    }
+    if (k === "url" || k === "screenshot") {
+      let ok = value.length <= MAX_EVIDENCE_URL_LENGTH;
+      if (ok) {
+        try {
+          ok = new URL(value).protocol === "https:";
+        } catch {
+          ok = false;
+        }
+      }
+      if (!ok) {
+        problems.push(
+          `${CHIP_ISSUE_LABEL[k]} chips must be full URLs starting https:// and under ${MAX_EVIDENCE_URL_LENGTH} characters. Not valid: ${value.slice(0, 80)}`,
+        );
+        continue;
+      }
+    } else if (k === "txid") {
+      if (!/^(0x)?[0-9a-fA-F]{64}$/.test(value)) {
+        problems.push(
+          "TXID chips must be exactly 64 hex characters (0x prefix allowed).",
+        );
+        continue;
+      }
+    } else if (
+      k === "quote" &&
+      value.replace(/\s+/g, " ").length > MAX_QUOTE_CHARS
+    ) {
+      problems.push(
+        `QUOTE chips must be ${MAX_QUOTE_CHARS} characters or fewer — the exact words, not the whole thread.`,
+      );
+      continue;
+    }
+
+    // Quotes are collapsed to single-line so they stay one markdown list item
+    // in the GitHub fallback and one honest row in the database.
+    const clean = k === "quote" ? value.replace(/\s+/g, " ").trim() : value;
+    const dedupeKey = `${k}:${clean}`;
+    if (seen.has(dedupeKey)) continue; // silent dedupe — harmless
+    seen.add(dedupeKey);
+    chips.push({ kind: k, value: clean });
+  }
+
+  return { chips, problems };
+}
+
 // Defang so the tracker never renders a clickable scam domain: example[.]com
 function defang(domain: string): string {
   return domain.replace(/\./g, "[.]");
@@ -60,8 +197,17 @@ type IssueFields = {
   address: string;
   observed: string;
   evidenceUrls: string[];
+  chips: EvidenceChipInput[];
   hasContact: boolean;
 };
+
+// Chips in the public tracker: URLs and txids ride in backticks so nothing
+// scam-adjacent renders as a clickable link; quotes ride in plain quotes.
+function chipIssueLine(chip: EvidenceChipInput): string {
+  return chip.kind === "quote"
+    ? `- QUOTE: "${chip.value}"`
+    : `- ${CHIP_ISSUE_LABEL[chip.kind]}: \`${chip.value}\``;
+}
 
 function buildIssueTitle(v: IssueFields): string {
   const entity =
@@ -90,6 +236,9 @@ function buildIssueBody(v: IssueFields): string {
     ...(v.evidenceUrls.length > 0
       ? v.evidenceUrls.map((u) => `- \`${u}\``)
       : ["- None provided."]),
+    ...(v.chips.length > 0
+      ? ["", "## Evidence chips", "", ...v.chips.map(chipIssueLine)]
+      : []),
     "",
     "## Contact",
     "",
@@ -100,7 +249,7 @@ function buildIssueBody(v: IssueFields): string {
     "---",
     "",
     "Intake trust state: REPORTED - UNVERIFIED. Reports are never auto-verified.",
-    "Evidence URLs are wrapped in backticks on purpose - do not visit raw scam links.",
+    "Evidence URLs and chip values are wrapped in backticks on purpose - do not visit raw scam links.",
     "Filed via btcscam.com/report.",
   ].join("\n");
 }
@@ -166,6 +315,7 @@ export async function submitReport(
     observed: String(formData.get("observed") ?? "").trim(),
     evidence: String(formData.get("evidence") ?? "").trim(),
     contact: String(formData.get("contact") ?? "").trim(),
+    chips: String(formData.get("chips") ?? "").trim(),
   };
 
   const problems: string[] = [];
@@ -228,6 +378,10 @@ export async function submitReport(
     );
   }
 
+  // Typed evidence chips — validated server-side regardless of the widget.
+  const { chips, problems: chipProblems } = parseChipsField(values.chips);
+  problems.push(...chipProblems);
+
   if (values.observed) {
     const isDate =
       /^\d{4}-\d{2}-\d{2}$/.test(values.observed) &&
@@ -277,44 +431,76 @@ export async function submitReport(
     10 * 60_000, // 5 reports per 10 minutes per client
   );
 
-  // Sink 1: Supabase REST, when configured. Service-role key stays on the
+  // Sink 1: Supabase, when configured. Service-role client stays on the
   // server; this file never reaches the client bundle.
-  const supabaseUrl =
-    process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SERVICE_KEY;
+  if (withinLimit && hasServiceRole()) {
+    // Signed-in reporters get credit: resolve the session (if any) BEFORE the
+    // insert so the report row carries user_id. A missing or failing auth
+    // layer must never block the report — accounts are for credit, not a
+    // gate, so any session trouble simply files the report anonymously.
+    let userId: string | null = null;
+    if (hasSupabase()) {
+      try {
+        // getSession() resolves the signed-in auth user, or null.
+        const user = await getSession();
+        userId = user?.id ?? null;
+      } catch {
+        userId = null;
+      }
+    }
 
-  if (withinLimit && supabaseUrl && serviceRoleKey) {
     try {
-      const res = await fetch(
-        `${supabaseUrl.replace(/\/+$/, "")}/rest/v1/reports`,
-        {
-          method: "POST",
-          headers: {
-            apikey: serviceRoleKey,
-            Authorization: `Bearer ${serviceRoleKey}`,
-            "Content-Type": "application/json",
-            Prefer: "return=minimal",
-          },
-          // Column names follow supabase/migrations/0001_init.sql (reports).
-          // Triage status 'new' carries the R1 rule that every report enters
-          // untrusted; trust state proper only exists once an editor promotes
-          // the report into an incident.
-          body: JSON.stringify({
-            description: values.description,
-            category: values.scamType,
-            vendor: values.vendor || null,
-            domain: values.domain || null,
-            address: values.address || null,
-            observed_on: values.observed || null,
-            evidence_urls: evidenceUrls,
-            contact_email: values.contact || null,
-            status: "new",
-          }),
-        },
-      );
-      if (res.ok) {
-        return { ok: true, mode: "stored" };
+      const sb = getServiceClient();
+      // Column names follow supabase/migrations/0001_init.sql (reports).
+      // Triage status 'new' carries the R1 rule that every report enters
+      // untrusted; trust state proper only exists once an editor promotes
+      // the report into an incident.
+      const { data: inserted, error: insertErr } = await sb
+        .from("reports")
+        .insert({
+          description: values.description,
+          category: values.scamType,
+          vendor: values.vendor || null,
+          domain: values.domain || null,
+          address: values.address || null,
+          observed_on: values.observed || null,
+          evidence_urls: evidenceUrls,
+          contact_email: values.contact || null,
+          status: "new",
+          user_id: userId,
+        })
+        .select("id")
+        .single();
+
+      if (!insertErr && inserted) {
+        // Chips land in evidence_chips (0002_r3), linked to the report.
+        // added_by mirrors the reporter: uuid when signed in, null when
+        // anonymous — both are first-class.
+        let chipsAttached = true;
+        if (chips.length > 0) {
+          const { error: chipErr } = await sb.from("evidence_chips").insert(
+            chips.map((c) => ({
+              report_id: inserted.id,
+              kind: c.kind,
+              value: c.value,
+              added_by: userId,
+            })),
+          );
+          if (chipErr) {
+            // The report itself is filed — do not re-file it via GitHub.
+            // Tell the reporter plainly that the chips did not make it.
+            chipsAttached = false;
+            console.error(
+              `report ${inserted.id}: evidence chips failed to store: ${chipErr.message}`,
+            );
+          }
+        }
+        return {
+          ok: true,
+          mode: "stored",
+          chipCount: chips.length,
+          chipsAttached,
+        };
       }
       // Storage refused the write — fall through to the public GitHub queue
       // so the report is never silently lost.
@@ -334,6 +520,7 @@ export async function submitReport(
     address: values.address,
     observed: values.observed,
     evidenceUrls,
+    chips,
     hasContact: Boolean(values.contact),
   });
   return {
