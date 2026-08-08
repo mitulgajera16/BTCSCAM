@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, IBM_Plex_Mono } from "next/font/google";
+import { Agentation } from "agentation";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
   },
   description:
     "Verified Bitcoin scam and incident registry, wallet checks, and plain-language protection guides. Fast AND verified AND readable.",
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -37,7 +41,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${fraunces.variable} ${geist.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {process.env.NODE_ENV === "development" && <Agentation />}
+      </body>
     </html>
   );
 }

@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
+    { url: `${SITE_URL}/check`, changeFrequency: "daily", priority: 0.8 },
     { url: `${SITE_URL}/guides`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE_URL}/report`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/store`, changeFrequency: "monthly", priority: 0.5 },

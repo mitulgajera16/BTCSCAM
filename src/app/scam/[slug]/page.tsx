@@ -2,11 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   getAllIncidents,
-  getIncidentBySlug,
   isStale,
   TRUST_LABEL,
   SEVERITY_LABEL,
 } from "@/lib/incidents";
+import {
+  fetchAllIncidents,
+  fetchCorrections,
+  fetchIncidentBySlug,
+} from "@/lib/incidents-db";
 import { SITE_URL } from "@/lib/site";
 import RugReportBand from "@/components/rug-report-band";
 
@@ -21,7 +25,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/scam/[slug]">) {
   const { slug } = await params;
-  const incident = getIncidentBySlug(slug);
+  const incident = await fetchIncidentBySlug(slug);
   if (!incident) return {};
   const name = incident.title.split(":")[0];
   return {
@@ -62,8 +66,31 @@ export default async function IncidentPage({
   params,
 }: PageProps<"/scam/[slug]">) {
   const { slug } = await params;
-  const incident = getIncidentBySlug(slug);
+  const incident = await fetchIncidentBySlug(slug);
   if (!incident) notFound();
+
+  // Corrections live in two places: the incident document itself (bundled
+  // JSON / data jsonb) and the desk-composed corrections table. Merge and
+  // dedupe by date+note so the ledger is complete without repeats.
+  const dbCorrections = await fetchCorrections(incident.id);
+  const correctionsSeen = new Set<string>();
+  const corrections = [
+    ...(incident.corrections ?? []),
+    ...dbCorrections.map((c) => ({ date: c.correctedOn, note: c.note })),
+  ]
+    .filter((c) => {
+      const key = `${c.date}|${c.note}`;
+      if (correctionsSeen.has(key)) return false;
+      correctionsSeen.add(key);
+      return true;
+    })
+    .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+
+  // Related dossiers resolve against the same registry the page was read from.
+  const relatedPool =
+    incident.relatedIncidents && incident.relatedIncidents.length > 0
+      ? await fetchAllIncidents()
+      : [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -326,11 +353,11 @@ export default async function IncidentPage({
         ))}
       </ul>
 
-      {incident.corrections && incident.corrections.length > 0 && (
+      {corrections.length > 0 && (
         <>
           <SectionRule label="CORRECTIONS — PUBLIC AND PERMANENT" />
           <ul style={{ paddingLeft: 20, marginTop: 12 }}>
-            {incident.corrections.map((c, idx) => (
+            {corrections.map((c, idx) => (
               <li key={idx} style={{ fontSize: 14 }}>
                 <span style={{ ...mono, fontSize: 12, fontWeight: 600 }}>{c.date}</span> — {c.note}
               </li>
@@ -344,7 +371,7 @@ export default async function IncidentPage({
           <SectionRule label="RELATED DOSSIERS" />
           <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 8 }}>
             {incident.relatedIncidents.map((rid) => {
-              const rel = getAllIncidents().find((x) => x.id === rid);
+              const rel = relatedPool.find((x) => x.id === rid);
               return rel ? (
                 <Link key={rid} href={`/scam/${rel.slug}`} style={{ fontWeight: 700, fontSize: 16 }}>
                   {rel.title.split(":")[0]} →

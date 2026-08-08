@@ -1,6 +1,8 @@
 "use server";
 
+import { headers } from "next/headers";
 import { SCAM_CATEGORIES } from "@/components/report/categories";
+import { clientKeyFrom, takeToken } from "@/lib/rate-limit";
 
 // ── R1 intake: manual triage. Every report enters as REPORTED and is never
 // auto-verified. If Supabase env vars are present we store the report; if not,
@@ -261,12 +263,28 @@ export async function submitReport(
     return { ok: false, error: problems.join("\n"), values };
   }
 
+  // Per-IP throttle (R2-PLAN: reports are a public INSERT — rate-limit in
+  // the action). The service-role write bypasses RLS, so without this one
+  // scripted client could flood the desk queue at wire speed. Throttled
+  // submissions skip the database sink and fall through to the public
+  // GitHub queue: an abuser gains nothing, a fast-typing human loses
+  // nothing — the report is still filed, just not silently into the desk.
+  const requestHeaders = await headers();
+  const withinLimit = takeToken(
+    "report",
+    clientKeyFrom(requestHeaders),
+    5,
+    10 * 60_000, // 5 reports per 10 minutes per client
+  );
+
   // Sink 1: Supabase REST, when configured. Service-role key stays on the
   // server; this file never reaches the client bundle.
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const supabaseUrl =
+    process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceRoleKey =
+    process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SERVICE_KEY;
 
-  if (supabaseUrl && serviceRoleKey) {
+  if (withinLimit && supabaseUrl && serviceRoleKey) {
     try {
       const res = await fetch(
         `${supabaseUrl.replace(/\/+$/, "")}/rest/v1/reports`,
@@ -278,16 +296,20 @@ export async function submitReport(
             "Content-Type": "application/json",
             Prefer: "return=minimal",
           },
+          // Column names follow supabase/migrations/0001_init.sql (reports).
+          // Triage status 'new' carries the R1 rule that every report enters
+          // untrusted; trust state proper only exists once an editor promotes
+          // the report into an incident.
           body: JSON.stringify({
             description: values.description,
-            scam_type: values.scamType,
+            category: values.scamType,
             vendor: values.vendor || null,
             domain: values.domain || null,
             address: values.address || null,
-            observed: values.observed || null,
+            observed_on: values.observed || null,
             evidence_urls: evidenceUrls,
             contact_email: values.contact || null,
-            trust_state: "reported",
+            status: "new",
           }),
         },
       );

@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { getAllIncidents, TRUST_LABEL } from "@/lib/incidents";
+import { TRUST_LABEL } from "@/lib/incidents";
+import { fetchAllIncidents } from "@/lib/incidents-db";
 import StampMark from "@/components/stamp-mark";
 import RugReportBand from "@/components/rug-report-band";
+import WireTicker, { getTickerItems } from "@/components/wire-ticker";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif" };
@@ -51,8 +53,8 @@ function SeverityChip({ severity }: { severity: string }) {
   );
 }
 
-export default function Home() {
-  const incidents = getAllIncidents();
+export default async function Home() {
+  const incidents = await fetchAllIncidents();
   const dangerous = incidents.filter(
     (i) => i.ongoing && (i.severity === "S1" || i.severity === "S2"),
   );
@@ -62,50 +64,7 @@ export default function Home() {
   return (
     <main>
       {/* Wire ticker */}
-      <div
-        style={{ background: "var(--dark)", overflow: "hidden" }}
-        aria-hidden="true"
-      >
-        <div
-          style={{
-            ...mono,
-            display: "flex",
-            gap: 48,
-            whiteSpace: "nowrap",
-            padding: "8px 0",
-            fontSize: 12,
-            fontWeight: 500,
-            color: "var(--dark-text)",
-            animation: "tickmove 30s linear infinite",
-            width: "max-content",
-          }}
-        >
-          {[0, 1].map((n) => (
-            <span key={n} style={{ display: "flex", gap: 48 }}>
-              <span>
-                THE WIRE <span style={{ color: "var(--tick-up)" }}>●</span> LIVE
-              </span>
-              {dangerous.map((i) => (
-                <span key={i.id}>
-                  <span
-                    style={{
-                      background: "var(--danger)",
-                      color: "#fff",
-                      padding: "1px 6px",
-                      marginRight: 8,
-                    }}
-                  >
-                    SCAM ALERT
-                  </span>
-                  {i.title.split(":")[0].toUpperCase()}
-                </span>
-              ))}
-              <span>REGISTRY ENTRIES {incidents.length}</span>
-              <span>PAID LISTINGS 0</span>
-            </span>
-          ))}
-        </div>
-      </div>
+      <WireTicker items={await getTickerItems()} />
 
       {/* Conditional CRITICAL bar */}
       {critical && (
@@ -221,6 +180,7 @@ export default function Home() {
           }}
         >
           <Link href="/">FRONT PAGE</Link>
+          <Link href="/check">CHECK</Link>
           <Link href="/registry">REGISTRY</Link>
           <Link href="/guides">GUIDES</Link>
           <Link href="/report">REPORT</Link>

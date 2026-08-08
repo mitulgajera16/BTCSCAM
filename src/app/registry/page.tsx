@@ -1,11 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  getAllIncidents,
-  isStale,
-  TRUST_LABEL,
-  SEVERITY_LABEL,
-} from "@/lib/incidents";
+import { isStale, TRUST_LABEL, SEVERITY_LABEL } from "@/lib/incidents";
+import { fetchAllIncidents } from "@/lib/incidents-db";
 import RegistryExplorer, {
   type RegistryRow,
 } from "@/components/registry/RegistryExplorer";
@@ -20,8 +16,8 @@ export const metadata: Metadata = {
     "Every incident BTCSCAM has on file, in one index — filterable by type, severity, and trust state, each entry linked to its full dossier. Check before you send.",
 };
 
-export default function RegistryPage() {
-  const incidents = getAllIncidents();
+export default async function RegistryPage() {
+  const incidents = await fetchAllIncidents();
   const rows: RegistryRow[] = incidents.map((i) => ({
     id: i.id,
     slug: i.slug,
