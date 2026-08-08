@@ -85,3 +85,20 @@ i {
   border-top: 3px double var(--ink);
   border-bottom: none;
 }
+
+/* body is a flex column (layout.tsx); without this, main's min-width:auto lets
+   wide grid children (story rows) stretch the whole page past the viewport */
+body > main {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* two-column story/dossier rows collapse on small screens */
+@media (max-width: 640px) {
+  .story-row {
+    grid-template-columns: 1fr !important;
+  }
+  .story-meta {
+    text-align: left !important;
+  }
+}

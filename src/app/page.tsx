@@ -248,6 +248,7 @@ export default function Home() {
         {dangerous.map((i) => (
           <article
             key={i.id}
+            className="story-row"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr auto",
@@ -268,7 +269,7 @@ export default function Home() {
                 {i.summary}
               </p>
             </div>
-            <div style={{ ...mono, fontSize: 12, textAlign: "right", color: "var(--meta)" }}>
+            <div className="story-meta" style={{ ...mono, fontSize: 12, textAlign: "right", color: "var(--meta)" }}>
               {i.impact?.lossNative && (
                 <div style={{ color: "var(--danger)", fontWeight: 600 }}>
                   {i.impact.lossNative}
