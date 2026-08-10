@@ -6,7 +6,6 @@ import { fetchPrices } from "@/lib/prices";
 import { coverFor } from "@/lib/covers";
 import SiteHeader from "@/components/site-header";
 import StampMark from "@/components/stamp-mark";
-import RugReportBand from "@/components/rug-report-band";
 import WireTicker, { getTickerItems } from "@/components/wire-ticker";
 
 // Prices, ticker, and the dateline refresh without a redeploy.
@@ -97,7 +96,6 @@ export default async function Home() {
     getTickerItems(),
   ]);
   const now = new Date();
-  const today = now.toISOString().slice(0, 10);
 
   const dangerous = incidents.filter(
     (i) => i.ongoing && (i.severity === "S1" || i.severity === "S2"),
@@ -143,46 +141,7 @@ export default async function Home() {
     <main>
       <WireTicker items={tickerItems} prices={prices} />
 
-      {critical && (
-        <div
-          role="alert"
-          style={{
-            background: "var(--danger-bg)",
-            color: "var(--danger-ink)",
-            borderBottom: "1px solid var(--danger)",
-            padding: "10px 24px",
-            display: "flex",
-            gap: 12,
-            alignItems: "baseline",
-            flexWrap: "wrap",
-          }}
-        >
-          <span
-            style={{
-              ...mono,
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: ".05em",
-              background: "var(--danger)",
-              color: "#fff",
-              padding: "2px 8px",
-            }}
-          >
-            CRITICAL
-          </span>
-          <Link
-            href={`/scam/${critical.slug}`}
-            style={{ fontWeight: 700, fontSize: 16 }}
-          >
-            {critical.title}
-          </Link>
-          <span style={{ ...mono, fontSize: 12, marginLeft: "auto" }}>
-            UPDATED {critical.lastUpdated}
-          </span>
-        </div>
-      )}
-
-      <SiteHeader today={today} />
+      <SiteHeader />
 
       {/* Lead story — painting-led hero per v4 */}
       <section
@@ -584,8 +543,6 @@ export default async function Home() {
         </aside>
       </section>
 
-      <RugReportBand />
-
       {/* v4 footer — sections grouped, stamp as the seal */}
       <footer style={{ background: "var(--warm)", borderTop: "1px solid var(--rule)" }}>
         <div
@@ -629,7 +586,6 @@ export default async function Home() {
                 ["The Database", "/registry"],
                 ["Wallet Check", "/check"],
                 ["Guides", "/guides"],
-                ["The Rug Report", "/rug-report"],
               ],
             },
             {

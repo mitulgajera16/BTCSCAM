@@ -12,7 +12,6 @@ import {
   fetchIncidentBySlug,
 } from "@/lib/incidents-db";
 import { SITE_URL } from "@/lib/site";
-import RugReportBand from "@/components/rug-report-band";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -382,7 +381,6 @@ export default async function IncidentPage({
         </>
       )}
     </main>
-    <RugReportBand />
     </>
   );
 }

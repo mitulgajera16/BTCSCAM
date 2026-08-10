@@ -52,30 +52,9 @@ function NavGroup({
   );
 }
 
-export default function SiteHeader({ today }: { today: string }) {
+export default function SiteHeader() {
   return (
     <header style={{ background: "var(--warm)" }}>
-      {/* date bar */}
-      <div
-        data-datebar=""
-        style={{
-          ...mono,
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "4px 16px",
-          padding: "8px 24px",
-          fontSize: 12,
-          fontWeight: 500,
-          borderBottom: "1px solid var(--rule)",
-        }}
-      >
-        <span style={{ whiteSpace: "nowrap" }}>{today}</span>
-        <span style={{ whiteSpace: "nowrap" }}>
-          EST. 2026 · READER-FUNDED · PAID LISTINGS 0
-        </span>
-      </div>
-
       {/* masthead: SUBSCRIBE | wordmark | WALLET TEST */}
       <div
         style={{
@@ -89,8 +68,8 @@ export default function SiteHeader({ today }: { today: string }) {
           flexWrap: "wrap",
         }}
       >
-        <Link href="/rug-report" style={edgeButton}>
-          SUBSCRIBE
+        <Link href="/feed.xml" style={edgeButton}>
+          RSS FEED
         </Link>
         <Link href="/" style={{ textDecoration: "none" }}>
           <h1
@@ -167,7 +146,6 @@ export default function SiteHeader({ today }: { today: string }) {
               label="LEARN"
               items={[
                 { label: "Guides", href: "/guides" },
-                { label: "The Rug Report", href: "/rug-report" },
                 { label: "Standards", href: "/standards" },
               ]}
             />

@@ -35,11 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/report`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/store`, changeFrequency: "monthly", priority: 0.5 },
     {
-      url: `${SITE_URL}/rug-report`,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
       url: `${SITE_URL}/standards`,
       changeFrequency: "monthly",
       priority: 0.5,
