@@ -260,6 +260,42 @@ export default async function IncidentPage({
         ))}
       </ol>
 
+      <div
+        role="alert"
+        style={{
+          background: "var(--danger-bg)",
+          border: "1px solid var(--danger)",
+          padding: "14px 18px",
+          marginTop: 20,
+        }}
+      >
+        <p
+          style={{
+            ...mono,
+            fontSize: 12,
+            fontWeight: 600,
+            letterSpacing: ".05em",
+            color: "var(--danger-ink)",
+            margin: 0,
+          }}
+        >
+          ⚠ RECOVERY SCAM WARNING
+        </p>
+        <p
+          style={{
+            fontSize: 15,
+            lineHeight: 1.55,
+            margin: "6px 0 0",
+            color: "var(--danger-ink)",
+          }}
+        >
+          If anyone contacts you promising to recover funds lost in this
+          incident — for an upfront fee, a "gas payment", or your seed phrase —
+          that is the second half of the scam. We sell nothing on this page on
+          purpose, and no legitimate service cold-contacts victims.
+        </p>
+      </div>
+
       {incident.timeline && (
         <>
           <SectionRule label="TIMELINE" />

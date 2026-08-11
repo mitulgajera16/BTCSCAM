@@ -273,6 +273,11 @@ function FlaggedPanel({
         treat as a stop sign: do not send funds, do not enter a seed phrase,
         do not install anything from it.
       </p>
+      <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 12, marginBottom: 0, fontWeight: 700 }}>
+        We sell nothing on this page on purpose — anyone promising recovery
+        of these funds is running the second half of the scam. No legitimate
+        service cold-contacts victims or asks for a fee to "trace" money.
+      </p>
       <ChainabuseAndReport chainabuseUrl={result.chainabuseUrl} />
       <p style={{ ...mono, fontSize: 11, color: "var(--danger-ink)", marginTop: 16, marginBottom: 0 }}>
         CHECKED {result.checkedAt.slice(0, 16).replace("T", " ")} UTC
