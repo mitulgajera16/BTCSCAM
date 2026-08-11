@@ -44,6 +44,9 @@ ${dossiers}
 - [Hardware wallet authenticity](${SITE_URL}/guides/hardware-wallet-authenticity): fake and pre-seeded devices; the pre-filled recovery card is the kill pattern; brand-by-brand genuine checks
 - [Seed phrase entropy](${SITE_URL}/guides/seed-phrase-entropy): verifiable seed generation, dice-roll procedure, why device RNGs fail
 
+## The Monday Sweep (weekly desk report)
+- [Sweep index](${SITE_URL}/sweep): what was published, corrected, queued, and reported — every Monday, honest numbers only
+
 ## Editorial standards
 - [The Standards](${SITE_URL}/standards): trust ladder, corrections policy, dispute and takedown process
 

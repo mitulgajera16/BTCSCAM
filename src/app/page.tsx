@@ -605,6 +605,7 @@ export default async function Home() {
             {
               h: "THE WIRE",
               links: [
+                ["Monday Sweep", "/sweep"],
                 ["RSS Feed", "/feed.xml"],
                 ["Data API", "/api/incidents"],
                 ["Sitemap", "/sitemap.xml"],

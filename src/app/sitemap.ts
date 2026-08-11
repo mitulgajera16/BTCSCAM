@@ -47,6 +47,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${SITE_URL}/sweep`,
+      lastModified: "2026-08-11",
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/sweep/2026-08-11`,
+      lastModified: "2026-08-11",
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
       url: `${SITE_URL}/account/sign-in`,
       changeFrequency: "monthly",
       priority: 0.3,
