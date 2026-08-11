@@ -18,7 +18,7 @@ const LIVE_GUIDES = [
     slug: "seed-phrase-entropy",
     kicker: "GUIDE · FACT-CHECKED 2026-08-08",
     title: "How to generate a seed phrase with entropy you can actually trust",
-    dek: "$116M+ (rising estimate, as of 2026-08-05) was stolen from people who did everything “right.” Dice-roll seeds survived. 50 rolls for 12 words, 99 for 24 — and how to verify the math yourself.",
+    dek: "$116M–$130M+ (still rising; as of 2026-08-10) was stolen from people who did everything “right.” Dice-roll seeds survived. 50 rolls for 12 words, 99 for 24 — and how to verify the math yourself.",
     published: "2026-08-08",
   },
 ];
