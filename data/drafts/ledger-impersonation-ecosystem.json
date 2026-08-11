@@ -1,0 +1,99 @@
+{
+  "id": "2020-ledger-impersonation-ecosystem",
+  "slug": "ledger-impersonation-ecosystem",
+  "title": "Ledger impersonation ecosystem: the 2020 customer-data leak still fuels seed-phrase letters, fake devices, and phishing",
+  "summary": "Ledger's mid-2020 e-commerce breach exposed ~1M emails and — after a Dec 20, 2020 forum dump — 272,853 customers' names, home addresses, and phone numbers. That dataset still powers an impersonation ecosystem: phishing emails and SMS, fake Ledger Live apps, tampered 'replacement' devices mailed in 2021, and physical letters with QR codes demanding your 24 words (2025–2026). No seed ever leaked.",
+  "trustState": "verified",
+  "severity": "S2",
+  "ongoing": true,
+  "categories": ["impersonation", "phishing", "fake-device"],
+  "firstObserved": "2020-06-25",
+  "published": "2026-08-11",
+  "lastUpdated": "2026-08-11",
+  "entities": {
+    "vendor": "Ledger (impersonated; the company is the breach victim, not the operator of these scams)",
+    "products": ["Ledger Nano S", "Ledger Nano X", "Ledger Live"],
+    "domains": [
+      "ledger.setuptransactioncheck[.]com",
+      "trezor.authentication-check[.]io",
+      "ledger[.]com-a42-encryption-m6-email[.]rg37-s8-smtp[.]cloud"
+    ]
+  },
+  "impact": {
+    "victims": "~1,000,000 email addresses exposed; 272,853 customers' names, home addresses, and phone numbers published in the Dec 20, 2020 RaidForums dump (Ledger's initial July 2020 estimate of ~9,500 detailed records proved far too low). Aggregate theft losses from the downstream scams have never been reliably totaled.",
+    "confidence": "confirmed",
+    "asOf": "2020-12-21",
+    "source": "https://www.bleepingcomputer.com/news/security/physical-addresses-of-270k-ledger-owners-leaked-on-hacker-forum/"
+  },
+  "timeline": [
+    { "date": "2020-06-25", "event": "An unauthorized third party accesses Ledger's e-commerce and marketing database through an API key on ledger.com, since deactivated. Hardware wallets, Ledger Live, and funds are untouched.", "source": "https://www.ledger.com/addressing-the-july-2020-e-commerce-and-marketing-data-breach" },
+    { "date": "2020-07-14", "event": "A researcher in Ledger's bounty program reports the breach; Ledger deactivates the API key and notifies France's CNIL on July 17.", "source": "https://www.ledger.com/addressing-the-july-2020-e-commerce-and-marketing-data-breach" },
+    { "date": "2020-07-29", "event": "Ledger publicly discloses the breach: ~1M email addresses plus what it then estimated as ~9,500 records with names, postal addresses, and phone numbers.", "source": "https://www.ledger.com/addressing-the-july-2020-e-commerce-and-marketing-data-breach" },
+    { "date": "2020-12-20", "event": "The full database is dumped for free on RaidForums: 272,853 detailed customer records (name, home address, phone) plus 1M+ emails. Phishing and extortion attempts against customers escalate immediately.", "source": "https://www.bleepingcomputer.com/news/security/physical-addresses-of-270k-ledger-owners-leaked-on-hacker-forum/" },
+    { "date": "2020-12-21", "event": "CEO Pascal Gauthier publishes a public message: \"Your crypto assets are safe. While very truly and sincerely regrettable, this breach concerns only e-commerce related information.\" Ledger commits to a security overhaul rather than individual compensation.", "source": "https://www.ledger.com/message-ledgers-ceo-data-leak" },
+    { "date": "2021-01-13", "event": "Ledger publicly discloses a second exposure route — rogue Shopify support agents illegally exported merchant customer records (including Ledger's) between April and June 2020, reported to Ledger on December 23, 2020 — and posts a 10 BTC bounty for information leading to arrest.", "source": "https://cryptobriefing.com/ledger-offers-10-bitcoin-shopify-employees/" },
+    { "date": "2021-06-16", "event": "Scammers mail tampered 'replacement' Nano X devices to breach victims with a letter presented as coming from Ledger; the device conceals an implant (researcher Mike Grover described it to BleepingComputer as \"a flash drive strapped on to the Ledger\") and the enclosed fake manual asks the user to enter their 24-word recovery phrase.", "source": "https://www.bleepingcomputer.com/news/cryptocurrency/criminals-are-mailing-altered-ledger-devices-to-steal-cryptocurrency/" },
+    { "date": "2024-10", "event": "France's data-protection regulator CNIL fines Ledger EUR 750,000 over the 2020 breaches, citing GDPR failures in how long customer data was retained and how that retention was secured. The CNIL did not publish the deliberation itself; Ledger confirmed the sanction to the press.", "source": "https://next.ink/brief_article/conservation-et-protection-des-donnees-la-cnil-sanctionne-ledger-dune-amende-de-750-000-e/" },
+    { "date": "2025-04-28", "event": "Physical phishing letters dated April 4, 2025 surface publicly in late April: official-looking Ledger letterhead, business address, and reference numbers instruct recipients to scan a QR code and enter their recovery phrase to 'validate' their device, threatening restricted access. Ledger publicly confirms the letters are a scam; recipients note the mailing list matches the 2020 leak.", "source": "https://beincrypto.com/crypto-scam-targets-ledger-users/" },
+    { "date": "2026-02-14", "event": "A renewed letter wave targets both Ledger and Trezor owners: a mandatory 'Transaction Check' with a QR code pointing to ledger.setuptransactioncheck[.]com (and trezor.authentication-check[.]io for Trezor), using deadlines to manufacture urgency.", "source": "https://www.bleepingcomputer.com/news/security/snail-mail-letters-target-trezor-and-ledger-users-in-crypto-theft-attacks/" },
+    { "date": "2026-08", "event": "Ledger's live phishing-status page tracks the currently active vectors: fake emails from lookalike sender domains, letters claiming Ledger opened 'vault addresses', support-ticket and CoinCover-impersonation phone calls, fake Ledger Live apps that display error messages asking for the recovery phrase, and wallet-draining airdropped tokens (e.g. QCORE).", "source": "https://www.ledger.com/phishing-campaigns-status" }
+  ],
+  "affected": [
+    "Anyone who bought from ledger.com or joined its mailing list before July 2020 — assume your email is in the ~1M set",
+    "The 272,853 customers in the December 2020 dump — name, home address, and phone number are public; this group receives the physical letters, fake devices, and targeted calls",
+    "Hardware-wallet owners generally: the 2026 letter wave hits Trezor owners too, and fake-app/airdrop lures need no leaked data at all"
+  ],
+  "notAffected": [
+    "Funds and devices themselves — the breach touched an e-commerce database, never seeds, PINs, or payment card numbers (per Ledger's disclosures)",
+    "Customers who first purchased after July 2020 are not in the leaked dataset (generic phishing can still reach them)",
+    "Anyone who has never typed their 24 words anywhere outside the hardware device — leaked contact data alone cannot move your bitcoin"
+  ],
+  "actions": [
+    "Treat every unsolicited letter, email, SMS, or call that says 'Ledger' as hostile by default. Ledger never asks for your 24 words, never phones you, never sends letters requiring 'validation', and never mails replacement devices unannounced.",
+    "If you already entered your recovery phrase into a website, app, QR-code page, or mailed-in form: your wallet is compromised. Move funds NOW to a new wallet whose seed was generated fresh on a trusted device — do not reuse the old seed.",
+    "Received a 'replacement' device you didn't order? Do not plug it in or follow its manual. Photograph everything and report it via Ledger's official support page (type ledger.com manually).",
+    "Check your exposure at haveibeenpwned.com (the Ledger breach is indexed). If you bought before July 2020, assume your name, home address, and phone number are public and plan accordingly.",
+    "Report scam letters and phishing to the FTC at reportfraud.ftc.gov and the FBI at ic3.gov, and forward phishing attempts to Ledger's official reporting channel. There is no claims administrator or remission process for this breach — anyone offering to recover stolen crypto for a fee is running the second half of the scam.",
+    "If a contact threatens you physically using your home address, treat it as extortion: report to local police and ic3.gov, and do not pay."
+  ],
+  "claims": [
+    { "claim": "Combined exposure reached ~292,000 customer records once Shopify's rogue-agent exports (April–June 2020) were counted alongside the API-key breach.", "status": "reported-unconfirmed", "attribution": "Ledger and Shopify statements as reported by crypto press; Ledger's own statement not independently fetched", "sources": ["https://cryptobriefing.com/ledger-offers-10-bitcoin-shopify-employees/"] },
+    { "claim": "A mid-2025 letter variant used a fake 'Quantum Resistance Security Update' pretext.", "status": "reported-unconfirmed", "attribution": "Cryptopolitan and CCN coverage; both pages returned 403 to our fetch attempts", "sources": ["https://www.cryptopolitan.com/scammers-target-ledger-users-fake-letters/"] },
+    { "claim": "Leaked customers received extortion messages including threats of physical violence at their home addresses.", "status": "reported-unconfirmed", "attribution": "Victim reports covered by crypto press after the December 2020 dump", "sources": ["https://dailycoin.com/ledger-crypto-hack-gets-justice-after-4-year-delay/"] },
+    { "claim": "Ledger declined to individually compensate leak victims, directing resources to security investment instead.", "status": "primary-confirmed", "attribution": "Ledger CEO public message", "sources": ["https://www.ledger.com/message-ledgers-ceo-data-leak"] },
+    { "claim": "No public attribution exists for the breach, the RaidForums dump, or any of the letter/fake-device campaigns; no charges are known to have been filed as of Aug 11, 2026.", "status": "reported-unconfirmed", "attribution": "BTCSCAM review of available reporting; absence of evidence, not a finding", "sources": [] }
+  ],
+  "relatedGuides": ["seed-phrase-entropy"],
+  "relatedIncidents": ["2024-trezor-support-phishing", "2026-coldcard-phishing-wave"],
+  "sources": [
+    { "url": "https://www.ledger.com/phishing-campaigns-status", "publisher": "Ledger (official, live campaign tracker)", "type": "vendor" },
+    { "url": "https://www.ledger.com/addressing-the-july-2020-e-commerce-and-marketing-data-breach", "publisher": "Ledger (leadership disclosure)", "date": "2020-07-29", "type": "vendor" },
+    { "url": "https://www.ledger.com/message-ledgers-ceo-data-leak", "publisher": "Ledger (CEO message)", "date": "2020-12-21", "type": "vendor" },
+    { "url": "https://x.com/_pgauthier/status/1341084660953194497", "publisher": "Pascal Gauthier (Ledger CEO, X)", "date": "2020-12-21", "type": "primary" },
+    { "url": "https://www.bleepingcomputer.com/news/security/physical-addresses-of-270k-ledger-owners-leaked-on-hacker-forum/", "publisher": "BleepingComputer", "date": "2020-12-21", "type": "news" },
+    { "url": "https://cryptobriefing.com/ledger-offers-10-bitcoin-shopify-employees/", "publisher": "Crypto Briefing", "date": "2021-01-13", "type": "news" },
+    { "url": "https://www.bleepingcomputer.com/news/cryptocurrency/criminals-are-mailing-altered-ledger-devices-to-steal-cryptocurrency/", "publisher": "BleepingComputer", "date": "2021-06-16", "type": "news" },
+    { "url": "https://next.ink/brief_article/conservation-et-protection-des-donnees-la-cnil-sanctionne-ledger-dune-amende-de-750-000-e/", "publisher": "Next (ex-Next INpact)", "date": "2024-10-24", "type": "news" },
+    { "url": "https://beincrypto.com/crypto-scam-targets-ledger-users/", "publisher": "BeInCrypto", "date": "2025-04-29", "type": "news" },
+    { "url": "https://www.theblock.co/post/352479/ledger-confirms-physical-scam-letters-requesting-seed-phrase", "publisher": "The Block", "date": "2025-04-30", "type": "news" },
+    { "url": "https://www.bleepingcomputer.com/news/security/snail-mail-letters-target-trezor-and-ledger-users-in-crypto-theft-attacks/", "publisher": "BleepingComputer", "date": "2026-02-14", "type": "news" }
+  ],
+  "aliases": [
+    "Ledger data breach",
+    "Ledger leak",
+    "Ledger letter scam",
+    "Ledger fake device scam",
+    "Ledger phishing"
+  ],
+  "phrases": [
+    "ledger letter in mail asking for recovery phrase real",
+    "ledger data breach am i affected",
+    "is the ledger letter a scam",
+    "ledger asked me to validate my wallet qr code",
+    "ledger sent me a new device in the mail",
+    "ledger email firmware update real or fake",
+    "someone called from ledger about my account",
+    "typed my recovery phrase into ledger website what do i do"
+  ],
+  "tags": ["ledger", "hardware-wallet", "data-breach", "phishing", "seed-phrase", "physical-mail", "qr-code", "fake-device", "raidforums", "shopify"]
+}

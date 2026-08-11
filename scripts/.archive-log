@@ -145,3 +145,83 @@
 2026-08-11T17:16:16.220Z saving:   https://bitcointalk.org/index.php?topic=5590727.msg67024299#msg67024299
 2026-08-11T17:17:46.225Z   SPN error for https://bitcointalk.org/index.php?topic=5590727.msg67024299#msg67024299: The operation was aborted due to timeout
 2026-08-11T17:17:46.227Z   FAILED: https://bitcointalk.org/index.php?topic=5590727.msg67024299#msg67024299
+2026-08-11T17:18:07.081Z saving:   https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/lenwhjm/
+2026-08-11T17:18:27.962Z   SPN HTTP 404 for https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/lenwhjm/
+2026-08-11T17:18:27.963Z   retrying via https://old.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/lenwhjm/
+2026-08-11T17:19:53.800Z   FAILED: https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/lenwhjm/
+2026-08-11T17:20:14.766Z saving:   https://www.reddit.com/r/CryptoScams/comments/1ve8p8r/comment/p1eyq0w/
+2026-08-11T17:20:37.243Z   SPN HTTP 520 for https://www.reddit.com/r/CryptoScams/comments/1ve8p8r/comment/p1eyq0w/
+2026-08-11T17:20:37.244Z   retrying via https://old.reddit.com/r/CryptoScams/comments/1ve8p8r/comment/p1eyq0w/
+2026-08-11T17:22:01.255Z   FAILED: https://www.reddit.com/r/CryptoScams/comments/1ve8p8r/comment/p1eyq0w/
+2026-08-11T17:22:22.602Z saving:   https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/lenq5lf/
+2026-08-11T17:23:48.386Z   retrying via https://old.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/lenq5lf/
+2026-08-11T17:25:17.814Z   FAILED: https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/lenq5lf/
+2026-08-11T17:25:39.079Z saving:   https://news.ycombinator.com/item?id=42133768
+2026-08-11T17:25:46.771Z   SPN HTTP 520 for https://news.ycombinator.com/item?id=42133768
+2026-08-11T17:25:46.772Z   FAILED: https://news.ycombinator.com/item?id=42133768
+2026-08-11T17:26:07.637Z saving:   https://news.ycombinator.com/item?id=14928893
+2026-08-11T17:26:17.190Z   SPN HTTP 520 for https://news.ycombinator.com/item?id=14928893
+2026-08-11T17:26:17.190Z   FAILED: https://news.ycombinator.com/item?id=14928893
+2026-08-11T17:26:38.137Z saving:   https://news.ycombinator.com/item?id=14929344
+2026-08-11T17:28:02.222Z   FAILED: https://news.ycombinator.com/item?id=14929344
+2026-08-11T17:28:23.882Z saving:   https://news.ycombinator.com/item?id=14930110
+2026-08-11T17:28:32.878Z   SPN HTTP 520 for https://news.ycombinator.com/item?id=14930110
+2026-08-11T17:28:32.878Z   FAILED: https://news.ycombinator.com/item?id=14930110
+2026-08-11T17:28:54.100Z saving:   https://www.reddit.com/r/CryptoScams/comments/1oem9gu/
+2026-08-11T17:30:24.566Z   retrying via https://old.reddit.com/r/CryptoScams/comments/1oem9gu/
+2026-08-11T17:32:38.897Z   FAILED: https://www.reddit.com/r/CryptoScams/comments/1oem9gu/
+2026-08-11T17:33:00.494Z saving:   https://news.ycombinator.com/item?id=47793430
+2026-08-11T17:33:08.733Z   SPN HTTP 520 for https://news.ycombinator.com/item?id=47793430
+2026-08-11T17:33:08.733Z   FAILED: https://news.ycombinator.com/item?id=47793430
+2026-08-11T17:33:31.516Z saving:   https://www.reddit.com/r/Scams/comments/1vf15lt/
+2026-08-11T17:33:54.208Z   SPN HTTP 520 for https://www.reddit.com/r/Scams/comments/1vf15lt/
+2026-08-11T17:33:54.210Z   retrying via https://old.reddit.com/r/Scams/comments/1vf15lt/
+2026-08-11T17:34:15.691Z   SPN HTTP 404 for https://old.reddit.com/r/Scams/comments/1vf15lt/
+2026-08-11T17:34:15.693Z   FAILED: https://www.reddit.com/r/Scams/comments/1vf15lt/
+2026-08-11T17:34:36.582Z saving:   https://www.reddit.com/r/Scams/comments/1uhd58f/
+2026-08-11T17:36:01.426Z   retrying via https://old.reddit.com/r/Scams/comments/1uhd58f/
+2026-08-11T17:37:31.432Z   SPN error for https://old.reddit.com/r/Scams/comments/1uhd58f/: The operation was aborted due to timeout
+2026-08-11T17:37:31.435Z   FAILED: https://www.reddit.com/r/Scams/comments/1uhd58f/
+2026-08-11T17:37:53.740Z saving:   https://www.reddit.com/r/Scams/comments/1v87hbv/
+2026-08-11T17:37:54.874Z   SPN HTTP 429 for https://www.reddit.com/r/Scams/comments/1v87hbv/
+2026-08-11T17:37:54.875Z   retrying via https://old.reddit.com/r/Scams/comments/1v87hbv/
+2026-08-11T17:37:56.454Z   SPN HTTP 429 for https://old.reddit.com/r/Scams/comments/1v87hbv/
+2026-08-11T17:37:56.455Z   FAILED: https://www.reddit.com/r/Scams/comments/1v87hbv/
+2026-08-11T17:38:22.324Z saving:   https://www.reddit.com/r/Scams/comments/1ukqfd6/
+2026-08-11T17:39:54.962Z   retrying via https://old.reddit.com/r/Scams/comments/1ukqfd6/
+2026-08-11T17:41:24.160Z   FAILED: https://www.reddit.com/r/Scams/comments/1ukqfd6/
+2026-08-11T17:41:45.025Z saving:   https://www.reddit.com/r/Scams/comments/1uzlr6a/
+2026-08-11T17:42:05.817Z   SPN HTTP 404 for https://www.reddit.com/r/Scams/comments/1uzlr6a/
+2026-08-11T17:42:05.817Z   retrying via https://old.reddit.com/r/Scams/comments/1uzlr6a/
+2026-08-11T17:43:29.661Z   FAILED: https://www.reddit.com/r/Scams/comments/1uzlr6a/
+2026-08-11T17:43:50.943Z saving:   https://www.reddit.com/r/Scams/comments/1v9bvui/
+2026-08-11T17:45:23.453Z   retrying via https://old.reddit.com/r/Scams/comments/1v9bvui/
+2026-08-11T17:45:30.726Z   SPN HTTP 523 for https://old.reddit.com/r/Scams/comments/1v9bvui/
+2026-08-11T17:45:30.728Z   FAILED: https://www.reddit.com/r/Scams/comments/1v9bvui/
+2026-08-11T17:45:56.904Z saving:   https://www.reddit.com/r/BitcoinBeginners/comments/1s118go/
+2026-08-11T17:46:17.767Z   SPN HTTP 520 for https://www.reddit.com/r/BitcoinBeginners/comments/1s118go/
+2026-08-11T17:46:17.771Z   retrying via https://old.reddit.com/r/BitcoinBeginners/comments/1s118go/
+2026-08-11T17:47:47.775Z   SPN error for https://old.reddit.com/r/BitcoinBeginners/comments/1s118go/: The operation was aborted due to timeout
+2026-08-11T17:47:47.777Z   FAILED: https://www.reddit.com/r/BitcoinBeginners/comments/1s118go/
+2026-08-11T17:48:12.176Z saving:   https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leafw0g/
+2026-08-11T17:48:19.661Z   SPN HTTP 523 for https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leafw0g/
+2026-08-11T17:48:19.661Z   retrying via https://old.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leafw0g/
+2026-08-11T17:48:40.482Z   SPN HTTP 404 for https://old.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leafw0g/
+2026-08-11T17:48:40.484Z   FAILED: https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leafw0g/
+2026-08-11T17:49:03.574Z saving:   https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leasq6m/
+2026-08-11T17:49:25.348Z   SPN HTTP 404 for https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leasq6m/
+2026-08-11T17:49:25.348Z   retrying via https://old.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leasq6m/
+2026-08-11T17:49:45.836Z   SPN HTTP 429 for https://old.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leasq6m/
+2026-08-11T17:49:45.836Z   FAILED: https://www.reddit.com/r/CryptoScams/comments/1e8vuzk/comment/leasq6m/
+2026-08-11T17:50:09.842Z saving:   https://bitcointalk.org/index.php?topic=5589730.msg67031275#msg67031275
+2026-08-11T17:51:35.346Z   FAILED: https://bitcointalk.org/index.php?topic=5589730.msg67031275#msg67031275
+2026-08-11T17:51:56.361Z saving:   https://bitcointalk.org/index.php?topic=5590338.msg67029822#msg67029822
+2026-08-11T17:52:18.199Z   SPN HTTP 404 for https://bitcointalk.org/index.php?topic=5590338.msg67029822#msg67029822
+2026-08-11T17:52:18.200Z   FAILED: https://bitcointalk.org/index.php?topic=5590338.msg67029822#msg67029822
+2026-08-11T17:52:39.682Z saving:   https://bitcointalk.org/index.php?topic=5590522.msg67016602#msg67016602
+2026-08-11T17:54:05.283Z   FAILED: https://bitcointalk.org/index.php?topic=5590522.msg67016602#msg67016602
+2026-08-11T17:54:26.398Z saving:   https://www.reddit.com/r/CryptoScams/comments/1qlw3eq/
+2026-08-11T17:55:51.471Z   retrying via https://old.reddit.com/r/CryptoScams/comments/1qlw3eq/
+2026-08-11T17:56:14.092Z   SPN HTTP 404 for https://old.reddit.com/r/CryptoScams/comments/1qlw3eq/
+2026-08-11T17:56:14.093Z   FAILED: https://www.reddit.com/r/CryptoScams/comments/1qlw3eq/
+2026-08-11T17:56:34.099Z Archive pass done: 2 archived, 62 failed, 0 were already done.

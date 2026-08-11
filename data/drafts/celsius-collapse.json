@@ -1,0 +1,79 @@
+{
+  "id": "2022-celsius-collapse",
+  "slug": "celsius-collapse",
+  "title": "Celsius collapse: 'Unbank Yourself' platform froze $4.7B in customer crypto; founder sentenced to 12 years",
+  "summary": "Celsius ('Unbank Yourself') froze ~$4.7B of customer crypto on June 12, 2022, then filed Chapter 11. Founder Alexander Mashinsky pled guilty to commodities and securities fraud and was sentenced to 12 years in May 2025. FTC orders against the co-founders total $16.5M (July 2026). Distributions flow only through the court's claims agent — anyone else offering your Celsius crypto back is a scam.",
+  "trustState": "resolved",
+  "severity": "S3",
+  "ongoing": false,
+  "categories": ["exchange-failure"],
+  "firstObserved": "2022-06-12",
+  "published": "2026-08-11",
+  "lastUpdated": "2026-08-11",
+  "entities": {
+    "vendor": "Celsius Network LLC",
+    "products": ["Celsius Earn", "Celsius Custody", "Celsius Borrow", "CEL token"]
+  },
+  "impact": {
+    "lossUSD": 4700000000,
+    "victims": "hundreds of thousands of customers, many retail investors",
+    "confidence": "confirmed",
+    "asOf": "2022-06-12",
+    "source": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-chief-revenue-officer-charged-connection-multibillion"
+  },
+  "timeline": [
+    { "date": "2021 (fall)", "event": "By fall 2021 Celsius ranks among the world's biggest crypto platforms, claiming roughly $25 billion in assets at its peak, per SDNY. Its marketing calls it the 'safest place for your crypto' and urges customers to 'unbank' themselves — while, per SDNY, Mashinsky misrepresented the safety of its yield activities, its profitability, the sustainability of its advertised rewards rates, and the risks of depositing.", "source": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-ceo-alexander-mashinsky-pleads-guilty-multi-billion-dollar" },
+    { "date": "2022-04/05", "event": "Per the FTC complaint, the three co-founders withdrew significant sums of their own cryptocurrency roughly two months before bankruptcy. In May 2022 Mashinsky claimed in an online video that 'Celsius is stronger than ever, we have billions of dollars in liquidity.'", "source": "https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-reaches-settlement-crypto-platform-celsius-network-charges-former-executives-duping-consumers" },
+    { "date": "2022-04/05", "event": "Per SDNY, Mashinsky withdrew $8 million of his own non-CEL assets in this same window while still assuring customers of Celsius's liquidity.", "source": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-chief-revenue-officer-charged-connection-multibillion" },
+    { "date": "2022-06-12", "event": "Celsius freezes every customer withdrawal. Roughly $4.7 billion in crypto belonging to hundreds of thousands of customers — many of them retail investors — is locked on the platform, inaccessible, per SDNY.", "source": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-chief-revenue-officer-charged-connection-multibillion" },
+    { "date": "2022-07-13", "event": "Celsius files for Chapter 11 bankruptcy in the U.S. Bankruptcy Court, Southern District of New York (Case No. 22-10964 (MG), Judge Martin Glenn).", "source": "https://cases.stretto.com/celsius/" },
+    { "date": "2023-07-13", "event": "SDNY unseals an indictment charging Mashinsky with securities, commodities, and wire fraud, and charging Mashinsky and CRO Roni Cohen-Pavon with manipulating the CEL token; Mashinsky is arrested. The same day, the FTC announces a settlement permanently banning Celsius from handling consumers' assets with a $4.7 billion judgment, suspended so remaining assets can be returned to consumers in bankruptcy. The U.S. also enters a non-prosecution agreement with Celsius itself.", "source": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-chief-revenue-officer-charged-connection-multibillion" },
+    { "date": "2023-11-09", "event": "Chapter 11 Plan of Reorganization confirmed by the bankruptcy court.", "source": "https://cases.stretto.com/celsius/" },
+    { "date": "2024-01-31", "event": "Plan effective date. Court-supervised distributions to creditors begin through claims agent Stretto.", "source": "https://cases.stretto.com/celsius/" },
+    { "date": "2024-12-03", "event": "Mashinsky pleads guilty before U.S. District Judge John G. Koeltl to one count of commodities fraud and one count of securities fraud, admitting he misled customers about Celsius's safety and profitability and manipulated CEL while secretly selling his own tokens. He agrees to forfeit over $48 million.", "source": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-ceo-alexander-mashinsky-pleads-guilty-multi-billion-dollar" },
+    { "date": "2025-05-08", "event": "Mashinsky is sentenced to 12 years in prison, plus three years of supervised release, a $50,000 fine, and forfeiture of $48,393,446. SEC and CFTC parallel civil actions are noted by the U.S. Attorney.", "source": "https://www.justice.gov/usao-sdny/pr/founder-celsius-sentenced-12-years-fraud-and-market-manipulation" },
+    { "date": "2025-08", "event": "Third bankruptcy distribution of $220.6 million made available to eligible creditors via the official claims portal, in BTC or USD.", "source": "https://celsiusdistribution.stretto.com/support/solutions/articles/153000244985-third-distribution" },
+    { "date": "2026-07-20", "event": "FTC announces stipulated final orders: co-founders Mashinsky, Shlomi Daniel Leon, and Hanoch 'Nuke' Goldstein are ordered to pay $10M, $4.1M, and $2.4M respectively ($16.5M total) and accept bans on marketing or selling products that deposit, exchange, invest, or withdraw assets (Goldstein: crypto-specific ban).", "source": "https://www.ftc.gov/news-events/news/press-releases/2026/07/founders-celsius-network-ordered-pay-165-million-resolve-ftc-charges" }
+  ],
+  "affected": [
+    "Anyone with assets in Celsius Earn, Custody, or Borrow at the June 12, 2022 withdrawal freeze (~$4.7B across hundreds of thousands of customers)",
+    "CEL token buyers during the 2018–2022 period SDNY describes as artificially price-supported",
+    "Celsius bankruptcy creditors today — an active target group for distribution-themed phishing and recovery scams"
+  ],
+  "notAffected": [
+    "Anyone who fully withdrew from Celsius before June 12, 2022",
+    "Self-custody wallet holders — Celsius could only lose crypto that was deposited onto its platform; no wallet software or key flaw was involved",
+    "Customers of other exchanges or yield platforms — this was a Celsius-specific business fraud, not a protocol or infrastructure vulnerability"
+  ],
+  "actions": [
+    "Distributions come ONLY through the court process. Check status via the official docket at cases.stretto.com/celsius and the claims portal at claimsportal.celsius.network. Questions: CelsiusInquiries@stretto.com, +1 (855) 423-1530 (U.S. toll-free), or +1 (949) 669-5873 (international), per Stretto's contact page. Type these addresses yourself — never follow a link from an email or DM.",
+    "Treat any unsolicited email, call, or DM about a Celsius distribution as phishing. The debtors' own notice: 'neither the Debtors nor their advisors will ever contact you by email, telephone call, or otherwise requesting account information or other personal information absent an Order from the Court.' No legitimate distribution ever needs your seed phrase.",
+    "Never pay anyone offering to recover, unlock, or accelerate your Celsius claim. Filing and receiving a bankruptcy distribution costs nothing beyond what the court process already took — a fee-for-recovery offer is the second half of the scam.",
+    "If you entered credentials or wallet details on a fake Celsius/Stretto page: move remaining funds to a fresh wallet, change the reused passwords, and report it at ic3.gov and ReportFraud.ftc.gov.",
+    "Missed a distribution or moved house? Update your address and payment election inside the official claims portal — checks and wires fail silently when details are stale (per Stretto's third-distribution notice).",
+    "The durable lesson: yield platforms take title to your coins. 'Rewards' offers up to 18% APY were funded, per the FTC, partly by other customers' deposits. Keep long-term holdings in self-custody — not your keys, not your coins."
+  ],
+  "claims": [
+    { "claim": "Mashinsky was sentenced to 12 years in prison on May 8, 2025 (plus 3 years supervised release, $50,000 fine, $48,393,446 forfeiture).", "status": "primary-confirmed", "attribution": "U.S. Attorney's Office, SDNY, release No. 25-109", "sources": ["https://www.justice.gov/usao-sdny/pr/founder-celsius-sentenced-12-years-fraud-and-market-manipulation"] },
+    { "claim": "Celsius spent hundreds of millions of dollars, at times using customer deposits, buying CEL on the open market to prop up its price; CRO Roni Cohen-Pavon, who pled guilty to manipulating CEL's price, privately told Mashinsky 'the value was fake and was based on us spending millions.'", "status": "primary-confirmed", "attribution": "SDNY guilty-plea release, quoting a private message recited in court filings", "sources": ["https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-ceo-alexander-mashinsky-pleads-guilty-multi-billion-dollar"] },
+    { "claim": "Celsius did not hold the $750 million deposit insurance policy it advertised, routinely made unsecured loans ($1.2B as of April 2022) despite claiming otherwise, and until mid-2021 lacked any system to track its assets and liabilities.", "status": "primary-confirmed", "attribution": "FTC complaint allegations, per FTC July 2023 press release; Celsius stipulated to a $4.7B suspended judgment, and the co-founders later settled without adjudication", "sources": ["https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-reaches-settlement-crypto-platform-celsius-network-charges-former-executives-duping-consumers"] },
+    { "claim": "Roughly $2.9 billion had been returned to creditors across the first three distributions as of August 2025 — $2.53 billion in early 2024, $127 million in November 2024, and $220.6 million in August 2025 — bringing recoveries to about 64.9% of creditor claims.", "status": "reported-unconfirmed", "attribution": "crypto.news distribution coverage, Aug 20, 2025 (per-tranche figures and 64.9% recovery; the ~$2.9B total is their figures summed); Stretto's own third-distribution notice confirms the $220.6M tranche but does not state a cumulative total", "sources": ["https://crypto.news/celsius-220m-distribution-third-payout-round-2025/", "https://celsiusdistribution.stretto.com/support/solutions/articles/153000244985-third-distribution"] },
+    { "claim": "Leon and Goldstein settled FTC charges via stipulated final orders ($4.1M and $2.4M) — these are civil resolutions of FTC allegations, not criminal convictions, and no court adjudicated the FTC's claims against them.", "status": "primary-confirmed", "attribution": "FTC press release, July 20, 2026", "sources": ["https://www.ftc.gov/news-events/news/press-releases/2026/07/founders-celsius-network-ordered-pay-165-million-resolve-ftc-charges"] }
+  ],
+  "relatedGuides": [],
+  "relatedIncidents": ["2023-crypto-recovery-service-scams"],
+  "sources": [
+    { "url": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-chief-revenue-officer-charged-connection-multibillion", "publisher": "U.S. Attorney's Office, Southern District of New York (release 23-248)", "date": "2023-07-13", "type": "primary" },
+    { "url": "https://www.justice.gov/usao-sdny/pr/celsius-founder-and-former-ceo-alexander-mashinsky-pleads-guilty-multi-billion-dollar", "publisher": "U.S. Attorney's Office, Southern District of New York", "date": "2024-12-03", "type": "primary" },
+    { "url": "https://www.justice.gov/usao-sdny/pr/founder-celsius-sentenced-12-years-fraud-and-market-manipulation", "publisher": "U.S. Attorney's Office, Southern District of New York (release 25-109)", "date": "2025-05-08", "type": "primary" },
+    { "url": "https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-reaches-settlement-crypto-platform-celsius-network-charges-former-executives-duping-consumers", "publisher": "Federal Trade Commission", "date": "2023-07-13", "type": "regulator" },
+    { "url": "https://www.ftc.gov/news-events/news/press-releases/2026/07/founders-celsius-network-ordered-pay-165-million-resolve-ftc-charges", "publisher": "Federal Trade Commission", "date": "2026-07-20", "type": "regulator" },
+    { "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/222-3137-celsius-network-inc-et-al-ftc-v", "publisher": "Federal Trade Commission (case page, FTC v. Celsius Network, Inc., et al.)", "type": "regulator" },
+    { "url": "https://cases.stretto.com/celsius/", "publisher": "Stretto (court-appointed claims agent, In re Celsius Network LLC, No. 22-10964 (MG), Bankr. S.D.N.Y.)", "type": "primary" },
+    { "url": "https://celsiusdistribution.stretto.com/support/solutions/articles/153000244985-third-distribution", "publisher": "Stretto (Celsius distributions support portal)", "date": "2025-08-01", "type": "primary" },
+    { "url": "https://crypto.news/celsius-220m-distribution-third-payout-round-2025/", "publisher": "crypto.news", "date": "2025-08-20", "type": "news" }
+  ],
+  "aliases": ["The Celsius collapse", "Celsius Network bankruptcy", "Celsius crypto freeze", "Mashinsky fraud case", "Unbank Yourself collapse"],
+  "phrases": ["celsius distribution when will i get my crypto back", "is earning interest on bitcoin safe", "celsius claims portal legit or scam", "celsius email about distribution real", "alex mashinsky sentence how many years", "can i still file a celsius claim", "celsius network give money back"],
+  "tags": ["celsius", "mashinsky", "cel-token", "earn-program", "yield-platform", "custodial-risk", "bankruptcy", "chapter-11", "market-manipulation", "not-your-keys"]
+}

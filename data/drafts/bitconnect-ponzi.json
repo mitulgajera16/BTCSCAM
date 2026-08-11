@@ -1,0 +1,96 @@
+{
+  "id": "2017-bitconnect-ponzi",
+  "slug": "bitconnect-ponzi",
+  "title": "BitConnect: the $2.4B 'Lending Program' Ponzi — real restitution exists; every paid 'refund agent' is a scam",
+  "summary": "BitConnect ran the canonical crypto 'Lending Program' Ponzi from early 2017 to January 2018, touting a 'trading bot' while paying old investors with new deposits — ~$2.4B taken per the DOJ. Top US promoter Glenn Arcaro pled guilty; founder Satish Kumbhani was indicted and remains at large. Real restitution flows only through the US court process; every 'BitConnect refund for a fee' is a scam.",
+  "trustState": "resolved",
+  "severity": "S4",
+  "ongoing": false,
+  "categories": ["ponzi"],
+  "firstObserved": "2017-01-01",
+  "published": "2026-08-11",
+  "lastUpdated": "2026-08-11",
+  "entities": {
+    "vendor": "BitConnect",
+    "products": ["BitConnect Lending Program", "BitConnect Coin (BCC)", "BitConnect exchange"],
+    "domains": ["bitconnect[.]co"]
+  },
+  "impact": {
+    "lossUSD": 2400000000,
+    "victims": "4,154 victims across 95 countries identified at Arcaro's September 2022 sentencing; a first restitution distribution later reached ~800 of them (Jan 2023 — see timeline). The full investor base is larger. The $2.4B figure is the DOJ indictment's allegation against Kumbhani, who has not been tried; Arcaro's guilty plea admitted a conspiracy of over $2B.",
+    "confidence": "estimated",
+    "asOf": "2022-09-16",
+    "source": "https://www.irs.gov/node/114176"
+  },
+  "timeline": [
+    { "date": "2017-01", "event": "BitConnect's 'Lending Program' opens: investors trade Bitcoin for BitConnect Coin (BCC) and 'lend' it to the platform against promised profits from a purported proprietary 'volatility software trading bot'. Per the SEC's later complaint, deposits were instead siphoned to wallets controlled by BitConnect, Kumbhani, and promoters.", "source": "https://www.sec.gov/newsroom/press-releases/2021-172" },
+    { "date": "2017", "event": "A worldwide promoter network markets the Lending Program for commissions that are largely concealed from investors; US promoters publish 'testimonial'-style YouTube videos, sometimes several a day, without registering the offering or themselves with the SEC.", "source": "https://www.sec.gov/news/press-release/2021-90" },
+    { "date": "2018-01-04", "event": "The Texas State Securities Board issues an emergency cease-and-desist order against BitConnect. The order later becomes final and remains in force after BitConnect fails to request a hearing.", "source": "https://www.ssb.texas.gov/news-publications/4-billion-crypto-promoter-ordered-halt-fraudulent-sales" },
+    { "date": "2018-01", "event": "Roughly a year after launch, Kumbhani abruptly shuts down the Lending Program. The DOJ indictment alleges he then directed his promoter network to manipulate BCC's price to create the false appearance of legitimate market demand.", "source": "https://www.justice.gov/archives/opa/pr/bitconnect-founder-indicted-global-24-billion-cryptocurrency-scheme" },
+    { "date": "2018-11-30", "event": "TSSB warns of a fraudulent 'refund notice' spoofing the agency: a fake 35% refund offered for a $250 fee. The recovery-scam wave targeting BitConnect victims begins within months of the collapse.", "source": "https://ssb.texas.gov/index.php/news-publications/investor-alert-fraudulent-notice-falsely-claims-refunds-are-available-bitconnect" },
+    { "date": "2021-05-28", "event": "SEC charges five individuals: four US promoters — Trevon Brown (a.k.a. Trevon James), Craig Grant, Ryan Maasen, Michael Noble (a.k.a. Michael Crypto) — and liaison Joshua Jeppesen (aiding and abetting) over the unregistered $2B+ offering.", "source": "https://www.sec.gov/news/press-release/2021-90" },
+    { "date": "2021-09-01", "event": "SEC sues BitConnect, Kumbhani, Arcaro, and Arcaro's company Future Money Ltd. in the Southern District of New York, alleging a $2B fraudulent, unregistered offering: 'We allege that these defendants stole billions of dollars from retail investors around the world by exploiting their interest in digital assets.'", "source": "https://www.sec.gov/newsroom/press-releases/2021-172" },
+    { "date": "2021-09-01", "event": "The same day, Arcaro pleads guilty in the Southern District of California to conspiracy to commit wire fraud, admitting he sat atop BitConnect's North American promoter pyramid and earned no less than $24M via commissions of up to 15% plus a concealed 'slush' fund — all of which he agreed to repay.", "source": "https://www.justice.gov/usao-sdca/pr/director-and-promoter-bitconnect-pleads-guilty-global-2-billion-cryptocurrency-scheme" },
+    { "date": "2021-11-16", "event": "DOJ begins liquidating ~$56M in cryptocurrency seized from Arcaro — described by DOJ as 'the largest single recovery of a cryptocurrency fraud by the United States to date' — holding proceeds in USD pending a court restitution order.", "source": "https://www.justice.gov/archives/opa/pr/56-million-seized-cryptocurrency-being-sold-first-step-compensate-victims-bitconnect-fraud" },
+    { "date": "2022-02-25", "event": "A federal grand jury in San Diego indicts Kumbhani on five counts: conspiracy to commit wire fraud, wire fraud, conspiracy to commit commodity price manipulation, operation of an unlicensed money transmitting business (never registered with FinCEN), and conspiracy to commit international money laundering — maximum 70 years. He is not in custody.", "source": "https://www.justice.gov/archives/opa/pr/bitconnect-founder-indicted-global-24-billion-cryptocurrency-scheme" },
+    { "date": "2022-09-16", "event": "Arcaro is sentenced to 38 months in prison; the government identifies 4,154 victims across 95 countries. US Attorney Randy Grossman: 'Putting a technical sheen on a vintage scheme will not stop this office's pursuit of a just outcome.'", "source": "https://www.justice.gov/usao-sdca/pr/us-promoter-foreign-cryptocurrency-company-sentenced-prison-role-fraud-scheme" },
+    { "date": "2023-01-12", "event": "The court orders Arcaro to pay $17,646,801 in restitution, distributed to approximately 800 victims in over 40 countries.", "source": "https://www.irs.gov/node/118171" },
+    { "date": "2025-02-17", "event": "India's Directorate of Enforcement reportedly seizes ~₹16.5B (~$190M) in crypto plus cash in its BitConnect probe; Indian reporting traces Kumbhani to Ahmedabad. Not confirmed by US authorities — see claims.", "source": "https://www.coindesk.com/policy/2025/02/17/india-s-directorate-of-enforcement-seizes-usd190m-in-bitconnect-fraud-case" }
+  ],
+  "affected": [
+    "Anyone who deposited Bitcoin or cash into the BitConnect Lending Program (early 2017 – January 2018) — 4,154 victims in 95 countries were identified at Arcaro's sentencing, and the full investor base is larger",
+    "Holders of BitConnect Coin (BCC) when the platform shut down in January 2018",
+    "Prior victims re-targeted today by fake 'BitConnect refund' notices, impostor 'claims agents', and recovery-scam outreach"
+  ],
+  "notAffected": [
+    "No active platform exists — bitconnect[.]co's Lending Program closed in January 2018; there is nothing to log into, withdraw, or 'reactivate'",
+    "Later tokens trading on the BitConnect name ('BitConnect 2.0' and BCC clones) have no connection to the case and confer no restitution claim",
+    "People who watched or shared promoter videos but never deposited funds lost nothing and owe nothing"
+  ],
+  "actions": [
+    "If you lost money in BitConnect, the only real compensation channel is the federal court process in United States v. Arcaro (S.D. Cal.). Monitor official announcements at justice.gov/usao-sdca and justice.gov/opa — distributions are announced there first.",
+    "Never pay to be paid. The US government charges no fee to receive restitution. Texas regulators documented fake 'BitConnect refund' notices demanding $250 while spoofing a state agency — any claims agent, refund portal, processing fee, or 'wallet validation' request is the second half of the scam.",
+    "A first distribution of $17.6M went to ~800 victims in January 2023, funded by crypto forfeited by Arcaro. If you previously filed victim paperwork and have since moved or changed banks, update your details with the U.S. Attorney's Office (Southern District of California) victim-witness contact listed on justice.gov/usao-sdca.",
+    "If anyone contacts you claiming to be from the DOJ, FBI, SEC, or an exchange about your BitConnect losses, verify independently: type the agency's .gov address yourself and use the phone or email listed there. Agencies do not cold-call asking for crypto, gift cards, remote access, or your seed phrase.",
+    "Report refund-scam approaches to the FBI at ic3.gov and to the SEC at sec.gov/tcr — victim reports are what built this case and drive the next enforcement wave.",
+    "Treat 'guaranteed daily returns', secret trading bots, and multi-level referral commissions as the signature of a lending-program Ponzi — the same template resurfaces under new names every cycle."
+  ],
+  "claims": [
+    { "claim": "Kumbhani and co-conspirators obtained approximately $2.4 billion from BitConnect investors (indictment allegation); the conspiracy Arcaro admitted in his guilty plea defrauded investors of over $2 billion.", "status": "primary-confirmed", "attribution": "DOJ indictment (allegation as to Kumbhani, who has not been tried) and Arcaro plea agreement", "sources": ["https://www.justice.gov/archives/opa/pr/bitconnect-founder-indicted-global-24-billion-cryptocurrency-scheme", "https://www.justice.gov/usao-sdca/pr/director-and-promoter-bitconnect-pleads-guilty-global-2-billion-cryptocurrency-scheme"] },
+    { "claim": "Fraudulent 'BitConnect refund' notices spoofing the Texas State Securities Board offered a 35% refund for a $250 fee; the TSSB instructed investors to send nothing: 'Investors should not respond to the fraudulent notice, complete the form, or send any money to the imposters.'", "status": "primary-confirmed", "attribution": "Texas State Securities Board investor alert, Nov 30, 2018", "sources": ["https://ssb.texas.gov/index.php/news-publications/investor-alert-fraudulent-notice-falsely-claims-refunds-are-available-bitconnect"] },
+    { "claim": "The November 2021 liquidation of ~$56M seized from Arcaro was 'the largest single recovery of a cryptocurrency fraud by the United States to date', per DOJ.", "status": "primary-confirmed", "attribution": "DOJ Office of Public Affairs", "sources": ["https://www.justice.gov/archives/opa/pr/56-million-seized-cryptocurrency-being-sold-first-step-compensate-victims-bitconnect-fraud"] },
+    { "claim": "The BitConnect Lending Program marketed BitConnect Coins provided to a 'BitConnect Trading Bot' to generate 'returns as high as 40% a month'.", "status": "primary-confirmed", "attribution": "Texas State Securities Board emergency cease-and-desist order, Jan 4, 2018", "sources": ["https://www.ssb.texas.gov/news-publications/4-billion-crypto-promoter-ordered-halt-fraudulent-sales"] },
+    { "claim": "Press coverage rendered BitConnect's promised returns as on the order of 1% per day, or '3,700% annualized'. The SEC's fetched announcement describes only 'exorbitantly high returns' without the specific figures.", "status": "reported-unconfirmed", "attribution": "Contemporaneous press accounts of BitConnect marketing materials", "sources": ["https://edition.cnn.com/2022/02/27/business/bitconnect-ponzi-scheme-satish-kumbhani"] },
+    { "claim": "Kumbhani's whereabouts are unknown to US authorities; the SEC told a federal court in February 2022 that it could not locate him.", "status": "reported-unconfirmed", "attribution": "SEC court filing as reported by Business Standard", "sources": ["https://www.business-standard.com/article/markets/bitconnect-s-indicted-founder-kumbhani-has-disappeared-sec-says-122030100171_1.html"] },
+    { "claim": "India's Directorate of Enforcement seized ~₹16.5B (~$190M) in crypto, plus cash and a vehicle, in its BitConnect money-laundering probe (February 2025), and Indian investigators traced Kumbhani to Ahmedabad.", "status": "reported-unconfirmed", "attribution": "CoinDesk and DL News reporting on Enforcement Directorate statements; no US-side confirmation fetched", "sources": ["https://www.coindesk.com/policy/2025/02/17/india-s-directorate-of-enforcement-seizes-usd190m-in-bitconnect-fraud-case", "https://www.dlnews.com/articles/regulation/bitconnect-crypto-scam-ringleader-tracked-to-india-while-authorities-seize-190m/"] }
+  ],
+  "sources": [
+    { "url": "https://www.sec.gov/newsroom/press-releases/2021-172", "publisher": "U.S. Securities and Exchange Commission (PR 2021-172)", "date": "2021-09-01", "type": "regulator" },
+    { "url": "https://www.sec.gov/news/press-release/2021-90", "publisher": "U.S. Securities and Exchange Commission (PR 2021-90)", "date": "2021-05-28", "type": "regulator" },
+    { "url": "https://www.justice.gov/archives/opa/pr/bitconnect-founder-indicted-global-24-billion-cryptocurrency-scheme", "publisher": "U.S. Department of Justice, Office of Public Affairs", "date": "2022-02-25", "type": "primary" },
+    { "url": "https://www.irs.gov/compliance/criminal-investigation/bitconnect-founder-indicted-in-global-2-point-4-billion-cryptocurrency-scheme", "publisher": "IRS Criminal Investigation (mirror of DOJ release; verification copy)", "date": "2022-02-25", "type": "primary" },
+    { "url": "https://www.justice.gov/usao-sdca/pr/director-and-promoter-bitconnect-pleads-guilty-global-2-billion-cryptocurrency-scheme", "publisher": "U.S. Attorney's Office, Southern District of California", "date": "2021-09-01", "type": "primary" },
+    { "url": "https://www.justice.gov/usao-sdca/pr/us-promoter-foreign-cryptocurrency-company-sentenced-prison-role-fraud-scheme", "publisher": "U.S. Attorney's Office, Southern District of California", "date": "2022-09-16", "type": "primary" },
+    { "url": "https://www.irs.gov/node/114176", "publisher": "IRS Criminal Investigation (mirror of USAO-SDCA sentencing release; verification copy)", "date": "2022-09-16", "type": "primary" },
+    { "url": "https://www.justice.gov/archives/opa/pr/56-million-seized-cryptocurrency-being-sold-first-step-compensate-victims-bitconnect-fraud", "publisher": "U.S. Department of Justice, Office of Public Affairs", "date": "2021-11-16", "type": "primary" },
+    { "url": "https://www.justice.gov/archives/opa/pr/crypto-fraud-victims-receive-over-17-million-restitution-bitconnect-scheme", "publisher": "U.S. Department of Justice, Office of Public Affairs", "date": "2023-01-12", "type": "primary" },
+    { "url": "https://www.irs.gov/node/118171", "publisher": "IRS Criminal Investigation (mirror of DOJ restitution release; verification copy)", "date": "2023-01-12", "type": "primary" },
+    { "url": "https://ssb.texas.gov/index.php/news-publications/investor-alert-fraudulent-notice-falsely-claims-refunds-are-available-bitconnect", "publisher": "Texas State Securities Board", "date": "2018-11-30", "type": "regulator" },
+    { "url": "https://www.ssb.texas.gov/news-publications/4-billion-crypto-promoter-ordered-halt-fraudulent-sales", "publisher": "Texas State Securities Board", "date": "2018-01-04", "type": "regulator" },
+    { "url": "https://www.coindesk.com/policy/2025/02/17/india-s-directorate-of-enforcement-seizes-usd190m-in-bitconnect-fraud-case", "publisher": "CoinDesk", "date": "2025-02-17", "type": "news" },
+    { "url": "https://www.dlnews.com/articles/regulation/bitconnect-crypto-scam-ringleader-tracked-to-india-while-authorities-seize-190m/", "publisher": "DL News", "type": "news" },
+    { "url": "https://edition.cnn.com/2022/02/27/business/bitconnect-ponzi-scheme-satish-kumbhani", "publisher": "CNN Business", "date": "2022-02-27", "type": "news" },
+    { "url": "https://www.business-standard.com/article/markets/bitconnect-s-indicted-founder-kumbhani-has-disappeared-sec-says-122030100171_1.html", "publisher": "Business Standard", "date": "2022-03-01", "type": "news" }
+  ],
+  "aliases": ["BitConnect", "BitConnect Lending Program", "BCC Ponzi", "The BitConnect collapse", "BitConnect scam"],
+  "phrases": [
+    "bitconnect victim compensation how to claim",
+    "guaranteed daily returns crypto legit",
+    "bitconnect refund real or fake",
+    "bitconnect restitution when will i get paid",
+    "is bitconnect coming back",
+    "lost money in bitconnect what can i do",
+    "bitconnect trading bot was it real"
+  ],
+  "tags": ["bitconnect", "bcc", "lending-program", "trading-bot", "ponzi", "doj", "sec", "restitution", "remission", "refund-scam", "kumbhani", "arcaro"]
+}

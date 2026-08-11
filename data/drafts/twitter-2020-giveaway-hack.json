@@ -1,0 +1,81 @@
+{
+  "id": "2020-twitter-giveaway-hack",
+  "slug": "twitter-2020-giveaway-hack",
+  "title": "July 2020 Twitter giveaway hack: 'send BTC, get double back' from 130 hijacked verified accounts",
+  "summary": "On July 15, 2020, attackers who phone-phished Twitter employees hijacked ~130 high-profile accounts — Obama, Biden, Musk, Gates, Apple, and major crypto exchanges — and tweeted a 'send bitcoin, get double back' giveaway. Victims sent 400+ transfers; NYDFS put total theft at over $118,000. Charges began in July 2020; the last, Joseph O'Connor, drew 5 years in 2023. The doubler format still runs.",
+  "trustState": "resolved",
+  "severity": "S4",
+  "ongoing": false,
+  "categories": ["theft", "impersonation", "social-engineering"],
+  "firstObserved": "2020-07-14",
+  "published": "2026-08-11",
+  "lastUpdated": "2026-08-11",
+  "entities": {
+    "vendor": "Twitter, Inc. (now X Corp.)",
+    "products": ["Twitter (twitter.com)"],
+    "domains": ["cryptoforhealth[.]com"]
+  },
+  "impact": {
+    "lossUSD": 118000,
+    "lossNative": "400+ bitcoin transfers into the scam wallet — 'more than 400 transfers worth more than $100,000' per the DOJ complaints; 'over $118,000 worth of bitcoin' per NYDFS. Of the losses, ~$22,000 came from customers of NYDFS-regulated companies (Coinbase, Gemini, Square) in the minutes before address blocks landed — the only reported Cryptocurrency Company client losses per NYDFS.",
+    "victims": "Senders of 400+ bitcoin transfers worldwide; owners of 130 hijacked accounts (36 DM inboxes accessed, 7 full data archives downloaded)",
+    "confidence": "confirmed",
+    "asOf": "2020-10-14",
+    "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf"
+  },
+  "timeline": [
+    { "date": "2020-07-14", "event": "The intrusion begins with vishing, not malware. Attackers phone Twitter employees posing as the internal IT Help Desk 'responding' to VPN problems (common since the pandemic shift to remote work), and relay the credentials employees type into a look-alike VPN phishing site into the real login — capturing MFA approval in real time. NYDFS later found the hackers used 'basic techniques more akin to those of a traditional scam artist: phone calls where they pretended to be from Twitter's Information Technology department.'", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2020-07-15", "event": "3:00–10:00 a.m.: with internal admin-tool access, the attackers first take over and discuss selling coveted short 'OG' handles for bitcoin. Just before 2:00 p.m. (ET) they tweet screenshots of Twitter's internal account-management tool from hijacked OG accounts.", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2020-07-15", "event": "~2:16 p.m.: the bitcoin phase starts small — crypto trader @AngeloBTC is hijacked and DMs followers a bitcoin wallet link soliciting payments.", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2020-07-15", "event": "~3:18 p.m.: Binance's account tweets that it 'partnered with CryptoForHealth' to 'give back 5000 BTC,' linking to the scam site cryptoforhealth[.]com. Between ~3:26 and 4:12 p.m., ten cryptocurrency-related accounts — including Coinbase, Gemini, and Square — post variants of the same fake giveaway.", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2020-07-15", "event": "4:17–6:05 p.m.: the celebrity wave. Compromised accounts of Elon Musk, Bill Gates, Jeff Bezos, Barack Obama, Joe Biden, Kanye West, Kim Kardashian West, Warren Buffett, Floyd Mayweather Jr., Apple, and Uber tweet send-bitcoin-get-double solicitations, re-posted repeatedly to millions of followers.", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2020-07-15", "event": "Twitter's response: 5:45 p.m. public acknowledgment of a 'security incident'; ~6:18 p.m. verified accounts blocked from tweeting and recently changed passwords locked; 8:41 p.m. most accounts allowed to resume tweeting.", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2020-07-15", "event": "6:59 p.m.: NYDFS instructs its licensed cryptocurrency companies to block the scam addresses if they had not already. Coinbase, Gemini, and Square had each blocked the addresses within ~40 minutes of their own Twitter accounts being hijacked; 15 of 22 surveyed companies blocked transfers. Coinbase alone stopped ~5,670 attempted transfers worth ~$1,294,000.", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2020-07-30", "event": "Twitter's incident post confirms 'phone spear phishing' and the final scope: 130 accounts targeted, 45 tweeted from, 36 DM inboxes accessed, 7 accounts' full 'Your Twitter Data' archives downloaded.", "source": "https://blog.twitter.com/en_us/topics/company/2020/an-update-on-our-security-incident.html" },
+    { "date": "2020-07-31", "event": "DOJ (N.D. Cal.) announces criminal complaints against Mason Sheppard aka 'Chaewon' (19, UK) and Nima Fazeli aka 'Rolex' (22, Orlando), and refers a third, juvenile suspect to the State Attorney in Tampa, Florida. IRS-CI says its cyber unit 'analyzed the blockchain and de-anonymized bitcoin transactions' to identify two of the hackers.", "source": "https://www.justice.gov/usao-ndca/pr/three-individuals-charged-alleged-roles-twitter-hack" },
+    { "date": "2020-10-14", "event": "NYDFS publishes its Twitter Investigation Report: Twitter had no CISO since December 2019, and the report calls for treating systemically important social-media platforms as regulated critical infrastructure.", "source": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf" },
+    { "date": "2021-03-16", "event": "Press reports: Graham Ivan Clark, charged as an adult by the Hillsborough County (FL) State Attorney, pleads guilty in Florida state court and receives 3 years in a juvenile facility as a 'youthful offender' plus 3 years' probation (see claims — state court documents not independently fetched).", "source": "https://www.tampabay.com/news/crime/2021/03/16/tampa-twitter-hacker-agrees-to-three-years-in-prison-in-plea-deal/" },
+    { "date": "2021-07-21", "event": "Joseph O'Connor is arrested in Estepona, Spain, at U.S. request, charged by N.D. Cal. complaint over the Twitter hack plus TikTok/Snapchat takeovers and cyberstalking.", "source": "https://www.justice.gov/usao-ndca/pr/man-arrested-connection-alleged-role-july-2020-twitter-hack" },
+    { "date": "2023-06-23", "event": "After extradition from Spain (April 26, 2023) and a May 9 guilty plea before Judge Jed S. Rakoff (S.D.N.Y.), Joseph James O'Connor aka 'PlugwalkJoe' is sentenced to 5 years in prison, 3 years' supervised release, and $794,012.64 forfeiture (the forfeiture relates to a separate SIM-swap crypto theft, not the Twitter giveaway funds).", "source": "https://www.irs.gov/compliance/criminal-investigation/uk-citizen-sentenced-to-five-years-for-cybercrime-offenses" }
+  ],
+  "affected": [
+    "Anyone who sent bitcoin to the giveaway addresses tweeted or DM'd from hijacked accounts on July 15, 2020 (400+ transfers)",
+    "Owners of the 130 targeted accounts — 45 were tweeted from, 36 had DM inboxes accessed (including one Dutch elected official), 7 had full account archives downloaded",
+    "Customers of four NYDFS-regulated crypto companies who were induced to transfer or attempt transfers; ~$22,000 in completed losses was reported by three of them (Coinbase, Gemini, Square) before blocks landed"
+  ],
+  "notAffected": [
+    "Twitter's general user base: the attack ran through internal admin tools against 130 specific accounts — NYDFS found 'no malware, no exploits, and no backdoors,' and no platform-wide credential breach was reported",
+    "Exchange customers whose transfers were blocked in time — Coinbase (~5,670 transfers / ~$1,294,000), Square (358 / ~$51,000), Gemini (2 / ~$1,800), and Bitstamp (1 / ~$250) stopped the funds before they left",
+    "The cryptocurrency companies themselves: NYDFS is explicit that they 'were not themselves hacked' — only their Twitter accounts were hijacked",
+    "Holders of self-custodied bitcoin who sent nothing — no wallet or protocol was compromised; every loss required the victim to send first"
+  ],
+  "actions": [
+    "Nobody doubles your bitcoin. Not Elon Musk, not an exchange, not in 2020, not today. Any 'send X, get 2X back' tweet, stream, QR code, or DM is theft by design — the giveaway never existed, even when it came from a real verified account.",
+    "A blue check verifies the account, not the tweet. This hack came FROM the real accounts of Obama, Musk, and Coinbase. Confirm any promotion only on the company's own website, typed by hand — never via the link in the post.",
+    "If you just sent bitcoin to a giveaway address: stop. Do not send more — doublers escalate with 'verification fees' to release your 'winnings.' Save the transaction ID, the address, and screenshots of the post or DM now, before it is deleted.",
+    "If you sent from an exchange account, tell the exchange immediately and ask it to block further transfers to the address — in this incident, fast exchange blocks stopped ~$1.35M in victim transfers; on-chain transfers themselves are final and cannot be reversed.",
+    "Report it: FBI at ic3.gov and FTC at reportfraud.ftc.gov (UK victims: Action Fraud, actionfraud.police.uk). Reports feed the investigations that led to the charges in this case.",
+    "Never pay anyone who promises to get the coins back. There is no claims administrator, remission fund, or 'recovery service' for the 2020 Twitter hack — anyone contacting you about recovering these funds for a fee is running the second half of the scam."
+  ],
+  "claims": [
+    { "claim": "Mason Sheppard ('Chaewon') was charged with conspiracy to commit wire fraud, conspiracy to commit money laundering, and intentional access of a protected computer; Nima Fazeli ('Rolex') with aiding and abetting intentional access of a protected computer. These are complaint allegations — DOJ notes defendants are presumed innocent — and the outcomes of their federal cases were not verified for this dossier.", "status": "primary-confirmed", "attribution": "DOJ N.D. Cal. charging announcement, July 31, 2020 (charges confirmed; case outcomes unverified)", "sources": ["https://www.justice.gov/usao-ndca/pr/three-individuals-charged-alleged-roles-twitter-hack"] },
+    { "claim": "The scam bitcoin account received more than 400 transfers worth more than $100,000; NYDFS puts the total stolen at over $118,000 worth of bitcoin.", "status": "primary-confirmed", "attribution": "DOJ N.D. Cal. (complaint figures); NYDFS Twitter Investigation Report", "sources": ["https://www.justice.gov/usao-ndca/pr/three-individuals-charged-alleged-roles-twitter-hack", "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf"] },
+    { "claim": "Joseph James O'Connor ('PlugwalkJoe') pled guilty (May 9, 2023) to charges including his role in the Twitter hack — he agreed to buy unauthorized access to one hijacked account for $10,000 — and was sentenced to 5 years on June 23, 2023.", "status": "primary-confirmed", "attribution": "IRS Criminal Investigation; DOJ N.D. Cal.", "sources": ["https://www.irs.gov/compliance/criminal-investigation/uk-citizen-sentenced-to-five-years-for-cybercrime-offenses", "https://www.justice.gov/usao-ndca/pr/man-arrested-connection-alleged-role-july-2020-twitter-hack"] },
+    { "claim": "Graham Ivan Clark, then 17, of Tampa — charged as an adult with 30 state felonies by the Hillsborough County State Attorney — pled guilty on March 16, 2021 and was sentenced as a 'youthful offender' to 3 years in a juvenile facility plus 3 years' probation. The DOJ release names only 'a juvenile' referred to Tampa; Florida state court documents were not fetched for this dossier.", "status": "reported-unconfirmed", "attribution": "Tampa Bay Times, WUSF, Forbes reporting on the Hillsborough State Attorney's announcement", "sources": ["https://www.tampabay.com/news/crime/2021/03/16/tampa-twitter-hacker-agrees-to-three-years-in-prison-in-plea-deal/", "https://www.wusf.org/courts-law/2021-03-16/tampa-twitter-hacker-sentenced-to-three-years-in-prison-three-years-probation"] },
+    { "claim": "Four employees' credentials were obtained by the vishing calls; NYDFS 'found no evidence the Twitter employees knowingly aided the Hackers.'", "status": "primary-confirmed", "attribution": "NYDFS Twitter Investigation Report; NYDFS press release", "sources": ["https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf", "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202010141"] }
+  ],
+  "relatedIncidents": ["crypto-recovery-service-scams"],
+  "sources": [
+    { "url": "https://www.justice.gov/usao-ndca/pr/three-individuals-charged-alleged-roles-twitter-hack", "publisher": "U.S. Department of Justice, N.D. Cal. (charging announcement)", "date": "2020-07-31", "type": "primary" },
+    { "url": "https://www.dfs.ny.gov/system/files/documents/2026/07/Twitter-Investigation-Report.pdf", "publisher": "New York State Department of Financial Services (Twitter Investigation Report)", "date": "2020-10-14", "type": "regulator" },
+    { "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202010141", "publisher": "New York State Department of Financial Services (press release)", "date": "2020-10-14", "type": "regulator" },
+    { "url": "https://blog.twitter.com/en_us/topics/company/2020/an-update-on-our-security-incident.html", "publisher": "Twitter, Inc. (official incident post, updated July 30, 2020)", "date": "2020-07-30", "type": "vendor" },
+    { "url": "https://www.justice.gov/usao-ndca/pr/man-arrested-connection-alleged-role-july-2020-twitter-hack", "publisher": "U.S. Department of Justice, N.D. Cal. (O'Connor arrest)", "date": "2021-07-21", "type": "primary" },
+    { "url": "https://www.irs.gov/compliance/criminal-investigation/uk-citizen-sentenced-to-five-years-for-cybercrime-offenses", "publisher": "IRS Criminal Investigation (O'Connor sentencing)", "date": "2023-06-23", "type": "primary" },
+    { "url": "https://www.tampabay.com/news/crime/2021/03/16/tampa-twitter-hacker-agrees-to-three-years-in-prison-in-plea-deal/", "publisher": "Tampa Bay Times", "date": "2021-03-16", "type": "news" },
+    { "url": "https://www.wusf.org/courts-law/2021-03-16/tampa-twitter-hacker-sentenced-to-three-years-in-prison-three-years-probation", "publisher": "WUSF Public Media", "date": "2021-03-16", "type": "news" }
+  ],
+  "aliases": ["The 2020 Twitter hack", "The Twitter Bitcoin scam", "CryptoForHealth giveaway scam", "The great Twitter hack", "Twitter VIP account hack"],
+  "phrases": ["elon musk bitcoin giveaway real", "sent bitcoin to giveaway address can i get it back", "double your bitcoin scam", "is the bitcoin giveaway on twitter real", "celebrity tweeted bitcoin giveaway is it legit", "cryptoforhealth scam", "send btc get double back"],
+  "tags": ["twitter", "x", "giveaway-scam", "bitcoin-doubler", "trust-trading", "vishing", "account-takeover", "social-engineering", "cryptoforhealth", "verified-accounts"]
+}

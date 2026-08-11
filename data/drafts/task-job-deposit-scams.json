@@ -1,0 +1,70 @@
+{
+  "id": "2021-task-job-deposit-scams",
+  "slug": "task-job-deposit-scams",
+  "title": "Task scams: gamified 'deposit to withdraw your earnings' job platforms drive record job-scam losses",
+  "summary": "Fake online 'jobs' — liking videos, rating products, 'app optimization,' 'product boosting' — arrive by unsolicited text or WhatsApp, pay small amounts to build trust, then demand deposits (usually crypto) to 'unlock' tasks and withdraw earnings that never existed. FTC: ~20,000 reports in H1 2024, up from zero in 2020; IC3 logged $362.9M in employment-fraud losses in 2025. Deposits are gone.",
+  "trustState": "verified",
+  "severity": "S1",
+  "ongoing": true,
+  "categories": ["social-engineering", "ponzi"],
+  "firstObserved": "2021-01-01",
+  "published": "2026-08-11",
+  "lastUpdated": "2026-08-11",
+  "impact": {
+    "lossUSD": 362934762,
+    "lossNative": "$362.9M reported to IC3 for employment fraud in 2025 (24,688 complaints; the category is broader than task scams alone). FTC layer: job-scam losses topped $220M in H1 2024 alone, with task scams ~38.8% of job-scam reports; $41M of H1-2024 job-scam losses were paid in cryptocurrency, nearly double all of 2023 (~$21M).",
+    "victims": "~20,000 task-scam reports to the FTC in H1 2024 (estimate from hand-coded sampling); 24,688 IC3 employment-fraud complaints in 2025. Actual harm is far larger — the FTC cites research that only ~4.8% of mass-market fraud victims complain to a BBB or government entity.",
+    "confidence": "estimated",
+    "asOf": "2025-12-31",
+    "source": "https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf"
+  },
+  "timeline": [
+    { "date": "2020", "event": "Baseline: zero task scams identified in the FTC's hand-coded random sample of 2020 job-scam reports — the format effectively did not exist in US complaint data.", "source": "https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/12/paying-get-paid-gamified-job-scams-drive-record-losses" },
+    { "date": "2021", "event": "Task scams first appear in FTC complaint data: 0.6% of sampled 2021 job-scam reports, rising to 1.6% in 2022. Overall job-scam losses climb from $90M (2020) to $131M (2021) to $179M (2022).", "source": "https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/12/paying-get-paid-gamified-job-scams-drive-record-losses" },
+    { "date": "2023", "event": "An estimated ~5,000 task-scam reports reach the FTC (5.6% of sampled job-scam reports); job-scam losses hit $286M for the year, with ~$21M paid in cryptocurrency.", "source": "https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/12/paying-get-paid-gamified-job-scams-drive-record-losses" },
+    { "date": "2024-06-04", "event": "FBI IC3 issues alert I-060424-PSA on work-from-home scams: unsolicited recruiters offer simple tasks like 'rating restaurants' or 'optimizing a service by repeatedly clicking a button', use a deliberately confusing compensation structure that shows fake earnings in an interface, and require crypto payments to the supposed employer to unlock work — 'the payments go directly to the scammer.'", "source": "https://www.ic3.gov/PSA/2024/PSA240604" },
+    { "date": "2024-12-12", "event": "FTC publishes the 'Paying to get paid' Data Spotlight and press release: ~20,000 task-scam reports in H1 2024 alone (quadruple all of 2023; 38.8% of job-scam reports), job-scam losses topping $220M in six months, and crypto job-scam losses of $41M — nearly double all of 2023. A same-day consumer alert distills the pattern.", "source": "https://www.ftc.gov/news-events/news/press-releases/2024/12/new-ftc-data-show-skyrocketing-consumer-reports-about-game-online-job-scams" },
+    { "date": "2026-04-06", "event": "FBI releases the 2025 Internet Crime Report: employment-fraud complaints reach 24,688 with $362.9M in reported losses (up from $264.2M in 2024 and $70.2M in 2023); crypto-linked complaints overall hit 181,565 totaling more than $11B. IC3 receives nearly 3,000 complaints per day; employment fraud continues its year-over-year climb.", "source": "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions" }
+  ],
+  "affected": [
+    "Anyone who deposited money — usually cryptocurrency — into a task platform to 'charge up' an account, 'unlock' the next task set, or release displayed earnings: the deposits are gone and the earnings balance never existed",
+    "Job seekers who responded to unsolicited text or WhatsApp messages offering vague online work ('app optimization', 'product boosting', rating or liking things for commissions)",
+    "People pulled into group chats where 'experienced workers' post success stories — those accounts are part of the operation",
+    "Anyone who sent the 'employer' personal data (ID photos, bank details, SSN) — identity-theft exposure even if no money was deposited"
+  ],
+  "notAffected": [
+    "Received the recruiting text but never replied or deposited: your money is not at risk — block and delete (forward spam texts to 7726)",
+    "Completed 'tasks' but never deposited your own money: the commissions shown were always fake, but you have lost nothing — walk away and do not pay to 'cash out'",
+    "Users of legitimate gig and staffing platforms: real employers never require a deposit to release wages, and paying to get paid is the definitive tell, not a normal onboarding step"
+  ],
+  "actions": [
+    "Stop depositing now. The 'one more deposit to unlock your withdrawal' request repeats forever — the earnings balance is a number on the scammer's website, and no deposit releases it.",
+    "Preserve evidence today, before you get blocked or the app disappears: screenshot the app balance and chats, and record transaction hashes, destination wallet addresses, the platform URL, and every phone number and handle that contacted you.",
+    "Report with those details to the FBI at ic3.gov and to the FTC at ReportFraud.ftc.gov. If you bought the crypto through an exchange or payment app, report the fraud to that platform's support team as well.",
+    "If any payment went by card or bank transfer, call your bank or card issuer's fraud line today and ask about disputing or recalling the transfer — speed matters more than anything else here.",
+    "Leave the group chat and block the recruiter without announcing you are reporting. The cheerful co-workers posting withdrawal screenshots are cast members, not references.",
+    "Expect the second wave: anyone who now contacts you offering to trace or recover your crypto for a fee is running the recovery-scam half of this industry — the FBI warns that private recovery companies cannot issue seizure orders. If you gave the 'employer' personal data, work through the checklist at IdentityTheft.gov."
+  ],
+  "claims": [
+    { "claim": "Task-scam report counts (zero in 2020 → ~5,000 in 2023 → ~20,000 in H1 2024) are FTC estimates produced by hand-coding a random sample of 2,500 job-scam reports (500 per year) and extrapolating; 38.8% of sampled H1-2024 job-scam reports were task scams.", "status": "primary-confirmed", "attribution": "FTC Data Spotlight methodology note", "sources": ["https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/12/paying-get-paid-gamified-job-scams-drive-record-losses"] },
+    { "claim": "Cryptocurrency is the payment method of choice: crypto losses to job scams reached ~$41M in H1 2024, nearly double the ~$21M reported for all of 2023, and people now report losing more to job scams via crypto than any other payment method.", "status": "primary-confirmed", "attribution": "FTC Data Spotlight", "sources": ["https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/12/paying-get-paid-gamified-job-scams-drive-record-losses"] },
+    { "claim": "The interfaces are fake by design: victims see earnings accumulate on the platform but 'the payments go directly to the scammer,' and small early payouts are part of the script to build trust before the deposit demands begin.", "status": "primary-confirmed", "attribution": "FBI IC3 alert I-060424-PSA", "sources": ["https://www.ic3.gov/PSA/2024/PSA240604"] },
+    { "claim": "IC3 employment-fraud losses reached $362,934,762 across 24,688 complaints in 2025, up from $264,223,271 (2024) and $70,234,079 (2023). The employment-fraud category is broader than task scams alone; IC3 does not break out a task-scam-specific figure.", "status": "primary-confirmed", "attribution": "FBI 2025 Internet Crime Report", "sources": ["https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf"] },
+    { "claim": "Reported figures understate actual harm: the FTC cites research finding only ~4.8% of people who experienced mass-market consumer fraud complained to a BBB or government entity.", "status": "primary-confirmed", "attribution": "FTC Data Spotlight, citing Anderson (2021)", "sources": ["https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/12/paying-get-paid-gamified-job-scams-drive-record-losses"] }
+  ],
+  "relatedGuides": [],
+  "relatedIncidents": ["crypto-recovery-service-scams"],
+  "sources": [
+    { "url": "https://www.ftc.gov/news-events/news/press-releases/2024/12/new-ftc-data-show-skyrocketing-consumer-reports-about-game-online-job-scams", "publisher": "Federal Trade Commission (press release)", "date": "2024-12-12", "type": "regulator" },
+    { "url": "https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/12/paying-get-paid-gamified-job-scams-drive-record-losses", "publisher": "Federal Trade Commission (Data Spotlight)", "date": "2024-12-12", "type": "regulator" },
+    { "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/task-scams-spotlight-2024.pdf", "publisher": "Federal Trade Commission (Data Spotlight PDF)", "date": "2024-12-12", "type": "regulator" },
+    { "url": "https://www.ic3.gov/PSA/2023/PSA230811", "publisher": "FBI Internet Crime Complaint Center (alert I-081123-PSA, cryptocurrency recovery schemes)", "date": "2023-08-11", "type": "regulator" },
+    { "url": "https://www.ic3.gov/PSA/2024/PSA240604", "publisher": "FBI Internet Crime Complaint Center (alert I-060424-PSA)", "date": "2024-06-04", "type": "regulator" },
+    { "url": "https://consumer.ftc.gov/consumer-alerts/2024/11/task-scams-create-illusion-making-money", "publisher": "FTC Consumer Advice (Jim Kreidler)", "date": "2024-12-12", "type": "regulator" },
+    { "url": "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions", "publisher": "FBI National Press Office", "date": "2026-04-06", "type": "regulator" },
+    { "url": "https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf", "publisher": "FBI Internet Crime Complaint Center (2025 Internet Crime Report)", "date": "2026-04-06", "type": "regulator" }
+  ],
+  "aliases": ["Task scams", "Gamified job scams", "App optimization scam", "Product boosting scam", "Pay-to-get-paid job scam", "Deposit-to-withdraw job scam", "Work-from-home task scam"],
+  "phrases": ["task job asked me to deposit money to withdraw earnings", "app optimization job whatsapp real or scam", "is product boosting job legit", "cant withdraw money from task app", "task app says i need to charge up account to complete tasks", "paid crypto for online job tasks how to get money back"],
+  "tags": ["task-scam", "job-scam", "gamified", "whatsapp", "crypto-deposit", "work-from-home", "app-optimization", "product-boosting"]
+}
