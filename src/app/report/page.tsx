@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Report a Scam",
   description:
     "Report a Bitcoin scam to BTCSCAM. Reports enter the registry as REPORTED and are never auto-verified — a human triages every submission in the weekly sweep.",
+  alternates: { canonical: "/report" },
 };
 
 function SectionRule({ label, danger }: { label: string; danger?: boolean }) {

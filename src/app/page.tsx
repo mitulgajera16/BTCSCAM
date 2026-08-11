@@ -7,6 +7,11 @@ import { coverFor } from "@/lib/covers";
 import SiteHeader from "@/components/site-header";
 import StampMark from "@/components/stamp-mark";
 import WireTicker, { getTickerItems } from "@/components/wire-ticker";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 // Prices, ticker, and the dateline refresh without a redeploy.
 export const revalidate = 300;
@@ -637,6 +642,19 @@ export default async function Home() {
             padding: "14px 24px",
           }}
         >
+          <p
+            style={{
+              maxWidth: 1140,
+              margin: "0 auto 10px",
+              ...mono,
+              fontSize: 11,
+              color: "var(--meta)",
+              letterSpacing: ".05em",
+            }}
+          >
+            BTCSCAM.COM IS OUR ONLY DOMAIN. ANY OTHER SITE USING THIS NAME IS AN
+            IMPOSTOR — CHECK YOUR ADDRESS BAR.
+          </p>
           <div
             style={{
               maxWidth: 1140,

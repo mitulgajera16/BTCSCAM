@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "The Store",
   description:
     "House products from the people who run BTCSCAM — physical seed storage and Bitcoin inheritance, sold by link-out only. No paid listings, no ads, no on-site checkout.",
+  alternates: { canonical: "/store" },
 };
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };

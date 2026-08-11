@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "The Incident Registry",
   description:
     "Every incident BTCSCAM has on file, in one index — filterable by type, severity, and trust state, each entry linked to its full dossier. Check before you send.",
+  alternates: { canonical: "/registry" },
 };
 
 export default async function RegistryPage() {

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Protect Yourself — Guides",
   description:
     "Fact-checked, plain-language guides to protecting your bitcoin. Live now: verifiable seed-phrase entropy. In preparation: device verification and inheritance.",
+  alternates: { canonical: "/guides" },
 };
 
 /* Published guides only. Honest numbers: this list is the source of truth

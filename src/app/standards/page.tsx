@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "The Standards",
   description:
     "The binding editorial law of BTCSCAM: the trust ladder, severity versus verification, public corrections, the dispute and takedown process, and what we never do.",
+  alternates: { canonical: "/standards" },
 };
 
 function SectionRule({ label, danger }: { label: string; danger?: boolean }) {

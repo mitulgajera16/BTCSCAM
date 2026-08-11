@@ -36,6 +36,7 @@ export const metadata: Metadata = {
   title: "The Open Ledger — Reports Awaiting Triage",
   description:
     "Every reader report still awaiting the BTCSCAM desk, printed in the open. Corroborators file stances with evidence; editors decide. Nothing here auto-verifies.",
+  alternates: { canonical: "/reports/open" },
 };
 
 const OPEN_LIMIT = 200;

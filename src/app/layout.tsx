@@ -35,6 +35,36 @@ export const metadata: Metadata = {
   },
 };
 
+// Sitewide entity schema: who publishes this, and that /check is searchable.
+// Dossier pages add their own NewsArticle schema on top of this.
+const siteJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "BTCSCAM",
+    url: SITE_URL,
+    description:
+      "The anti-scam paper of record: a verified Bitcoin scam and incident registry with a public trust ladder, sourced dossiers, and a permanent corrections log.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: "BTCSCAM",
+    url: SITE_URL,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/check?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  },
+];
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -42,6 +72,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${geist.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(siteJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         {children}
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Check an Address or Domain",
   description:
     "Check a Bitcoin address, Ethereum-style address, or website domain against the blocklists BTCSCAM mirrors — ScamSniffer, MetaMask eth-phishing-detect — and the published scam registry. Lookups, not guarantees: we never certify anything as safe.",
+  alternates: { canonical: "/check" },
 };
 
 function SectionRule({ label, danger }: { label: string; danger?: boolean }) {
