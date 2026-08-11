@@ -1,6 +1,6 @@
 # PRD Delta — proposed changes to PRD.md
 
-**Date:** 2026-08-11 · Status: **PROPOSED — awaiting Mitul's approval. PRD.md is unchanged until then.** Each item cites the insight (I-n in `insight-memo.md`) that forces it. Approving this delta is the gate that starts the Phase-Community build.
+**Date:** 2026-08-11 · Status: **APPROVED by Mitul 2026-08-11 — applied to PRD.md (v2.0) + README the same day.** Owner decisions recorded at approval: anti-recovery positioning confirmed (no recovery service, ever); seeded dossiers publish draft → Mitul review; typo-domain purchases deferred (canonical notice + clone monitoring only). Each item cites the insight (I-n in `insight-memo.md`) that forces it.
 
 ## Δ1 — §0/§5 status truth-up
 PRD still describes R1–R3 as future work; all three shipped (registry, ingest, check, desk, accounts, ladder, open ledger — live at btcscam.vercel.app). Rewrite §5 as: R1–R3 = shipped foundations; next phase = **Phase Community** per `phase-community-roadmap.md` (Stages 0/A/B/C/D). Also fixes the stale README claim ("Next.js 15", R1-only repo map).
