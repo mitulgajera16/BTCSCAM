@@ -32,6 +32,8 @@ export async function generateMetadata({
     title: `${name}: what happened and what's verified`,
     description: incident.summary,
     alternates: { canonical: `/scam/${incident.slug}` },
+    // Victim search grammar (I-8) — aliases + the phrases victims type.
+    keywords: [...(incident.aliases ?? []), ...(incident.phrases ?? [])],
   };
 }
 
@@ -211,6 +213,19 @@ export default async function IncidentPage({
       <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 20 }}>
         {incident.summary}
       </p>
+
+      {(incident.aliases?.length || incident.phrases?.length) ? (
+        <p style={{ ...mono, fontSize: 12, color: "var(--meta)", lineHeight: 1.7, marginTop: 12 }}>
+          ALSO SEARCHED AS:{" "}
+          {[...(incident.aliases ?? []), ...(incident.phrases ?? [])].map(
+            (p, idx, arr) => (
+              <span key={p}>
+                &ldquo;{p}&rdquo;{idx < arr.length - 1 ? " · " : ""}
+              </span>
+            ),
+          )}
+        </p>
+      ) : null}
 
       {incident.impact && (
         <div

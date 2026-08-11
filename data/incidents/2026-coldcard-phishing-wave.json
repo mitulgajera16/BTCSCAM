@@ -42,5 +42,7 @@
     { "url": "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m", "publisher": "Decrypt", "date": "2026-08", "type": "news" },
     { "url": "https://forklog.com/en/hardware-wallet-makers-warn-of-phishing-after-coldcard-incident/", "publisher": "ForkLog", "date": "2026-08", "type": "news" }
   ],
+  "aliases": ["Coinkite hardware audit email", "Coldcard phishing wave"],
+  "phrases": ["coldcard email real or fake", "coinkite hardware audit legit", "coldcard security email scam", "coinkite email asking to verify wallet"],
   "tags": ["phishing", "coldcard", "screenconnect", "fake-support", "seed-harvest"]
 }

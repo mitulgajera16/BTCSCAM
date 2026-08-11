@@ -36,5 +36,7 @@
     { "url": "https://milksad.info/", "publisher": "Milk Sad research team (Distrust)", "date": "2023-08-08", "type": "research" },
     { "url": "https://milksad.info/disclosure.html", "publisher": "Milk Sad research team (Distrust)", "date": "2023-08-08", "type": "primary" }
   ],
+  "aliases": ["Milk Sad", "CVE-2023-39910", "Libbitcoin Explorer bx seed flaw"],
+  "phrases": ["milk sad vulnerability", "bx seed wallet hack", "libbitcoin explorer wallet stolen", "bx seed safe to use"],
   "tags": ["libbitcoin", "bx", "entropy", "prng", "cve-2023-39910", "milk-sad"]
 }

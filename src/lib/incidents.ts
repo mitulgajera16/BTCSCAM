@@ -52,6 +52,8 @@ export interface Incident {
   relatedIncidents?: string[];
   sources: { url: string; publisher: string; date?: string; type: string }[];
   corrections?: { date: string; note: string }[];
+  aliases?: string[];
+  phrases?: string[];
   tags?: string[];
 }
 

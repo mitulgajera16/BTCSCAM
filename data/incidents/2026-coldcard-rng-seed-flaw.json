@@ -72,5 +72,7 @@
   "corrections": [
     { "date": "2026-08-11", "note": "Loss figures restated as an as-of-dated range. Our Aug 8 headline read '~$116M+' sourced to TRM Labs (as of Aug 5). That figure remains the verified floor (~1,816 BTC / 5,200+ addresses), but aggregate reporting has since risen: 2,000+ BTC logged as of Aug 10 (Bitcoin.com) and $130M+ (TechCrunch, Decrypt). Coinkite declines to estimate total losses (Bloomberg, Aug 6). Headline and summary updated to reflect the range; the exact total remains unresolved while thefts are ongoing." }
   ],
+  "aliases": ["The Coldcard hack", "Coinkite exploit", "Coldcard seed entropy flaw"],
+  "phrases": ["is coldcard safe", "coldcard hacked what to do", "coldcard stolen bitcoin", "coldcard firmware bug seed", "coldcard wallet drained"],
   "tags": ["coldcard", "coinkite", "hardware-wallet", "entropy", "prng", "seed-phrase", "brute-force"]
 }
