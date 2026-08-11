@@ -1,0 +1,137 @@
+import {
+  Kicker,
+  Dek,
+  Byline,
+  GuideTable,
+  WhyThisMatters,
+  SourceNote,
+} from "@/components/guides/guide-kit";
+
+export const metadata = {
+  title: "How to recognize wallet-company phishing before it takes your bitcoin",
+  description:
+    "In the first week of August 2026, Coldcard owners received two emails: a real one from Coinkite about a genuine flaw, and a fake 'hardware audit' that installed remote-access software. The logo, the urgency, and even a promise not to ask for your seed prove nothing. The tell is the domain and the ask — and checking both takes 60 seconds.",
+  alternates: { canonical: "/guides/wallet-phishing-recognition" },
+};
+
+<Kicker>PROTECT YOURSELF · GUIDE</Kicker>
+
+# How to recognize wallet-company phishing before it takes your bitcoin
+
+<Dek>In the first week of August 2026, Coldcard owners received two emails: a real one from Coinkite about a genuine flaw, and a fake "hardware audit" that installed remote-access software. The logo, the urgency, and even a promise not to ask for your seed prove nothing. The tell is the domain and the ask — and checking both takes 60 seconds.</Dek>
+
+<Byline published="2026-08-11" sourcesVerified="2026-08-11" />
+
+## Why this guide exists
+
+In early August 2026, while owners of affected Coldcards were scrambling to respond to the [seed-entropy flaw](/scam/coldcard-rng-seed-entropy-flaw-2026) — roughly 1,367 BTC (about $88.6M, an estimate as of 2026-08-05, per BleepingComputer; other outlets reported running totals from $116M, per Fortune on Aug 3, to near $130M, per Decrypt, in the same week) stolen from 4,585 addresses — a [Coldcard phishing campaign](/scam/coldcard-hardware-audit-phishing-2026) landed in the same inboxes. Emails from `compliance@coldcardteamnews[.]com` with the subject "Hardware audit now available" told users: "Recent findings have prompted us to verify the integrity of hardware across all revisions, and your participation is needed."
+
+The campaign, documented by Proofpoint, was built to defeat every casual check. It promised the process was air-gapped. It promised it would not request the recovery seed. It set a deadline of August 10. The "Access the Audit Tool" button led to `coldcardcompliance[.]com`, a cloned COLDCARD-branded site with a "Start Hardware Audit" button — and a live "Customer Service" chat staffed by a real human who pressured hesitant victims into running the download. The 25.7MB `Coldcard_Diagnostic_Tool.bat` file requested admin rights, then quietly installed ConnectWise ScreenConnect, handing attackers remote control of the machine.
+
+And here is the nuance that makes this guide necessary: Coinkite really was mass-emailing customers that same week. The company confirmed on August 2, 2026: "It's been challenging, but we have now emailed every address we could reach through our store and newsletter systems." A real vendor email and a fake one circulated side by side. "The vendor emailed me" was not a signal in either direction. The domain and the requested action were.
+
+<WhyThisMatters ids={["2026-coldcard-phishing-wave", "2026-coldcard-rng-seed-flaw"]} />
+
+## Why does phishing follow every wallet incident?
+
+**The core rule: after any wallet vulnerability makes news, every unexpected message about it is an attack until proven otherwise.** Phishing crews watch the same headlines you do. Within days of a real incident, they send emails, buy search ads, publish fake apps, and staff fake support chats — all impersonating the affected vendor, all urging you to "verify," "audit," or "migrate" your wallet. The disguise varies; the ask does not: they need you to type your seed phrase somewhere, or run software that gives them your machine. Treat any request for your recovery seed, any inbound call or DM, and any download link to "check" your device as an attack — every vendor statement we verified says as much for its own channels (see the table below). Verification runs one way: you type the vendor's real domain yourself and read its advisory there. If a message made you feel you must act within minutes, that feeling is the scam.
+
+Scammers exploit the panic window — the days after a disclosure when users are frightened, half-informed, and primed to obey anything wearing the vendor's logo. Trezor warned publicly on August 5, 2026: "Following the Coldcard vulnerability disclosure, we're already seeing an increase in phishing attempts." Its blog advisory the same day cited two live examples: one impersonating the Trezor CEO, another pushing a malicious app download that exploited fear of the vulnerability. Foundation (maker of Passport) put the mechanism plainly in its July 31, 2026 advisory: "If someone is pressuring you to act quickly, telling you your funds are at risk and they can help...that is the scam."
+
+The pattern is old. After Ledger's mid-2020 e-commerce breach (a misconfigured API key exposed roughly 1 million email addresses and about 272,000 customers' names, home addresses, and phone numbers; the full dump was published in December 2020), the Ledger phishing email became a permanent genre: fake "Ledger Live update" emails harvesting seed phrases, extortion emails threatening home invasion, a December 2024 wave with the subject "Security Alert: Data Breach May Expose Your Recovery Phrase," and — confirmed by Ledger itself, with campaigns documented into 2025 — physical letters using real leaked names and addresses, with QR codes prompting recovery-phrase entry.
+
+## The four delivery channels
+
+### 1. Fake support and security emails
+
+The wallet security audit email is the flagship. Treat any email asking you to run an audit tool as an attack — the fakes are careful. The 2026 Coldcard phishing email explicitly promised it would not ask for the recovery seed. Remember: "we won't ask for your seed" in the body of an email is not proof of legitimacy — the scam that installed remote-access malware made exactly that promise. The seed was never the target; your computer was.
+
+The Trezor precedent shows the domain tell. On April 3, 2022, phishing emails from `noreply@trezor[.]us` — the real domain is trezor.io — claimed Trezor Suite's servers were compromised and pushed a fake Trezor Suite download that stole seeds. The attacker had stolen Trezor's opt-in newsletter list from MailChimp; Trezor stated: "MailChimp have confirmed that their service has been compromised by an insider targeting crypto companies." A one-character or TLD swap in the sender domain is the single most reliable tell in this entire guide.
+
+### 2. Search-ad phishing and cloned websites
+
+A fake Trezor website or fake Coldcard site does not need to trick your inbox — it can buy its way above the real site in your search results. In May 2026, fake sponsored Google ads bought against the keyword "Uniswap" appeared above the legitimate organic result, led to a near-identical cloned site, and stole over $400,000 (as of 2026-05-26) by having victims approve a malicious transaction — no private key or seed needed; a single malicious transaction approval did it. The main victim, experienced trader @ika_xbt, lost their entire portfolio in a single approval after clicking a sponsored result. Security Alliance (SEAL) noted a rise in Google Search phishing campaigns against crypto protocols since March 2026; Uniswap founder Hayden Adams publicly criticized search platforms over scam ads. If an experienced trader can lose everything to a sponsored link, assume you can too.
+
+### 3. Fake apps in official stores
+
+"It's on the App Store" is not verification. In mid-April 2026, a fake Ledger Live app on Apple's App Store — publisher name "Leva Heal Limited" — prompted users to enter their seed phrase and drained roughly $9.5 million (estimate as reported 2026-04-14) from more than 50 victims across Bitcoin, Ethereum, Solana, Tron, and XRP wallets. Blockchain investigator ZachXBT traced the funds: the three largest single losses were $3.23M in USDT (April 9), $2.08M in USDC (April 11), and $1.95M in BTC/ETH/stETH (April 8) — USD values as reported 2026-04-14 — laundered through 150+ KuCoin deposit addresses and a mixing service called "AudiA6" before KuCoin froze the associated accounts.
+
+One victim was musician G. Love (Garrett Dutton), who lost 5.9 BTC — reported at roughly $420,000–$430,000 at the time (estimate, as of 2026-04-14) — a decade of savings. "I lost my retirement fund in a hack/scam… All my BTC gone in an instant," he wrote. "I worked ten years for this." Ledger's own phishing-status page lists fake Ledger Wallet apps as a standing campaign type.
+
+### 4. Fake support chat, calls, and DMs
+
+The fake Coldcard audit site ran a live "Customer Service" chat staffed by a real human. Proofpoint documented conversations where operators asked victims about their operating system, instructed Windows users to run the tool, and pressured the hesitant into proceeding. A responsive, patient, human support agent is part of the attack, not evidence against it.
+
+Ledger's official phishing-status page is categorical about the other channels: "Ledger will never contact users via phone call, for any reason," and "Ledger will never send users a direct message on social media." The same page catalogs phone impersonation (including fake CoinCover partners), malicious NFT airdrops, and fake social accounts as active campaign types. Any inbound call or DM claiming to be your wallet company is an attack — there is no exception to check for.
+
+## What will a wallet company never do?
+
+These are the vendors' own public statements, not our inference. Print this table if it helps.
+
+<GuideTable head={["A real wallet company will never…", "Who says so, in their own words"]}>
+  <tr>
+    <td>Ask for your recovery seed — in any form, on any channel, ever</td>
+    <td>Trezor: "Trezor will never contact you asking for your wallet backup" (2026-08-05). Foundation: "Foundation will never ask for your seed words, recovery phrase, private keys, passphrase or PIN" (2026-07-31). Ledger: neither Ledger nor Ledger Support will ever ask for the 24-word recovery phrase (phishing-status page, as of 2026-08-11)</td>
+  </tr>
+  <tr>
+    <td>Ask you to type your seed into a website, form, app, or message</td>
+    <td>Trezor: "Never type it into a website, form, app or message" (2026-08-05); Foundation says it will never ask users to type a recovery phrase into a website (2026-07-31)</td>
+  </tr>
+  <tr>
+    <td>Call you on the phone</td>
+    <td>Ledger: "Ledger will never contact users via phone call, for any reason" (as of 2026-08-11)</td>
+  </tr>
+  <tr>
+    <td>Send you a DM on social media</td>
+    <td>Ledger: "Ledger will never send users a direct message on social media" (as of 2026-08-11)</td>
+  </tr>
+  <tr>
+    <td>Threaten to deactivate your device</td>
+    <td>Ledger: "Ledger cannot and will not deactivate your device" (as of 2026-08-11)</td>
+  </tr>
+  <tr>
+    <td>Ask you to screen-share or install remote-access software</td>
+    <td>Foundation: will never request screen sharing or installation of remote-access software (2026-07-31). The 2026 fake Coldcard "audit tool" was remote-access software</td>
+  </tr>
+  <tr>
+    <td>Send wallet-migration instructions you must follow from the email itself</td>
+    <td>Trezor: "Do not follow wallet-migration instructions from unsolicited emails" (2026-08-05)</td>
+  </tr>
+  <tr>
+    <td>Contact you unexpectedly about your wallet with a deadline</td>
+    <td>Foundation: will never contact users unexpectedly about their wallet; "If someone is pressuring you to act quickly...that is the scam" (2026-07-31). The fake Coldcard audit's August 10 deadline was the urgency lever</td>
+  </tr>
+</GuideTable>
+
+Two caveats that the table cannot carry. First, absence of a promise is not a warning sign: Coinkite's official advisory for the seed flaw (updated 2026-08-01) contains no "we will never ask" statement at all — vendors differ in how explicitly they publish these rules. Second, the reverse of the table is not a safety check: a message that violates none of these rows can still be phishing. We never certify anything as safe; the table only tells you what is definitely an attack.
+
+### What about Coldcard's anti-phishing words?
+
+A note for anyone searching this term: Coldcard's anti-phishing words defend against a different attack than the one in this guide. The Coldcard PIN is entered in two parts (a 2–6 digit prefix, then a suffix); per the official docs, "you'll see the anti-phishing words associated with the PIN prefix. These words will be unique to each Coldcard." Their job is to prove you are holding your genuine, untampered device before you reveal the rest of your PIN — if the words ever change, the docs say "DO NOT enter your PIN suffix," because the device has most likely been tampered with or swapped. That protects against hardware-level phishing (a counterfeit or tampered device), not against phishing emails, cloned websites, or fake apps. Coldcard's other PIN defenses — trick PINs, the Login Countdown delay, automatic bricking after 13 failed PIN attempts — are likewise device-level features (as documented 2026-08-11). Nothing on the device can save you if you run an attacker's "diagnostic tool" on your computer.
+
+## The 60-second verification habit
+
+Every channel above is defeated by the same boring routine:
+
+1. **Never click links in a wallet email — including real ones.** Coinkite's legitimate mass email and the phishing wave circulated in the same week of August 2026. Treat the email purely as a notification that something may be happening.
+2. **Type the vendor's domain yourself.** coldcard.com, not `coldcardcompliance[.]com`. trezor.io, not `trezor[.]us`. Read the advisory there. If the real site does not mention the "audit," the email was the attack.
+3. **Bookmark the official site and its security/status page once.** Ledger maintains a live phishing-campaigns-status page cataloging active scams; use bookmarks, not search, from then on.
+4. **Skip sponsored search results for anything wallet-related.** The May 2026 Uniswap ads sat above the legitimate organic result.
+5. **Check a suspicious domain or address at [/check](/check).** Thirty seconds, and you may match a domain already in the registry.
+6. **In app stores, read the publisher name.** "Leva Heal Limited" published the fake Ledger Live app. If the publisher is not the vendor, walk away.
+
+The habit costs about a minute. The Coldcard phishing victims who ran the tool lost control of their machines; the fake Ledger Live victims lost, in aggregate, roughly $9.5 million (estimate as of 2026-04-14).
+
+## What if you already clicked?
+
+Move deliberately, not fast. Coinkite's advisory said it best: "Calm and care should be applied. Rushing a wallet migration can create a more immediate risk than the issue you are trying to address."
+
+1. **If you ran a download: disconnect that machine from the internet now.** The fake Coldcard tool installed ConnectWise ScreenConnect — a live remote-access channel. Pulling the network cuts it. Treat the machine as attacker-controlled until it is wiped and reinstalled; do not type anything sensitive on it.
+2. **If you typed your seed anywhere — website, chat, app — that seed is burned.** No exceptions, even if "nothing happened yet."
+3. **Generate a new seed on a clean, genuine device** — never on the exposed computer. Our [seed-entropy guide](/guides/seed-phrase-entropy) covers doing this verifiably.
+4. **Move your funds to the new seed from a clean machine**, highest-value wallets first.
+5. **Report it at [/report](/report)** — the sender address, the domain, the file if you still have it. Every report shortens the window for the next target.
+
+One warning for the aftermath: anyone who contacts you offering to trace, freeze, or recover the stolen funds is running the follow-up scam on the victim list. Foundation's line applies twice over: someone telling you your funds are at risk and they can help — that is the scam.
+
+<SourceNote>Sources: BleepingComputer, "COLDCARD security audit phishing attack installs remote access tool" (2026-08-05); Proofpoint Threat Insight on X (2026-08-05); Coinkite advisory, blog.coinkite.com (updated 2026-08-01) and Coinkite on X via news.bitcoin.com (2026-08-02); Trezor on X and trezor.io blog advisory (2026-08-05); Foundation community advisory, community.foundation.xyz (2026-07-31); BleepingComputer and CoinDesk on the fake Ledger Live app (2026-04-14); Crypto Briefing on the Uniswap search-ad campaign (2026-05-26); Cointelegraph on the Trezor/MailChimp phishing (2022-04-03); CryptoSlate on the 2020 Ledger breach (2020-12-20); Ledger phishing-campaigns-status page, ledger.com (accessed 2026-08-11); Coldcard official docs, coldcard.com (accessed 2026-08-11). Fact-checked 2026-08-11. Found an error? We correct in public — [report it](/report).</SourceNote>

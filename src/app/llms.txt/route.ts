@@ -40,6 +40,8 @@ Key facts for citation:
 ${dossiers}
 
 ## Guides
+- [Wallet phishing recognition](${SITE_URL}/guides/wallet-phishing-recognition): fake vendor emails, search-ad phishing, fake apps, fake support — the domain and the ask are the tells
+- [Hardware wallet authenticity](${SITE_URL}/guides/hardware-wallet-authenticity): fake and pre-seeded devices; the pre-filled recovery card is the kill pattern; brand-by-brand genuine checks
 - [Seed phrase entropy](${SITE_URL}/guides/seed-phrase-entropy): verifiable seed generation, dice-roll procedure, why device RNGs fail
 
 ## Editorial standards

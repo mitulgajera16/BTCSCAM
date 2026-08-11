@@ -1,0 +1,102 @@
+import {
+  Kicker,
+  Dek,
+  Byline,
+  GuideTable,
+  WhyThisMatters,
+  SourceNote,
+} from "@/components/guides/guide-kit";
+
+export const metadata = {
+  title: "How to verify a hardware wallet is genuine — before you trust it with anything",
+  description:
+    "Kaspersky tore down a fake Trezor Model T that passed every eyeball test — holograms intact, packaging clean. Inside, hacked firmware served one of 20 pre-written seed phrases. The attackers knew the private key before the box was opened. Here is how to verify a device is genuine, brand by brand, using the checks each vendor actually publishes.",
+  alternates: { canonical: "/guides/hardware-wallet-authenticity" },
+};
+
+<Kicker>PROTECT YOURSELF · GUIDE</Kicker>
+
+# How to verify a hardware wallet is genuine — before you trust it with anything
+
+<Dek>Kaspersky tore down a fake Trezor Model T that passed every eyeball test — holograms intact, packaging clean. Inside, hacked firmware served one of 20 pre-written seed phrases. The attackers knew the private key before the box was opened. Here is how to verify a device is genuine, brand by brand, using the checks each vendor actually publishes.</Dek>
+
+<Byline published="2026-08-11" sourcesVerified="2026-08-11" />
+
+## Why this guide exists
+
+Almost every "check your device is genuine" guide on the internet is written by a vendor, about its own devices. That is fine — you should read them, and we link them below — but it is not independence. A vendor's guide will never tell you where its own checks stop working. This one covers Trezor, Ledger, Coldcard, and Foundation side by side, with no affiliate links and no vendor relationship.
+
+The anchor case is [Kaspersky's teardown of a fake Trezor Model T](https://www.kaspersky.com/blog/fake-trezor-hardware-crypto-wallet/48155/) (published May 2023). The victim bought it through a popular classifieds site, from a seller the classifieds platform rated as trusted — a badge that came from the platform, not from Trezor. The holographic stickers on both the box and the device were present and undamaged. Inside, Kaspersky found an entirely different microcontroller (an STM32F429 in place of the genuine STM32F427), flash read-out protection downgraded from RDP 2 to RDP 0, visible soldering traces, and a case held together with glue and double-sided tape instead of the ultrasonic bonding used on factory-made Trezors. The bootloader's signature checks had been removed, so the screen showed no warning. The modified firmware replaced random seed generation with one of 20 pre-generated seed phrases baked into the hacked firmware. Kaspersky's conclusion: "the attackers indeed knew the private key in advance." They waited a whole month after the wallet was first funded before draining it.
+
+The common thread with the [Coldcard seed-entropy flaw](/scam/coldcard-rng-seed-entropy-flaw-2026) is invisible trust: in both cases the device looked right and behaved right, and the compromise was invisible until the money moved.
+
+<WhyThisMatters ids={["2026-coldcard-rng-seed-flaw"]} />
+
+## The one rule above all
+
+If a hardware wallet arrives with a seed phrase already written down — a pre-filled recovery card, words hidden under scratch-off foil, a leaflet telling you to use an included seed — the device is compromised. Period. Do not plug it in. Do not send funds to it. Across Trezor, Ledger, Coldcard, and Foundation, the recovery seed is always generated on the device, by you, during first setup. No vendor ships it any other way. Ledger's own [security guide](https://www.ledger.com/academy/topics/ledgersolutions/best-practices-to-securely-buy-ledger-signer) says it plainly: "A legitimate Ledger device never comes with a recovery phrase or PIN code pre-configured. Ever." The pre-seeded wallet scam works because whoever wrote those words down keeps a copy; the moment you fund the wallet, they can spend from it. In the documented cases, the thieves waited — days in one, a full month in another — until the balance was worth taking.
+
+This is the number-one kill pattern. Everything else in this guide is secondary to it.
+
+## Where do fake hardware wallets come from?
+
+Every documented fake or tampered device we could verify arrived through the same channel: somewhere other than the vendor or its authorized resellers.
+
+- **Classifieds sites.** The Kaspersky fake Trezor was bought through a popular classifieds website. The platform's trusted-seller rating meant nothing about the hardware.
+- **eBay and marketplace resellers.** In January 2018, a Reddit user who bought a Ledger Nano from an eBay reseller received a [fake pre-filled recovery sheet](https://www.helpnetsecurity.com/2018/01/09/hardware-wallet-security/) whose 24-word seed was hidden under scratch-off silver foil, dressed up to look like an official step. After he funded the wallet, the scammer used that seed to drain it days later. Ledger's CEO called it a "low tech scam" — no device tampering required. (A ~$34,000 loss figure circulated in press coverage; the primary source confirms only "a sizeable amount of money," so treat the number as reported elsewhere, not verified.)
+- **Second-hand and "pre-initialized" devices.** Ledger's [official 2018 warning](https://www.ledger.com/scam-second-hand-ledger-device) describes a buyer who purchased a pre-initialized Nano S from an unofficial marketplace seller who helpfully supplied the 24 seed words. The seller later drained the funds. Ledger's rule: "If a user were to receive a device with seed words or a pin code, the user should not use the device as it is."
+- **One-to-one hardware clones.** In November 2018, Trezor [publicly warned](https://cointelegraph.com/news/trezor-one-wallets-forgery-reveals-new-techniques-used-to-steal-crypto) about non-genuine copies of the Trezor One made by an unknown vendor — copies close enough that press coverage of the PSA described them as a one-to-one copy of the Trezor One, distinguishable by hologram and packaging differences. Press coverage of the PSA noted the fake boxes carried a "Made in China" label absent on genuine units.
+- **Unsolicited "replacement" devices in the mail.** In June 2021, criminals [mailed fake Ledger Nano X devices](https://www.bleepingcomputer.com/news/cryptocurrency/criminals-are-mailing-altered-ledger-devices-to-steal-cryptocurrency/) to victims of Ledger's December 2020 data leak (roughly 270,000 customer records including home addresses). The package was shrink-wrapped, official-looking, and included a letter impersonating Ledger claiming the device was a security replacement. Inside the device: a flash-drive implant — "a simply flash drive strapped on to the Ledger," in security researcher Mike Grover's words — running an app that asked for the user's 24-word recovery phrase. Ledger's standing rule: legitimate replacements are never sent unsolicited.
+- **Fake companion apps.** Not every fake is hardware. In late 2023, a fake "Ledger Live Web3" app sat in the official Microsoft Store from October 19 to November 5, 2023, prompted users for their 24-word recovery phrase, and [stole over $768,000](https://www.bleepingcomputer.com/news/security/fake-ledger-live-app-in-microsoft-store-steals-768-000-in-crypto/) before investigator ZachXBT exposed it and Microsoft pulled it the same day. Same authenticity problem, software arm: get the companion app only from the vendor's own site, typed URL, no search ads.
+
+The defense is boring and absolute: buy direct from the vendor, or from a reseller the vendor itself lists as authorized. All four vendors say exactly this. A discount on a classifieds site is not a discount; it is the price of the attack. Before you order, you can run the seller's domain through our [address and domain check](/check).
+
+## How do you check if a hardware wallet is real?
+
+Every major vendor now ships a cryptographic genuine check — a test that does not depend on stickers or packaging. This is the check that matters. Run it before the device ever touches real funds.
+
+<GuideTable head={["Brand", "Cryptographic check", "Physical layer", "If anything fails"]}>
+  <tr>
+    <td>**Trezor** (Safe 3, Safe 5, Safe 7)</td>
+    <td>[Device authentication check](https://trezor.io/learn/security-privacy/how-trezor-keeps-you-safe/trezor-safe-device-authentication-check): a unique certificate is issued to each device at the factory and stored in the Secure Element. Trezor Suite sends a random challenge; the Secure Element signs it; Suite verifies signature and certificate against Trezor's public keys, then discards the result — nothing is sent anywhere. Trezor: "do not turn off this check." (Safe 7 uses three chips: TROPIC01, OPTIGA Trust M, STM32U5.)</td>
+    <td>Redesigned holographic seal on Safe 3 units [produced from April 2024 onwards](https://trezor.io/guides/trezor-devices/trezor-safe-3/authenticate-trezor-safe-3). On the older Model T, the seal sits over the USB-C connector on the device itself — [the Model T packaging has no seal](https://trezor.io/guides/trezor-devices/trezor-model-t/authenticate-model-t). Note the Safe-series attestation does not apply to Model One or Model T.</td>
+    <td>Seal ripped, mismatched, peeling, or re-glued — or the Suite check fails: do not use the device; contact Trezor Support.</td>
+  </tr>
+  <tr>
+    <td>**Ledger**</td>
+    <td>[Genuine Check](https://donjon.ledger.com/threat-model/device-genuineness/): each Secure Element generates a key pair at manufacture and the public key is signed by Ledger's Root of Trust. The check runs on first connection to Ledger Wallet, each time the Ledger app is accessed, on every app install, and on every firmware update.</td>
+    <td>None, deliberately. Ledger [does not use tamper-evident seals](https://donjon.ledger.com/threat-model/device-genuineness/): "not only are they trivial to clone, but it is also easy to open and close a package without damaging the seal." Genuineness is verified cryptographically instead.</td>
+    <td>Ledger says do not use the device. Note the stated limit: the check "cannot detect unauthorized physical modifications to the hardware, such as spying implants, if the original Secure Element remains intact" — which is exactly why Ledger tells you to buy only direct or from authorised resellers.</td>
+  </tr>
+  <tr>
+    <td>**Coldcard** (Coinkite)</td>
+    <td>[Bag-number-in-flash](https://coldcard.com/docs/quick/): the device ships in a numbered tamper-evident bag, and the factory records that number into the secure area of flash memory inside the device. On setup you confirm the printed bag number, the tear-off tab, and the number the device displays all agree. On first boot, [wait for the GENUINE status light](https://coldcard.com/resources/security/coldcard-security-and-verification) — the secure element verifying firmware integrity — before entering any PIN. On later logins, verify the anti-phishing words shown after your PIN prefix.</td>
+    <td>The numbered bag itself — but Coinkite is honest about its limits: plastic bags can be defeated "with sharp knives, a heat press and so on." The bag is one layer, not proof.</td>
+    <td>Bag numbers disagree: email support@coinkite.com with photos before going further. Red CAUTION light on boot means the flash checksum failed: do not enter your PIN — stop and investigate.</td>
+  </tr>
+  <tr>
+    <td>**Foundation** (Passport)</td>
+    <td>[Supply Chain Validation](https://docs.foundation.xyz/passport/setup/): a supply-chain private key stored in the Secure Element lets the Envoy app validate the device during setup, or you can run the check manually at validate.foundation.xyz.</td>
+    <td>A security seal that leaves "Void" and "Opened" residue if removed, plus bubble wrap and shrink wrap layers.</td>
+    <td>Foundation: "If your device fails Supply Chain Validation, it may have been tampered with or swapped out with a malicious device before it got to you." Contact hello@foundation.xyz.</td>
+  </tr>
+</GuideTable>
+
+All sources above are the vendors' own current documentation, verified 2026-08-11.
+
+## The unboxing checklist
+
+1. **Before you order: buy direct.** Vendor site, typed URL, no search ads, no marketplaces, no classifieds, no "discounts," no second-hand. Every documented fake above came through an unofficial channel.
+2. **Inspect the packaging — but know what it proves.** Check seals against the vendor's published photos: torn, peeling, re-glued, or mismatched means stop. But an intact seal proves very little. The Kaspersky fake Trezor had undamaged holograms on box and device. Ledger skips seals entirely because they are trivial to clone and packages can be opened and resealed without damage. Coinkite says its own tamper bags can be defeated with a heat press. Physical checks are necessary, never sufficient.
+3. **Look for the kill pattern.** Any pre-filled recovery card, any seed under scratch-off foil, any printed PIN, any instruction to "use the included recovery phrase," any device that arrives already initialized: compromised. Stop. This applies to every brand.
+4. **Run the cryptographic check before funding anything.** Trezor Suite device authentication, Ledger Genuine Check, Coldcard bag number plus GENUINE light, Foundation Supply Chain Validation — per the table above. If it fails, the vendor's own instruction in every case is the same: do not use the device.
+5. **Generate your own seed on first boot.** The device must walk you through creating a new wallet and generating a fresh seed on-device. If you suspect any device, any brand, has been tampered with, the seed it may have shipped with is the attacker's seed, not yours.
+6. **If anything is off, report it.** Contact the vendor's support channel from the table, and [file a report with us](/report) so the seller or listing gets on the record.
+
+One honesty note, because it is house policy: passing every check on this list reduces your risk. It does not certify the device safe. We never certify anything as safe — and neither, if you read their docs closely, do the vendors.
+
+## Now generate a seed you can verify
+
+A genuine device is the first link in the chain, not the last. The Kaspersky fake failed because the seed was chosen by an attacker; the Coldcard flaw showed a genuine device can fail the same way if its random number generator is silently broken. The fix for both is the same: generate a seed whose randomness you can see and check yourself. That is the next guide: [How to generate a seed phrase with entropy you can actually trust](/guides/seed-phrase-entropy).
+
+<SourceNote>This guide cites vendor documentation and primary incident reporting throughout and was fact-checked on 2026-08-11. Loss figures are labeled with their confidence and as-of dates; where a widely repeated number could not be confirmed in a primary source, we say so. Found an error? We correct in public — [report it](/report).</SourceNote>

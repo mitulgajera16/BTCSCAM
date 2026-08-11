@@ -15,6 +15,20 @@ export const metadata: Metadata = {
    for the count shown below. */
 const LIVE_GUIDES = [
   {
+    slug: "wallet-phishing-recognition",
+    kicker: "GUIDE · FACT-CHECKED 2026-08-11",
+    title: "How to recognize wallet-company phishing before it takes your bitcoin",
+    dek: "A real Coinkite email and a fake “hardware audit” landed in the same inboxes the same week. Logos, urgency, even “we won't ask for your seed” prove nothing — the domain and the ask do, and checking both takes 60 seconds.",
+    published: "2026-08-11",
+  },
+  {
+    slug: "hardware-wallet-authenticity",
+    kicker: "GUIDE · FACT-CHECKED 2026-08-11",
+    title: "How to verify a hardware wallet is genuine — before you trust it with anything",
+    dek: "Kaspersky tore down a fake Trezor with intact holograms and an attacker's seed baked into the firmware. The one rule: a device that arrives with a seed already written down is compromised. Brand-by-brand genuine checks inside.",
+    published: "2026-08-11",
+  },
+  {
     slug: "seed-phrase-entropy",
     kicker: "GUIDE · FACT-CHECKED 2026-08-08",
     title: "How to generate a seed phrase with entropy you can actually trust",
