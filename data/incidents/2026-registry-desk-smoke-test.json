@@ -1,0 +1,24 @@
+{
+  "id": "2026-registry-desk-smoke-test",
+  "slug": "registry-desk-smoke-test",
+  "title": "REGISTRY DESK SMOKE TEST — never approve this",
+  "summary": "Throwaway dossier used to verify the registry desk publish and back-to-draft pipelines end to end. If you can read this on the live site, unpublish it immediately.",
+  "trustState": "reported",
+  "severity": "S4",
+  "categories": [
+    "impersonation"
+  ],
+  "firstObserved": "2026-08-12",
+  "published": "2026-08-12",
+  "lastUpdated": "2026-08-12",
+  "actions": [
+    "Delete this dossier."
+  ],
+  "sources": [
+    {
+      "url": "https://example.com/registry-desk-smoke-test",
+      "publisher": "BTCSCAM internal test",
+      "type": "research"
+    }
+  ]
+}
