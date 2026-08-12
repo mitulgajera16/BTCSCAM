@@ -357,13 +357,21 @@ export default async function DeskPage() {
           MONDAY SWEEP · EVERY PUBLISH IS A HUMAN DECISION · EVERYTHING SHIPS AS
           REPORTED · UNVERIFIED
         </p>
-        <p style={{ marginTop: 12, marginBottom: 0 }}>
+        <p style={{ marginTop: 12, marginBottom: 0, display: "flex", gap: 20 }}>
           <Link
             href="/"
             style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}
           >
             ← FRONT PAGE
           </Link>
+          {process.env.NODE_ENV === "development" ? (
+            <Link
+              href="/desk/registry"
+              style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}
+            >
+              THE REGISTRY (LOCAL) →
+            </Link>
+          ) : null}
         </p>
       </header>
       <div className="double-rule" />
