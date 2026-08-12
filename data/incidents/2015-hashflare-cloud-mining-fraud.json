@@ -1,0 +1,241 @@
+{
+  "id": "2015-hashflare-cloud-mining-fraud",
+  "slug": "hashflare-cloud-mining-fraud",
+  "title": "HashFlare: $577M fake cloud-mining dashboards — founders pled guilty; $450M+ forfeited for victim remission",
+  "summary": "HashFlare sold more than $577M of cloud-mining contracts (2015–2019) against fake dashboards — per DOJ it performed under 1% of the Bitcoin mining it claimed. Founders pled guilty to wire-fraud conspiracy (W.D. Wash. 2:22-cr-185) and were sentenced Aug 12, 2025 to 16 months already served. Forfeited assets over $450M await a DOJ remission process; the only real claim path is fbi.gov/hashflare.",
+  "trustState": "resolved",
+  "severity": "S4",
+  "ongoing": false,
+  "categories": [
+    "ponzi"
+  ],
+  "firstObserved": "2015-01-01",
+  "published": "2026-08-12",
+  "lastUpdated": "2026-08-12",
+  "entities": {
+    "vendor": "HashFlare",
+    "products": [
+      "HashFlare cloud-mining contracts",
+      "Polybius Bank investment offering"
+    ],
+    "domains": [
+      "hashflare[.]io"
+    ]
+  },
+  "impact": {
+    "lossUSD": 577000000,
+    "victims": "Hundreds of thousands of customers worldwide, including the US (DOJ)",
+    "confidence": "confirmed",
+    "asOf": "2025-08-12",
+    "source": "https://www.justice.gov/usao-wdwa/pr/two-estonian-fraud-defendants-sentenced-577-million-fraud-scheme"
+  },
+  "timeline": [
+    {
+      "date": "2015",
+      "event": "HashFlare begins selling contracts that rent customers a share of a purportedly massive cryptocurrency mining operation. A web dashboard shows each customer's mining returns — per DOJ, the data was falsified and the equipment performed Bitcoin mining at less than 1% of the claimed computing power.",
+      "source": "https://www.justice.gov/archives/opa/pr/two-estonian-citizens-arrested-575-million-cryptocurrency-fraud-and-money-laundering-scheme"
+    },
+    {
+      "date": "2017-05",
+      "event": "The same operators launch Polybius, promising a virtual-currency bank paying dividends. At least $25M is raised; per the indictment, most is transferred to accounts and wallets they control. Polybius never forms a bank and never pays a dividend.",
+      "source": "https://www.justice.gov/archives/opa/pr/two-estonian-citizens-arrested-575-million-cryptocurrency-fraud-and-money-laundering-scheme"
+    },
+    {
+      "date": "2019-08",
+      "event": "HashFlare offers mining contracts through August 2019, then closes. Per the indictment, withdrawal requests had been resisted or paid using cryptocurrency bought on the open market — not mined — the classic Ponzi payout pattern.",
+      "source": "https://www.justice.gov/archives/opa/pr/two-estonian-nationals-extradited-estonia-united-states-575m-cryptocurrency-fraud-and-money"
+    },
+    {
+      "date": "2022-10-27",
+      "event": "A federal grand jury in the Western District of Washington returns an 18-count indictment (case 2:22-cr-185) under seal: conspiracy to commit wire fraud, 16 counts of wire fraud, and conspiracy to commit money laundering involving at least 75 real properties, six luxury vehicles, crypto wallets, and thousands of mining machines.",
+      "source": "https://www.justice.gov/archives/opa/pr/two-estonian-citizens-arrested-575-million-cryptocurrency-fraud-and-money-laundering-scheme"
+    },
+    {
+      "date": "2022-11-20",
+      "event": "Sergei Potapenko and Ivan Turõgin are arrested in Tallinn, Estonia. DOJ unseals the indictment and announces the charges the next day, describing a $575M fraud and money-laundering conspiracy.",
+      "source": "https://www.justice.gov/archives/opa/pr/two-estonian-citizens-arrested-575-million-cryptocurrency-fraud-and-money-laundering-scheme"
+    },
+    {
+      "date": "2024-05-30",
+      "event": "Roughly 18 months after their arrest, both defendants are extradited to the United States and make their initial appearance in U.S. District Court in Seattle.",
+      "source": "https://www.justice.gov/archives/opa/pr/two-estonian-nationals-extradited-estonia-united-states-575m-cryptocurrency-fraud-and-money"
+    },
+    {
+      "date": "2025-02-12",
+      "event": "Both plead guilty to one count of conspiracy to commit wire fraud and agree to forfeit assets then valued over $400M, earmarked for a victim remission process. DOJ directs victims to www.fbi.gov/hashflare.",
+      "source": "https://www.justice.gov/opa/pr/two-estonian-nationals-plead-guilty-577m-cryptocurrency-fraud-scheme"
+    },
+    {
+      "date": "2025-08-12",
+      "event": "Judge Robert S. Lasnik sentences each to 16 months (already served in custody), a $25,000 fine, and 360 hours of community service on supervised release; forfeiture of assets valued over $450M is incorporated. Prosecutors had sought 10 years. \"These defendants were operating a classic Ponzi scheme, involving a glitzy asset: a mirage of cryptocurrency mining,\" said Acting U.S. Attorney Teal Luthy Miller.",
+      "source": "https://www.justice.gov/usao-wdwa/pr/two-estonian-fraud-defendants-sentenced-577-million-fraud-scheme"
+    },
+    {
+      "date": "2025-08",
+      "event": "Federal prosecutors reportedly appeal the time-served sentences to the Ninth Circuit as unreasonably lenient; no appellate decision had been reported as of this draft (2026-08-11) (see claims — not yet verified from the appellate docket).",
+      "source": "https://cointelegraph.com/news/us-appeals-sentences-hashflare-cofounders"
+    }
+  ],
+  "affected": [
+    "Anyone who bought HashFlare cloud-mining contracts between 2015 and August 2019 — sales exceeded $577M from hundreds of thousands of customers worldwide, including the US",
+    "Polybius investors (May 2017 offering, at least $25M raised; no bank was ever formed, no dividends paid)",
+    "All HashFlare/Polybius victims are now prime targets for recovery scammers offering to 'file your claim' or 'retrieve your funds' for a fee"
+  ],
+  "notAffected": [
+    "Customers who fully withdrew their HashFlare balances before the 2019 shutdown — court filings reported at sentencing put payouts to withdrawing customers near $353M (see claims; unverified by us)",
+    "People who registered an account but never paid for a contract",
+    "Customers of unrelated mining operations — though the fake-dashboard pattern generalizes: a dashboard is not a mine"
+  ],
+  "actions": [
+    "If you paid HashFlare (or Polybius) and never got your money out, register as a victim at www.fbi.gov/hashflare — the FBI's questionnaire is the official intake for this case. It costs nothing.",
+    "Wait for the official remission process. Forfeited assets valued over $450M are earmarked to compensate victims via a DOJ-administered remission; details had not been announced as of the Aug 12, 2025 sentencing. Monitor www.fbi.gov/hashflare and the DOJ remission page (justice.gov/criminal/criminal-mnf/remission) — not third-party sites.",
+    "Never pay anyone to 'recover' HashFlare funds. Government remission is free, and no private company can issue seizure orders or accelerate your claim — a fee to file, 'unlock', or 'trace' your balance is the second half of the scam.",
+    "Assemble your proof now: HashFlare account emails, contract confirmations, payment records (card statements, wires, crypto txids), and withdrawal history. Remission administrators pay documented claims.",
+    "Treat any 'HashFlare relaunch', 'refund portal', or FBI/DOJ email demanding a processing fee as impersonation. Type .gov addresses manually; the government never charges victims to return money.",
+    "Before touching any other cloud-mining site, apply this test: guaranteed returns plus a dashboard you cannot audit against real hashpower is the exact structure that moved $577M here."
+  ],
+  "claims": [
+    {
+      "claim": "HashFlare performed Bitcoin mining at less than 1% of the computing power it sold, and its customer dashboards displayed falsified mining data.",
+      "status": "primary-confirmed",
+      "attribution": "DOJ — indictment allegation (2022); the guilty pleas confirmed falsified dashboards and lack of capacity for the vast majority of claimed mining, per DOJ/USAO releases (2025)",
+      "sources": [
+        "https://www.justice.gov/archives/opa/pr/two-estonian-citizens-arrested-575-million-cryptocurrency-fraud-and-money-laundering-scheme",
+        "https://www.justice.gov/opa/pr/two-estonian-nationals-plead-guilty-577m-cryptocurrency-fraud-scheme"
+      ]
+    },
+    {
+      "claim": "Sentencing outcome (Aug 12, 2025): 16 months each, already served; $25,000 fine each; 360 hours of community service on supervised release; forfeiture of assets valued over $450M incorporated; prosecutors had sought 10 years.",
+      "status": "primary-confirmed",
+      "attribution": "USAO Western District of Washington sentencing release, Aug 12, 2025",
+      "sources": [
+        "https://www.justice.gov/usao-wdwa/pr/two-estonian-fraud-defendants-sentenced-577-million-fraud-scheme"
+      ]
+    },
+    {
+      "claim": "DOJ appealed the time-served sentences to the Ninth Circuit in late August 2025; no appellate decision had been reported as of this dossier's draft date (2026-08-11).",
+      "status": "reported-unconfirmed",
+      "attribution": "Cointelegraph and Decrypt reporting; the USAO release said only that DOJ was 'considering whether to appeal'. Not yet verified from the Ninth Circuit docket.",
+      "sources": [
+        "https://cointelegraph.com/news/us-appeals-sentences-hashflare-cofounders",
+        "https://decrypt.co/336997/prosecutors-unusually-lenient-sentence-hashflare-mining-fraud"
+      ]
+    },
+    {
+      "claim": "Court filings around sentencing reportedly state over 440,000 customers were affected, HashFlare had already paid roughly $353M to customers who withdrew, and seized assets are now valued near $500M — more than enough to compensate the ~240,000 customers who never withdrew.",
+      "status": "reported-unconfirmed",
+      "attribution": "Post-sentencing order, United States v. Potapenko, CR22-185RSL (W.D. Wash. Aug 25, 2025), as reproduced by vLex; not independently fetched from the docket.",
+      "sources": [
+        "https://case-law.vlex.com/vid/united-states-v-potapenko-1089515832"
+      ]
+    },
+    {
+      "claim": "No remission claim procedure, administrator, or deadline had been publicly announced as of this dossier's draft date (2026-08-11); DOJ said details 'will be announced at a later date'.",
+      "status": "primary-confirmed",
+      "attribution": "DOJ plea and sentencing releases (2025); re-check before publish",
+      "sources": [
+        "https://www.justice.gov/usao-wdwa/pr/two-estonian-fraud-defendants-sentenced-577-million-fraud-scheme"
+      ]
+    },
+    {
+      "claim": "More than $577M in HashFlare contract sales 2015–2019, per the plea and sentencing releases; the 2022 indictment charged a $575M scheme across HashFlare and Polybius — the same conduct valued at different stages of the case.",
+      "status": "primary-confirmed",
+      "attribution": "DOJ/USAO releases — 2025 plea and sentencing ($577M); 2022 arrest/indictment release ($575M charged)",
+      "sources": [
+        "https://www.justice.gov/usao-wdwa/pr/two-estonian-fraud-defendants-sentenced-577-million-fraud-scheme",
+        "https://www.justice.gov/archives/opa/pr/two-estonian-citizens-arrested-575-million-cryptocurrency-fraud-and-money-laundering-scheme"
+      ]
+    }
+  ],
+  "relatedGuides": [
+    "is-cloud-mining-legit"
+  ],
+  "sources": [
+    {
+      "url": "https://www.justice.gov/archives/opa/pr/two-estonian-citizens-arrested-575-million-cryptocurrency-fraud-and-money-laundering-scheme",
+      "publisher": "US Department of Justice, Office of Public Affairs (arrest/indictment release)",
+      "date": "2022-11-21",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.justice.gov/archives/opa/pr/two-estonian-nationals-extradited-estonia-united-states-575m-cryptocurrency-fraud-and-money",
+      "publisher": "US Department of Justice, Office of Public Affairs (extradition release)",
+      "date": "2024-05-30",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.justice.gov/opa/pr/two-estonian-nationals-plead-guilty-577m-cryptocurrency-fraud-scheme",
+      "publisher": "US Department of Justice, Office of Public Affairs (guilty-plea release)",
+      "date": "2025-02-13",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.justice.gov/usao-wdwa/pr/two-estonian-fraud-defendants-sentenced-577-million-fraud-scheme",
+      "publisher": "US Attorney's Office, Western District of Washington (sentencing release)",
+      "date": "2025-08-12",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.fbi.gov/how-we-can-help-you/victim-services/seeking-victim-information/seeking-victims-in-the-hashflare-investigation",
+      "publisher": "FBI — Seeking Victims in the HashFlare Investigation (canonical pointer www.fbi.gov/hashflare per DOJ releases)",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.justice.gov/criminal/criminal-mnf/remission",
+      "publisher": "US Department of Justice, Criminal Division — remission process",
+      "type": "primary"
+    },
+    {
+      "url": "https://case-law.vlex.com/vid/united-states-v-potapenko-1089515832",
+      "publisher": "vLex — United States v. Potapenko, CR22-185RSL (W.D. Wash. Aug 25, 2025)",
+      "date": "2025-08-25",
+      "type": "research"
+    },
+    {
+      "url": "https://decrypt.co/334928/estonian-founders-hashflare-bitcoin-mining-scam-jailed",
+      "publisher": "Decrypt",
+      "date": "2025-08-13",
+      "type": "news"
+    },
+    {
+      "url": "https://cointelegraph.com/news/us-appeals-sentences-hashflare-cofounders",
+      "publisher": "Cointelegraph",
+      "date": "2025-08-27",
+      "type": "news"
+    },
+    {
+      "url": "https://decrypt.co/336997/prosecutors-unusually-lenient-sentence-hashflare-mining-fraud",
+      "publisher": "Decrypt",
+      "date": "2025-08-27",
+      "type": "news"
+    }
+  ],
+  "aliases": [
+    "The HashFlare Ponzi",
+    "HashFlare scam",
+    "HashFlare cloud-mining scheme",
+    "Polybius Bank fraud",
+    "United States v. Potapenko and Turõgin"
+  ],
+  "phrases": [
+    "hashflare refund how to get money back",
+    "is cloud mining legit",
+    "hashflare victim claim form",
+    "hashflare remission process when",
+    "is fbi gov hashflare real",
+    "did hashflare investors get money back",
+    "did hashflare founders go to jail"
+  ],
+  "tags": [
+    "hashflare",
+    "polybius",
+    "cloud-mining",
+    "ponzi",
+    "wire-fraud",
+    "doj",
+    "remission",
+    "forfeiture",
+    "estonia",
+    "fake-dashboard"
+  ]
+}
