@@ -1,0 +1,202 @@
+{
+  "id": "2018-bitcoin-sextortion-emails",
+  "slug": "bitcoin-sextortion-emails",
+  "title": "Bitcoin sextortion emails: 'I have your password' blackmail waves — the video does not exist",
+  "summary": "Mass extortion emails and mailed letters claim to have webcam video of you watching porn and demand bitcoin. The 'proof' is a real old password, apparently pulled from breach dumps — or, since 2024, your name, address, and a map photo of your home with a QR code. The video does not exist. Running since July 2018 and still active: do not pay, do not reply, do not scan the QR code.",
+  "trustState": "verified",
+  "severity": "S2",
+  "ongoing": true,
+  "categories": [
+    "social-engineering"
+  ],
+  "firstObserved": "2018-07-12",
+  "published": "2026-08-12",
+  "lastUpdated": "2026-08-12",
+  "impact": {
+    "lossUSD": 83000000,
+    "victims": "51,146 extortion complaints to IC3 in 2018 (all extortion types; 'the majority' tied to the sextortion email campaign) — the $83M figure is 2018 adjusted losses alone; cumulative losses since have never been totaled as a single figure. Waves have recurred every year since.",
+    "confidence": "estimated",
+    "asOf": "2018-12-31",
+    "source": "https://www.ic3.gov/Media/PDF/AnnualReport/2018_IC3Report.pdf"
+  },
+  "timeline": [
+    {
+      "date": "2018-07-12",
+      "event": "First mass wave documented: emails open with the recipient's real password ('I'm aware that [password] is your password'), claim a webcam recording made while the target watched porn, and demand bitcoin — typically a few hundred to a few thousand dollars. The passwords trace to old breach dumps, not a live hack.",
+      "source": "https://krebsonsecurity.com/2018/07/sextortion-scam-uses-recipients-hacked-passwords/"
+    },
+    {
+      "date": "2018-08-07",
+      "event": "IC3 issues PSA I-080718-PSA: extortionists increasingly include recipients' personal information (usernames, passwords) in email and postal-mail threats to appear credible, give ~48-hour deadlines, and demand bitcoin for its perceived anonymity.",
+      "source": "https://www.ic3.gov/PSA/2018/PSA180807"
+    },
+    {
+      "date": "2018-08",
+      "event": "FTC publishes 'How to avoid a Bitcoin blackmail scam' on the parallel postal variant: letters mailed to men alleging an affair — 'pay me a $8600 confidentiality fee in Bitcoin' — with instructions for buying bitcoin. FTC: report letters to local police and the FBI. (Verified via Wayback capture; the live page blocks automated fetches.)",
+      "source": "https://consumer.ftc.gov/consumer-alerts/2018/08/how-avoid-bitcoin-blackmail-scam"
+    },
+    {
+      "date": "2019-04",
+      "event": "IC3 2018 Internet Crime Report quantifies the wave: 51,146 extortion complaints — a 242% increase in extortion complaints over 2017 — with adjusted losses over $83 million; 'the majority of extortion complaints received in 2018 were part of a sextortion campaign.'",
+      "source": "https://www.ic3.gov/Media/PDF/AnnualReport/2018_IC3Report.pdf"
+    },
+    {
+      "date": "2023-04-07",
+      "event": "IC3 PSA I-040723-PSA warns of the second-layer scam: for-profit 'sextortion assistance' companies charging victims thousands (one juvenile victim paid $5,000; another was charged $2,000 and then $3,200 more) for help that law enforcement and nonprofits provide free, in one case discouraging a victim's mother from contacting police.",
+      "source": "https://www.ic3.gov/PSA/2023/PSA230407"
+    },
+    {
+      "date": "2024-09",
+      "event": "Personalization escalates: emails (often PDF attachments) now include the recipient's name, home address, and a street-view photo of their house lifted from online mapping services; demands run ~$1,950–$2,000 in bitcoin via embedded QR code, some claiming 'Pegasus' spyware infection.",
+      "source": "https://krebsonsecurity.com/2024/09/sextortion-scams-now-include-photos-of-your-home/"
+    },
+    {
+      "date": "2024-09-27",
+      "event": "EFF confirms the home-photo wave is 'merely a new variation on an old scam': the personal data comes from breaches and public records, not from any compromise of the recipient's devices. Advice: do not pay, do not respond.",
+      "source": "https://www.eff.org/deeplinks/2024/09/new-email-scam-includes-pictures-your-house-dont-fall-it"
+    },
+    {
+      "date": "2025-01-09",
+      "event": "NJCCIC alert 'New Year, New Round of Sextortion Scams': the email wave circulates again — threats arrive as PDF attachments named after the target, opening with the recipient's phone number and home address, demanding ~$2,000 in bitcoin within 'one day'. NJCCIC: no indication the threats are credible; do not pay; report to the FTC, IC3, and NJCCIC.",
+      "source": "https://www.cyber.nj.gov/Home/Components/News/News/1564/214"
+    }
+  ],
+  "affected": [
+    "Anyone whose email address and an old password appear in circulated breach dumps — the mail merge targets everyone in the dump, not people who were actually hacked",
+    "Recipients who still reuse the quoted password anywhere (the one real risk the email reveals)",
+    "Recipients of the postal variants: 'confidentiality fee' affair letters (2018–) and letters/PDFs with a photo of the home (2024–)",
+    "People who paid: funds moved on-chain are very unlikely to come back; report the address and txid to IC3"
+  ],
+  "notAffected": [
+    "You, if you received one and did nothing — there is no video; the sender has never had access to your webcam or files",
+    "Your devices: receiving the email or letter infects nothing by itself (do not scan the QR code or follow its links)",
+    "People whose quoted password is long-retired and used nowhere — the 'evidence' is a decade-old breach record, not fresh access",
+    "Your contacts: no case in the cited advisories shows these bulk senders ever releasing a video, because none exists"
+  ],
+  "actions": [
+    "Do not pay and do not reply. The 'video' is a bluff run as a mail merge over breach dumps and map data — paying marks you as a payer and invites repeat demands.",
+    "If the quoted password is one you still use, change it everywhere now and turn on two-factor authentication; check your exposure at haveibeenpwned.com.",
+    "Do not scan the QR code, click links, or open attachments beyond viewing. Mark the email as spam. If it arrived as a physical letter, the FTC says to report it to your local police and the FBI.",
+    "Report it free at ic3.gov (include the full email with headers, and the bitcoin address/txid if you paid) and at reportfraud.ftc.gov. Reporting costs nothing and no company can 'remove you from the list'.",
+    "If you paid: file with IC3 immediately with the transaction details, then ignore anyone who contacts you offering to recover your bitcoin for a fee — that is the recovery scam, the second half of this one.",
+    "If the threat involves real intimate images, that is a different and serious crime: if the target is a minor or the images were taken when they were under 18, use NCMEC's free Take It Down (takeitdown.ncmec.org); adults should use the free StopNCII (stopncii.org). Call 1-800-CALL-FBI, and never pay a for-profit 'sextortion assistance' firm — IC3 warns these companies charge exorbitant fees for what law enforcement and nonprofits do at no charge."
+  ],
+  "claims": [
+    {
+      "claim": "In 2018, IC3 received 51,146 extortion-related complaints — a 242% increase in extortion complaints over 2017 — with adjusted losses over $83 million, and the majority were part of the sextortion email campaign.",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3 2018 Internet Crime Report",
+      "sources": [
+        "https://www.ic3.gov/Media/PDF/AnnualReport/2018_IC3Report.pdf"
+      ]
+    },
+    {
+      "claim": "For-profit 'sextortion assistance' companies charged victims $2,000–$5,000, fabricated perpetrator demands to justify more charges, and discouraged victims from contacting law enforcement.",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3 PSA I-040723-PSA",
+      "sources": [
+        "https://www.ic3.gov/PSA/2023/PSA230407"
+      ]
+    },
+    {
+      "claim": "The passwords quoted in the 2018 email wave were drawn by script from data breaches more than a decade old.",
+      "status": "reported-unconfirmed",
+      "attribution": "KrebsOnSecurity analysis of reader-submitted samples; consistent with EFF's later assessment",
+      "sources": [
+        "https://krebsonsecurity.com/2018/07/sextortion-scam-uses-recipients-hacked-passwords/"
+      ]
+    },
+    {
+      "claim": "Home photos in the 2024 wave are lifted from online mapping/street-view services such as Google Maps, matched to addresses from breach and public-records data.",
+      "status": "reported-unconfirmed",
+      "attribution": "KrebsOnSecurity and EFF, from message samples; no operator has been charged for this wave in the cited sources",
+      "sources": [
+        "https://krebsonsecurity.com/2024/09/sextortion-scams-now-include-photos-of-your-home/",
+        "https://www.eff.org/deeplinks/2024/09/new-email-scam-includes-pictures-your-house-dont-fall-it"
+      ]
+    },
+    {
+      "claim": "Some 2024-wave messages claim the target was infected with 'Pegasus' spyware.",
+      "status": "reported-unconfirmed",
+      "attribution": "KrebsOnSecurity, from message samples",
+      "sources": [
+        "https://krebsonsecurity.com/2024/09/sextortion-scams-now-include-photos-of-your-home/"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ic3.gov/PSA/2018/PSA180807",
+      "publisher": "FBI Internet Crime Complaint Center (IC3), PSA I-080718-PSA",
+      "date": "2018-08-07",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2023/PSA230407",
+      "publisher": "FBI Internet Crime Complaint Center (IC3), PSA I-040723-PSA",
+      "date": "2023-04-07",
+      "type": "regulator"
+    },
+    {
+      "url": "https://consumer.ftc.gov/consumer-alerts/2018/08/how-avoid-bitcoin-blackmail-scam",
+      "publisher": "Federal Trade Commission (consumer alert, Cristina Miranda)",
+      "date": "2018-08-21",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/Media/PDF/AnnualReport/2018_IC3Report.pdf",
+      "publisher": "FBI Internet Crime Complaint Center (IC3), 2018 Internet Crime Report",
+      "type": "regulator"
+    },
+    {
+      "url": "https://krebsonsecurity.com/2018/07/sextortion-scam-uses-recipients-hacked-passwords/",
+      "publisher": "KrebsOnSecurity",
+      "date": "2018-07-12",
+      "type": "research"
+    },
+    {
+      "url": "https://krebsonsecurity.com/2024/09/sextortion-scams-now-include-photos-of-your-home/",
+      "publisher": "KrebsOnSecurity",
+      "date": "2024-09-03",
+      "type": "research"
+    },
+    {
+      "url": "https://www.eff.org/deeplinks/2024/09/new-email-scam-includes-pictures-your-house-dont-fall-it",
+      "publisher": "Electronic Frontier Foundation",
+      "date": "2024-09-27",
+      "type": "research"
+    },
+    {
+      "url": "https://www.cyber.nj.gov/Home/Components/News/News/1564/214",
+      "publisher": "New Jersey Cybersecurity & Communications Integration Cell (NJCCIC), 'New Year, New Round of Sextortion Scams'",
+      "date": "2025-01-09",
+      "type": "regulator"
+    }
+  ],
+  "aliases": [
+    "I have your password email",
+    "Bitcoin blackmail email",
+    "Bitcoin blackmail letter",
+    "Hello pervert email",
+    "Pegasus spyware email",
+    "Sextortion letter with a photo of your house"
+  ],
+  "phrases": [
+    "email has my real password asking for bitcoin",
+    "letter with photo of my house demanding bitcoin",
+    "should i pay sextortion email",
+    "email says it recorded me watching porn",
+    "bitcoin blackmail email what to do",
+    "sextortion email keeps coming back is it real"
+  ],
+  "tags": [
+    "sextortion",
+    "extortion",
+    "bitcoin-blackmail",
+    "email-scam",
+    "physical-mail",
+    "data-breach",
+    "qr-code",
+    "webcam"
+  ]
+}
