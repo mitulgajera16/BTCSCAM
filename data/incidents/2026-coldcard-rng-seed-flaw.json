@@ -6,13 +6,22 @@
   "trustState": "verified",
   "severity": "S1",
   "ongoing": true,
-  "categories": ["vulnerability", "theft"],
+  "categories": [
+    "vulnerability",
+    "theft"
+  ],
   "firstObserved": "2026-07-30",
   "published": "2026-08-08",
   "lastUpdated": "2026-08-11",
   "entities": {
     "vendor": "Coinkite",
-    "products": ["Coldcard Mk2", "Coldcard Mk3", "Coldcard Mk4", "Coldcard Mk5", "Coldcard Q"]
+    "products": [
+      "Coldcard Mk2",
+      "Coldcard Mk3",
+      "Coldcard Mk4",
+      "Coldcard Mk5",
+      "Coldcard Q"
+    ]
   },
   "impact": {
     "lossUSD": 116000000,
@@ -23,13 +32,41 @@
     "source": "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack"
   },
   "timeline": [
-    { "date": "2021-03", "event": "Firmware v4.0.1 ships with libngu migration; a #ifndef preprocessor bug silently compiles in MicroPython's Yasmarang software PRNG for seed generation instead of the hardware RNG.", "source": "https://blog.coinkite.com/entropy-technical-backgrounder/" },
-    { "date": "2026-07-30", "event": "First theft wave: ~594 BTC swept in ~25 minutes (initial sweep tracked at 1,082.65 BTC / ~$70.2M from 1,196 addresses in 41 minutes). Coinkite publishes security advisory the same day.", "source": "https://thehackernews.com/2026/08/coldcard-hardware-wallet-flaw-linked-to.html" },
-    { "date": "2026-07-31", "event": "Coinkite releases emergency patched firmware (Mk2/Mk3: 4.2.0; Mk4/Mk5: 5.6.0; Q: 1.5.0Q). Patch prevents new weak seeds only — existing seeds remain vulnerable.", "source": "https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/" },
-    { "date": "2026-08-01", "event": "Advisory updated; four theft waves documented over four days, transaction-construction differences suggest multiple attackers.", "source": "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack" },
-    { "date": "2026-08", "event": "Secondary phishing wave: fake 'hardware audit' emails impersonating Coldcard push ScreenConnect remote-access malware. See related incident.", "source": "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m" },
-    { "date": "2026-08-06", "event": "Coinkite declines to estimate total customer losses, saying a post-mortem is in progress rather than speculating on the extent of the theft.", "source": "https://www.bloomberg.com/news/articles/2026-08-06/hacked-bitcoin-wallet-maker-declines-to-estimate-amount-lost" },
-    { "date": "2026-08-10", "event": "Aggregate tracking passes 2,000 BTC in stolen funds ('the Coldcard exploit has logged more than 2,000 BTC in stolen funds' — Bitcoin.com editor's note).", "source": "https://news.bitcoin.com/featured/the-coldcard-exploit-explained-who-lost-bitcoin-and-whos-at-risk/" }
+    {
+      "date": "2021-03",
+      "event": "Firmware v4.0.1 ships with libngu migration; a #ifndef preprocessor bug silently compiles in MicroPython's Yasmarang software PRNG for seed generation instead of the hardware RNG.",
+      "source": "https://blog.coinkite.com/entropy-technical-backgrounder/"
+    },
+    {
+      "date": "2026-07-30",
+      "event": "First theft wave: ~594 BTC swept in ~25 minutes (initial sweep tracked at 1,082.65 BTC / ~$70.2M from 1,196 addresses in 41 minutes). Coinkite publishes security advisory the same day.",
+      "source": "https://thehackernews.com/2026/08/coldcard-hardware-wallet-flaw-linked-to.html"
+    },
+    {
+      "date": "2026-07-31",
+      "event": "Coinkite releases emergency patched firmware (Mk2/Mk3: 4.2.0; Mk4/Mk5: 5.6.0; Q: 1.5.0Q). Patch prevents new weak seeds only — existing seeds remain vulnerable.",
+      "source": "https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/"
+    },
+    {
+      "date": "2026-08-01",
+      "event": "Advisory updated; four theft waves documented over four days, transaction-construction differences suggest multiple attackers.",
+      "source": "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack"
+    },
+    {
+      "date": "2026-08",
+      "event": "Secondary phishing wave: fake 'hardware audit' emails impersonating Coldcard push ScreenConnect remote-access malware. See related incident.",
+      "source": "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m"
+    },
+    {
+      "date": "2026-08-06",
+      "event": "Coinkite declines to estimate total customer losses, saying a post-mortem is in progress rather than speculating on the extent of the theft.",
+      "source": "https://www.bloomberg.com/news/articles/2026-08-06/hacked-bitcoin-wallet-maker-declines-to-estimate-amount-lost"
+    },
+    {
+      "date": "2026-08-10",
+      "event": "Aggregate tracking passes 2,000 BTC in stolen funds ('the Coldcard exploit has logged more than 2,000 BTC in stolen funds' — Bitcoin.com editor's note).",
+      "source": "https://news.bitcoin.com/featured/the-coldcard-exploit-explained-who-lost-bitcoin-and-whos-at-risk/"
+    }
   ],
   "affected": [
     "Seeds GENERATED ON-DEVICE with: Mk2/Mk3 firmware 4.0.1–4.1.9 (~40 bits effective entropy)",
@@ -50,29 +87,133 @@
     "Ignore every email/DM offering a 'hardware audit', 'seed check', or 'migration help'. Coinkite will never ask for your seed. Type coinkite.com manually; never click sponsored search results for firmware."
   ],
   "claims": [
-    { "claim": "Root cause: MICROPY_HW_ENABLE_RNG set to 0 but guarded with #ifndef (checks existence, not value), so the software PRNG fallback compiled in silently.", "status": "primary-confirmed", "attribution": "Coinkite technical backgrounder", "sources": ["https://blog.coinkite.com/entropy-technical-backgrounder/"] },
-    { "claim": "The buggy libngu code was authored by Coinkite co-founder/CTO Peter Gray under the pseudonymous GitHub account 'Switch'.", "status": "reported-unconfirmed", "attribution": "Media and social reports; not confirmed by Coinkite", "sources": ["https://www.cryptopolitan.com/coinkite-cto-peter-gray-linked-coldcard-hack/"] },
-    { "claim": "Developer James O'Beirne warned Coinkite of exactly this class of defect in May 2025 and was dismissed.", "status": "reported-unconfirmed", "attribution": "James O'Beirne (public statements); not confirmed by Coinkite", "sources": ["https://www.cryptopolitan.com/coinkite-cto-peter-gray-linked-coldcard-hack/"] },
-    { "claim": "No attribution of the thefts; funds mostly pooled with minimal laundering observed as of Aug 5, 2026.", "status": "primary-confirmed", "attribution": "TRM Labs on-chain analysis", "sources": ["https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack"] }
+    {
+      "claim": "Root cause: MICROPY_HW_ENABLE_RNG set to 0 but guarded with #ifndef (checks existence, not value), so the software PRNG fallback compiled in silently.",
+      "status": "primary-confirmed",
+      "attribution": "Coinkite technical backgrounder",
+      "sources": [
+        "https://blog.coinkite.com/entropy-technical-backgrounder/"
+      ]
+    },
+    {
+      "claim": "The buggy libngu commit was authored under the pseudonymous GitHub account 'Switch'. Media reports have linked that account to a Coinkite principal; we do not name an individual on unconfirmed sourcing — the object of record is the commit and its account.",
+      "status": "reported-unconfirmed",
+      "attribution": "Media/social reports; not confirmed by Coinkite",
+      "sources": [
+        "https://www.cryptopolitan.com/coinkite-cto-peter-gray-linked-coldcard-hack/"
+      ]
+    },
+    {
+      "claim": "Developer James O'Beirne states he warned Coinkite of exactly this class of defect in May 2025; Coinkite has not responded publicly to that account.",
+      "status": "reported-unconfirmed",
+      "attribution": "James O'Beirne (public statements); Coinkite has not commented",
+      "sources": [
+        "https://www.cryptopolitan.com/coinkite-cto-peter-gray-linked-coldcard-hack/"
+      ]
+    },
+    {
+      "claim": "No attribution of the thefts; funds mostly pooled with minimal laundering observed as of Aug 5, 2026.",
+      "status": "primary-confirmed",
+      "attribution": "TRM Labs on-chain analysis",
+      "sources": [
+        "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack"
+      ]
+    }
   ],
-  "relatedGuides": ["seed-phrase-entropy"],
-  "relatedIncidents": ["2026-coldcard-phishing-wave", "2023-milk-sad-libbitcoin"],
+  "relatedGuides": [
+    "seed-phrase-entropy",
+    "hardware-wallet-authenticity",
+    "seed-phrase-storage"
+  ],
+  "relatedIncidents": [
+    "2026-coldcard-phishing-wave",
+    "2023-milk-sad-libbitcoin"
+  ],
   "sources": [
-    { "url": "https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/", "publisher": "Coinkite (official advisory)", "date": "2026-07-30", "type": "vendor" },
-    { "url": "https://blog.coinkite.com/entropy-technical-backgrounder/", "publisher": "Coinkite (technical backgrounder)", "date": "2026-08-01", "type": "vendor" },
-    { "url": "https://coinkite.com/historical-disclosures", "publisher": "Coinkite", "type": "vendor" },
-    { "url": "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack", "publisher": "TRM Labs", "date": "2026-08-05", "type": "research" },
-    { "url": "https://thehackernews.com/2026/08/coldcard-hardware-wallet-flaw-linked-to.html", "publisher": "The Hacker News", "date": "2026-08-04", "type": "news" },
-    { "url": "https://techcrunch.com/2026/08/04/hackers-steal-over-130-million-by-exploiting-bug-in-offline-hardware-wallets/", "publisher": "TechCrunch", "date": "2026-08-04", "type": "news" },
-    { "url": "https://fortune.com/2026/08/03/bitcoin-owners-116-million-hack-coldcard-coinkite-exploit/", "publisher": "Fortune", "date": "2026-08-03", "type": "news" },
-    { "url": "https://www.cbc.ca/news/world/bitcoin-coinkite-security-hack-9.7295582", "publisher": "CBC News", "type": "news" },
-    { "url": "https://www.bloomberg.com/news/articles/2026-08-06/hacked-bitcoin-wallet-maker-declines-to-estimate-amount-lost", "publisher": "Bloomberg", "date": "2026-08-06", "type": "news" },
-    { "url": "https://news.bitcoin.com/featured/the-coldcard-exploit-explained-who-lost-bitcoin-and-whos-at-risk/", "publisher": "Bitcoin.com News", "date": "2026-08-10", "type": "news" }
+    {
+      "url": "https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/",
+      "publisher": "Coinkite (official advisory)",
+      "date": "2026-07-30",
+      "type": "vendor"
+    },
+    {
+      "url": "https://blog.coinkite.com/entropy-technical-backgrounder/",
+      "publisher": "Coinkite (technical backgrounder)",
+      "date": "2026-08-01",
+      "type": "vendor"
+    },
+    {
+      "url": "https://coinkite.com/historical-disclosures",
+      "publisher": "Coinkite",
+      "type": "vendor"
+    },
+    {
+      "url": "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack",
+      "publisher": "TRM Labs",
+      "date": "2026-08-05",
+      "type": "research"
+    },
+    {
+      "url": "https://thehackernews.com/2026/08/coldcard-hardware-wallet-flaw-linked-to.html",
+      "publisher": "The Hacker News",
+      "date": "2026-08-04",
+      "type": "news"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/04/hackers-steal-over-130-million-by-exploiting-bug-in-offline-hardware-wallets/",
+      "publisher": "TechCrunch",
+      "date": "2026-08-04",
+      "type": "news"
+    },
+    {
+      "url": "https://fortune.com/2026/08/03/bitcoin-owners-116-million-hack-coldcard-coinkite-exploit/",
+      "publisher": "Fortune",
+      "date": "2026-08-03",
+      "type": "news"
+    },
+    {
+      "url": "https://www.cbc.ca/news/world/bitcoin-coinkite-security-hack-9.7295582",
+      "publisher": "CBC News",
+      "type": "news"
+    },
+    {
+      "url": "https://www.bloomberg.com/news/articles/2026-08-06/hacked-bitcoin-wallet-maker-declines-to-estimate-amount-lost",
+      "publisher": "Bloomberg",
+      "date": "2026-08-06",
+      "type": "news"
+    },
+    {
+      "url": "https://news.bitcoin.com/featured/the-coldcard-exploit-explained-who-lost-bitcoin-and-whos-at-risk/",
+      "publisher": "Bitcoin.com News",
+      "date": "2026-08-10",
+      "type": "news"
+    }
   ],
   "corrections": [
-    { "date": "2026-08-11", "note": "Loss figures restated as an as-of-dated range. Our Aug 8 headline read '~$116M+' sourced to TRM Labs (as of Aug 5). That figure remains the verified floor (~1,816 BTC / 5,200+ addresses), but aggregate reporting has since risen: 2,000+ BTC logged as of Aug 10 (Bitcoin.com) and $130M+ (TechCrunch, Decrypt). Coinkite declines to estimate total losses (Bloomberg, Aug 6). Headline and summary updated to reflect the range; the exact total remains unresolved while thefts are ongoing." }
+    {
+      "date": "2026-08-11",
+      "note": "Loss figures restated as an as-of-dated range. Our Aug 8 headline read '~$116M+' sourced to TRM Labs (as of Aug 5). That figure remains the verified floor (~1,816 BTC / 5,200+ addresses), but aggregate reporting has since risen: 2,000+ BTC logged as of Aug 10 (Bitcoin.com) and $130M+ (TechCrunch, Decrypt). Coinkite declines to estimate total losses (Bloomberg, Aug 6). Headline and summary updated to reflect the range; the exact total remains unresolved while thefts are ongoing."
+    }
   ],
-  "aliases": ["The Coldcard hack", "Coinkite exploit", "Coldcard seed entropy flaw"],
-  "phrases": ["is coldcard safe", "coldcard hacked what to do", "coldcard stolen bitcoin", "coldcard firmware bug seed", "coldcard wallet drained"],
-  "tags": ["coldcard", "coinkite", "hardware-wallet", "entropy", "prng", "seed-phrase", "brute-force"]
+  "aliases": [
+    "The Coldcard hack",
+    "Coinkite exploit",
+    "Coldcard seed entropy flaw"
+  ],
+  "phrases": [
+    "is coldcard safe",
+    "coldcard hacked what to do",
+    "coldcard stolen bitcoin",
+    "coldcard firmware bug seed",
+    "coldcard wallet drained"
+  ],
+  "tags": [
+    "coldcard",
+    "coinkite",
+    "hardware-wallet",
+    "entropy",
+    "prng",
+    "seed-phrase",
+    "brute-force"
+  ]
 }

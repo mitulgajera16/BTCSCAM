@@ -114,7 +114,9 @@
       ]
     }
   ],
-  "relatedGuides": [],
+  "relatedGuides": [
+    "crypto-recovery-scams"
+  ],
   "relatedIncidents": [
     "crypto-recovery-service-scams"
   ],

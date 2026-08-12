@@ -20,6 +20,25 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/*": ["./data/incidents/*.json"],
   },
+  // Baseline security headers. frame-ancestors 'none' + X-Frame-Options stop a
+  // /check verdict (or a desk action) from being framed and clickjacked — the
+  // verdict is safety UI, so its integrity matters. We deliberately do NOT set a
+  // restrictive script-src CSP: the app relies on Next's inline runtime scripts
+  // and inline JSON-LD, which a strict script-src would break; framing is the
+  // real risk here and frame-ancestors closes it without that fragility.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({

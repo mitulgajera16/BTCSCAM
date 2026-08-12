@@ -225,5 +225,9 @@
     "kyc-data",
     "sec-8k",
     "safe-wallet-scam"
+  ],
+  "relatedGuides": [
+    "wallet-phishing-recognition",
+    "crypto-recovery-scams"
   ]
 }

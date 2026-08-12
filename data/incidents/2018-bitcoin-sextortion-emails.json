@@ -198,5 +198,8 @@
     "data-breach",
     "qr-code",
     "webcam"
+  ],
+  "relatedGuides": [
+    "crypto-recovery-scams"
   ]
 }

@@ -3,6 +3,7 @@ import {
   Dek,
   Byline,
   GuideTable,
+  WhyThisMatters,
   SourceNote,
 } from "@/components/guides/guide-kit";
 
@@ -26,6 +27,8 @@ export const metadata = {
 The seed phrase is the bitcoin. Whoever holds those 12 or 24 words holds the coins; whoever loses them loses the coins, with no password reset and no support line. Our [seed-entropy guide](/guides/seed-phrase-entropy) covers generating the phrase so nobody can guess it. This guide covers the other half of the job: keeping the physical record alive for decades against fire, water, disposal, cameras, and your own stamping errors.
 
 The failure modes are documented, not hypothetical. Journalist Mark Frauenfelder recounted in WIRED in 2017 how he wrote his Trezor's 24-word phrase and PIN on an orange piece of paper; while he was on vacation, a housecleaning service threw it away, locking him out of 7.4 BTC. He got back in only because hardware hacker Saleem Rashid extracted the seed by exploiting a Trezor firmware flaw — his backup strategy was rescued by someone else's security bug. James Howells discarded a hard drive holding the keys to roughly 8,000 BTC into a Newport landfill in 2013; courts have refused excavation ever since. And at the aggregate level, Chainalysis has estimated 2.3 to 3.7 million BTC likely lost forever — an estimate built on a dormancy proxy (coins unmoved five-plus years) from its 2017 analysis, restated in 2020, not a count of destroyed backups specifically. The exact number is unknowable. The direction is not: seed records die, constantly, from mundane causes.
+
+<WhyThisMatters ids={["2026-coldcard-rng-seed-flaw", "2023-milk-sad-libbitcoin"]} />
 
 ## What is the best way to store a seed phrase?
 

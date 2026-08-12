@@ -151,7 +151,9 @@
       ]
     }
   ],
-  "relatedGuides": [],
+  "relatedGuides": [
+    "crypto-recovery-scams"
+  ],
   "relatedIncidents": [
     "2023-crypto-recovery-service-scams"
   ],

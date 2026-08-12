@@ -173,5 +173,9 @@
     "help-desk-abuse",
     "seed-phrase",
     "impersonation"
+  ],
+  "relatedGuides": [
+    "wallet-phishing-recognition",
+    "hardware-wallet-authenticity"
   ]
 }

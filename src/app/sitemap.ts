@@ -1,6 +1,12 @@
 import type { MetadataRoute } from "next";
-import { getAllIncidents } from "@/lib/incidents";
+import { fetchAllIncidents } from "@/lib/incidents-db";
 import { SITE_URL } from "@/lib/site";
+
+/** Match the other DB-backed feeds: pick up newly published dossiers — including
+ *  DB-only ones with no bundled file — within the cache window, not only at the
+ *  next code deploy. Without this the sitemap silently omits crawl targets that
+ *  are already live on every other surface. */
+export const revalidate = 300;
 
 /** Live guides only — mirrors LIVE_GUIDES in src/app/guides/page.tsx.
  *  lastModified is each guide's fact-checked date. */
@@ -12,8 +18,8 @@ const GUIDES: { slug: string; factChecked: string }[] = [
   { slug: "seed-phrase-entropy", factChecked: "2026-08-08" },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const incidents = getAllIncidents();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const incidents = await fetchAllIncidents();
 
   // The front page and registry change whenever any dossier does.
   const latestUpdate = incidents

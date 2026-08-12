@@ -3,21 +3,40 @@
   "slug": "coldcard-hardware-audit-phishing-2026",
   "title": "\"Hardware audit\" phishing wave rides the Coldcard hack — fake Coinkite emails install remote-access malware",
   "summary": "Within days of the July 2026 Coldcard seed-entropy disclosure, phishing campaigns began impersonating Coldcard/Coinkite with 'hardware audit' emails linking to cloned sites. The 'Start Hardware Audit' button installs ScreenConnect remote-access software; parallel scams push seed 'checker' pages. Hardware wallet vendors industry-wide issued warnings. Scared users are the target — panic is the payload.",
-  "trustState": "verified",
+  "trustState": "corroborated",
   "severity": "S2",
   "ongoing": true,
-  "categories": ["phishing", "impersonation", "malware", "recovery-scam"],
+  "categories": [
+    "phishing",
+    "impersonation",
+    "malware",
+    "recovery-scam"
+  ],
   "firstObserved": "2026-08-01",
   "published": "2026-08-08",
-  "lastUpdated": "2026-08-08",
+  "lastUpdated": "2026-08-12",
   "entities": {
     "vendor": "Coinkite (impersonated — not at fault for this wave)",
-    "products": ["Coldcard (impersonated)"]
+    "products": [
+      "Coldcard (impersonated)"
+    ]
   },
   "timeline": [
-    { "date": "2026-07-30", "event": "Coinkite discloses the seed-entropy flaw; mass media coverage creates a scared, primed audience.", "source": "https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/" },
-    { "date": "2026-08", "event": "Proofpoint-tracked campaigns send fake Coldcard 'hardware audit' emails; cloned Coinkite sites serve ScreenConnect remote-access installers.", "source": "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m" },
-    { "date": "2026-08", "event": "Hardware wallet makers across the industry publish phishing warnings.", "source": "https://forklog.com/en/hardware-wallet-makers-warn-of-phishing-after-coldcard-incident/" }
+    {
+      "date": "2026-07-30",
+      "event": "Coinkite discloses the seed-entropy flaw; mass media coverage creates a scared, primed audience.",
+      "source": "https://blog.coinkite.com/coldcard-mk3-seed-generation-warning/"
+    },
+    {
+      "date": "2026-08",
+      "event": "Proofpoint-tracked campaigns send fake Coldcard 'hardware audit' emails; cloned Coinkite sites serve ScreenConnect remote-access installers.",
+      "source": "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m"
+    },
+    {
+      "date": "2026-08",
+      "event": "Hardware wallet makers across the industry publish phishing warnings.",
+      "source": "https://forklog.com/en/hardware-wallet-makers-warn-of-phishing-after-coldcard-incident/"
+    }
   ],
   "affected": [
     "Anyone whose email/handle is associated with Bitcoin or who publicly discussed the Coldcard hack",
@@ -34,15 +53,64 @@
     "Vendor support will never DM you first, never ask for your seed, and never rush you. Urgency is the tell."
   ],
   "claims": [
-    { "claim": "Campaigns tracked by Proofpoint deliver ScreenConnect via cloned Coinkite 'Start Hardware Audit' pages.", "status": "primary-confirmed", "attribution": "Proofpoint research, reported by Decrypt", "sources": ["https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m"] }
+    {
+      "claim": "Campaigns tracked by Proofpoint deliver ScreenConnect via cloned Coinkite 'Start Hardware Audit' pages.",
+      "status": "reported-unconfirmed",
+      "attribution": "Proofpoint research, as reported by BleepingComputer and Decrypt — we cite the reporting, not Proofpoint's advisory directly",
+      "sources": [
+        "https://www.bleepingcomputer.com/news/security/coldcard-security-audit-phishing-attack-installs-remote-access-tool/",
+        "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m"
+      ]
+    }
   ],
-  "relatedGuides": ["seed-phrase-entropy"],
-  "relatedIncidents": ["2026-coldcard-rng-seed-flaw"],
+  "relatedGuides": [
+    "wallet-phishing-recognition",
+    "hardware-wallet-authenticity"
+  ],
+  "relatedIncidents": [
+    "2026-coldcard-rng-seed-flaw"
+  ],
   "sources": [
-    { "url": "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m", "publisher": "Decrypt", "date": "2026-08", "type": "news" },
-    { "url": "https://forklog.com/en/hardware-wallet-makers-warn-of-phishing-after-coldcard-incident/", "publisher": "ForkLog", "date": "2026-08", "type": "news" }
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/coldcard-security-audit-phishing-attack-installs-remote-access-tool/",
+      "publisher": "BleepingComputer",
+      "date": "2026-08-05",
+      "type": "news"
+    },
+    {
+      "url": "https://decrypt.co/374891/hardware-wallet-firms-warn-of-phishing-surge-as-coldcard-losses-near-130m",
+      "publisher": "Decrypt",
+      "date": "2026-08",
+      "type": "news"
+    },
+    {
+      "url": "https://forklog.com/en/hardware-wallet-makers-warn-of-phishing-after-coldcard-incident/",
+      "publisher": "ForkLog",
+      "date": "2026-08",
+      "type": "news"
+    }
   ],
-  "aliases": ["Coinkite hardware audit email", "Coldcard phishing wave"],
-  "phrases": ["coldcard email real or fake", "coinkite hardware audit legit", "coldcard security email scam", "coinkite email asking to verify wallet"],
-  "tags": ["phishing", "coldcard", "screenconnect", "fake-support", "seed-harvest"]
+  "corrections": [
+    {
+      "date": "2026-08-12",
+      "note": "Trust state downgraded VERIFIED → CORROBORATED. Our standard reserves VERIFIED for 2+ independent primary sources (vendor advisory, on-chain proof, regulator filing); this dossier's sourcing is independent news reporting of Proofpoint's research, not a primary artifact we hold directly. Two-plus independent outlets corroborate the campaign, which is exactly CORROBORATED. Added the BleepingComputer technical report as a third independent source. We will restore VERIFIED if a primary source (Proofpoint's own advisory or a Coinkite statement on the phishing wave specifically) is captured."
+    }
+  ],
+  "aliases": [
+    "Coinkite hardware audit email",
+    "Coldcard phishing wave"
+  ],
+  "phrases": [
+    "coldcard email real or fake",
+    "coinkite hardware audit legit",
+    "coldcard security email scam",
+    "coinkite email asking to verify wallet"
+  ],
+  "tags": [
+    "phishing",
+    "coldcard",
+    "screenconnect",
+    "fake-support",
+    "seed-harvest"
+  ]
 }

@@ -1,8 +1,9 @@
 "use client";
 
 import type { CSSProperties, ReactNode } from "react";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import {
   runCheck,
   type BlacklistHit,
@@ -400,6 +401,18 @@ function OfflinePanel({
 
 export function CheckForm({ initialValue = "" }: { initialValue?: string }) {
   const [result, formAction, pending] = useActionState(runCheck, null);
+
+  // Weekly Answered Checks (PRD §4 north star): a check that returns a concrete
+  // verdict is the countable unit of "someone got safer." One event per verdict,
+  // labelled by mode + outcome + query kind — no query text, no PII.
+  useEffect(() => {
+    if (!result?.ok) return;
+    track("check_completed", {
+      mode: result.mode,
+      verdict: result.mode === "live" ? result.verdict : "offline",
+      kind: result.kind ?? "unknown",
+    });
+  }, [result]);
 
   return (
     <div>

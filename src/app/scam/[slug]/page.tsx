@@ -12,6 +12,7 @@ import {
   fetchIncidentBySlug,
 } from "@/lib/incidents-db";
 import { SITE_URL } from "@/lib/site";
+import { liveGuidesFor } from "@/lib/guides";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -413,6 +414,19 @@ export default async function IncidentPage({
               </li>
             ))}
           </ul>
+        </>
+      )}
+
+      {liveGuidesFor(incident.relatedGuides).length > 0 && (
+        <>
+          <SectionRule label="PROTECT YOURSELF" />
+          <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 8 }}>
+            {liveGuidesFor(incident.relatedGuides).map((g) => (
+              <Link key={g.slug} href={`/guides/${g.slug}`} style={{ fontWeight: 700, fontSize: 16 }}>
+                {g.title} →
+              </Link>
+            ))}
+          </div>
         </>
       )}
 

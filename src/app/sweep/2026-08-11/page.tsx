@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { SITE_HOST } from "@/lib/site";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -174,7 +175,7 @@ export default function SweepOne() {
       <p style={{ fontSize: 16, lineHeight: 1.6, marginTop: 16 }}>
         First brand-impersonation sweep ran 2026-08-11: no certificates issued
         for lookalike names, no active clone of this site found. For the
-        record: btcscam.com is our only domain. Anything else wearing this name
+        record: {SITE_HOST} is our only domain. Anything else wearing this name
         is an impostor — check your address bar.
       </p>
 

@@ -149,7 +149,8 @@
     }
   ],
   "relatedGuides": [
-    "seed-phrase-entropy"
+    "wallet-phishing-recognition",
+    "hardware-wallet-authenticity"
   ],
   "relatedIncidents": [
     "2024-trezor-support-phishing",
