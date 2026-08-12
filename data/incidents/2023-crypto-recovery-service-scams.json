@@ -1,0 +1,200 @@
+{
+  "id": "2023-crypto-recovery-service-scams",
+  "slug": "crypto-recovery-service-scams",
+  "title": "The recovery-scam industry: fake law firms, fake tracers, and IC3 impersonators re-scam theft victims",
+  "summary": "Every publicized crypto theft feeds a second industry: 'recovery' outfits — fake tracers, fake law firms, and impersonators of the FBI's own Internet Crime Complaint Center — charging victims fees to retrieve funds no private company can seize. The FBI has warned repeatedly (2023, 2025, 2026): anyone who contacts you promising your bitcoin back for a fee is running the second half of the scam.",
+  "trustState": "verified",
+  "severity": "S2",
+  "ongoing": true,
+  "categories": [
+    "recovery-scam",
+    "impersonation",
+    "social-engineering"
+  ],
+  "firstObserved": "2023-08-11",
+  "published": "2026-08-12",
+  "lastUpdated": "2026-08-12",
+  "entities": {
+    "products": [
+      "Fake crypto-tracing services",
+      "Fictitious law firms",
+      "Spoofed IC3 complaint websites",
+      "Fake FBI agent profiles on Facebook Messenger and Telegram"
+    ]
+  },
+  "timeline": [
+    {
+      "date": "2023-08-11",
+      "event": "FBI IC3 issues alert I-081123-PSA on the surge of companies falsely claiming they can recover crypto lost to investment scams. The alert names the core mechanics — up-front fees followed by silence, or padded 'tracing reports' used to bill again — and states the structural fact this whole industry hides: \"Private sector recovery companies cannot issue seizure orders to recover cryptocurrency.\" Context figure: victims reported over $2.5B lost to crypto investment fraud in 2022.",
+      "source": "https://www.ic3.gov/PSA/2023/PSA230811"
+    },
+    {
+      "date": "2025-04-18",
+      "event": "IC3 alert I-041825-PSA: the scammers now impersonate IC3 itself. More than 100 reports of IC3 impersonation between December 2023 and February 2025. One documented playbook: fake female personas infiltrate victim support groups, then route victims to an imposter posing as IC3 'Chief Director' \"Jaime Quin\" to harvest financial information. The alert states the IC3 will never initiate contact and \"will not ask for payment to recover lost funds.\"",
+      "source": "https://www.ic3.gov/PSA/2025/PSA250418"
+    },
+    {
+      "date": "2025-08-13",
+      "event": "IC3 alert I-081325-PSA documents the fake-law-firm arm: fabricated attorney credentials and letterhead lifted from real firms, invented regulators (e.g., an 'International Financial Trading Commission (INTFTC)' that does not exist), claimed government partnerships — \"There are no law firms which are officially authorized partners of US Government agencies\" — WhatsApp group-chat isolation, and payment demanded in cryptocurrency or prepaid gift cards. The alert says the scheme targets vulnerable populations, particularly the elderly.",
+      "source": "https://www.ic3.gov/PSA/2025/PSA250813"
+    },
+    {
+      "date": "2026-07-20",
+      "event": "IC3 alert I-072026-PSA updates the impersonation warning with an AI escalation: deepfake videos impersonating FBI personnel — in one documented instance a senior FBI leader — promoting spoofed IC3 lookalike sites that harvest name, phone, email, and loss details through complaint forms, plus fake FBI agent profiles on Facebook Messenger and Telegram posing as help with filing or updating IC3 reports. The FBI reiterates that IC3 maintains no social media presence and tells the public to type www.ic3.gov directly rather than trust search results or links.",
+      "source": "https://www.ic3.gov/PSA/2026/PSA260720"
+    }
+  ],
+  "affected": [
+    "Anyone who has already lost bitcoin or other crypto to a scam — prior victims are this industry's entire target market, often re-contacted using details from the first fraud",
+    "Members of online victim support groups and commenters on scam-warning threads, where recovery scammers recruit directly",
+    "People searching for 'crypto recovery service', 'recovery expert', or reviews of recovery firms — a space where BTCSCAM has observed recovery-scam promotion colonizing search results and checker-site review sections (see claims; unconfirmed by any official source)",
+    "Vulnerable populations, particularly the elderly — the groups the FBI's 2025 fake-law-firm alert says the scheme targets"
+  ],
+  "notAffected": [
+    "If no one has contacted you and you have paid no one to 'recover' funds, you have lost nothing to this scam — only the underlying theft applies",
+    "Complaints you yourself initiate at www.ic3.gov (typed directly; verify the .gov) — filing there is free and safe",
+    "Court-supervised claims processes and government remission programs in named cases — these are real, never charge an upfront fee, and are verified on the docket or a .gov page, never through someone who called you"
+  ],
+  "actions": [
+    "If a 'recovery service', 'crypto tracer', 'law firm', or 'agent' contacted YOU first: stop responding and pay nothing. No private company can issue a seizure order to recover cryptocurrency (FBI IC3), and law enforcement never charges victims a fee. Whoever initiates contact promising your funds back is running the second half of the scam.",
+    "Report the original theft AND the recovery approach at www.ic3.gov — type the address into your browser yourself and confirm it ends in .gov. The IC3 has no social media presence, never initiates contact by phone, email, Telegram, or WhatsApp, and never asks for payment.",
+    "The only real recovery paths are official ones: check https://www.forfeiture.gov for federal forfeiture notices and petitions for remission in cases where the government seized funds, https://www.justice.gov/criminal/criminal-mnf for the DOJ remission process, and https://www.ftc.gov/enforcement/refunds for FTC refund programs. All are free. Anyone charging to 'file' these for you is taking money for a form you can submit yourself.",
+    "If a 'law firm' claims to be working with the government on your case: no law firm is an authorized partner of any US government agency — the FBI says so flatly (IC3 alert I-081325-PSA). Verify any attorney independently through your state bar's public lookup, and treat refusal of video verification or license documentation as the answer.",
+    "Never pay a fee in cryptocurrency or gift cards, never share your seed phrase or wallet access, and never install remote-access software for anyone claiming to trace or recover funds — these are extraction steps, not recovery steps.",
+    "If the victim is 60 or older, the DOJ National Elder Fraud Hotline (833-372-8311 / 833-FRAUD-11) will help file the IC3 complaint for free."
+  ],
+  "claims": [
+    {
+      "claim": "Private sector recovery companies cannot issue seizure orders to recover cryptocurrency; law enforcement does not charge victims a fee for investigating crimes.",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3, alert I-081123-PSA",
+      "sources": [
+        "https://www.ic3.gov/PSA/2023/PSA230811"
+      ]
+    },
+    {
+      "claim": "The FBI received more than 100 reports of IC3 impersonation scams between December 2023 and February 2025.",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3, alert I-041825-PSA",
+      "sources": [
+        "https://www.ic3.gov/PSA/2025/PSA250418"
+      ]
+    },
+    {
+      "claim": "No law firms are officially authorized partners of US government agencies; fake firms cite invented regulators such as an 'International Financial Trading Commission (INTFTC)'.",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3, alert I-081325-PSA",
+      "sources": [
+        "https://www.ic3.gov/PSA/2025/PSA250813"
+      ]
+    },
+    {
+      "claim": "Impersonators now use AI-generated deepfake videos of FBI personnel, including in one instance a senior FBI leader, to promote spoofed IC3 websites that harvest victim data.",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3, alert I-072026-PSA",
+      "sources": [
+        "https://www.ic3.gov/PSA/2026/PSA260720"
+      ]
+    },
+    {
+      "claim": "Recovery scammers have colonized the review sections of scam-checker sites and page-one search results for 'crypto recovery service' queries, including via their own press releases.",
+      "status": "reported-unconfirmed",
+      "attribution": "BTCSCAM demand-map research (search-suggest and SERP observation, Aug 2026); not the subject of an official warning"
+    },
+    {
+      "claim": "Aggregate dollar losses to recovery scams specifically are not published by any primary source; the FBI's PSAs quantify the underlying frauds (e.g., $2.5B+ crypto investment fraud losses in 2022) but not the secondary recovery-scam take.",
+      "status": "reported-unconfirmed",
+      "attribution": "BTCSCAM editorial note on the sourcing gap, as of 2026-08-11"
+    }
+  ],
+  "relatedGuides": [
+    "recovery-service-scams"
+  ],
+  "relatedIncidents": [
+    "2026-coldcard-phishing-wave"
+  ],
+  "sources": [
+    {
+      "url": "https://www.ic3.gov/PSA/2023/PSA230811",
+      "publisher": "FBI Internet Crime Complaint Center (alert I-081123-PSA)",
+      "date": "2023-08-11",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2025/PSA250418",
+      "publisher": "FBI Internet Crime Complaint Center (alert I-041825-PSA)",
+      "date": "2025-04-18",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2025/PSA250813",
+      "publisher": "FBI Internet Crime Complaint Center (alert I-081325-PSA)",
+      "date": "2025-08-13",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2026/PSA260720",
+      "publisher": "FBI Internet Crime Complaint Center (alert I-072026-PSA)",
+      "date": "2026-07-20",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.forfeiture.gov",
+      "publisher": "U.S. Department of Justice (official forfeiture notices and remission petitions)",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.justice.gov/criminal/criminal-mnf",
+      "publisher": "U.S. Department of Justice, Money Laundering, Narcotics and Forfeiture Section (MNF)",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.ftc.gov/enforcement/refunds",
+      "publisher": "Federal Trade Commission (official refund programs)",
+      "type": "primary"
+    },
+    {
+      "url": "https://ovc.ojp.gov/program/stop-elder-fraud/providing-help-restoring-hope",
+      "publisher": "U.S. DOJ Office for Victims of Crime (National Elder Fraud Hotline, 833-372-8311 / 833-FRAUD-11, victims 60+)",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.ic3.gov/crimeinfo/elderfraud",
+      "publisher": "FBI Internet Crime Complaint Center (elder fraud — IC3 filing assistance via the National Elder Fraud Hotline)",
+      "type": "regulator"
+    }
+  ],
+  "aliases": [
+    "Recovery scam",
+    "Refund scam",
+    "Crypto recovery service scam",
+    "Fake law firm scam",
+    "IC3 impersonation scam",
+    "FBI impersonation recovery scam",
+    "Revictimization scam",
+    "Double-dip scam"
+  ],
+  "phrases": [
+    "can i recover stolen bitcoin",
+    "crypto recovery service legit or scam",
+    "law firm contacted me about my stolen crypto",
+    "crypto recovery expert contacted me",
+    "hire a hacker to get my bitcoin back",
+    "ic3 contacted me about my case is it real",
+    "fbi agent messaged me on telegram about my crypto",
+    "crypto recovery service reviews",
+    "paid recovery company to get crypto back nothing happened"
+  ],
+  "tags": [
+    "recovery-scam",
+    "advance-fee",
+    "ic3",
+    "fbi-impersonation",
+    "fake-law-firm",
+    "deepfake",
+    "spoofed-website",
+    "telegram",
+    "whatsapp",
+    "elder-fraud"
+  ]
+}
