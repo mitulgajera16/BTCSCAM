@@ -1,0 +1,229 @@
+{
+  "id": "2025-coinbase-insider-breach",
+  "slug": "coinbase-insider-breach-2025",
+  "title": "Coinbase insider breach: bribed support agents leaked customer data, feeding a 'safe wallet' impersonation-call wave",
+  "summary": "Criminals bribed overseas Coinbase support agents to copy customer data — names, contacts, last-4 SSNs, ID images, balances — then demanded $20M on May 11, 2025. Coinbase refused (SEC 8-K + Coinbase blog, May 15). No passwords, keys, or funds taken. The leaked data fuels ongoing impersonation calls pushing users to a 'safe' wallet; Coinbase pledged to reimburse customers tricked before May 15.",
+  "trustState": "verified",
+  "severity": "S2",
+  "ongoing": true,
+  "categories": [
+    "impersonation",
+    "social-engineering"
+  ],
+  "firstObserved": "2024-12-26",
+  "published": "2026-08-12",
+  "lastUpdated": "2026-08-12",
+  "entities": {
+    "vendor": "Coinbase Global, Inc.",
+    "products": [
+      "Coinbase retail exchange accounts",
+      "Coinbase customer-support systems"
+    ]
+  },
+  "impact": {
+    "lossUSD": 307000000,
+    "lossNative": "$307M in expenses related to the data theft incident, booked in Q2 2025 per Coinbase's shareholder letter (SEC EDGAR, filed July 31, 2025) — Coinbase's own costs, superseding the preliminary $180M–$400M estimate in the May 15 8-K. Victim losses to the follow-on impersonation calls are not separately totaled by any primary source.",
+    "victims": "69,461 customers per Coinbase's breach notice to the Maine Attorney General (as reported); 'less than 1% of Coinbase monthly transacting users' per Coinbase",
+    "confidence": "estimated",
+    "asOf": "2025-07-31",
+    "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000153/q225shareholderletter.htm"
+  },
+  "timeline": [
+    {
+      "date": "2024-12-26",
+      "event": "Unauthorized copying of customer data by overseas support agents begins, per Coinbase's later breach notice to the Maine Attorney General (as reported — see claims; the notice itself could not be fetched directly).",
+      "source": "https://www.theblock.co/post/355216/coinbase-reveals-69461-users-affected-in-december-2024-data-heist-filing"
+    },
+    {
+      "date": "2025 (months before May)",
+      "event": "Coinbase security monitoring independently detects support personnel accessing customer data without business need. The personnel are terminated immediately, fraud-monitoring protections heightened, and customers whose information was potentially accessed are warned.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000094/coin-20250514.htm"
+    },
+    {
+      "date": "2025-05-11",
+      "event": "Coinbase receives an extortion email from an unknown threat actor demanding money in exchange for not publicly disclosing stolen customer-account data and internal documentation. Coinbase assesses the email as credible and concludes the earlier improper accesses were a single campaign that succeeded in taking data from internal systems.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000094/coin-20250514.htm"
+    },
+    {
+      "date": "2025-05-15",
+      "event": "Coinbase files Form 8-K under Item 1.05 (Material Cybersecurity Incident, event date May 14) and publishes 'Protecting Our Customers — Standing Up to Extortionists': it refuses the $20M ransom, establishes a $20M reward fund for information leading to arrest and conviction, pledges to voluntarily reimburse tricked retail customers, and begins opening a US support hub. Notification emails to affected customers go out at 7:20 a.m. ET from no-reply@info.coinbase.com.",
+      "source": "https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists"
+    },
+    {
+      "date": "2025-05-21",
+      "event": "Coinbase's breach notice filed with the Maine Attorney General reportedly puts the affected count at 69,461 customers nationwide and dates the breach start to December 26, 2024; affected users are offered credit monitoring.",
+      "source": "https://www.securityweek.com/coinbase-says-rogue-contractor-data-breach-affects-69461-users/"
+    },
+    {
+      "date": "2025-06",
+      "event": "Coinbase's June update reportedly ties the bribed agents to the India operations of outsourcing firm TaskUs; TaskUs shuts down the involved department.",
+      "source": "https://www.bleepingcomputer.com/news/security/former-coinbase-support-agent-arrested-for-helping-hackers/"
+    },
+    {
+      "date": "2025-07-31",
+      "event": "Coinbase's Q2 2025 shareholder letter, filed as an 8-K exhibit on SEC EDGAR, reports total operating expenses driven up by $307 million in expenses related to the data theft incident disclosed in May.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000153/q225shareholderletter.htm"
+    },
+    {
+      "date": "2025-12-19",
+      "event": "Brooklyn DA announces a 31-count indictment of Ronald Spektor, 23, for allegedly impersonating Coinbase representatives and stealing nearly $16M from about 100 users nationwide by warning them their assets were 'at risk' and moving them to attacker-controlled wallets. The DA release does not link the scheme to this breach — it is the same impersonation playbook the leaked data enables. Allegations, not findings.",
+      "source": "https://www.brooklynda.org/2025/12/19/brooklyn-man-charged-with-stealing-nearly-16-million-by-presenting-himself-as-cryptocurrency-exchange-rep-and-scamming-users/"
+    },
+    {
+      "date": "2025-12-29",
+      "event": "Coinbase CEO Brian Armstrong announces the first arrest in India tied to the insider breach — a former support agent arrested in Hyderabad; more arrests expected. (Date is the announcement; the arrest itself may predate it.)",
+      "source": "https://www.bleepingcomputer.com/news/security/former-coinbase-support-agent-arrested-for-helping-hackers/"
+    }
+  ],
+  "affected": [
+    "~69,461 Coinbase retail customers whose records were copied (per Coinbase's Maine AG notice, as reported). Coinbase notified this group by email from no-reply@info.coinbase.com at 7:20 a.m. ET on May 15, 2025",
+    "Data taken (per the 8-K): name, address, phone, email; masked SSN (last 4 digits only); masked bank-account numbers and some identifiers; government-ID images (driver's license, passport); balance snapshots and transaction history; limited internal corporate data",
+    "Every Coinbase user is a target of the follow-on impersonation calls and texts — the script works with or without your leaked record"
+  ],
+  "notAffected": [
+    "Passwords, 2FA codes, and private keys — not compromised (Coinbase 8-K and blog)",
+    "Customer funds — the bribed agents had no ability to access or move funds",
+    "Coinbase Prime accounts",
+    "Coinbase or customer hot/cold wallets",
+    "Customers who did not receive the May 15, 2025 notice from no-reply@info.coinbase.com were not in the affected data set, per Coinbase"
+  ],
+  "actions": [
+    "Hang up on any call or text claiming to be Coinbase. Coinbase states it will never call to move your funds to a 'safe' wallet, give you a seed phrase or deposit address, ask for your password or 2FA codes, or tell you to call a number. The call itself is the scam — there is no account emergency.",
+    "Mid-conversation or already acted? Lock your account in the Coinbase app right now, then email security@coinbase.com. Minutes matter more than embarrassment.",
+    "If you sent funds to the attackers as a direct result of this incident, Coinbase committed in its SEC 8-K and blog to voluntarily reimburse eligible retail customers after review. Coinbase's stated criteria cover retail customers who mistakenly sent funds before the May 15, 2025 disclosure; if you were tricked later, still report it via coinbase.com support — but do not assume reimbursement. Pursue this only through coinbase.com or in-app support — never through anyone who contacts you first, and never through a third-party 'claims agent'.",
+    "Report the contact to the FBI at ic3.gov, and handle identity-theft fallout at identitytheft.gov. Your ID images and last-4 SSN outlive the news cycle: freeze your credit with all three bureaus and set a port-out/SIM-swap PIN with your mobile carrier.",
+    "Harden the account today: switch 2FA to a hardware security key and enable withdrawal allow-listing so funds can only move to wallets you already control.",
+    "Ignore anyone offering to recover crypto lost to this scam for a fee — recovery pitches are the second half of the same scam. Only law enforcement can seize and return funds."
+  ],
+  "claims": [
+    {
+      "claim": "The threat actor obtained the data by paying multiple contractors or employees in overseas support roles to collect information from internal Coinbase systems; the May 11, 2025 email demanded money ($20M per Coinbase's blog), which Coinbase refused while cooperating with law enforcement.",
+      "status": "primary-confirmed",
+      "attribution": "Coinbase Form 8-K, Item 1.05 (May 15, 2025); Coinbase blog",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000094/coin-20250514.htm",
+        "https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists"
+      ]
+    },
+    {
+      "claim": "Preliminary expense estimate of approximately $180M–$400M for remediation and voluntary customer reimbursements, 'prior to further review of potential losses, indemnification claims, and potential recoveries'.",
+      "status": "primary-confirmed",
+      "attribution": "Coinbase Form 8-K (May 15, 2025)",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000094/coin-20250514.htm"
+      ]
+    },
+    {
+      "claim": "69,461 customers were affected and the unauthorized access began December 26, 2024, per Coinbase's data-breach notice filed with the Maine Attorney General.",
+      "status": "reported-unconfirmed",
+      "attribution": "Maine AG filing as reported by The Block and SecurityWeek; the Maine AG notice page could not be fetched directly for verification",
+      "sources": [
+        "https://www.theblock.co/post/355216/coinbase-reveals-69461-users-affected-in-december-2024-data-heist-filing",
+        "https://www.securityweek.com/coinbase-says-rogue-contractor-data-breach-affects-69461-users/"
+      ]
+    },
+    {
+      "claim": "The bribed agents worked at outsourcing firm TaskUs' India operations; TaskUs shut down the involved department, and a former support agent was arrested in Hyderabad in December 2025 with more arrests expected per CEO Brian Armstrong.",
+      "status": "reported-unconfirmed",
+      "attribution": "Coinbase June 2025 update and Indian police, as reported by BleepingComputer and The Block; no official Indian charging document fetched",
+      "sources": [
+        "https://www.bleepingcomputer.com/news/security/former-coinbase-support-agent-arrested-for-helping-hackers/",
+        "https://www.theblock.co/post/383790/coinbase-ceo-announces-first-arrest-in-india-over-insider-data-breach-more-still-to-come"
+      ]
+    },
+    {
+      "claim": "The Brooklyn DA alleges Ronald Spektor, 23, of Sheepshead Bay stole nearly $16M from about 100 Coinbase users via an impersonation phishing scheme (31-count indictment: grand larceny, money laundering, scheme to defraud; ~$105K cash and ~$400K crypto seized). These are allegations; no court has ruled on them as of 2026-08-11, and the DA does not connect the scheme to the insider breach.",
+      "status": "primary-confirmed",
+      "attribution": "Brooklyn District Attorney's Office press release, December 19, 2025",
+      "sources": [
+        "https://www.brooklynda.org/2025/12/19/brooklyn-man-charged-with-stealing-nearly-16-million-by-presenting-himself-as-cryptocurrency-exchange-rep-and-scamming-users/"
+      ]
+    },
+    {
+      "claim": "Coinbase booked approximately $307M in expenses related to the data theft incident in Q2 2025 ('driven by $307 million in expenses related to the data theft incident disclosed in May').",
+      "status": "primary-confirmed",
+      "attribution": "Coinbase Q2 2025 Shareholder Letter (8-K exhibit), filed on SEC EDGAR July 31, 2025",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000153/q225shareholderletter.htm"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000094/coin-20250514.htm",
+      "publisher": "U.S. SEC EDGAR — Coinbase Global, Inc. Form 8-K, Item 1.05",
+      "date": "2025-05-15",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000153/q225shareholderletter.htm",
+      "publisher": "U.S. SEC EDGAR — Coinbase Global, Inc. Q2 2025 Shareholder Letter (8-K exhibit)",
+      "date": "2025-07-31",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists",
+      "publisher": "Coinbase (official blog)",
+      "date": "2025-05-15",
+      "type": "vendor"
+    },
+    {
+      "url": "https://www.brooklynda.org/2025/12/19/brooklyn-man-charged-with-stealing-nearly-16-million-by-presenting-himself-as-cryptocurrency-exchange-rep-and-scamming-users/",
+      "publisher": "Brooklyn District Attorney's Office",
+      "date": "2025-12-19",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.theblock.co/post/355216/coinbase-reveals-69461-users-affected-in-december-2024-data-heist-filing",
+      "publisher": "The Block",
+      "date": "2025-05-21",
+      "type": "news"
+    },
+    {
+      "url": "https://www.securityweek.com/coinbase-says-rogue-contractor-data-breach-affects-69461-users/",
+      "publisher": "SecurityWeek",
+      "date": "2025-05-21",
+      "type": "news"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/former-coinbase-support-agent-arrested-for-helping-hackers/",
+      "publisher": "BleepingComputer",
+      "date": "2025-12-29",
+      "type": "news"
+    },
+    {
+      "url": "https://www.theblock.co/post/383790/coinbase-ceo-announces-first-arrest-in-india-over-insider-data-breach-more-still-to-come",
+      "publisher": "The Block",
+      "date": "2025-12-29",
+      "type": "news"
+    }
+  ],
+  "aliases": [
+    "Coinbase data breach (May 2025)",
+    "Coinbase extortion attempt",
+    "Coinbase insider leak",
+    "Coinbase support-agent bribery breach",
+    "Coinbase impersonation calls"
+  ],
+  "phrases": [
+    "did coinbase call me is it real",
+    "coinbase asked me to move funds to safe wallet",
+    "coinbase data breach am i affected",
+    "is no-reply@info.coinbase.com legit",
+    "coinbase security team called me",
+    "coinbase reimbursement for scam",
+    "coinbase support asked for my 2fa code"
+  ],
+  "tags": [
+    "coinbase",
+    "insider-threat",
+    "data-breach",
+    "extortion",
+    "impersonation",
+    "social-engineering",
+    "taskus",
+    "kyc-data",
+    "sec-8k",
+    "safe-wallet-scam"
+  ]
+}
