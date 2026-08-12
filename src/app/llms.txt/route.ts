@@ -40,6 +40,8 @@ Key facts for citation:
 ${dossiers}
 
 ## Guides
+- [Crypto recovery scams](${SITE_URL}/guides/crypto-recovery-scams): nobody legitimate can seize stolen crypto for a fee — how the second scam works and which free official channels actually help
+- [Seed phrase storage](${SITE_URL}/guides/seed-phrase-storage): paper vs steel with independent stress-test evidence; never digital, two complete copies, never split a seed
 - [Wallet phishing recognition](${SITE_URL}/guides/wallet-phishing-recognition): fake vendor emails, search-ad phishing, fake apps, fake support — the domain and the ask are the tells
 - [Hardware wallet authenticity](${SITE_URL}/guides/hardware-wallet-authenticity): fake and pre-seeded devices; the pre-filled recovery card is the kill pattern; brand-by-brand genuine checks
 - [Seed phrase entropy](${SITE_URL}/guides/seed-phrase-entropy): verifiable seed generation, dice-roll procedure, why device RNGs fail

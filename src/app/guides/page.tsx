@@ -15,6 +15,20 @@ export const metadata: Metadata = {
    for the count shown below. */
 const LIVE_GUIDES = [
   {
+    slug: "crypto-recovery-scams",
+    kicker: "GUIDE · FACT-CHECKED 2026-08-12",
+    title: "Crypto recovery services: how the second scam works — and what actually helps",
+    dek: "Nobody legitimate can hack back or seize your stolen crypto for a fee — the FBI's words: private companies cannot issue seizure orders. The second scam documented from the inside, and the free official channels that sometimes actually help.",
+    published: "2026-08-12",
+  },
+  {
+    slug: "seed-phrase-storage",
+    kicker: "GUIDE · FACT-CHECKED 2026-08-12",
+    title: "Paper or steel: how to store a seed phrase so it survives",
+    dek: "Paper ignites at ~230 C; a room fire passes that in minutes. Photos are hunted by OCR malware. The answer is stamped steel, test-restored, two complete copies in two places — with the independent stress-test results, including the products that failed.",
+    published: "2026-08-12",
+  },
+  {
     slug: "wallet-phishing-recognition",
     kicker: "GUIDE · FACT-CHECKED 2026-08-11",
     title: "How to recognize wallet-company phishing before it takes your bitcoin",

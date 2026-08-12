@@ -5,6 +5,8 @@ import { SITE_URL } from "@/lib/site";
 /** Live guides only — mirrors LIVE_GUIDES in src/app/guides/page.tsx.
  *  lastModified is each guide's fact-checked date. */
 const GUIDES: { slug: string; factChecked: string }[] = [
+  { slug: "crypto-recovery-scams", factChecked: "2026-08-12" },
+  { slug: "seed-phrase-storage", factChecked: "2026-08-12" },
   { slug: "wallet-phishing-recognition", factChecked: "2026-08-11" },
   { slug: "hardware-wallet-authenticity", factChecked: "2026-08-11" },
   { slug: "seed-phrase-entropy", factChecked: "2026-08-08" },

@@ -1,0 +1,117 @@
+import {
+  Kicker,
+  Dek,
+  Byline,
+  GuideTable,
+  SourceNote,
+} from "@/components/guides/guide-kit";
+
+export const metadata = {
+  title: "Paper or steel: how to store a seed phrase so it survives",
+  description:
+    "A seed phrase on paper ignites with the paper — around 230 C, in a room fire that reaches 316 C at eye level before flashover. A seed phrase in a photo is hunted by malware built to find it. The backup that survives is steel, stamped, verified by test restore, and kept as two complete copies in two separate places. Here is the evidence, including the steel products that failed.",
+  alternates: { canonical: "/guides/seed-phrase-storage" },
+};
+
+<Kicker>PROTECT YOURSELF · GUIDE</Kicker>
+
+# Paper or steel: how to store a seed phrase so it survives
+
+<Dek>A seed phrase on paper ignites with the paper — around 230 C, in a room fire that reaches 316 C at eye level before flashover. A seed phrase in a photo is hunted by malware built to find it. The backup that survives is steel, stamped, verified by test restore, and kept as two complete copies in two separate places. Here is the evidence, including the steel products that failed.</Dek>
+
+<Byline published="2026-08-12" sourcesVerified="2026-08-12" />
+
+## Why this guide exists
+
+The seed phrase is the bitcoin. Whoever holds those 12 or 24 words holds the coins; whoever loses them loses the coins, with no password reset and no support line. Our [seed-entropy guide](/guides/seed-phrase-entropy) covers generating the phrase so nobody can guess it. This guide covers the other half of the job: keeping the physical record alive for decades against fire, water, disposal, cameras, and your own stamping errors.
+
+The failure modes are documented, not hypothetical. Journalist Mark Frauenfelder recounted in WIRED in 2017 how he wrote his Trezor's 24-word phrase and PIN on an orange piece of paper; while he was on vacation, a housecleaning service threw it away, locking him out of 7.4 BTC. He got back in only because hardware hacker Saleem Rashid extracted the seed by exploiting a Trezor firmware flaw — his backup strategy was rescued by someone else's security bug. James Howells discarded a hard drive holding the keys to roughly 8,000 BTC into a Newport landfill in 2013; courts have refused excavation ever since. And at the aggregate level, Chainalysis has estimated 2.3 to 3.7 million BTC likely lost forever — an estimate built on a dormancy proxy (coins unmoved five-plus years) from its 2017 analysis, restated in 2020, not a count of destroyed backups specifically. The exact number is unknowable. The direction is not: seed records die, constantly, from mundane causes.
+
+## What is the best way to store a seed phrase?
+
+Never store a seed phrase in digital form — no photo, no cloud note, no password manager, no email. Write it on paper only as a first, temporary record, and verify it by restoring the wallet before you fund it. For any sum you would mind losing, move the words to metal: a stamped or engraved steel backup that has survived independent fire, acid, and crush testing. Keep two complete copies of the full phrase in two locations far enough apart that no single fire, flood, or burglary reaches both — a two-copy backup, not a seed cut in two. Never split the phrase into halves stored separately; that weakens it against brute force and adds new ways for it to be destroyed. If you use a passphrase, store it apart from the seed, or it protects nothing. That is the whole method; the rest of this guide is the evidence.
+
+## What kills a paper backup?
+
+Fire, first and most completely. Paper ignites around 230 C — measured autoignition values span roughly 218 to 246 C depending on paper type, thickness, and moisture, with 451 F (233 C) as the familiar shorthand. Now put that against a house fire, using the US Fire Administration's numbers: room temperatures run about 100 F at floor level and over 600 F — about 316 C — at eye level. Flashover, when everything combustible in the room ignites at once, occurs as the upper room reaches roughly 593 C, after which a fully involved room runs about 593 to 871 C. Even the mild pre-flashover reading at eye level is well past paper's ignition point. A paper seed backup does not need the dramatic worst case to die; it dies in the opening minutes, in the drawer.
+
+Water is slower but just as final: floodwater, a burst pipe, or years of damp storage will run ink and rot fiber. And then there is the failure mode that needs no disaster at all — someone throws it away. That is what happened to Frauenfelder's orange paper, and functionally what happened to Howells' drive. A backup that looks like scrap paper gets treated like scrap paper.
+
+Paper still has one legitimate job: it is the right medium for the first ten minutes of a seed's life — write the words as the wallet displays them, test-restore, then transfer to metal. It is a workbench, not a vault.
+
+## Why is a digital copy the worst option?
+
+Because it converts a physical-theft problem into a remote-theft problem, and attackers have industrialized the remote version.
+
+The vendors are unambiguous. Trezor's official guidance: "Never store your recovery seed in any digital form." "Don't take a picture of it." "Don't put it in an email." "Don't store it in any password manager." Ledger's support guidance says the same, paraphrased here because the page resists archiving — no digital copy of the recovery phrase, no photograph, nothing on a computer or phone or in a password manager; it stays strictly offline.
+
+The case files show why. In April 2022, attackers phished a user's Apple ID credentials — the playbook our [wallet-phishing guide](/guides/wallet-phishing-recognition) covers — and pulled his MetaMask vault out of iCloud's app-data backup, a backup iOS enables by default for app data, per MetaMask's own warning, stealing roughly $650,000 in crypto and NFTs (as reported April 2022; victim Domenic Iacovone). MetaMask publicly warned iOS users that enabling iCloud app backup uploads the password-encrypted seed vault. The seed never touched a website; the phone's default backup behavior was enough.
+
+And the photo in your camera roll is now a hunted asset. Kaspersky's SparkCat, documented in February 2025, was the first OCR-based stealer found in Apple's App Store: it scans victims' photo galleries with optical character recognition looking specifically for images of wallet recovery phrases, and exfiltrates the matches. Its carrier apps on Google Play exceeded 242,000 downloads. A successor, SparkKitty, continued the photo-gallery seed hunt on both stores in June 2025, and a new SparkCat variant was reported in April 2026. Malware that reads your screenshots is not a hypothetical; it shipped through both official app stores, repeatedly.
+
+Against fire, a cloud copy survives fine. That is not a point in its favor — the copy was exposed from the moment it existed.
+
+## What does steel actually survive?
+
+The best public evidence on metal seed phrase storage is Jameson Lopp's independent stress-test series — six rounds on blog.lopp.net, with grades collected at jlopp.github.io/metal-bitcoin-storage-reviews. The methodology is worth knowing before you trust any grade: each device takes a roughly 2,000 F (1,093 C) propane torch for 10 minutes followed by a water quench to simulate firefighting, then 12-plus hours submerged in muriatic acid, then a 20-ton hydraulic press to simulate something like a building collapsing on it. Devices are graded A to F on heat, corrosion, crush, and overall. Lopp verified the torch temperature with a thermometer rated to 2,500 F.
+
+The raw material is not the question. Stainless steel 304 melts at 1,400 to 1,450 C (316 at about 1,375 to 1,400 C), and commercially pure titanium at about 1,668 C — all comfortably above even Lopp's 1,093 C torch, which itself exceeds the 593 to 871 C of a fully involved room fire. Steel does not melt in a house fire. What the tests actually expose is design: housings warp, and anything the housing was holding falls out.
+
+That is precisely how the failures failed. Billfodl: heat warped the tray, letter tiles fell out — catastrophic data loss. Cryptosteel: letters fell out under heat. ColdTi: a screw melted and engraved words were lost at the flame point. Steeldisk: rails warped enough that tiles fell out, graded F across all categories. Copper Seed Safe: catastrophic crush failure plus partial data loss in acid. CipherTag: dissolved in acid and crushed with pliers. The site's overall-F list also includes Ballet Crypto, BitHD Frozen Armor, Bunkeroid, and Ellipal Mnemonic Metal. The recurring pattern across all six rounds: devices built from loose letter tiles in a frame shed data when the frame warps, while stamped or etched single plates fare best. For context, the review index's top overall A grades include Blockplate, CryptoTag Thor, NGRAVE GRAPHENE, Tinyseed, and the $20 DIYSeed. We report those grades; we do not certify any product as safe — and Lopp's own caveat, quoted below, says a passing grade guarantees nothing.
+
+If you searched "seed phrase fireproof," this is the honest version of the answer: fireproof is a marketing word. The useful question is which specific failures a specific device survived in testing run by someone with no stake in the sale. And even a passing grade has a ceiling — Lopp's own caveat: "even if you use a metal storage device that is robust enough to survive a building fire, you can't assume that you will be able to retrieve it." The plate can outlive the house and still end up buried in debris no one can dig. That is what the second copy in the second location is for.
+
+## The mistakes that lose funds anyway
+
+A steel plate faithfully preserving the wrong words is a very durable way to lose everything. Four mistakes recur.
+
+**Stamping and transcription errors.** BIP39 words come from a fixed 2,048-word list, each word encoding 11 bits, with a checksum — the first ENT/32 bits of the SHA256 of the entropy — of 4 bits on a 12-word phrase and 8 bits on a 24-word phrase. That checksum is your safety net, but it has holes: a single wrong word still passes validation with probability about 1 in 16 on a 12-word phrase and about 1 in 256 on a 24-word phrase (exact arithmetic from the spec). So a wallet will reject most stamping errors as an invalid phrase — most, not all. Worse, the error surfaces only at restore time, which may be years after you stamped it. The fix costs one evening: restore the wallet from the stamped plate — not from the paper you copied it off — before the wallet ever holds meaningful funds. One convenience the spec gives you: the wordlist was designed so the first four letters of each word identify it uniquely, which is why many stamping products only fit four letters per word. Stamping "ABAN" for "abandon" is fine; stamping the wrong word is not.
+
+**Wrong word order.** Order is data. As Blockplate's recovery-mistakes writeup puts it: "If you mistype or reorder a word, the checksum won't match, and the wallet will reject the phrase as invalid." Number every word position on the plate, and test-restore.
+
+**Splitting the seed in halves.** It feels like safety engineering — half here, half at the bank, no single burglar gets both. Lopp is blunt about it: "some folks naively split the seed phrase into several parts. This exponentially weakens your seed phrase against brute force attacks." The arithmetic, exact from the BIP39 parameters: a full 12-word phrase carries 128 bits of strength, but an attacker holding 6 of the 12 words faces only 2048 to the 6th power — about 2 to the 66th — candidate completions, and the 4-bit checksum prunes that toward 2 to the 62nd. Meanwhile splitting adds a loss mode: destroy either half and the wallet is gone, so a two-half split doubles your destruction exposure while gutting your brute-force margin. If you genuinely need to distribute trust across locations or people, the tools designed for it are SeedXOR and Shamir-style multi-share schemes (SLIP39), where a partial set of shares reveals nothing. "Two locations" means two complete copies — redundancy — never one seed cut in two.
+
+**Storing the passphrase with the seed.** A BIP39 passphrase — the spec's optional extra secret, layered on top of the words — exists so that the seed words alone cannot spend your coins. Engrave it on the same plate — or seal it in the same envelope — and it protects nothing; whoever finds the backup finds both. Record the passphrase, because a passphrase that lives only in your head is its own single point of failure, but store the record in a different place than the seed.
+
+And once the copies exist, spread them. Lopp again: if one backup is lost, stolen, or destroyed, "you now only have one copy of your seed phrase" — so spread backups "across a variety of physically secure / hard to find locations so that it's unlikely that any single disaster or attacker will be able to cause a simultaneous loss." Trezor's guidance lands in the same place: multiple copies, multiple locations.
+
+## Digital, paper, steel: the same threats, three media
+
+<GuideTable head={["Threat", "Digital copy (photo, cloud, file)", "Paper", "Stamped or engraved steel"]}>
+  <tr>
+    <td><strong>House fire</strong></td>
+    <td>Survives — but survival is irrelevant; the copy was exposed the moment it existed</td>
+    <td>Ignites around 230 C; a fully involved room runs about 593–871 C</td>
+    <td>304 stainless melts near 1,400 C, titanium near 1,668 C; the tested failure mode is warped housings shedding letter tiles, not melting — stamped single plates fared best in Lopp's tests</td>
+  </tr>
+  <tr>
+    <td><strong>Flood, damp, immersion</strong></td>
+    <td>Unaffected — the exposure problem remains</td>
+    <td>Ink runs, fiber rots</td>
+    <td>Unaffected; Lopp's corrosion test is 12-plus hours in muriatic acid, far past floodwater</td>
+  </tr>
+  <tr>
+    <td><strong>Theft by photo or malware</strong></td>
+    <td>This is the attack: OCR stealers like SparkCat scan photo galleries for recovery phrases; iCloud app backup exfiltrated a MetaMask vault for about $650,000 (as reported April 2022)</td>
+    <td>Requires physical access to the paper</td>
+    <td>Requires physical access</td>
+  </tr>
+  <tr>
+    <td><strong>Time, in decades</strong></td>
+    <td>Accounts close, formats rot, phones die — and every migration is a new exposure</td>
+    <td>Fades, yellows, tears, gets thrown out as scrap (7.4 BTC nearly lost that way in 2017)</td>
+    <td>Stable; the long-term risks are seized fasteners and lost locations, not the metal</td>
+  </tr>
+</GuideTable>
+
+The table's shape is the argument: digital fails the one threat that scales — remote theft — while steel's weaknesses are all local, physical, and answerable with a second copy somewhere else.
+
+## Where we have a horse in this race
+
+We sell steel seed storage. KeepCrypt is our own product line — we make it and we profit if you buy it — and it is the category of tool this guide's advice ends at, which is why it is the only product link on this page. The [store](/store) lists three models — Hinge at $99, Cell at $149, Screw at $199 (prices checked 2026-08-08) — built from titanium word beads with stainless shells and fasteners. Those are the store page's claims, and we will not make bigger ones here: word-bead designs depend on their housings and fasteners under heat and crush, which is exactly the failure class Lopp's tests probe, so hold ours to the same standard you would hold anyone's. The advice above stands on its own — any stamped or engraved steel backup that holds up in independent stress testing serves you just as well, and a design that has already survived Lopp's tests has evidence ours does not yet have. His review index is the right place to check any product, ours included. We never certify anything as safe, and that rule does not stop at our own shelf. The store's standing terms: "House products, made by the people who run BTCSCAM ... we take no paid listings and sell no ads. This store is the only commerce on this site."
+
+## Storage is the middle step
+
+A perfectly stored seed phrase is only as good as the seed and the device on either side of it. Generate the phrase so that nobody could have known it before you did — our [seed-entropy guide](/guides/seed-phrase-entropy) covers how, and how to verify it. And confirm the hardware wallet itself is genuine before you trust it to display a seed at all — that is the [hardware-wallet-authenticity guide](/guides/hardware-wallet-authenticity). Generate it right, verify the device, write it once on paper, test-restore, move it to steel, make the second copy, separate the copies. Then leave it alone.
+
+<SourceNote>Sources: The Physics Factbook, "Temperature at which paper burns" (measured autoignition range, accessed 2026-08-11); US Fire Administration, "Learn About Fire," with flashover ranges per the Flashover literature (accessed 2026-08-11); Jameson Lopp, metal seed storage stress tests rounds I–VI, blog.lopp.net, and the review index at jlopp.github.io/metal-bitcoin-storage-reviews (accessed 2026-08-11); Lopp, "How to Back Up a Seed Phrase," blog.lopp.net (accessed 2026-08-11); The World Material and Metal Supermarkets on stainless and titanium melting points (accessed 2026-08-11); WIRED, "I Forgot My PIN: An Epic Tale of Losing $30,000 in Bitcoin" (2017-10); crypto.news and long-running BBC coverage of the Newport landfill drive (2013–present); Decrypt on the Chainalysis lost-coin estimate (2020, restating the 2017 dormancy analysis); BIP39 specification, github.com/bitcoin/bips (accessed 2026-08-11; the passphrase mechanism is the spec's optional extension, with storage-separation practice per Lopp's backup guide); Blockplate, "Common mistakes when recovering a seed phrase" (accessed 2026-08-11); Trezor blog, "Keep your seed phrase away from lions" (accessed 2026-08-11); Ledger support guidance on recovery-phrase handling (paraphrased; accessed 2026-08-11); BleepingComputer on the iCloud MetaMask vault theft (2022-04); The Hacker News and Kaspersky Securelist on SparkCat (2025-02), The Block on SparkKitty (2025-06), and The Hacker News with Kaspersky's press release on the new SparkCat variant (2026-04); BTCSCAM store page for KeepCrypt models and prices (checked 2026-08-08). Fact-checked 2026-08-12. Found an error? We correct in public — [report it](/report).</SourceNote>
