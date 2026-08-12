@@ -1,0 +1,226 @@
+{
+  "id": "2021-bitcoin-atm-impersonation-shakedowns",
+  "slug": "bitcoin-atm-impersonation-shakedowns",
+  "title": "Bitcoin ATM shakedowns: impersonators' QR-code cash funnel took $388.9M in 2025; adults over 50 hit hardest",
+  "summary": "Fake government agents, bank 'fraud departments', and tech-support pop-ups talk victims into feeding cash into Bitcoin ATMs: scan the scammer's QR code and the deposit lands in their wallet. IC3 logged 13,460 kiosk complaints and $388.9M in victim-reported 2025 losses; over half involve people over 50 ($302M lost). Any instruction to pay or 'protect' money at a Bitcoin ATM is a scam.",
+  "trustState": "verified",
+  "severity": "S1",
+  "ongoing": true,
+  "categories": [
+    "impersonation",
+    "social-engineering"
+  ],
+  "firstObserved": "2021-11-04",
+  "published": "2026-08-12",
+  "lastUpdated": "2026-08-12",
+  "entities": {
+    "products": [
+      "Bitcoin ATMs / BTMs / virtual-currency kiosks (all operators — the machines are the funnel, not the perpetrator)"
+    ]
+  },
+  "impact": {
+    "lossUSD": 388981267,
+    "lossNative": "Cash fed into kiosks is converted to BTC/crypto on the spot and dispersed; no single on-chain total exists. IC3 figures are victim-reported and unverified by the FBI.",
+    "victims": "13,460 IC3 kiosk complaints in 2025 (over half from people over 50, who reported $302M of the losses); FTC counted 4,863 BTM fraud reports in 2023 — a fraction of actual harm, since most fraud is never reported",
+    "confidence": "rising",
+    "asOf": "2026-05-15",
+    "source": "https://www.ic3.gov/PSA/2026/PSA260515-2"
+  },
+  "timeline": [
+    {
+      "date": "2020",
+      "event": "FTC Consumer Sentinel baseline: $12M in reported Bitcoin ATM fraud losses across 902 reports — the start of the data series that would grow nearly tenfold by 2023.",
+      "source": "https://www.ftc.gov/system/files/ftc_gov/pdf/bitcoin_atms_spotlight.pdf"
+    },
+    {
+      "date": "2021-11-04",
+      "event": "FBI IC3 issues its first PSA on the mechanic (I-110421-PSA): fraudsters across impersonation, romance, and lottery schemes direct victims to physical crypto ATMs and provide QR codes for payment. 'Once a victim makes the payment, the recipient instantly owns the cryptocurrency, and often immediately transfers the funds into an account overseas.'",
+      "source": "https://www.ic3.gov/PSA/2021/PSA211104"
+    },
+    {
+      "date": "2023",
+      "event": "Reported BTM fraud losses reach $114M across 4,863 FTC reports — up nearly tenfold from 2020. Kiosk installations meanwhile grow from ~4,250 (Jan 2020) toward ~32,000 (June 2024) per operator-self-reported industry data cited by the FTC.",
+      "source": "https://www.ftc.gov/system/files/ftc_gov/pdf/bitcoin_atms_spotlight.pdf"
+    },
+    {
+      "date": "2024-08",
+      "event": "FTC Data Spotlight 'Bitcoin ATMs: A payment portal for scammers': $65M+ lost in H1 2024 alone; median reported loss $10,000; people 60+ more than 3x as likely to report a BTM loss and accounting for ~71% of reported BTM losses; ~86% of categorized BTM fraud reports are government impersonation, business impersonation, and/or tech support scams.",
+      "source": "https://www.ftc.gov/system/files/ftc_gov/pdf/bitcoin_atms_spotlight.pdf"
+    },
+    {
+      "date": "2024-09-03",
+      "event": "FTC press release amplifies the spotlight: 'As soon as consumers scan a QR code provided by scammers at the machine, their cash is deposited straight into the scammers' crypto account.'",
+      "source": "https://www.ftc.gov/news-events/news/press-releases/2024/09/new-ftc-data-shows-massive-increase-losses-bitcoin-atm-scams"
+    },
+    {
+      "date": "2025",
+      "event": "IC3's worst kiosk year on record: 13,460 complaints and $388,981,267 in victim-reported losses — complaints up 23% and losses up 58% over 2024. Over half of complaints involve people over 50, who reported $302M of the losses.",
+      "source": "https://www.ic3.gov/PSA/2026/PSA260515-2"
+    },
+    {
+      "date": "2026-05-15",
+      "event": "IC3 publishes state-by-state kiosk complaint data (I-051526-PSA) as a supplement to its 2025 Annual Report. Texas ($56.8M / 1,179 complaints), Florida ($32.8M / 1,213), California ($24.0M / 978), Illinois ($20.1M / 510), and Pennsylvania ($14.5M / 518) lead; every state is represented.",
+      "source": "https://www.ic3.gov/PSA/2026/PSA260515-2"
+    },
+    {
+      "date": "2026-06-15",
+      "event": "IC3 renews its courier warning (I-061526-PSA): fraudsters running the same impersonation pretexts direct victims — usually seniors — to hand cash to couriers who authenticate via a dollar-bill serial number or password. A machine-free variant of the same shakedown (couriers first flagged in I-012924-PSA, Jan 2024).",
+      "source": "https://www.ic3.gov/PSA/2026/PSA260615"
+    }
+  ],
+  "affected": [
+    "Anyone told by a call, text, email, social-media message, or computer pop-up to withdraw cash and deposit it at a Bitcoin ATM — pretexts include invented 'suspicious activity' on accounts, fake government fines or warrants, money-laundering accusations, and fake Microsoft/Apple security alerts",
+    "Adults 60+ — more than 3x as likely as younger adults to report a BTM loss (FTC, H1 2024); people over 50 filed over half of 2025's IC3 kiosk complaints and lost $302M",
+    "Residents of every US state — Texas, Florida, California, Illinois, and Pennsylvania top IC3's 2025 complaint table, but the scam is location-independent"
+  ],
+  "notAffected": [
+    "People buying crypto at a kiosk on their own initiative — the machine itself is not the scam; the unsolicited instruction to use one is",
+    "Anyone who hung up or walked away before depositing cash — no deposit, no crypto moved; the call alone did not compromise your bank account",
+    "Your bank account itself — this scheme does not hack accounts; it talks you into withdrawing. The 'compromised account' or 'federal case' was invented to create urgency"
+  ],
+  "actions": [
+    "Know the tell: no government agency, bank, utility, or tech company will EVER direct you to pay, move, or 'protect' money via a Bitcoin ATM. The instruction itself is proof of scam — hang up, close the pop-up, walk away from the machine.",
+    "Mid-scam right now? Do not deposit. Do not scan the QR code they sent you. Break contact, then verify independently: look up the agency or company's number yourself and call it — never use a number, link, or QR code the caller provided. Talk to someone you trust first; scammers manufacture urgency precisely so you won't.",
+    "Already deposited cash? Move in minutes, not days: keep the kiosk receipt (it records the destination wallet address, amount, time, and operator), call the kiosk operator's support line printed on the machine or receipt to report fraud on the transaction, and call local police.",
+    "File reports with the receipt details (wallet address, transaction ID, kiosk location, timestamp) at ic3.gov/complaint and ReportFraud.ftc.gov, and notify your bank about the withdrawal. IC3 is the FBI's intake pipeline; both filings also build the loss data regulators act on.",
+    "Ask the kiosk operator about a refund in writing and check your state's virtual-currency kiosk law — several states have enacted refund mandates for defrauded new customers who report quickly (see claims below); your state attorney general's consumer protection office can tell you what applies.",
+    "Crypto deposited at a kiosk cannot be pulled back through the machine, and nobody can retrieve it for an upfront fee. Anyone who contacts you afterward promising recovery — 'law firm', 'blockchain tracer', 'FBI agent' — is running the second half of the scam. Recovery contact = new scam, every time."
+  ],
+  "claims": [
+    {
+      "claim": "In H1 2024, ~86% of people who reported a fraud loss using a BTM (excluding unspecified reports) described a government impersonation, business impersonation, and/or tech support scam; phone calls were the initial contact in ~47% of reports, online ads/pop-ups 16%, email 9%.",
+      "status": "primary-confirmed",
+      "attribution": "FTC Data Spotlight, August 2024 (Consumer Sentinel keyword analysis)",
+      "sources": [
+        "https://www.ftc.gov/system/files/ftc_gov/pdf/bitcoin_atms_spotlight.pdf"
+      ]
+    },
+    {
+      "claim": "Scammers direct victims to specific kiosk locations and appear to prefer some operators over others, a pattern the FTC says likely reflects differences in operators' fraud-prevention measures.",
+      "status": "primary-confirmed",
+      "attribution": "FTC Data Spotlight, August 2024 (report-pattern analysis, footnote 12)",
+      "sources": [
+        "https://www.ftc.gov/system/files/ftc_gov/pdf/bitcoin_atms_spotlight.pdf"
+      ]
+    },
+    {
+      "claim": "IC3 loss figures are victim-reported and not independently verified by the FBI; IC3 describes its statistics as 'an assessment taken at a point in time, which may change based on further analysis or additional information received after the initial evaluation.'",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3, I-051526-PSA",
+      "sources": [
+        "https://www.ic3.gov/PSA/2026/PSA260515-2"
+      ]
+    },
+    {
+      "claim": "Vermont's 8 V.S.A. § 2577 requires virtual-currency kiosk operators to fully refund a new customer fraudulently induced into a transaction who contacts the operator and law enforcement or a government agency within 90 days, and imposes a $1,000 daily transaction limit.",
+      "status": "reported-unconfirmed",
+      "attribution": "Statute text as republished by Justia (2025 Vermont Statutes); direct fetch of the official legislature page failed at draft time — confirm from the official source pre-publish",
+      "sources": [
+        "https://law.justia.com/codes/vermont/title-8/chapter-79/section-2577/"
+      ]
+    },
+    {
+      "claim": "Minnesota enacted a 2024 kiosk law (warning signs, $2,000 daily limit and refunds for new customers) and is reported to have subsequently become the first state to ban crypto kiosks outright; Connecticut and Vermont bans are also reported.",
+      "status": "reported-unconfirmed",
+      "attribution": "AARP Minnesota and trade-press reporting; statutes and effective dates not fetched — verify from state legislature sources pre-publish",
+      "sources": [
+        "https://www.aarp.org/states/minnesota/banning-crypto-kiosk-fraud-in-minnesota/",
+        "https://crypto.news/us/kiosks/"
+      ]
+    },
+    {
+      "claim": "2024 IC3 kiosk-loss baseline of roughly $246M is implied by IC3's stated 58% year-over-year increase to $388.9M, but IC3's PSA does not state the 2024 figure directly.",
+      "status": "reported-unconfirmed",
+      "attribution": "BTCSCAM derivation from IC3's stated percentages — labeled an estimate, method stated",
+      "sources": [
+        "https://www.ic3.gov/PSA/2026/PSA260515-2"
+      ]
+    }
+  ],
+  "relatedIncidents": [],
+  "sources": [
+    {
+      "url": "https://www.ic3.gov/PSA/2026/PSA260515-2",
+      "publisher": "FBI Internet Crime Complaint Center (IC3), I-051526-PSA — 'IC3 Cryptocurrency Kiosk Complaint Data By State' (archive capture pending: no Wayback/archive.today snapshot exists and Save Page Now was refused for this URL at draft time)",
+      "date": "2026-05-15",
+      "type": "primary"
+    },
+    {
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/bitcoin_atms_spotlight.pdf",
+      "publisher": "Federal Trade Commission — Data Spotlight, 'Bitcoin ATMs: A payment portal for scammers' (PDF; dated August 2024, no day given) (archived: https://web.archive.org/web/20250924171234/https://www.ftc.gov/system/files/ftc_gov/pdf/bitcoin_atms_spotlight.pdf)",
+      "date": "2024-08",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/09/bitcoin-atms-payment-portal-scammers",
+      "publisher": "Federal Trade Commission — Data Spotlight (web version; date per FTC press release) (archived: https://web.archive.org/web/20260711045413/https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2024/09/bitcoin-atms-payment-portal-scammers)",
+      "date": "2024-09-03",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2024/09/new-ftc-data-shows-massive-increase-losses-bitcoin-atm-scams",
+      "publisher": "Federal Trade Commission — press release (archived: https://web.archive.org/web/20260623070945/https://www.ftc.gov/news-events/news/press-releases/2024/09/new-ftc-data-shows-massive-increase-losses-bitcoin-atm-scams)",
+      "date": "2024-09-03",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2021/PSA211104",
+      "publisher": "FBI Internet Crime Complaint Center (IC3), I-110421-PSA — first federal PSA on crypto-ATM + QR-code payment schemes (archived: https://web.archive.org/web/20260721001820/https://www.ic3.gov/PSA/2021/PSA211104)",
+      "date": "2021-11-04",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2026/PSA260615",
+      "publisher": "FBI Internet Crime Complaint Center (IC3), I-061526-PSA — courier variant of the cash funnel (archived: https://web.archive.org/web/20260730224335/https://www.ic3.gov/PSA/2026/PSA260615)",
+      "date": "2026-06-15",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2024/PSA240129",
+      "publisher": "FBI Internet Crime Complaint Center (IC3), I-012924-PSA — 'Scammers Use Couriers to Retrieve Cash and Precious Metals from Victims of Scams' (archived: https://archive.ph/20250715215608/https://www.ic3.gov/PSA/2024/PSA240129)",
+      "date": "2024-01-29",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.helpnetsecurity.com/2026/05/20/us-crypto-atm-scams-losses-2026/",
+      "publisher": "Help Net Security (archived: https://web.archive.org/web/20260811180536/https://www.helpnetsecurity.com/2026/05/20/us-crypto-atm-scams-losses-2026/)",
+      "date": "2026-05-20",
+      "type": "news"
+    },
+    {
+      "url": "https://law.justia.com/codes/vermont/title-8/chapter-79/section-2577/",
+      "publisher": "Justia — 8 V.S.A. § 2577 (2025 Vermont Statutes), kiosk refund provision (unconfirmed pending official fetch; archive capture pending — Wayback and archive.today saves were refused at draft time, site blocks archivers)",
+      "type": "primary"
+    }
+  ],
+  "aliases": [
+    "Bitcoin ATM scam",
+    "Crypto kiosk scam",
+    "BTM fraud",
+    "QR-code cash funnel",
+    "Government impersonation Bitcoin ATM shakedown",
+    "'Safety locker' scam"
+  ],
+  "phrases": [
+    "government said pay fine at bitcoin atm",
+    "bitcoin atm scam can i get money back",
+    "bank fraud department told me to buy bitcoin",
+    "deposited cash at bitcoin atm scammed what to do",
+    "scanned qr code at bitcoin atm was it a scam",
+    "irs social security asking for bitcoin payment real",
+    "microsoft security alert told me to withdraw cash",
+    "bitcoin atm refund from kiosk operator"
+  ],
+  "tags": [
+    "bitcoin-atm",
+    "btm",
+    "crypto-kiosk",
+    "qr-code",
+    "government-impersonation",
+    "tech-support-scam",
+    "elder-fraud",
+    "cash-funnel",
+    "ftc",
+    "ic3"
+  ]
+}
