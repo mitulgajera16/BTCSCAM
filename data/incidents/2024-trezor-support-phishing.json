@@ -1,0 +1,177 @@
+{
+  "id": "2024-trezor-support-phishing",
+  "slug": "trezor-support-phishing",
+  "title": "Trezor support-channel phishing: 2024 support-portal breach and 2025 contact-form abuse",
+  "summary": "Trezor's support channels were twice weaponized for phishing: a January 2024 breach of its third-party support portal may have exposed names and emails of up to 66,000 customers (41 then emailed for their recovery seeds), and in June 2025 attackers abused the contact form so real help@trezor.io auto-replies carried phishing subject lines. No seed or fund losses confirmed; phishing risk persists.",
+  "trustState": "corroborated",
+  "severity": "S3",
+  "ongoing": true,
+  "categories": [
+    "phishing",
+    "impersonation"
+  ],
+  "firstObserved": "2024-01-17",
+  "published": "2026-08-12",
+  "lastUpdated": "2026-08-12",
+  "entities": {
+    "vendor": "Trezor (SatoshiLabs)",
+    "domains": [
+      "vault.trezor[.]guide"
+    ]
+  },
+  "impact": {
+    "victims": "Up to 66,000 support contacts exposed (2024 portal breach); 41 users directly emailed for their recovery seeds. No seed disclosures or fund losses confirmed in either incident.",
+    "confidence": "confirmed",
+    "asOf": "2025-06-24",
+    "source": "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8"
+  },
+  "timeline": [
+    {
+      "date": "2021-12",
+      "event": "Earliest support interactions covered by the later-exposed dataset: everyone who contacted Trezor Support from this month onward was in scope of the 2024 portal breach.",
+      "source": "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8"
+    },
+    {
+      "date": "2024-01-17",
+      "event": "Trezor detects unauthorized access to its third-party support ticketing portal (contained same day, 20:20 CET per its advisory). Names/nicknames and email addresses of up to 66,000 customers may have been accessed, per Trezor; postal addresses, phone numbers, and seeds were not accessed. Trezor also reports 8 users of a trial discussion platform hosted by the same third-party vendor might have had their contact details compromised.",
+      "source": "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8"
+    },
+    {
+      "date": "2024-01-19",
+      "event": "Trezor publishes its disclosure advisory and warns all potentially affected users to expect phishing: 'Trezor will never ask for your recovery seed, over email, customer support, or any form of communication.'",
+      "source": "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8"
+    },
+    {
+      "date": "2024-01",
+      "event": "The attacker directly emails 41 exposed users posing as automated support replies, asking them to disclose their 24-word recovery seed for 'firmware validation' and claiming it would not be 'accessible by humans'. Trezor reports no seeds were disclosed.",
+      "source": "https://www.bleepingcomputer.com/news/security/trezor-support-site-breach-exposes-personal-data-of-66-000-customers/"
+    },
+    {
+      "date": "2025-06-23",
+      "event": "Trezor issues a security alert (via X): attackers are abusing the public contact form by filing tickets under targeted users' email addresses with phishing lures as ticket titles, so the automated reply from the real help@trezor.io address delivers the scam. Trezor states the issue is contained and 'there was no email breach.'",
+      "source": "https://crypto.news/trezor-issues-security-alert-after-contact-form-exploit-used-in-phishing-scam/"
+    },
+    {
+      "date": "2025-06-24",
+      "event": "BleepingComputer details the mechanics: the support system accepts tickets from any email address and auto-replies with a case number, using the attacker-chosen ticket title as the email subject — one reported lure read '[URGENT]: vault.trezor[.]guide - Create a Trezor Vault now in order to secure assets who may potentially be at risk.' (domain defanged), steering recipients to sites that harvest seed phrases.",
+      "source": "https://www.bleepingcomputer.com/news/security/trezors-support-platform-abused-in-crypto-theft-phishing-attacks/"
+    }
+  ],
+  "affected": [
+    "Anyone who contacted Trezor Support between December 2021 and January 2024 — name/nickname and email address exposed in the 2024 portal breach; expect targeted phishing that knows you own a Trezor",
+    "Any Trezor user (or anyone whose email an attacker knows) — the June 2025 contact-form trick needed only a target's email address, no breach of the target at all",
+    "Recipients of emails from help@trezor.io they did not initiate — a genuinely-Trezor sender address can still carry an attacker's message in the subject line"
+  ],
+  "notAffected": [
+    "Trezor devices, firmware, and on-device seeds — neither incident touched them; no seeds, passwords, or funds were exposed by Trezor's systems",
+    "Postal addresses and phone numbers stored on the 2024 support portal — not accessed, per Trezor's advisory",
+    "Users who never contacted Trezor Support since December 2021 were not in the 2024 exposed dataset (though the 2025 technique could still target them)",
+    "Anyone who never typed their recovery seed anywhere off-device — support-channel phishing only works if you hand over the seed"
+  ],
+  "actions": [
+    "Never type or share your recovery seed (wallet backup) anywhere except on the Trezor device itself. No legitimate Trezor email, support ticket, chat, or 'firmware validation' will ever ask for it — a request for your seed IS the scam.",
+    "Treat any 'Trezor support' email you did not initiate as hostile, even when the sender is genuinely help@trezor.io — the June 2025 abuse put phishing lures in the subject lines of real auto-replies. Do not click links in such emails; reach Trezor only by typing trezor.io yourself.",
+    "If you contacted Trezor Support between December 2021 and January 2024, assume scammers have your name, email, and the fact that you own a Trezor. Be suspicious of any crypto-themed email, and consider moving that address to spam-filtered or retired status for wallet matters.",
+    "If you already entered your seed on a website or sent it to 'support': your funds are at risk right now. Immediately create a new wallet with a fresh seed generated on-device and move all funds to it, then stop using the compromised seed forever.",
+    "If money was stolen, report it to law enforcement — in the US file at ic3.gov (FBI IC3); elsewhere use your national cybercrime portal — and keep the phishing email as evidence. No private company can claw back your bitcoin: anyone who promises recovery for a fee is running the second half of the scam."
+  ],
+  "claims": [
+    {
+      "claim": "Unauthorized access to Trezor's third-party support portal was detected January 17, 2024; up to 66,000 customers' names/nicknames and email addresses may have been accessed; no funds or seeds were compromised.",
+      "status": "primary-confirmed",
+      "attribution": "Trezor security advisory, blog.trezor.io",
+      "sources": [
+        "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8"
+      ]
+    },
+    {
+      "claim": "41 exposed users were directly emailed by the attacker asking for their 24-word recovery seed; no seeds were disclosed and no successful thefts were reported from the 2024 wave.",
+      "status": "primary-confirmed",
+      "attribution": "Trezor advisory; corroborated by BleepingComputer",
+      "sources": [
+        "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8",
+        "https://www.bleepingcomputer.com/news/security/trezor-support-site-breach-exposes-personal-data-of-66-000-customers/"
+      ]
+    },
+    {
+      "claim": "In the June 2025 incident no Trezor email system or infrastructure was breached; attackers only abused the public contact form's auto-reply ('There was no email breach. Attackers contacted our support on behalf of affected addresses, triggering an auto-reply' — Trezor via X). This is the vendor's own characterization; no independent forensic confirmation has been published.",
+      "status": "reported-unconfirmed",
+      "attribution": "Trezor statement on X, June 23, 2025, as quoted by crypto.news and BleepingComputer; primary X post not retrieved",
+      "sources": [
+        "https://crypto.news/trezor-issues-security-alert-after-contact-form-exploit-used-in-phishing-scam/",
+        "https://www.bleepingcomputer.com/news/security/trezors-support-platform-abused-in-crypto-theft-phishing-attacks/"
+      ]
+    },
+    {
+      "claim": "Trezor emailed all ~66,000 potentially affected contacts on January 20, 2024 to alert them to the breach.",
+      "status": "primary-confirmed",
+      "attribution": "Trezor advisory, updated Jan 20, 2024 ('we have emailed today, 20th January 2024, all of the 66,000 contacts'); corroborated by BleepingComputer",
+      "sources": [
+        "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8",
+        "https://www.bleepingcomputer.com/news/security/trezor-support-site-breach-exposes-personal-data-of-66-000-customers/"
+      ]
+    },
+    {
+      "claim": "The identity of the breached third-party support-portal vendor has not been named by Trezor; as of 2026-08-11, no attribution of, or charges against, the attacker behind either incident appear in any cited source.",
+      "status": "reported-unconfirmed",
+      "attribution": "Absence of attribution in Trezor advisory and all fetched coverage",
+      "sources": [
+        "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8"
+      ]
+    }
+  ],
+  "relatedIncidents": [
+    "2026-coldcard-phishing-wave"
+  ],
+  "sources": [
+    {
+      "url": "https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8",
+      "publisher": "Trezor (official advisory, SatoshiLabs) (archived: https://web.archive.org/web/20240122112334/https://blog.trezor.io/trezor-security-update-stay-vigilant-against-potential-phishing-attack-bb05015a21f8)",
+      "date": "2024-01-19",
+      "type": "vendor"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/trezor-support-site-breach-exposes-personal-data-of-66-000-customers/",
+      "publisher": "BleepingComputer",
+      "date": "2024-01-22",
+      "type": "news"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/trezors-support-platform-abused-in-crypto-theft-phishing-attacks/",
+      "publisher": "BleepingComputer",
+      "date": "2025-06-24",
+      "type": "news"
+    },
+    {
+      "url": "https://crypto.news/trezor-issues-security-alert-after-contact-form-exploit-used-in-phishing-scam/",
+      "publisher": "crypto.news",
+      "date": "2025-06-23",
+      "type": "news"
+    }
+  ],
+  "aliases": [
+    "Trezor data breach 2024",
+    "Trezor support portal hack",
+    "Trezor help@trezor.io phishing",
+    "Trezor contact form phishing 2025"
+  ],
+  "phrases": [
+    "email from trezor support asking for recovery seed",
+    "trezor data breach 2024 what was leaked",
+    "is email from help@trezor.io legit",
+    "trezor asked for my seed phrase firmware validation",
+    "gave my seed to trezor support what do i do",
+    "trezor phishing email 2025"
+  ],
+  "tags": [
+    "trezor",
+    "satoshilabs",
+    "hardware-wallet",
+    "phishing",
+    "data-breach",
+    "support-portal",
+    "help-desk-abuse",
+    "seed-phrase",
+    "impersonation"
+  ]
+}
