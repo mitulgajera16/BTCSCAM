@@ -73,6 +73,15 @@ test("deriveSyncBadges reports missing row, stale row, and git state", () => {
   const inSync = deriveSyncBadges(doc, { lastUpdated: "2026-08-11", data: doc }, false);
   assert.ok(inSync.every((b) => b.ok));
 
+  // Supabase returns last_updated as timestamptz; the file stores a plain
+  // date. Same day must count as in sync.
+  const tzRow = deriveSyncBadges(
+    doc,
+    { lastUpdated: "2026-08-11T00:00:00+00:00", data: doc },
+    false,
+  );
+  assert.ok(tzRow.every((b) => b.ok));
+
   const stale = deriveSyncBadges(doc, { lastUpdated: "2026-08-01", data: doc }, false);
   assert.ok(stale.some((b) => !b.ok));
 

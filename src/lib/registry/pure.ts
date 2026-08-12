@@ -122,9 +122,12 @@ export function deriveSyncBadges(
   uncommitted: boolean,
 ): SyncBadge[] {
   const badges: SyncBadge[] = [];
+  // DB last_updated arrives as timestamptz, files store YYYY-MM-DD — compare
+  // the date part only.
+  const dbDate = row?.lastUpdated ? row.lastUpdated.slice(0, 10) : null;
   if (!row) {
     badges.push({ label: "NOT IN DATABASE — seed pending", ok: false });
-  } else if (row.lastUpdated !== fileDoc.lastUpdated) {
+  } else if (dbDate !== fileDoc.lastUpdated) {
     badges.push({
       label: `DB DATE ${row.lastUpdated ?? "?"} ≠ FILE ${fileDoc.lastUpdated} — reseed`,
       ok: false,
