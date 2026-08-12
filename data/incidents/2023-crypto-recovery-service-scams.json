@@ -58,7 +58,7 @@
   "actions": [
     "If a 'recovery service', 'crypto tracer', 'law firm', or 'agent' contacted YOU first: stop responding and pay nothing. No private company can issue a seizure order to recover cryptocurrency (FBI IC3), and law enforcement never charges victims a fee. Whoever initiates contact promising your funds back is running the second half of the scam.",
     "Report the original theft AND the recovery approach at www.ic3.gov — type the address into your browser yourself and confirm it ends in .gov. The IC3 has no social media presence, never initiates contact by phone, email, Telegram, or WhatsApp, and never asks for payment.",
-    "The only real recovery paths are official ones: check https://www.forfeiture.gov for federal forfeiture notices and petitions for remission in cases where the government seized funds, https://www.justice.gov/criminal/criminal-mnf for the DOJ remission process, and https://www.ftc.gov/enforcement/refunds for FTC refund programs. All are free. Anyone charging to 'file' these for you is taking money for a form you can submit yourself.",
+    "The only real recovery paths are official ones: check https://www.forfeiture.gov for federal forfeiture notices and petitions for remission in cases where the government seized funds, https://www.justice.gov/criminal-mlars/victims for the DOJ remission process, and https://www.ftc.gov/enforcement/refunds for FTC refund programs. All are free. Anyone charging to 'file' these for you is taking money for a form you can submit yourself.",
     "If a 'law firm' claims to be working with the government on your case: no law firm is an authorized partner of any US government agency — the FBI says so flatly (IC3 alert I-081325-PSA). Verify any attorney independently through your state bar's public lookup, and treat refusal of video verification or license documentation as the answer.",
     "Never pay a fee in cryptocurrency or gift cards, never share your seed phrase or wallet access, and never install remote-access software for anyone claiming to trace or recover funds — these are extraction steps, not recovery steps.",
     "If the victim is 60 or older, the DOJ National Elder Fraud Hotline (833-372-8311 / 833-FRAUD-11) will help file the IC3 complaint for free."
@@ -102,13 +102,16 @@
       "attribution": "BTCSCAM demand-map research (search-suggest and SERP observation, Aug 2026); not the subject of an official warning"
     },
     {
-      "claim": "Aggregate dollar losses to recovery scams specifically are not published by any primary source; the FBI's PSAs quantify the underlying frauds (e.g., $2.5B+ crypto investment fraud losses in 2022) but not the secondary recovery-scam take.",
-      "status": "reported-unconfirmed",
-      "attribution": "BTCSCAM editorial note on the sourcing gap, as of 2026-08-11"
+      "claim": "The FBI's IC3 2025 Annual Report tallies recovery scams at 10,516 complaints and $1.4 billion in reported losses — with the report's own caveat, verbatim: '*Losses may also include losses experienced from previous scams which prompted the contact with the recovery company.'",
+      "status": "primary-confirmed",
+      "attribution": "FBI IC3 2025 Annual Report, cryptocurrency section",
+      "sources": [
+        "https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf"
+      ]
     }
   ],
   "relatedGuides": [
-    "recovery-service-scams"
+    "crypto-recovery-scams"
   ],
   "relatedIncidents": [
     "2026-coldcard-phishing-wave"
@@ -144,8 +147,8 @@
       "type": "primary"
     },
     {
-      "url": "https://www.justice.gov/criminal/criminal-mnf",
-      "publisher": "U.S. Department of Justice, Money Laundering, Narcotics and Forfeiture Section (MNF)",
+      "url": "https://www.justice.gov/criminal-mlars/victims",
+      "publisher": "U.S. Department of Justice, Money Laundering and Asset Recovery Section (victims program)",
       "type": "primary"
     },
     {
@@ -161,6 +164,17 @@
     {
       "url": "https://www.ic3.gov/crimeinfo/elderfraud",
       "publisher": "FBI Internet Crime Complaint Center (elder fraud — IC3 filing assistance via the National Elder Fraud Hotline)",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/PSA/2024/PSA240624",
+      "publisher": "FBI Internet Crime Complaint Center (fictitious law firms alert)",
+      "date": "2024-06-24",
+      "type": "regulator"
+    },
+    {
+      "url": "https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf",
+      "publisher": "FBI Internet Crime Complaint Center (2025 Annual Report)",
       "type": "regulator"
     }
   ],
