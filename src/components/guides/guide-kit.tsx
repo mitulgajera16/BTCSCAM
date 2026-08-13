@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { getAllIncidents, TRUST_LABEL, type Incident } from "@/lib/incidents";
+import SeverityChip from "@/components/primitives/severity-chip";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" } as const;
 const display = { fontFamily: "var(--font-fraunces), serif" } as const;
@@ -168,29 +169,7 @@ export function WhyThisMatters({ ids }: { ids: string[] }) {
           >
             <div>
               <div style={{ display: "flex", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
-                <span
-                  style={{
-                    ...mono,
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: ".05em",
-                    padding: "2px 8px",
-                    background: i.severity === "S1" ? "var(--danger)" : "transparent",
-                    border: `1px solid ${
-                      i.severity === "S1" || i.severity === "S2"
-                        ? "var(--danger)"
-                        : "var(--rule)"
-                    }`,
-                    color:
-                      i.severity === "S1"
-                        ? "#fff"
-                        : i.severity === "S2"
-                          ? "var(--danger)"
-                          : "var(--meta)",
-                  }}
-                >
-                  {i.severity}
-                </span>
+                <SeverityChip severity={i.severity} length="code" />
                 <span
                   style={{
                     ...mono,

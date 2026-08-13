@@ -7,6 +7,7 @@ import { coverFor, type Cover } from "@/lib/covers";
 import { PlateHero, PlateHeroCredit, PlateThumb } from "@/components/plate";
 import WireTicker, { getTickerItems } from "@/components/wire-ticker";
 import type { Metadata } from "next";
+import SeverityChip from "@/components/primitives/severity-chip";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -37,25 +38,6 @@ function TrustChip({ state }: { state: keyof typeof TRUST_LABEL }) {
   );
 }
 
-function CriticalChip({ severity }: { severity: string }) {
-  const critical = severity === "S1";
-  return (
-    <span
-      style={{
-        ...mono,
-        fontSize: 11,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        padding: "2px 8px",
-        background: critical ? "var(--danger)" : "transparent",
-        border: `1px solid var(--danger)`,
-        color: critical ? "#fff" : "var(--danger)",
-      }}
-    >
-      {critical ? "CRITICAL" : severity}
-    </span>
-  );
-}
 
 function fmtAgo(iso: string, now: Date): string {
   const days = Math.floor(
@@ -216,7 +198,7 @@ export default async function Home() {
               color: "rgba(252,251,249,0.7)",
             }}
           >
-            <CriticalChip severity={hero.severity} />
+            <SeverityChip severity={hero.severity} />
             <TrustChip state={hero.trustState} />
             <span>
               FILED {hero.firstObserved} · UPDATED {hero.lastUpdated}
@@ -278,7 +260,7 @@ export default async function Home() {
                 }}
               >
                 <span style={{ display: "flex", alignItems: "baseline", gap: 10, minWidth: 0 }}>
-                  <CriticalChip severity={i.severity} />
+                  <SeverityChip severity={i.severity} />
                   <Link
                     href={`/scam/${i.slug}`}
                     style={{ fontWeight: 700, fontSize: 15, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}

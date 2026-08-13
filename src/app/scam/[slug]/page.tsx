@@ -4,7 +4,6 @@ import {
   getAllIncidents,
   isStale,
   TRUST_LABEL,
-  SEVERITY_LABEL,
 } from "@/lib/incidents";
 import {
   fetchAllIncidents,
@@ -16,6 +15,7 @@ import { liveGuidesFor } from "@/lib/guides";
 import { coverFor } from "@/lib/covers";
 import { PlateFigure } from "@/components/plate";
 import SectionRule from "@/components/primitives/section-rule";
+import SeverityChip from "@/components/primitives/severity-chip";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -140,25 +140,7 @@ export default async function IncidentPage({
       )}
 
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-        <span
-          style={{
-            ...mono,
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: ".05em",
-            padding: "2px 8px",
-            background: incident.severity === "S1" ? "var(--danger)" : "transparent",
-            border: `1px solid ${["S1", "S2"].includes(incident.severity) ? "var(--danger)" : "var(--rule)"}`,
-            color:
-              incident.severity === "S1"
-                ? "#fff"
-                : ["S2"].includes(incident.severity)
-                  ? "var(--danger)"
-                  : "var(--meta)",
-          }}
-        >
-          {SEVERITY_LABEL[incident.severity]}
-        </span>
+        <SeverityChip severity={incident.severity} length="full" />
         <span
           style={{
             ...mono,
