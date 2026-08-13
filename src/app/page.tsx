@@ -5,7 +5,6 @@ import { fetchAllIncidents } from "@/lib/incidents-db";
 import { fetchPrices } from "@/lib/prices";
 import { coverFor, type Cover } from "@/lib/covers";
 import { PlateHero, PlateHeroCredit, PlateThumb } from "@/components/plate";
-import SiteHeader from "@/components/site-header";
 import WireTicker, { getTickerItems } from "@/components/wire-ticker";
 import type { Metadata } from "next";
 
@@ -145,8 +144,6 @@ export default async function Home() {
   return (
     <main>
       <WireTicker items={tickerItems} prices={prices} />
-
-      <SiteHeader />
 
       {/* Lead story — painting-led hero per v4 */}
       <section

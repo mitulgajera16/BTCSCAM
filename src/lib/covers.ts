@@ -42,7 +42,7 @@ const ASSIGNMENTS: Record<string, Assignment> = {
   "coldcard-rng-seed-entropy-flaw-2026": {
     plate: "conjurer",
     allegory:
-      "The crowd watches the cups while the purse is cut behind them. The generator palmed your entropy while you watched the screen",
+      "The crowd watches the cups while the purse is cut behind them. The device palmed your randomness while you watched the screen",
   },
   "coldcard-hardware-audit-phishing-2026": {
     plate: "big-fish",
@@ -52,12 +52,12 @@ const ASSIGNMENTS: Record<string, Assignment> = {
   "milk-sad-libbitcoin-explorer-weak-entropy": {
     plate: "babel",
     allegory:
-      "A tower raised by thousands of hands on a foundation nobody checked. Every key it built came from thirty-two bits of sand",
+      "A tower raised by thousands of hands on a foundation nobody checked. Every key it built rested on a number small enough to guess",
   },
   "hashflare-cloud-mining-fraud": {
     plate: "alchemist",
     allegory:
-      "Impressive apparatus, run in earnest, that was never going to produce gold. The hashrate was sold; it did not exist",
+      "Impressive apparatus, run in earnest, that was never going to produce gold. The mining power was sold; it did not exist",
   },
   "bitconnect-ponzi": {
     plate: "wagon-of-fools",
@@ -77,12 +77,12 @@ const ASSIGNMENTS: Record<string, Assignment> = {
   "ledger-impersonation-ecosystem": {
     plate: "misanthrope",
     allegory:
-      "A man withdraws from the world for safety and is robbed inside the sphere he trusted. Self-custody was the right instinct; the letter in the post was not from Ledger",
+      "A man withdraws from the world for safety and is robbed inside the sphere he trusted. Holding your own coins was the right instinct; the letter in the post was not from Ledger",
   },
   "twitter-2020-giveaway-hack": {
     plate: "blind",
     allegory:
-      "The leaders are in the ditch and the line is still walking. The accounts were verified; the verification was the attack surface",
+      "The leaders are in the ditch and the line is still walking. The accounts were genuine, and the blue ticks did the persuading",
   },
   "bitcoin-atm-impersonation-shakedowns": {
     plate: "tax-collectors",
@@ -158,7 +158,7 @@ const CATEGORY_DEFAULTS: Record<string, { plate: PlateKey; allegory: string }> =
   impersonation: {
     plate: "isaac-jacob",
     allegory:
-      "Borrowed credentials pass a hands-on identity check because trust stood in for verification",
+      "Borrowed login details pass a hands-on identity check because trust stood in for checking",
   },
   phishing: {
     plate: "fishing-for-souls",
@@ -192,11 +192,11 @@ const CATEGORY_DEFAULTS: Record<string, { plate: PlateKey; allegory: string }> =
   malware: {
     plate: "trojan-horse",
     allegory:
-      "The payload comes through the wall by invitation, hauled in by the people it will ruin",
+      "The thing that ruins them comes through the wall by invitation, hauled in by its own victims",
   },
   "fake-device": {
     plate: "goldsmith",
-    allegory: "Assay at the counter before you trust it, and watch the street in the mirror",
+    allegory: "Test it at the counter before you trust it, and watch the street in the mirror",
   },
 };
 

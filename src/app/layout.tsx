@@ -4,6 +4,7 @@ import { Agentation } from "agentation";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE_URL } from "@/lib/site";
+import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import "./globals.css";
 
@@ -81,6 +82,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             __html: JSON.stringify(siteJsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        {/* Masthead + nav are sitewide: /scam/[slug] is the page victims land
+            on from Google, and it used to render with no wordmark and no route
+            to /check or /report. Outside <main> so the banner landmark does not
+            nest inside the main one. */}
+        <SiteHeader />
         {children}
         <SiteFooter />
         <Analytics />

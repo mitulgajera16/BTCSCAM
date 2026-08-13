@@ -30,7 +30,7 @@ test("filename mapping follows house convention", () => {
   assert.equal(draftFileName(doc), "bitcoin-atm-impersonation-shakedowns.json");
 });
 
-test("validateForPublish passes a complete dossier", () => {
+test("validateForPublish passes a complete case file", () => {
   assert.deepEqual(validateForPublish(doc as never), []);
 });
 

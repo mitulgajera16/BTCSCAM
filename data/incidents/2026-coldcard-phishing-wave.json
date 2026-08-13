@@ -93,7 +93,7 @@
   "corrections": [
     {
       "date": "2026-08-12",
-      "note": "Trust state downgraded VERIFIED → CORROBORATED. Our standard reserves VERIFIED for 2+ independent primary sources (vendor advisory, on-chain proof, regulator filing); this dossier's sourcing is independent news reporting of Proofpoint's research, not a primary artifact we hold directly. Two-plus independent outlets corroborate the campaign, which is exactly CORROBORATED. Added the BleepingComputer technical report as a third independent source. We will restore VERIFIED if a primary source (Proofpoint's own advisory or a Coinkite statement on the phishing wave specifically) is captured."
+      "note": "Proof level downgraded VERIFIED → BACKED BY SOURCES. Our standard reserves VERIFIED for 2+ independent primary sources (vendor advisory, on-chain proof, regulator filing); this case file's sourcing is independent news reporting of Proofpoint's research, not a primary artifact we hold directly. Two-plus independent outlets corroborate the campaign, which is exactly BACKED BY SOURCES. Added the BleepingComputer technical report as a third independent source. We will restore VERIFIED if a primary source (Proofpoint's own advisory or a Coinkite statement on the phishing wave specifically) is captured."
     }
   ],
   "aliases": [

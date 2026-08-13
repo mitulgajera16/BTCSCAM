@@ -106,12 +106,12 @@
     "aliases": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "Other names this incident is known by — shown on the dossier so readers can confirm they found the right event"
+      "description": "Other names this incident is known by — shown on the case file so readers can confirm they found the right event"
     },
     "phrases": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "Victim search grammar (I-8): the exact phrases a worried person types — 'is X a scam', 'X stolen bitcoin'. Feeds metadata keywords and the ALSO SEARCHED AS block; dossiers speak the victim's language"
+      "description": "Victim search grammar (I-8): the exact phrases a worried person types — 'is X a scam', 'X stolen bitcoin'. Feeds metadata keywords and the ALSO SEARCHED AS block; case files speak the victim's language"
     },
     "tags": { "type": "array", "items": { "type": "string" } }
   }

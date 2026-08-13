@@ -37,7 +37,7 @@ test("parses checklist items keyed by draft file name", () => {
   ]);
 });
 
-test("a dossier section without a checklist maps to an empty list", () => {
+test("a case file section without a checklist maps to an empty list", () => {
   const flags = parseReviewFlags(FIXTURE);
   assert.deepEqual(flags.get("second-dossier.json"), []);
 });
