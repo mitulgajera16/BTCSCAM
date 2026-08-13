@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test 'tests/*.test.ts'"
+    "test": "node --test 'tests/*.test.ts'",
+    "plates": "node --experimental-strip-types scripts/fetch-plates.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -29,6 +30,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postgres": "^3.4.9",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

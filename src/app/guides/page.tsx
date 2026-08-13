@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { coverFor } from "@/lib/covers";
+import { PlateThumb } from "@/components/plate";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif" };
@@ -179,8 +181,20 @@ export default function GuidesPage() {
                 READ THE GUIDE →
               </Link>
             </div>
-            <div style={{ ...mono, fontSize: 12, textAlign: "right", color: "var(--meta)" }}>
-              PUBLISHED {g.published}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                gap: 10,
+              }}
+            >
+              <span style={{ ...mono, fontSize: 12, color: "var(--meta)" }}>
+                PUBLISHED {g.published}
+              </span>
+              <Link href={`/guides/${g.slug}`} aria-hidden="true" tabIndex={-1}>
+                <PlateThumb cover={coverFor(`guide:${g.slug}`)} size={104} />
+              </Link>
             </div>
           </article>
         ))}

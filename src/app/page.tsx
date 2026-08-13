@@ -3,7 +3,8 @@ import Image from "next/image";
 import { TRUST_LABEL, type Incident } from "@/lib/incidents";
 import { fetchAllIncidents } from "@/lib/incidents-db";
 import { fetchPrices } from "@/lib/prices";
-import { coverFor } from "@/lib/covers";
+import { coverFor, type Cover } from "@/lib/covers";
+import { PlateHero, PlateHeroCredit, PlateThumb } from "@/components/plate";
 import SiteHeader from "@/components/site-header";
 import WireTicker, { getTickerItems } from "@/components/wire-ticker";
 import type { Metadata } from "next";
@@ -90,7 +91,7 @@ type LatestRow = {
   href: string;
   summary?: string;
   dateline: string;
-  coverKey: string;
+  cover: Cover;
 };
 
 export default async function Home() {
@@ -106,7 +107,7 @@ export default async function Home() {
   );
   const critical = dangerous.find((i) => i.severity === "S1");
   const hero: Incident = critical ?? dangerous[0] ?? incidents[0];
-  const heroCover = coverFor(hero.slug);
+  const heroCover = coverFor(hero.slug, hero.categories);
 
   const latest: LatestRow[] = [
     ...[...incidents]
@@ -118,7 +119,7 @@ export default async function Home() {
         href: `/scam/${i.slug}`,
         summary: i.summary,
         dateline: `FILED ${i.firstObserved} · UPDATED ${i.lastUpdated}`,
-        coverKey: i.slug,
+        cover: coverFor(i.slug, i.categories),
       })),
     {
       key: "guide-seed-entropy",
@@ -128,7 +129,7 @@ export default async function Home() {
       summary:
         "Dice-roll seeds survived the flaws that drained device-generated ones. 50 rolls for 12 words, 99 for 24 — and how to verify the math yourself.",
       dateline: "FACT-CHECKED 2026-08-08",
-      coverKey: "guide:seed-phrase-entropy",
+      cover: coverFor("guide:seed-phrase-entropy"),
     },
   ];
 
@@ -157,25 +158,7 @@ export default async function Home() {
           alignItems: "flex-end",
         }}
       >
-        {heroCover && (
-          <Image
-            src={heroCover.src}
-            alt={heroCover.alt}
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: "cover", opacity: 0.82 }}
-          />
-        )}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(14,14,12,0.15) 40%, rgba(14,14,12,0.88) 92%)",
-          }}
-        />
+        <PlateHero cover={heroCover} />
         <div
           style={{
             position: "relative",
@@ -241,8 +224,8 @@ export default async function Home() {
             <span>
               FILED {hero.firstObserved} · UPDATED {hero.lastUpdated}
             </span>
-            {heroCover && <span>{heroCover.credit}</span>}
           </p>
+          <PlateHeroCredit cover={heroCover} />
         </div>
       </section>
 
@@ -393,7 +376,7 @@ export default async function Home() {
         <div>
           <h2 style={sectionRule}>THE LATEST</h2>
           {latest.map((row) => {
-            const cover = coverFor(row.coverKey);
+            const cover = row.cover;
             return (
               <article
                 key={row.key}
@@ -448,17 +431,9 @@ export default async function Home() {
                     {row.dateline}
                   </p>
                 </div>
-                {cover && (
-                  <Link href={row.href} aria-hidden="true" tabIndex={-1}>
-                    <Image
-                      src={cover.src}
-                      alt={cover.alt}
-                      width={116}
-                      height={116}
-                      style={{ objectFit: "cover", width: 116, height: 116, display: "block" }}
-                    />
-                  </Link>
-                )}
+                <Link href={row.href} aria-hidden="true" tabIndex={-1}>
+                  <PlateThumb cover={cover} size={116} />
+                </Link>
               </article>
             );
           })}

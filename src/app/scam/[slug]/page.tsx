@@ -13,6 +13,8 @@ import {
 } from "@/lib/incidents-db";
 import { SITE_URL } from "@/lib/site";
 import { liveGuidesFor } from "@/lib/guides";
+import { coverFor } from "@/lib/covers";
+import { PlateFigure } from "@/components/plate";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -39,10 +41,10 @@ export async function generateMetadata({
 }
 
 const CLAIM_STATUS_LABEL: Record<string, string> = {
-  "primary-confirmed": "CONFIRMED BY PRIMARY SOURCE",
-  "reported-unconfirmed": "REPORTED · NOT INDEPENDENTLY CONFIRMED",
+  "primary-confirmed": "CONFIRMED BY A FIRSTHAND SOURCE",
+  "reported-unconfirmed": "REPORTED · NOBODY ELSE HAS CONFIRMED IT",
   disputed: "DISPUTED",
-  retracted: "RETRACTED",
+  retracted: "TAKEN BACK BY THE SOURCE",
 };
 
 function SectionRule({ label, danger }: { label: string; danger?: boolean }) {
@@ -74,6 +76,8 @@ export default async function IncidentPage({
   // Corrections live in two places: the incident document itself (bundled
   // JSON / data jsonb) and the desk-composed corrections table. Merge and
   // dedupe by date+note so the ledger is complete without repeats.
+  const cover = coverFor(incident.slug, incident.categories);
+
   const dbCorrections = await fetchCorrections(incident.id);
   const correctionsSeen = new Set<string>();
   const corrections = [
@@ -130,8 +134,8 @@ export default async function IncidentPage({
       <nav style={{ ...mono, fontSize: 12, padding: "16px 0" }}>
         <Link href="/">← FRONT PAGE</Link>
         <span style={{ color: "var(--meta)" }}> / </span>
-        <Link href="/registry">THE REGISTRY</Link>
-        <span style={{ color: "var(--meta)" }}> / DOSSIER</span>
+        <Link href="/registry">THE DATABASE</Link>
+        <span style={{ color: "var(--meta)" }}> / CASE FILE</span>
       </nav>
 
       {isStale(incident) && (
@@ -146,8 +150,9 @@ export default async function IncidentPage({
             marginBottom: 16,
           }}
         >
-          ⚠ STALE — this dossier was last updated {incident.lastUpdated}. Facts
-          may have moved. Treat with care.
+          ⚠ OUT OF DATE — we last updated this case file on{" "}
+          {incident.lastUpdated}. Things may have changed since then.
+          Double-check anything here before you act on it.
         </div>
       )}
 
@@ -206,18 +211,20 @@ export default async function IncidentPage({
         {incident.title}
       </h1>
       <p style={{ ...mono, fontSize: 12, color: "var(--meta)", marginTop: 12 }}>
-        FIRST OBSERVED {incident.firstObserved} · PUBLISHED {incident.published}{" "}
+        FIRST SEEN {incident.firstObserved} · PUBLISHED {incident.published}{" "}
         · UPDATED {incident.lastUpdated}
-        {incident.entities?.vendor && ` · VENDOR: ${incident.entities.vendor.toUpperCase()}`}
+        {incident.entities?.vendor && ` · COMPANY: ${incident.entities.vendor.toUpperCase()}`}
       </p>
 
-      <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 20 }}>
+      <PlateFigure cover={cover} priority />
+
+      <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 24 }}>
         {incident.summary}
       </p>
 
       {(incident.aliases?.length || incident.phrases?.length) ? (
         <p style={{ ...mono, fontSize: 12, color: "var(--meta)", lineHeight: 1.7, marginTop: 12 }}>
-          ALSO SEARCHED AS:{" "}
+          PEOPLE ALSO SEARCH FOR:{" "}
           {[...(incident.aliases ?? []), ...(incident.phrases ?? [])].map(
             (p, idx, arr) => (
               <span key={p}>
@@ -255,7 +262,7 @@ export default async function IncidentPage({
           )}
           {incident.impact.confidence && (
             <div>
-              <div style={{ ...mono, fontSize: 11, color: "var(--meta)", letterSpacing: ".05em" }}>CONFIDENCE</div>
+              <div style={{ ...mono, fontSize: 11, color: "var(--meta)", letterSpacing: ".05em" }}>HOW SURE WE ARE</div>
               <div style={{ ...mono, fontSize: 18, fontWeight: 600 }}>
                 {incident.impact.confidence.toUpperCase()}
                 {incident.impact.asOf && (
@@ -295,7 +302,7 @@ export default async function IncidentPage({
             margin: 0,
           }}
         >
-          ⚠ RECOVERY SCAM WARNING
+          ⚠ WARNING — FAKE RECOVERY OFFERS
         </p>
         <p
           style={{
@@ -305,10 +312,11 @@ export default async function IncidentPage({
             color: "var(--danger-ink)",
           }}
         >
-          If anyone contacts you promising to recover funds lost in this
-          incident — for an upfront fee, a "gas payment", or your seed phrase —
-          that is the second half of the scam. We sell nothing on this page on
-          purpose, and no legitimate service cold-contacts victims.
+          If anyone contacts you promising to get your money back — for a fee
+          paid up front, a "gas payment", or your seed phrase (the 12 or 24
+          secret words that control your Bitcoin) — that is the second half of
+          the scam. We sell nothing on this page, on purpose. No real service
+          contacts victims out of the blue.
         </p>
       </div>
 
@@ -337,7 +345,7 @@ export default async function IncidentPage({
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
           {incident.affected && (
             <div>
-              <SectionRule label="AFFECTED" danger />
+              <SectionRule label="WHO IS AFFECTED" danger />
               <ul style={{ fontSize: 16, lineHeight: 1.55, paddingLeft: 20, marginTop: 12 }}>
                 {incident.affected.map((a, idx) => (
                   <li key={idx} style={{ marginBottom: 8 }}>{a}</li>
@@ -347,7 +355,7 @@ export default async function IncidentPage({
           )}
           {incident.notAffected && (
             <div>
-              <SectionRule label="NOT AFFECTED — STAND DOWN" />
+              <SectionRule label="WHO IS NOT AFFECTED — NO ACTION NEEDED" />
               <ul style={{ fontSize: 16, lineHeight: 1.55, paddingLeft: 20, marginTop: 12, color: "var(--meta)" }}>
                 {incident.notAffected.map((a, idx) => (
                   <li key={idx} style={{ marginBottom: 8 }}>{a}</li>
@@ -360,7 +368,7 @@ export default async function IncidentPage({
 
       {incident.claims && incident.claims.length > 0 && (
         <>
-          <SectionRule label="CLAIMS LEDGER — WHAT'S CONFIRMED VS REPORTED" />
+          <SectionRule label="WHAT'S CONFIRMED AND WHAT'S ONLY REPORTED" />
           <div style={{ marginTop: 16 }}>
             {incident.claims.map((c, idx) => (
               <div key={idx} style={{ padding: "14px 0", borderBottom: "1px solid var(--rule)" }}>
@@ -406,7 +414,7 @@ export default async function IncidentPage({
 
       {corrections.length > 0 && (
         <>
-          <SectionRule label="CORRECTIONS — PUBLIC AND PERMANENT" />
+          <SectionRule label="CORRECTIONS — WHAT WE GOT WRONG AND FIXED" />
           <ul style={{ paddingLeft: 20, marginTop: 12 }}>
             {corrections.map((c, idx) => (
               <li key={idx} style={{ fontSize: 14 }}>
@@ -432,7 +440,7 @@ export default async function IncidentPage({
 
       {incident.relatedIncidents && incident.relatedIncidents.length > 0 && (
         <>
-          <SectionRule label="RELATED DOSSIERS" />
+          <SectionRule label="RELATED CASE FILES" />
           <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 8 }}>
             {incident.relatedIncidents.map((rid) => {
               const rel = relatedPool.find((x) => x.id === rid);

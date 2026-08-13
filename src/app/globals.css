@@ -19,6 +19,95 @@
   --tick-up: #3fbf6f;
   --tick-down: #e0574f;
   --panel: #f6f3ec;
+
+  /* ── ROLE TOKENS (atomic design layer, added 2026-08-13)
+     The palette above names colors by appearance; these name them by JOB.
+     New code uses these. Two of them exist because the appearance tokens
+     are not legal everywhere they were being used:
+
+       --accent-text   #f7931a on paper is 2.22:1 — it can never be text.
+                       This is the same orange darkened to 6.07:1 on paper
+                       AND 3.03:1 on ink, so one ring/label color works on
+                       both grounds.
+       --danger-fg     --danger on --danger-bg is 4.26:1 (fails). The
+                       existing --danger-ink is 7.76:1 on that same bg.
+       --fg-muted-inv  --meta on --dark is 3.58:1 (fails). This is 6.33:1.
+     Ratios are WCAG 2.x, computed from these hex values — not estimated. */
+
+  /* ground */
+  --bg-page: var(--paper);
+  --bg-raised: var(--panel);
+  --bg-accent: var(--warm);
+  --bg-inverse: var(--dark);
+
+  /* ink */
+  --fg: var(--ink);
+  --fg-muted: var(--meta);
+  --fg-inverse: var(--paper);
+  --fg-muted-inverse: #9a9384;
+
+  /* line */
+  --line: var(--rule);
+  --line-strong: var(--ink);
+
+  /* action — surface and text are NOT interchangeable */
+  --accent-surface: var(--orange);
+  --accent-text: #8f5100;
+
+  /* danger */
+  --danger-fg: var(--danger-ink);
+
+  /* type scale — 14 is legitimized (33 existing uses); one h1 ramp */
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-meta: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 21px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 40px;
+  --text-h1: clamp(28px, 5vw, 40px);
+
+  --lh-tight: 1.2;
+  --lh-body: 1.55;
+  --lh-loose: 1.7;
+
+  /* measure — the case file and standards pages currently run ~90ch */
+  --measure: 65ch;
+  --measure-narrow: 58ch;
+
+  /* spacing — 4px base */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* containers — 4 widths, replacing 11 ad-hoc ones */
+  --w-narrow: 640px;
+  --w-prose: 780px;
+  --w-index: 1100px;
+  --w-page: 1140px;
+
+  /* form — radius 0 is the identity, locked */
+  --radius: 0;
+  --touch-min: 44px;
+
+  /* motion */
+  --dur-fast: 120ms;
+  --dur: 180ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* focus — see --accent-text note above */
+  --focus-ring: var(--accent-text);
+  --focus-offset: 2px;
 }
 
 @theme inline {
@@ -44,7 +133,11 @@ a {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  transition: all 150ms ease;
+  /* was `all` — that forces layout on every transitionable property */
+  transition:
+    color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    text-decoration-color var(--dur) var(--ease);
 }
 a:hover {
   text-decoration: underline;
@@ -55,10 +148,54 @@ a:hover {
 button {
   font-family: inherit;
   cursor: pointer;
-  transition: all 150ms ease;
+  transition:
+    color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    transform var(--dur-fast) var(--ease);
 }
 button:active {
   transform: translateY(1px);
+}
+
+/* ── FOCUS
+   Until now the site had three :focus rules and zero :focus-visible, so
+   keyboard users had no reliable indicator — and because links are
+   underline-stripped and buttons are square, a focused control looked
+   identical to an unfocused one. No inline style object in this codebase
+   sets `outline`, which is why one rule here reaches every control on the
+   site, including the ~763 inline-styled ones. --focus-ring clears 3:1
+   against both the paper and the ink grounds, so it stays visible on
+   dark buttons too. */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius);
+}
+
+/* ── MOTION
+   The wire ticker runs an infinite 30s+ marquee. Continuous motion over 5s
+   with no pause control is a WCAG 2.2.2 failure; this is the guard. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  button:active {
+    transform: none;
+  }
+}
+
+/* Referenced by the guide kit's "why this matters" block, which was
+   printing because the class was applied but never defined. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
 
 ::selection {
