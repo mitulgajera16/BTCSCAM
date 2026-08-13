@@ -93,7 +93,7 @@ export default function LadderPanel({
       </form>
       <p style={{ ...mono, fontSize: 11, color: "var(--meta)", margin: "8px 0 0" }}>
         Resyncs accepted-report counters from the reports table and applies threshold
-        promotions up to corroborator. Promotions only — the ladder never demotes.
+        promotions up to WITNESS. Promotions only — the ladder never demotes.
       </p>
       {state && (
         <p role="status" style={resultStyle(state.ok)}>

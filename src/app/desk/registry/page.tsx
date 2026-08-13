@@ -30,8 +30,9 @@ import { deriveSyncBadges, type DbRowLite } from "@/lib/registry/pure";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "The Registry · The Desk — BTCSCAM",
-  description: "Local-only dossier lifecycle desk. Every publish is a human decision.",
+  title: "The Scam Database · The Desk — BTCSCAM",
+  description:
+    "Local-only case file lifecycle desk. Every publish is a human decision.",
   robots: { index: false, follow: false },
 };
 
@@ -164,7 +165,7 @@ export default async function RegistryPage() {
 
       <header style={{ padding: "32px 0 20px" }}>
         <h1 style={{ ...display, fontSize: 40, fontWeight: 600, margin: 0 }}>
-          The Registry
+          The Scam Database
         </h1>
         <p
           style={{
@@ -177,7 +178,7 @@ export default async function RegistryPage() {
             marginBottom: 0,
           }}
         >
-          DOSSIER LIFECYCLE · EVERY PUBLISH IS A HUMAN DECISION · RUNS ON YOUR
+          CASE FILE LIFECYCLE · EVERY PUBLISH IS A HUMAN DECISION · RUNS ON YOUR
           MACHINE, WRITES FILES + DATABASE + GIT
         </p>
         <p style={{ marginTop: 12, marginBottom: 0 }}>
@@ -194,7 +195,7 @@ export default async function RegistryPage() {
       <section>
         <h2 style={sectionHead}>DRAFTS · {draftViews.length}</h2>
         {draftViews.length === 0 ? (
-          <EmptyState>No file drafts. New dossiers land in data/drafts/.</EmptyState>
+          <EmptyState>No file drafts. New case files land in data/drafts/.</EmptyState>
         ) : (
           draftViews.map((d) => <RegistryDraftCard key={d.fileName} draft={d} />)
         )}

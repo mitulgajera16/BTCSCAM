@@ -28,7 +28,7 @@ export default function CorrectionsComposer({
     <div style={{ background: "var(--panel)", padding: "20px 24px", marginTop: 16, maxWidth: 640 }}>
       <p style={{ fontSize: 14, lineHeight: 1.5, color: "var(--meta)", marginTop: 0 }}>
         Corrections are public and permanent. The note appears verbatim on the
-        dossier page and in the corrections record — write it as you would print it.
+        case file page and in the corrections record — write it as you would print it.
       </p>
       <form action={action} style={{ display: "grid", gap: 14 }}>
         <div>

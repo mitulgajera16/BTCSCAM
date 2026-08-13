@@ -11,9 +11,9 @@ const display = { fontFamily: "var(--font-fraunces), serif" };
 
 export const metadata: Metadata = {
   // Layout template appends "— BTCSCAM"; never hardcode the suffix here.
-  title: "The Incident Registry",
+  title: "The Scam Database",
   description:
-    "Every incident BTCSCAM has on file, in one index — filterable by type, severity, and trust state, each entry linked to its full dossier. Check before you send.",
+    "Every scam BTCSCAM has on file, in one list — sort it by type, by how bad it is, and by how well we have proved it. Each entry links to its full case file. Check before you send.",
   alternates: { canonical: "/registry" },
 };
 
@@ -45,7 +45,7 @@ export default async function RegistryPage() {
     <main style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px 64px" }}>
       <nav style={{ ...mono, fontSize: 12, padding: "16px 0" }}>
         <Link href="/">← FRONT PAGE</Link>
-        <span style={{ color: "var(--meta)" }}> / THE REGISTRY</span>
+        <span style={{ color: "var(--meta)" }}> / THE DATABASE</span>
       </nav>
 
       <header
@@ -69,7 +69,7 @@ export default async function RegistryPage() {
               margin: 0,
             }}
           >
-            FULL INCIDENT INDEX · SOURCES OR IT DIDN&apos;T HAPPEN
+            EVERY SCAM WE HAVE ON FILE · SOURCES OR IT DIDN&apos;T HAPPEN
           </p>
           <h1
             style={{
@@ -80,7 +80,7 @@ export default async function RegistryPage() {
               margin: "6px 0 0",
             }}
           >
-            The Incident Registry
+            The Scam Database
           </h1>
           <p
             style={{
@@ -91,8 +91,9 @@ export default async function RegistryPage() {
               maxWidth: "56ch",
             }}
           >
-            Every incident on file — severity-ranked, trust-labeled, and linked
-            to its dossier. Check before you send.
+            Every scam we have on file — ranked by how bad it is, labelled by
+            how well we have proved it, and linked to its case file. Check
+            before you send.
           </p>
         </div>
         <div
@@ -104,7 +105,7 @@ export default async function RegistryPage() {
             color: "var(--meta)",
           }}
         >
-          LAST DOSSIER UPDATE
+          CASE FILES LAST UPDATED
           <br />
           <span style={{ color: "var(--ink)", fontWeight: 600 }}>
             {lastUpdated}

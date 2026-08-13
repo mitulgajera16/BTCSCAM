@@ -40,7 +40,7 @@ function SignOutForm() {
 export const metadata: Metadata = {
   title: "My Desk",
   description:
-    "Your BTCSCAM ledger: reports you filed, evidence you attached, and your place on the watchmen's ladder. Accounts are for credit — anonymous reporting stays open to everyone.",
+    "Your own record on BTCSCAM: reports you filed, evidence you attached, and your place on the watchmen's ladder. Accounts are for credit — reporting without a name stays open to everyone.",
 };
 
 // ── chips ──────────────────────────────────────────────────────────────────
@@ -54,7 +54,7 @@ const REPORT_STATUS: Record<
     style: { border: "1px solid var(--rule)", color: "var(--meta)" },
   },
   triaged: {
-    label: "IN TRIAGE",
+    label: "BEING REVIEWED",
     style: { border: "1px solid var(--ink)", color: "var(--ink)" },
   },
   accepted: {
@@ -161,8 +161,8 @@ function AccountsOpenSoon() {
           Accounts open soon.
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.55, margin: "16px 0 0" }}>
-          ACCOUNTS OPEN SOON — the desk ledger connects when our database goes
-          live. No sign-in exists yet, and we will not pretend otherwise.
+          ACCOUNTS OPEN SOON — your desk switches on when our database goes
+          live. There is no sign-in yet, and we will not pretend there is.
         </p>
         <p
           style={{
@@ -172,8 +172,8 @@ function AccountsOpenSoon() {
             margin: "12px 0 0",
           }}
         >
-          Reporting does not wait for accounts: anonymous reports are open now
-          at{" "}
+          Reporting does not wait for accounts: you can file without a name
+          right now at{" "}
           <Link href="/report" style={{ fontWeight: 700 }}>
             /report
           </Link>{" "}
@@ -204,13 +204,13 @@ function SignedOut() {
           margin: "8px 0 0",
         }}
       >
-        A ledger with your name on it.
+        A record with your name on it.
       </h1>
       <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 20, maxWidth: "65ch" }}>
-        You never need an account to report a scam — anonymous reporting stays
-        open, permanently. An account gets you a ledger: your reports tracked
-        under one handle, your evidence credited when the desk accepts it, and
-        a place on the watchmen&rsquo;s ladder.
+        You never need an account to report a scam — reporting without a name
+        stays open, permanently. An account gets you a record of your own:
+        your reports tracked under one handle, your evidence credited when we
+        accept it, and a place on the watchmen&rsquo;s ladder.
       </p>
 
       <div
@@ -238,7 +238,7 @@ function SignedOut() {
           SIGN IN WITH EMAIL →
         </Link>
         <span style={{ ...mono, fontSize: 12, color: "var(--meta)" }}>
-          Magic link only. No passwords to make, none to steal.
+          We email you a link. No passwords to make, none to steal.
         </span>
       </div>
 
@@ -258,7 +258,7 @@ function SignedOut() {
         <Link href="/report" style={{ fontWeight: 600, color: "var(--link)" }}>
           /report
         </Link>{" "}
-        — same queue, same human triage, no name attached.
+        — same queue, same person reading it, no name attached.
       </p>
     </Shell>
   );
@@ -300,13 +300,13 @@ export default async function AccountPage() {
             margin: "8px 0 0",
           }}
         >
-          Signed in — the ledger is not.
+          Signed in — your records are not.
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 20, maxWidth: "65ch" }}>
-          Your session is valid ({user.email ?? "email on file"}), but the desk
-          ledger&rsquo;s server connection is not fully configured, so your
-          reports and settings cannot be read right now. Nothing is lost — the
-          ledger appears when the connection does.
+          You are signed in ({user.email ?? "email on file"}), but the server
+          connection behind your records is not fully set up, so your reports
+          and settings cannot be read right now. Nothing is lost — your
+          records appear when the connection does.
         </p>
         <SignOutForm />
         <h2 style={sectionRule}>THE LADDER</h2>
@@ -328,7 +328,7 @@ export default async function AccountPage() {
     <Shell>
       <Crumb tail="MY DESK" />
       <p style={{ ...capsLabel, color: "var(--meta)", margin: 0 }}>
-        MY DESK · THE WATCHMEN&rsquo;S LEDGER
+        MY DESK · YOUR RECORD ON THIS SITE
       </p>
       <h1
         style={{
@@ -341,7 +341,7 @@ export default async function AccountPage() {
         {profile.handle ?? "Your desk"}
       </h1>
       <p style={{ ...mono, fontSize: 12, color: "var(--meta)", marginTop: 10 }}>
-        SIGNED IN AS {user.email?.toUpperCase() ?? "(EMAIL ON FILE)"} · TIER{" "}
+        SIGNED IN AS {user.email?.toUpperCase() ?? "(EMAIL ON FILE)"} · RANK{" "}
         {tierTitle} · {profile.acceptedReports} ACCEPTED{" "}
         {profile.acceptedReports === 1 ? "REPORT" : "REPORTS"}
       </p>
@@ -354,18 +354,18 @@ export default async function AccountPage() {
       <h2 style={sectionRule}>YOUR REPORTS</h2>
       {reportsRead.error ? (
         <p style={{ ...mono, fontSize: 12, color: "var(--danger)", marginTop: 16 }}>
-          THE LEDGER COULD NOT BE READ: {reportsRead.error} — an error, not an
-          empty ledger. Nothing is lost; reload once the read succeeds.
+          YOUR RECORDS COULD NOT BE READ: {reportsRead.error} — that is an
+          error, not an empty list. Nothing is lost; reload once it works.
         </p>
       ) : reports.length === 0 ? (
         <p style={{ fontSize: 16, lineHeight: 1.55, color: "var(--meta)", marginTop: 16, maxWidth: "65ch" }}>
-          Nothing on this ledger yet. File at{" "}
+          Nothing here yet. File at{" "}
           <Link href="/report" style={{ fontWeight: 700 }}>
             /report
           </Link>{" "}
-          — signed in, a report lands here with its status tracked. Reports you
-          filed anonymously before signing up stay anonymous: we cannot link
-          what we never collected.
+          — while you are signed in, a report lands here and you can watch its
+          status. Reports you filed anonymously before signing up stay
+          anonymous: we cannot connect what we never collected.
         </p>
       ) : (
         <div style={{ overflowX: "auto", marginTop: 16 }}>
@@ -459,7 +459,7 @@ export default async function AccountPage() {
                             whiteSpace: "nowrap",
                           }}
                         >
-                          IN THE REGISTRY →
+                          IN THE DATABASE →
                         </Link>
                       )}
                     </td>
@@ -471,21 +471,22 @@ export default async function AccountPage() {
         </div>
       )}
       <p style={{ ...mono, fontSize: 12, color: "var(--meta)", lineHeight: 1.6, marginTop: 12 }}>
-        ACCEPTED means an editor found the report actionable — it never means
-        auto-verified. Trust states on dossiers stay editorial.
+        ACCEPTED means an editor found something to act on — it never means
+        the report has been verified. Proof levels on case files are always
+        set by a person.
       </p>
 
       {/* (c) your evidence */}
       <h2 style={sectionRule}>YOUR EVIDENCE</h2>
       {chipsRead.error ? (
         <p style={{ ...mono, fontSize: 12, color: "var(--danger)", marginTop: 16 }}>
-          THE LEDGER COULD NOT BE READ: {chipsRead.error} — an error, not an
-          empty ledger. Nothing is lost; reload once the read succeeds.
+          YOUR RECORDS COULD NOT BE READ: {chipsRead.error} — that is an
+          error, not an empty list. Nothing is lost; reload once it works.
         </p>
       ) : chips.length === 0 ? (
         <p style={{ fontSize: 16, lineHeight: 1.55, color: "var(--meta)", marginTop: 16, maxWidth: "65ch" }}>
-          No evidence chips yet. Chips are typed pieces of evidence — a URL, a
-          transaction id, a screenshot link, a quote — filed together with a
+          No evidence chips yet. A chip is one piece of evidence — a link, a
+          transaction id, a screenshot link, a quote — filed along with a
           report at /report. Accepted chips count toward the ladder.
         </p>
       ) : (

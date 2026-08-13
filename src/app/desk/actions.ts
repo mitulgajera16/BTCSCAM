@@ -176,6 +176,23 @@ const ROLE_RANK: Record<string, number> = {
   mod: 4,
 };
 
+/**
+ * Display-only names for the stored role values. The stored values never
+ * change — this map exists so desk messages read in the same words the rest
+ * of the site prints.
+ */
+const ROLE_DISPLAY: Record<string, string> = {
+  reader: "reader",
+  reporter: "reporter",
+  corroborator: "witness",
+  watchman: "watchman",
+  mod: "mod",
+};
+
+function roleName(role: string): string {
+  return ROLE_DISPLAY[role] ?? role;
+}
+
 function autoRole(
   acceptedReports: number,
   acceptedChipsOnOthers: number,
@@ -265,9 +282,9 @@ async function refreshStanding(
       .update({ role: target })
       .eq("id", userId);
     if (roleErr) {
-      note += ` Promotion to ${target} failed: ${roleErr.message}.`;
+      note += ` Promotion to ${roleName(target)} failed: ${roleErr.message}.`;
     } else {
-      note += ` Promoted ${current} → ${target}.`;
+      note += ` Promoted ${roleName(current)} → ${roleName(target)}.`;
       await deskLog(actor, "promote", `profile:${userId}`, {
         from: current,
         to: target,
@@ -445,8 +462,8 @@ export async function approveDraft(
   return {
     ok: true,
     message: markErr
-      ? `Published as /scam/${slug} (REPORTED · UNVERIFIED), but the draft row could not be marked approved: ${markErr.message}`
-      : `Published as /scam/${slug} — trust state REPORTED · UNVERIFIED.`,
+      ? `Published as /scam/${slug} (REPORTED · NOT CHECKED YET), but the draft row could not be marked approved: ${markErr.message}`
+      : `Published as /scam/${slug} — proof level REPORTED · NOT CHECKED YET.`,
   };
 }
 
@@ -557,7 +574,7 @@ export async function mergeDraft(
   const timeline = Array.isArray(doc.timeline) ? [...doc.timeline] : [];
   timeline.push({
     date: todayUTC(),
-    event: `Corroborating item ingested from ${publisher}: ${draft.title ?? "untitled"}`,
+    event: `Item that backs this up, taken in from ${publisher}: ${draft.title ?? "untitled"}`,
     source: sources[0].url,
   });
   doc.timeline = timeline;
@@ -622,7 +639,7 @@ export async function triageReport(
   const status = String(formData.get("status") ?? "").trim();
   if (!Number.isInteger(reportId)) return { ok: false, error: "Bad report id." };
   if (!["triaged", "accepted", "rejected"].includes(status)) {
-    return { ok: false, error: "Status must be triaged, accepted, or rejected." };
+    return { ok: false, error: "Status must be reviewed, accepted, or rejected." };
   }
 
   const sb = getServiceClient();
@@ -634,7 +651,7 @@ export async function triageReport(
     .eq("id", reportId)
     .in("status", ["new", "triaged"])
     .select("id, user_id");
-  if (error) return { ok: false, error: `Triage failed: ${error.message}` };
+  if (error) return { ok: false, error: `Review failed: ${error.message}` };
   if (!updated || updated.length === 0) {
     return {
       ok: false,
@@ -653,7 +670,9 @@ export async function triageReport(
       `report #${reportId} accepted`,
     )}`;
   }
-  return { ok: true, message: `Report #${reportId} marked ${status}.${credit}` };
+  // The stored status value is unchanged; only its printed name is plainer.
+  const statusName = status === "triaged" ? "reviewed" : status;
+  return { ok: true, message: `Report #${reportId} marked ${statusName}.${credit}` };
 }
 
 // ── addCorrection ──────────────────────────────────────────────────────────
@@ -848,7 +867,7 @@ export async function acceptReportToDraft(
     ok: true,
     message:
       `Report #${reportId} accepted → draft #${inserted?.id} in the queue. It publishes only ` +
-      `through APPROVE, as REPORTED · UNVERIFIED${evidence.length === 0 ? " — and it has no evidence URL yet, so APPROVE will refuse until a source exists" : ""}. ${credit}` +
+      `through APPROVE, as REPORTED · NOT CHECKED YET${evidence.length === 0 ? " — and it has no evidence URL yet, so APPROVE will refuse until a source exists" : ""}. ${credit}` +
       (markErr ? ` (Report row could not be marked accepted: ${markErr.message}.)` : ""),
   };
 }
@@ -983,7 +1002,7 @@ export async function attachReportToIncident(
   return {
     ok: true,
     message:
-      `Report #${reportId} attached to ${incidentId} (${sourceNote}). Trust state unchanged — ` +
+      `Report #${reportId} attached to ${incidentId} (${sourceNote}). Proof level unchanged — ` +
       `an attached report is a signal to editors, not verification. ${credit}` +
       (markErr || !marked || marked.length === 0
         ? ` (Report row could not be marked accepted${markErr ? `: ${markErr.message}` : ""}.)`
@@ -1176,7 +1195,7 @@ export async function recomputeLadder(
         promoted += 1;
         const name =
           (typeof p.handle === "string" && p.handle) || `${id.slice(0, 8)}…`;
-        promotions.push(`${name}: ${current} → ${target}`);
+        promotions.push(`${name}: ${roleName(current)} → ${roleName(target)}`);
         await deskLog(gate.actor, "promote", `profile:${id}`, {
           from: current,
           to: target,

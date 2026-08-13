@@ -14,11 +14,12 @@ import StanceButtons from "@/components/votes/StanceButtons";
 import VoteTally from "@/components/votes/VoteTally";
 import { LADDER_TIERS } from "@/components/account/types";
 
-// ── THE OPEN LEDGER ────────────────────────────────────────────────────────
-// Public read of every reader report still awaiting the desk (status new or
+// ── OPEN REPORTS ───────────────────────────────────────────────────────────
+// Public read of every reader report still waiting on the desk (status new or
 // triaged). Reporter contacts are NEVER printed — contact_email is not even
-// selected from the database. Corroborator+ file stances; everyone else
-// reads. Votes are signals to the editors; nothing here auto-verifies.
+// selected from the database. Witness rank and above may answer a report;
+// everyone else reads. Answers are signals to the editors; nothing here is
+// marked verified on its own.
 
 const mono: CSSProperties = { fontFamily: "var(--font-plex-mono), monospace" };
 const display: CSSProperties = {
@@ -33,9 +34,9 @@ const capsLabel: CSSProperties = {
 };
 
 export const metadata: Metadata = {
-  title: "The Open Ledger — Reports Awaiting Triage",
+  title: "Open Reports — Waiting to Be Reviewed",
   description:
-    "Every reader report still awaiting the BTCSCAM desk, printed in the open. Corroborators file stances with evidence; editors decide. Nothing here auto-verifies.",
+    "Every reader report still waiting on the BTCSCAM desk, printed in the open. Readers who have reached witness can back one up with evidence or dispute it; editors decide. Nothing here is marked verified on its own.",
   alternates: { canonical: "/reports/open" },
 };
 
@@ -56,7 +57,7 @@ type OpenReport = {
 
 type Tally = { corroborate: number; dispute: number };
 
-/** What the ledger needs to know about the signed-in visitor. */
+/** What this page needs to know about the signed-in visitor. */
 type LedgerViewer = { id: string; name: string; role: Role };
 
 function SectionRule({ label }: { label: string }) {
@@ -88,7 +89,7 @@ function StatusChip({ status }: { status: "new" | "triaged" }) {
         color: status === "triaged" ? "var(--paper)" : "var(--ink)",
       }}
     >
-      {status === "triaged" ? "TRIAGED" : "NEW"}
+      {status === "triaged" ? "BEING REVIEWED" : "RECEIVED"}
     </span>
   );
 }
@@ -125,8 +126,9 @@ function EditorialNotice() {
           margin: 0,
         }}
       >
-        Votes are signals to the editors. Nothing here auto-verifies — the
-        trust ladder is editorial.
+        What people file here is a signal to the editors. Nothing here is
+        marked verified on its own — a person decides every step of the proof
+        ladder.
       </p>
     </div>
   );
@@ -138,7 +140,7 @@ function EditorialNotice() {
 function LadderBox() {
   return (
     <div style={{ border: "1px solid var(--rule)", padding: "16px 20px", marginTop: 16 }}>
-      <p style={{ ...capsLabel, margin: 0 }}>THE WATCH LADDER</p>
+      <p style={{ ...capsLabel, margin: 0 }}>THE CONTRIBUTOR LADDER</p>
       <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
         {LADDER_TIERS.map((tier) => (
           <div key={tier.role} style={{ display: "flex", gap: 12, alignItems: "baseline" }}>
@@ -151,9 +153,10 @@ function LadderBox() {
         ))}
       </div>
       <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--meta)", margin: "12px 0 0" }}>
-        Promotion is editorial — counters suggest, editors confirm. Status and
-        credit only; no points, no tokens. Anonymous reporting stays open to
-        everyone: accounts are for credit, not a gate.
+        Moving up is a person&apos;s decision — the counts suggest it, the
+        editors confirm it. Standing and credit only; no points, no tokens.
+        Reporting without a name stays open to everyone: accounts are for
+        credit, not a gate.
       </p>
     </div>
   );
@@ -175,15 +178,15 @@ function DisabledStances({ signedIn }: { signedIn: boolean }) {
   return (
     <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
       <button type="button" disabled style={dead}>
-        CORROBORATE
+        I SAW THIS TOO
       </button>
       <button type="button" disabled style={dead}>
         DISPUTE
       </button>
       <span style={{ ...mono, fontSize: 12, color: "var(--meta)" }}>
         {signedIn
-          ? "Opens at CORROBORATOR — 3 accepted reports, or 5 accepted evidence chips."
-          : "Sign in required — stances open at CORROBORATOR."}
+          ? "Opens at WITNESS — 3 accepted reports, or 5 accepted evidence chips."
+          : "Sign in required — answering a report opens at WITNESS."}
       </span>
     </div>
   );
@@ -230,8 +233,8 @@ export default async function OpenLedgerPage() {
     }
 
     const sb = getServiceClient();
-    // contact_email is deliberately absent from this select — the open
-    // ledger always redacts reporter contacts.
+    // contact_email is deliberately absent from this select — this page
+    // always holds back reporter contact details.
     const { data, error } = await sb
       .from("reports")
       .select(
@@ -296,11 +299,11 @@ export default async function OpenLedgerPage() {
     <main style={{ maxWidth: 780, margin: "0 auto", padding: "0 24px 64px" }}>
       <nav style={{ ...mono, fontSize: 12, padding: "16px 0" }}>
         <Link href="/">← FRONT PAGE</Link>
-        <span style={{ color: "var(--meta)" }}> / THE OPEN LEDGER</span>
+        <span style={{ color: "var(--meta)" }}> / OPEN REPORTS</span>
       </nav>
 
       <p style={{ ...capsLabel, color: "var(--meta)", margin: 0 }}>
-        COMMUNITY DESK · STATUS NEW + TRIAGED · CONTACTS NEVER PRINTED
+        READER REPORTS · RECEIVED AND BEING REVIEWED · CONTACTS NEVER PRINTED
       </p>
       <h1
         style={{
@@ -310,13 +313,14 @@ export default async function OpenLedgerPage() {
           margin: "8px 0 0",
         }}
       >
-        The Open Ledger
+        Open Reports
       </h1>
       <p style={{ fontSize: 18, lineHeight: 1.6, margin: "12px 0 0" }}>
         Every reader report the desk has not yet decided, printed in the open.
-        Descriptions, entities, and dates are public; reporter contact details
-        are never printed. Corroborators and above may file one stance per
-        report — CORROBORATE with a checkable evidence URL, or DISPUTE with a
+        What was described, the wallet addresses, websites, and handles named,
+        and the dates are all public; reporter contact details are never
+        printed. Readers who have reached witness may answer each report once
+        — I SAW THIS TOO, with a link an editor can check, or DISPUTE, with a
         note.
       </p>
 
@@ -326,14 +330,14 @@ export default async function OpenLedgerPage() {
         <>
           <StateBox label="NOT CONNECTED">
             <p style={{ margin: 0 }}>
-              ACCOUNTS OPEN SOON — the desk ledger connects when our database
-              goes live.
+              ACCOUNTS OPEN SOON — this list connects when our database goes
+              live.
             </p>
             <p style={{ margin: "10px 0 0" }}>
-              No mock rows, no placeholder counts: when this page is live,
+              No made-up rows, no placeholder counts: when this page is live,
               every number on it will be real. Reporting already works without
               an account — <Link href="/report">file a report</Link> and it
-              enters the intake queue for the weekly sweep.
+              joins the queue for the weekly sweep.
             </p>
           </StateBox>
           <LadderBox />
@@ -357,7 +361,7 @@ export default async function OpenLedgerPage() {
               </span>
               {!canVote && (
                 <span style={{ ...mono, fontSize: 12, color: "var(--meta)" }}>
-                  Stances open at CORROBORATOR — see the ladder below.
+                  Answering a report opens at WITNESS — see the ladder below.
                 </span>
               )}
             </div>
@@ -374,7 +378,7 @@ export default async function OpenLedgerPage() {
               <span style={{ ...capsLabel, marginRight: 12 }}>READ-ONLY</span>
               You are not signed in.{" "}
               <Link href="/account/sign-in">Sign in</Link> to weigh in once you
-              reach CORROBORATOR. Reporting needs no account —{" "}
+              reach WITNESS. Reporting needs no account —{" "}
               <Link href="/report">file a report</Link> anytime; accounts are
               for credit, not a gate.
             </div>
@@ -383,9 +387,9 @@ export default async function OpenLedgerPage() {
           <LadderBox />
 
           {readError ? (
-            <StateBox label="LEDGER UNAVAILABLE">
+            <StateBox label="LIST UNAVAILABLE">
               <p style={{ margin: 0 }}>
-                The ledger could not be read: {readError}
+                The open reports could not be read: {readError}
               </p>
             </StateBox>
           ) : (
@@ -403,7 +407,7 @@ export default async function OpenLedgerPage() {
                 >
                   <p style={{ ...capsLabel, margin: 0 }}>QUEUE CLEAR</p>
                   <p style={{ fontSize: 16, lineHeight: 1.6, margin: "10px 0 0" }}>
-                    No open reports — everything filed has been triaged or
+                    No open reports — everything filed has been reviewed or
                     decided. See something?{" "}
                     <Link href="/report">File a report</Link>; no account
                     needed.
@@ -438,7 +442,7 @@ export default async function OpenLedgerPage() {
                         <StatusChip status={r.status} />
                         <span>FILED {r.createdAt.slice(0, 10)}</span>
                         {r.category && <span>{r.category.toUpperCase()}</span>}
-                        {r.observedOn && <span>OBSERVED {r.observedOn}</span>}
+                        {r.observedOn && <span>FIRST SEEN {r.observedOn}</span>}
                       </div>
 
                       <p
@@ -453,15 +457,15 @@ export default async function OpenLedgerPage() {
                       </p>
 
                       <div style={{ display: "grid", gap: 6, marginTop: 12 }}>
-                        <MetaLine k="VENDOR" v={r.vendor ?? ""} />
+                        <MetaLine k="COMPANY" v={r.vendor ?? ""} />
                         <MetaLine
-                          k="DOMAIN"
+                          k="WEBSITE"
                           v={r.domain ? defang(r.domain) : ""}
                         />
-                        <MetaLine k="ADDRESS" v={r.address ?? ""} />
+                        <MetaLine k="WALLET" v={r.address ?? ""} />
                         <MetaLine
                           k="CONTACT"
-                          v="Redacted — the ledger never prints reporter contacts."
+                          v="Held back — this page never prints the contact details of the person who reported."
                         />
                         {r.evidenceUrls.length > 0 && (
                           <div
@@ -518,8 +522,9 @@ export default async function OpenLedgerPage() {
                           <span
                             style={{ ...mono, fontSize: 12, color: "var(--meta)" }}
                           >
-                            TALLIES UNAVAILABLE — the vote read failed; no
-                            counts printed rather than wrong ones.
+                            COUNTS UNAVAILABLE — we could not read the answers
+                            on this report, so we print no numbers rather than
+                            wrong ones.
                           </span>
                         )}
                         {canVote ? (

@@ -141,7 +141,7 @@ export default function DraftCard({
           gap: 6,
         }}
       >
-        <PreviewRow k="TRUST STATE" v="REPORTED · UNVERIFIED (forced on approve)" />
+        <PreviewRow k="PROOF LEVEL" v="REPORTED · NOT CHECKED YET (forced on approve)" />
         <PreviewRow k="SEVERITY" v={nSeverity} />
         <PreviewRow k="CATEGORIES" v={nCategories} />
         <PreviewRow k="FIRST OBSERVED" v={nFirstObserved} />
@@ -239,7 +239,7 @@ export default function DraftCard({
               </div>
               <div>
                 <button type="submit" style={button} disabled={approvePending || !hasSource}>
-                  {approvePending ? "PUBLISHING…" : "PUBLISH AS REPORTED · UNVERIFIED"}
+                  {approvePending ? "PUBLISHING…" : "PUBLISH AS REPORTED · NOT CHECKED YET"}
                 </button>
               </div>
             </div>
@@ -290,7 +290,7 @@ export default function DraftCard({
               <input
                 id={`reject-${draft.id}`}
                 name="note"
-                placeholder="Why this does not belong in the registry"
+                placeholder="Why this does not belong in the scam database"
                 style={field}
                 required
               />

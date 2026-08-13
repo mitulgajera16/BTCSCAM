@@ -7,9 +7,9 @@ const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
 
 export const metadata: Metadata = {
-  title: "Check an Address or Domain",
+  title: "Check a Wallet Address or Website",
   description:
-    "Check a Bitcoin address, Ethereum-style address, or website domain against the blocklists BTCSCAM mirrors — ScamSniffer, MetaMask eth-phishing-detect — and the published scam registry. Lookups, not guarantees: we never certify anything as safe.",
+    "Check a Bitcoin address, Ethereum-style address, or website against the known-scam lists BTCSCAM keeps a copy of — ScamSniffer, MetaMask eth-phishing-detect — and our own scam database. We look it up; we never tell you something is safe.",
   alternates: { canonical: "/check" },
 };
 
@@ -34,24 +34,24 @@ function SectionRule({ label, danger }: { label: string; danger?: boolean }) {
 
 const SOURCES: { name: string; covers: string; note: string }[] = [
   {
-    name: "BTCSCAM REGISTRY",
-    covers: "Addresses + domains",
-    note: "Entities named in our own published dossiers. Every entry carries a trust state and sources; a match links you straight to the dossier.",
+    name: "BTCSCAM DATABASE",
+    covers: "Wallet addresses + websites",
+    note: "The wallet addresses, websites, and handles named in our own published case files. Every entry shows a proof level and the sources behind it, and a match takes you straight to the case file.",
   },
   {
-    name: "SCAMSNIFFER BLACKLIST",
-    covers: "Addresses + domains",
-    note: "ScamSniffer's open scam-database (GPL-3.0). We mirror it for lookups only and never re-export the list. The free feed runs about 7 days behind their live data.",
+    name: "SCAMSNIFFER SCAM LIST",
+    covers: "Wallet addresses + websites",
+    note: "ScamSniffer's open scam database (GPL-3.0). We keep a copy so we can answer one lookup at a time, and we never hand the list back out. The free copy runs about 7 days behind their live version.",
   },
   {
     name: "METAMASK ETH-PHISHING-DETECT",
-    covers: "Domains",
-    note: "The phishing-domain blocklist that ships inside MetaMask, maintained in the open. Domains only — it does not cover addresses.",
+    covers: "Websites",
+    note: "The list of fake websites that ships inside the MetaMask wallet, kept up to date in public. Websites only — it does not cover wallet addresses.",
   },
   {
     name: "CHAINABUSE",
-    covers: "Deep link only",
-    note: "Community scam reports across chains. Their free tier has no lookup API, so we hand you a direct link to their result page instead of pretending we queried it.",
+    covers: "Link out only",
+    note: "Scam reports filed by the public across many coins. Their free plan gives us no way to search it from here, so we hand you a direct link to their results page instead of pretending we searched it.",
   },
 ];
 
@@ -65,7 +65,7 @@ export default async function CheckPage({
     <main style={{ maxWidth: 780, margin: "0 auto", padding: "0 24px 64px" }}>
       <nav style={{ ...mono, fontSize: 12, padding: "16px 0" }}>
         <Link href="/">← FRONT PAGE</Link>
-        <span style={{ color: "var(--meta)" }}> / THE CHECK DESK</span>
+        <span style={{ color: "var(--meta)" }}> / THE WALLET CHECK</span>
       </nav>
 
       <p
@@ -78,7 +78,7 @@ export default async function CheckPage({
           margin: 0,
         }}
       >
-        THE CHECK DESK · LOOKUPS, NOT GUARANTEES
+        THE WALLET CHECK · WE LOOK IT UP, WE DO NOT PROMISE
       </p>
       <h1
         style={{
@@ -91,11 +91,11 @@ export default async function CheckPage({
         Check it before you send.
       </h1>
       <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 20 }}>
-        Paste an address or a domain. We look it up in the blocklists we
-        mirror and in our own published registry, then tell you exactly what
-        was checked and what was not. Two answers are possible here — FLAGGED
-        and NOT FOUND. There is no button on this desk that stamps anything
-        as trustworthy, because no honest lookup can.
+        Paste a wallet address or a website. We look it up in the known-scam
+        lists we keep a copy of and in our own scam database, then tell you
+        exactly what we checked and what we did not. There are only two
+        answers here — FLAGGED and NOT FOUND. Nothing on this page will ever
+        tell you something is safe, because no honest lookup can.
       </p>
 
       {!live && (
@@ -117,13 +117,14 @@ export default async function CheckPage({
               margin: 0,
             }}
           >
-            STATUS · LIVE DATABASE NOT CONNECTED
+            STATUS · LIVE LISTS NOT CONNECTED
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.55, margin: "8px 0 0" }}>
-            The live blocklist mirror is not attached to this deployment yet.
-            Checks still scan the published dossiers bundled with this site,
-            and every result links to Chainabuse — which runs independently of
-            us. Each answer states plainly which lookups ran.
+            Our copies of the outside scam lists are not hooked up to this
+            site yet. Checks still search the published case files that ship
+            with the site, and every answer links out to Chainabuse, which
+            runs on its own and has nothing to do with us. Each answer says
+            plainly which lookups actually ran.
           </p>
         </aside>
       )}
@@ -133,7 +134,7 @@ export default async function CheckPage({
         <CheckForm initialValue={q} />
       </div>
 
-      <SectionRule label="WHAT THIS DESK CHECKS" />
+      <SectionRule label="WHAT WE CHECK AGAINST" />
       <div style={{ background: "var(--panel)", padding: "20px 24px", marginTop: 16 }}>
         {SOURCES.map((s, idx) => (
           <div
@@ -182,28 +183,30 @@ export default async function CheckPage({
           <span style={{ ...mono, fontSize: 12, fontWeight: 600, letterSpacing: ".05em", color: "var(--danger)" }}>
             FLAGGED
           </span>{" "}
-          means at least one list we mirror carries this address or domain, or
-          it is named in a published dossier. A listing is a recorded
-          allegation from the named source, not a court finding — but it is a
-          stop sign. Do not send funds, do not enter a seed phrase.
+          means at least one of the lists we copy has this wallet address or
+          website on it, or a published case file names it. Being on a list
+          means the source wrote down what someone saw. It is not a court
+          ruling — but treat it as a stop sign. Do not send money, and do not
+          type in your seed phrase.
         </p>
         <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 12 }}>
           <span style={{ ...mono, fontSize: 12, fontWeight: 600, letterSpacing: ".05em" }}>
             NOT FOUND
           </span>{" "}
-          means exactly that: not on the lists we checked, at the moment we
-          checked. Scams are minted faster than any list records them, and
-          the free ScamSniffer feed we mirror runs about 7 days behind. We
-          cannot certify anything as safe to use, and this desk never will —
-          a fresh scam address passes every blocklist on earth on day one.
+          means exactly that: it was not on the lists we checked, at the
+          moment we checked them. New scams appear faster than any list can
+          write them down, and our copy of the free ScamSniffer list runs
+          about 7 days behind. We cannot tell you anything is safe, and we
+          never will — on its first day, a brand-new scam address passes
+          every scam list on earth.
         </p>
         <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 12, marginBottom: 0 }}>
-          If a check comes back NOT FOUND but something still smells wrong,
-          trust your nose and{" "}
+          If a check comes back NOT FOUND but something still feels wrong,
+          trust that feeling and{" "}
           <Link href="/report" style={{ color: "var(--link)", fontWeight: 700 }}>
             file a report
           </Link>
-          . Our vocabulary for trust states is defined at{" "}
+          . What each proof level means is spelled out at{" "}
           <Link href="/standards" style={{ color: "var(--link)", fontWeight: 700 }}>
             /standards
           </Link>
@@ -213,7 +216,7 @@ export default async function CheckPage({
 
       <SectionRule label="CREDITS AND LICENSES" />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16, marginBottom: 0 }}>
-        This desk exists because others do hard work in the open:{" "}
+        This page only works because other people do hard work in the open:{" "}
         <a
           href="https://github.com/scamsniffer/scam-database"
           target="_blank"
@@ -222,8 +225,8 @@ export default async function CheckPage({
         >
           ScamSniffer scam-database
         </a>{" "}
-        (GPL-3.0 — we serve individual lookups only and never re-export the
-        list) and{" "}
+        (GPL-3.0 — we answer one lookup at a time and never hand the list
+        back out) and{" "}
         <a
           href="https://github.com/MetaMask/eth-phishing-detect"
           target="_blank"
@@ -232,7 +235,7 @@ export default async function CheckPage({
         >
           MetaMask eth-phishing-detect
         </a>
-        . Cross-checks link to{" "}
+        . Second-opinion links go to{" "}
         <a
           href="https://www.chainabuse.com"
           target="_blank"
@@ -241,8 +244,8 @@ export default async function CheckPage({
         >
           Chainabuse
         </a>
-        , which we are not affiliated with. No source pays us; nobody can pay
-        to be delisted.
+        , who we have no connection to. Nobody pays us to be on these lists,
+        and nobody can pay us to be taken off them.
       </p>
     </main>
   );

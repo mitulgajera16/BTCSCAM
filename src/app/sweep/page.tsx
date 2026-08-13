@@ -7,7 +7,7 @@ const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
 export const metadata: Metadata = {
   title: "The Monday Sweep",
   description:
-    "BTCSCAM's weekly desk report: what was published, what was corrected, what sits in the wire queue, and what readers reported — every Monday, honest numbers only.",
+    "BTCSCAM's weekly report: what we published, what we corrected, what is waiting in the incoming leads queue, and what readers reported — every Monday, honest numbers only.",
   alternates: { canonical: "/sweep" },
 };
 
@@ -16,7 +16,7 @@ const EDITIONS = [
   {
     slug: "2026-08-11",
     title: "Sweep No. 1 — Launch week, mid-crisis",
-    dek: "BTCSCAM opened its doors in the middle of the Coldcard seed-entropy crisis: 3 dossiers live, 1 public correction, 2 new guides, 120 wire drafts awaiting triage, and 0 reader reports — the honest starting line.",
+    dek: "BTCSCAM opened its doors in the middle of the Coldcard seed-entropy crisis: 3 case files live, 1 public correction, 2 new guides, 120 incoming leads waiting to be reviewed, and 0 reader reports — the honest starting line.",
     published: "2026-08-11",
   },
 ];
@@ -54,12 +54,12 @@ export default function SweepIndex() {
         The Monday Sweep
       </h1>
       <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 16 }}>
-        Every Monday the desk publishes its week: what went on the record, what
-        was corrected, what the ingest wire queued, and what readers reported.
-        Incumbent channels are black holes — you file a report and hear nothing,
-        forever. This page is the opposite promise kept weekly: the desk shows
-        its work, including the weeks when the numbers are small. No number on
-        a Sweep is ever inflated; a zero is printed as a zero.
+        Every Monday we publish our week: what went on the record, what we
+        corrected, what new leads came in, and what readers reported. Report a
+        scam almost anywhere else and you hear nothing back, ever. This page is
+        the opposite promise, kept every week: we show our work, including the
+        weeks when the numbers are small. No number in a Sweep is ever
+        inflated; a zero is printed as a zero.
       </p>
 
       <SectionRule label={`EDITIONS (${EDITIONS.length})`} />

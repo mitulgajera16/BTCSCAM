@@ -33,9 +33,9 @@ export default function StanceButtons({
   if (stance) {
     return (
       <p style={{ ...mono, fontSize: 12, fontWeight: 600, margin: 0 }}>
-        YOU ALREADY WEIGHED IN — {stance === "corroborate" ? "CORROBORATE" : "DISPUTE"}.{" "}
+        YOU ALREADY WEIGHED IN — {stance === "corroborate" ? "I SAW THIS TOO" : "DISPUTE"}.{" "}
         <span style={{ color: "var(--meta)", fontWeight: 500 }}>
-          One stance per watcher; it stands with the editors.
+          One answer per person; the editors see it.
         </span>
       </p>
     );
@@ -58,7 +58,7 @@ export default function StanceButtons({
           onClick={() => setMode(mode === "corroborate" ? null : "corroborate")}
           style={mode === "corroborate" ? button : buttonQuiet}
         >
-          CORROBORATE
+          I SAW THIS TOO
         </button>
         <button
           type="button"
@@ -79,7 +79,7 @@ export default function StanceButtons({
           <input type="hidden" name="reportId" value={reportId} />
           <input type="hidden" name="stance" value="corroborate" />
           <label htmlFor={`evidence-${reportId}`} style={{ ...labelStyle, marginBottom: 0 }}>
-            EVIDENCE URL — REQUIRED. A LINK AN EDITOR CAN CHECK.
+            EVIDENCE LINK — REQUIRED. A LINK AN EDITOR CAN CHECK.
           </label>
           <input
             id={`evidence-${reportId}`}
@@ -92,7 +92,7 @@ export default function StanceButtons({
           />
           <div>
             <button type="submit" disabled={pending} style={button}>
-              {pending ? "FILING…" : "FILE CORROBORATION"}
+              {pending ? "FILING…" : "FILE WHAT I SAW"}
             </button>
           </div>
         </form>
@@ -103,7 +103,7 @@ export default function StanceButtons({
           <input type="hidden" name="reportId" value={reportId} />
           <input type="hidden" name="stance" value="dispute" />
           <label htmlFor={`dispute-${reportId}`} style={{ ...labelStyle, marginBottom: 0 }}>
-            DISPUTE NOTE — REQUIRED, 20+ CHARACTERS. WHAT DOES NOT HOLD UP?
+            DISPUTE NOTE — REQUIRED, 20+ CHARACTERS. WHAT DOES NOT ADD UP?
           </label>
           <textarea
             id={`dispute-${reportId}`}

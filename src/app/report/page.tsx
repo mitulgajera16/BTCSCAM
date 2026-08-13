@@ -9,7 +9,7 @@ const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
 export const metadata: Metadata = {
   title: "Report a Scam",
   description:
-    "Report a Bitcoin scam to BTCSCAM. Reports enter the registry as REPORTED and are never auto-verified — a human triages every submission in the weekly sweep.",
+    "Report a Bitcoin scam to BTCSCAM. Every report enters the scam database as REPORTED and is never marked verified on its own — a person reads and reviews every one in the weekly sweep.",
   alternates: { canonical: "/report" },
 };
 
@@ -38,17 +38,17 @@ const LADDER: { state: TrustState; meaning: string }[] = [
   {
     state: "reported",
     meaning:
-      "Where every report starts — including yours. One account, or several not yet shown independent. Not yet checked.",
+      "Where every report starts, including yours. One person said it, or several people did but we have not yet shown they are separate. Nobody has checked it yet.",
   },
   {
     state: "corroborated",
     meaning:
-      "Two or more sources point the same way, but independence or primacy is not yet established.",
+      "Two or more sources say the same thing, but we have not yet shown that they are separate, or that any of them saw it directly.",
   },
   {
     state: "verified",
     meaning:
-      "Confirmed by 2+ independent primary sources: vendor advisories, on-chain data, regulator filings, or victim evidence we examined ourselves.",
+      "Confirmed by two or more separate, firsthand sources: warnings from the company involved, Bitcoin blockchain records, regulator filings, or evidence from victims that we examined ourselves.",
   },
 ];
 
@@ -70,7 +70,7 @@ export default function ReportPage() {
           margin: 0,
         }}
       >
-        INTAKE DESK · READ BY HUMANS · R1 MANUAL TRIAGE
+        WHERE REPORTS COME IN · READ BY PEOPLE · REVIEWED BY HAND
       </p>
       <h1
         style={{
@@ -84,8 +84,8 @@ export default function ReportPage() {
       </h1>
       <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 20 }}>
         If something took your money — or tried to — tell us here. You do not
-        need proof to file, and you do not need to be certain. You need to say
-        what you saw, plainly. The desk does the checking; that is the job.
+        need proof to file, and you do not need to be sure. You only need to
+        say what you saw, plainly. We do the checking; that is our job.
       </p>
 
       <aside
@@ -107,15 +107,16 @@ export default function ReportPage() {
             margin: 0,
           }}
         >
-          ⚠ WARNING · RECOVERY SCAMS
+          ⚠ WARNING · SCAMS THAT PROMISE YOUR MONEY BACK
         </p>
         <p style={{ fontSize: 16, lineHeight: 1.55, margin: "8px 0 0" }}>
-          If someone contacts you promising to RECOVER lost funds for a fee —
-          that is itself a scam. We never charge. We never DM first.
+          If someone contacts you promising to GET YOUR LOST MONEY BACK for a
+          fee, that is itself a scam. We never charge. We never message you
+          first.
         </p>
       </aside>
 
-      <SectionRule label="HOW YOUR REPORT IS TREATED — THE TRUST LADDER" />
+      <SectionRule label="WHAT HAPPENS TO YOUR REPORT — THE PROOF LADDER" />
       <div style={{ background: "var(--panel)", padding: "20px 24px", marginTop: 16 }}>
         {LADDER.map((step, idx) => (
           <div
@@ -148,11 +149,11 @@ export default function ReportPage() {
           </div>
         ))}
         <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16, marginBottom: 0 }}>
-          Every report enters at the bottom rung, and nothing climbs
-          automatically — not for volume, not for outrage, not for anyone. A
-          human moves a report up the ladder and shows their sources when they
-          do. That is why REPORTED on this site means exactly that, and no
-          more.
+          Every report starts on the bottom rung, and nothing moves up on its
+          own — not because a lot of people report it, not because people are
+          angry about it, not for anyone. A person moves a report up the
+          ladder, and shows their sources when they do. That is why REPORTED
+          on this site means exactly that, and no more.
         </p>
       </div>
 
@@ -166,8 +167,8 @@ export default function ReportPage() {
           margin: "12px 0 0",
         }}
       >
-        Accounts are for credit, not a gate — anonymous reports carry the same
-        weight in triage.
+        Accounts are for credit, not a gate — a report with no name on it
+        carries exactly the same weight when we review it.
       </p>
       <div style={{ marginTop: 24 }}>
         <ReportForm />

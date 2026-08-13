@@ -80,7 +80,7 @@ export default function ReportRow({ report }: { report: DeskReport }) {
         <input type="hidden" name="reportId" value={report.id} />
         {/* The clicked button supplies the status value. */}
         <button type="submit" name="status" value="triaged" style={buttonQuiet} disabled={pending}>
-          MARK TRIAGED
+          MARK REVIEWED
         </button>
         <button type="submit" name="status" value="accepted" style={buttonQuiet} disabled={pending}>
           ACCEPT

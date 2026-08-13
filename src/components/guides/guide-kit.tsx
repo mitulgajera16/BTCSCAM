@@ -59,8 +59,8 @@ export function Byline({
         marginTop: 12,
       }}
     >
-      PUBLISHED {published} · SOURCES VERIFIED {sourcesVerified} · CORRECTIONS
-      PUBLIC
+      PUBLISHED {published} · SOURCES CHECKED {sourcesVerified} · CORRECTIONS
+      ARE PUBLIC
     </p>
   );
 }
@@ -151,7 +151,7 @@ export function WhyThisMatters({ ids }: { ids: string[] }) {
           margin: 0,
         }}
       >
-        WHY THIS MATTERS — REAL INCIDENTS
+        WHY THIS MATTERS — REAL CASES
       </h2>
       {incidents.map((i) => {
         const loss = lossLine(i);
@@ -212,7 +212,7 @@ export function WhyThisMatters({ ids }: { ids: string[] }) {
                 <Link href={`/scam/${i.slug}`}>{i.title}</Link>
               </h3>
               <p style={{ ...mono, fontSize: 12, color: "var(--meta)", margin: "8px 0 0" }}>
-                FIRST OBSERVED {i.firstObserved} · UPDATED {i.lastUpdated}
+                FIRST SEEN {i.firstObserved} · UPDATED {i.lastUpdated}
               </p>
             </div>
             <div style={{ ...mono, fontSize: 12, textAlign: "right", color: "var(--meta)" }}>
@@ -223,7 +223,7 @@ export function WhyThisMatters({ ids }: { ids: string[] }) {
                 href={`/scam/${i.slug}`}
                 style={{ fontWeight: 600, color: "var(--link)" }}
               >
-                READ THE DOSSIER →
+                READ THE CASE FILE →
               </Link>
             </div>
           </article>

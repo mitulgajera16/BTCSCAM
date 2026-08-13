@@ -24,7 +24,7 @@ const COLUMNS = [
     ],
   },
   {
-    h: "THE WIRE",
+    h: "UPDATES & DATA",
     links: [
       ["Monday Sweep", "/sweep"],
       ["RSS Feed", "/feed.xml"],
@@ -33,7 +33,7 @@ const COLUMNS = [
     ],
   },
   {
-    h: "ORGANIZATION",
+    h: "THE RULES",
     links: [
       ["Standards & Corrections", "/standards"],
       ["Dispute a Listing", "/standards"],
@@ -113,8 +113,8 @@ export default function SiteFooter() {
             letterSpacing: ".05em",
           }}
         >
-          {SITE_HOST.toUpperCase()} IS OUR ONLY DOMAIN. ANY OTHER SITE USING THIS
-          NAME IS AN IMPOSTOR — CHECK YOUR ADDRESS BAR.
+          {SITE_HOST.toUpperCase()} IS OUR ONLY WEBSITE. ANY OTHER SITE USING
+          THIS NAME IS A FAKE — CHECK YOUR ADDRESS BAR.
         </p>
         <div
           style={{
@@ -130,8 +130,8 @@ export default function SiteFooter() {
             letterSpacing: ".05em",
           }}
         >
-          <span>© 2026 BTCSCAM — COMMUNITY-VERIFIED SCAM INTELLIGENCE</span>
-          <span>NOT FINANCIAL ADVICE · VERIFY EVERYTHING · PAID LISTINGS 0</span>
+          <span>© 2026 BTCSCAM — SCAM REPORTS CHECKED BY PEOPLE</span>
+          <span>NOT FINANCIAL ADVICE · CHECK EVERYTHING · PAID LISTINGS 0</span>
         </div>
       </div>
     </footer>

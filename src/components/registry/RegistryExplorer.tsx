@@ -210,7 +210,7 @@ export default function RegistryExplorer({
     <div>
       {/* ── SEVERITY STRIP ─────────────────────────────────────────── */}
       <section
-        aria-label="Severity overview"
+        aria-label="How bad these scams are, at a glance"
         style={{
           background: "var(--paper)",
           border: "1px solid var(--rule)",
@@ -236,7 +236,7 @@ export default function RegistryExplorer({
                 type="button"
                 onClick={() => n > 0 && setSevFilter(selected ? null : sev)}
                 aria-pressed={selected}
-                aria-label={`Filter by ${severityLabel[sev]}`}
+                aria-label={`Show only ${severityLabel[sev]}`}
                 disabled={n === 0}
                 style={{
                   display: "flex",
@@ -285,7 +285,7 @@ export default function RegistryExplorer({
               color: "var(--meta)",
             }}
           >
-            {rows.length} INCIDENTS ON FILE
+            {rows.length} SCAMS ON FILE
           </span>
         </div>
 
@@ -339,7 +339,7 @@ export default function RegistryExplorer({
                 color: critical ? "#fff" : "var(--meta)",
               }}
             >
-              {critical ? "CRITICAL" : "WORST ACTIVE"}
+              {critical ? "MOST URGENT" : "WORST ONE STILL GOING"}
             </span>
             <Link
               href={`/scam/${worst.slug}`}
@@ -406,7 +406,7 @@ export default function RegistryExplorer({
             alignItems: "baseline",
           }}
         >
-          <FacetLabel>TRUST STATE</FacetLabel>
+          <FacetLabel>PROOF LEVEL</FacetLabel>
           {TRUST_ORDER.filter((t) => (trustCounts.get(t) ?? 0) > 0).map((t) => (
             <FacetChip
               key={t}
@@ -490,7 +490,7 @@ export default function RegistryExplorer({
                     display: "inline-block",
                   }}
                 >
-                  STALE &gt;90d
+                  NOT UPDATED IN 90+ DAYS
                 </div>
               )}
             </div>
@@ -522,7 +522,7 @@ export default function RegistryExplorer({
                       border: "1px solid var(--danger)",
                     }}
                   >
-                    ● ONGOING
+                    ● STILL HAPPENING
                   </span>
                 )}
               </div>
@@ -568,7 +568,7 @@ export default function RegistryExplorer({
                       marginRight: 6,
                     }}
                   >
-                    VENDOR: {r.vendor.toUpperCase()}
+                    COMPANY: {r.vendor.toUpperCase()}
                   </span>
                 )}
                 {r.categories.map((cat) => (
@@ -619,7 +619,7 @@ export default function RegistryExplorer({
                   marginTop: 6,
                 }}
               >
-                DOSSIER →
+                CASE FILE →
               </Link>
             </div>
           </article>
@@ -635,7 +635,7 @@ export default function RegistryExplorer({
             }}
           >
             <div style={{ ...display, fontSize: 21, fontWeight: 600 }}>
-              No tracked incident matches your filters.
+              No scam on file matches the filters you picked.
             </div>
             <p
               style={{
@@ -646,7 +646,8 @@ export default function RegistryExplorer({
                 maxWidth: "48ch",
               }}
             >
-              Unlisted does not mean safe — it may just mean unreported.
+              Not being listed here does not mean something is safe. It may
+              just mean nobody has reported it to us yet.
             </p>
             <button
               type="button"

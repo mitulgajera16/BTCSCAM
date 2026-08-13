@@ -60,7 +60,7 @@ export default function RegistryDraftCard({ draft }: { draft: DraftView }) {
         </summary>
         {draft.flags.length === 0 ? (
           <p style={{ ...mono, fontSize: 12, color: "var(--meta)" }}>
-            No review notes found for this dossier.
+            No review notes found for this case file.
           </p>
         ) : (
           <ul style={{ ...mono, fontSize: 12, lineHeight: 1.6, paddingLeft: 18, margin: "10px 0 0" }}>

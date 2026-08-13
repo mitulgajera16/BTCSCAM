@@ -24,7 +24,7 @@ export const ROLE_LADDER: readonly Role[] = [
 export const ROLE_LABEL: Record<Role, string> = {
   reader: "READER",
   reporter: "REPORTER",
-  corroborator: "CORROBORATOR",
+  corroborator: "WITNESS",
   watchman: "WATCHMAN",
   mod: "MOD",
 };
@@ -134,7 +134,7 @@ export async function requireRole(minRole: Role): Promise<RoleCheck> {
     return {
       ok: false,
       error:
-        "Accounts are not open yet — the desk ledger connects when our database goes live.",
+        "Accounts are not open yet — they connect when our database goes live.",
     };
   }
   const user = await getSession();

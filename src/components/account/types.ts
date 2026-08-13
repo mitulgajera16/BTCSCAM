@@ -2,7 +2,7 @@
  * Account-shared types and ladder copy. No Node imports — client components
  * consume this file.
  *
- * The ladder is a ledger of earned status, not a game: thresholds from
+ * The ladder is a record of earned status, not a game: thresholds from
  * R3-PLAN, no points, no tokens, nothing purchasable. Votes and chips are
  * signals to the editors — nothing here auto-verifies an incident.
  */
@@ -39,7 +39,8 @@ export type LadderTier = {
  * never automatic demotion, never auto-verification.
  *
  * THE single source for the ladder: the account LadderTable, the open
- * ledger's LadderBox, and the desk LadderPanel all render from this array.
+ * reports page's LadderBox, and the desk LadderPanel all render from this
+ * array.
  * Grants describe only what exists in shipped code — no promised tools.
  */
 export const LADDER_TIERS: LadderTier[] = [
@@ -48,7 +49,7 @@ export const LADDER_TIERS: LadderTier[] = [
     title: "READER",
     earned: "Sign in with your email. That is all.",
     grants:
-      "A named ledger: your reports and evidence tracked in one place, under one handle.",
+      "A named record: your reports and evidence tracked in one place, under one handle.",
   },
   {
     role: "reporter",
@@ -58,25 +59,25 @@ export const LADDER_TIERS: LadderTier[] = [
   },
   {
     role: "corroborator",
-    title: "CORROBORATOR",
+    title: "WITNESS",
     earned:
       "3 accepted reports — or 5 accepted evidence chips on other people's reports.",
     grants:
-      "Corroborate or dispute open reports. Your stance is a signal to the editors, never a verdict.",
+      "Back up or dispute open reports. What you file is a signal to the editors, never a verdict.",
   },
   {
     role: "watchman",
     title: "WATCHMAN",
     earned: "10 accepted contributions, plus editor approval.",
     grants:
-      "Senior standing on the ledger, granted by the editors. Status and credit — rank never adds power over the record.",
+      "Senior standing on the record, granted by the editors. Status and credit — rank never adds power over the record.",
     manual: true,
   },
   {
     role: "mod",
     title: "MOD",
     earned: "Appointed by the editors. Never automatic.",
-    grants: "The desk itself: triage, publish, correct — on the record.",
+    grants: "The desk itself: review, publish, correct — on the record.",
     manual: true,
   },
 ];

@@ -5,7 +5,7 @@ const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 /**
  * v4 header chrome — three bands on the warm "orange paper" ground:
  *   1. date bar (mono, hairline below)
- *   2. masthead: SUBSCRIBE | BTC̶SCAM wordmark | WALLET TEST
+ *   2. masthead: SUBSCRIBE | BTC̶SCAM wordmark | WALLET CHECK
  *   3. main nav: five grouped links left, MY DESK + REPORT A SCAM right
  * The wordmark is the strikethrough treatment from the design contract;
  * the stamp seal lives in the footer.
@@ -95,7 +95,7 @@ export default function SiteHeader() {
           </h1>
         </Link>
         <Link href="/check" style={edgeButton}>
-          WALLET TEST
+          WALLET CHECK
         </Link>
       </div>
 

@@ -27,16 +27,16 @@ async function requireUser(): Promise<{ uid: string } | { error: string }> {
   if (!user) {
     return {
       error:
-        "Not signed in — your session is missing or expired. Sign in again at /account/sign-in.",
+        "You are not signed in — your session is missing or has expired. Sign in again at /account/sign-in.",
     };
   }
   // Every write below goes through the service client. Without the service
   // key it would throw — fail closed with words instead, the same honest
-  // state /account renders ("Signed in — the ledger is not").
+  // state /account renders ("Signed in — your records are not").
   if (!hasServiceRole()) {
     return {
       error:
-        "Signed in, but the desk ledger's server connection is not configured — nothing can be saved right now. Nothing was lost; try again when the ledger connects.",
+        "You are signed in, but the server connection behind your records is not set up — nothing can be saved right now. Nothing was lost; try again when the connection is back.",
     };
   }
   return { uid: user.id };
@@ -113,7 +113,8 @@ export async function updateHandle(
   if (!profile) {
     return {
       ok: false,
-      error: "No profile row yet — reload /account once and try again.",
+      error:
+        "Your profile has not been created yet — reload /account once and try again.",
     };
   }
   if (!canEditHandle(profile.handle)) {
@@ -140,7 +141,7 @@ export async function updateHandle(
   revalidatePath("/account");
   return {
     ok: true,
-    message: `You are ${handle}. That is the byline — it does not change again.`,
+    message: `You are ${handle}. That is the name on your work — it does not change again.`,
   };
 }
 
@@ -168,7 +169,7 @@ export async function toggleCredit(
   return {
     ok: true,
     message: next
-      ? "Named credit ON — accepted contributions may carry your handle on dossiers."
-      : "Named credit OFF — you contribute anonymously. The work still counts on the ladder.",
+      ? "Named credit ON — work we accept from you may carry your handle on case files."
+      : "Named credit OFF — you contribute with no name attached. The work still counts on the ladder.",
   };
 }

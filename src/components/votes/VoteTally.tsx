@@ -27,12 +27,12 @@ export default function VoteTally({
         alignItems: "baseline",
       }}
     >
-      <span>CORROBORATE {corroborate}</span>
+      <span>SAW IT TOO {corroborate}</span>
       <span style={{ color: dispute > 0 ? "var(--danger)" : "var(--ink)" }}>
         DISPUTE {dispute}
       </span>
       <span style={{ color: "var(--meta)", fontWeight: 500, letterSpacing: 0 }}>
-        SIGNALS TO EDITORS — NOT VERIFICATION
+        SIGNALS TO THE EDITORS — NOT PROOF
       </span>
     </div>
   );

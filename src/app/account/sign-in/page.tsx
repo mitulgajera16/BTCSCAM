@@ -12,24 +12,24 @@ const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
 export const metadata: Metadata = {
   title: "Sign in",
   description:
-    "Sign in to BTCSCAM with a one-time email link. Accounts put your handle on the record when your evidence holds up — anonymous reporting stays open to everyone.",
+    "Sign in to BTCSCAM with a one-time email link. An account puts your handle on the record when your evidence holds up — reporting without a name stays open to everyone.",
 };
 
 // State travels via query params (?sent=1 / ?error=code) so the whole flow
 // works without client JavaScript. Codes only — never reflected free text.
 const ERROR_COPY: Record<string, string> = {
   "not-configured":
-    "Accounts are not open yet — the desk ledger connects when our database goes live. Reporting stays open to everyone in the meantime.",
+    "Accounts are not open yet — your desk switches on when our database goes live. Reporting stays open to everyone in the meantime.",
   "invalid-email":
     "That does not look like an email address. Check it and try again.",
   "rate-limited":
-    "Too many sign-in requests in a short window. Wait a few minutes, then try again.",
+    "Too many sign-in requests in a short time. Wait a few minutes, then try again.",
   "send-failed":
-    "The sign-in mail could not be sent. Try again in a minute — if it keeps failing, the fault is ours, not yours.",
+    "The sign-in email could not be sent. Try again in a minute — if it keeps failing, the fault is ours, not yours.",
   "link-expired":
-    "That sign-in link expired or was already used. Links are one-time by design — request a fresh one below.",
+    "That sign-in link has expired or was already used. Each link works once, on purpose — ask for a new one below.",
   "missing-code":
-    "That link arrived without a sign-in code, so it cannot be honored. Request a fresh one below.",
+    "That link arrived without a sign-in code, so it cannot be used. Ask for a new one below.",
 };
 
 const field: CSSProperties = {
@@ -109,19 +109,19 @@ export default async function SignInPage({
             margin: 0,
           }}
         >
-          THE DESK · CONTRIBUTOR REGISTER
+          MY DESK · SIGN IN
         </p>
         <h1 style={{ ...display, fontSize: 40, lineHeight: 1.1, margin: "12px 0 16px" }}>
-          Sign in to the desk.
+          Sign in to your desk.
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.55, margin: 0 }}>
           One email, one link, no password. An account exists for credit, not
           as a gate: it puts your handle on the record when your evidence
-          holds up. Anonymous reporting stays open to everyone at{" "}
+          holds up. Reporting without a name stays open to everyone at{" "}
           <Link href="/report" style={{ color: "var(--link)" }}>
             /report
           </Link>
-          {" — "}with or without an account, a human reads every filing.
+          {" — "}with or without an account, a person reads every report.
         </p>
       </header>
 
@@ -131,12 +131,12 @@ export default async function SignInPage({
         <Panel>
           <PanelLabel>ACCOUNTS OPEN SOON</PanelLabel>
           <h2 style={{ ...display, fontSize: 24, margin: "8px 0" }}>
-            The register is not taking names yet.
+            We are not taking names yet.
           </h2>
           <p style={{ fontSize: 16, lineHeight: 1.55, margin: 0 }}>
-            ACCOUNTS OPEN SOON — the desk ledger connects when our database
-            goes live. Until then nothing here pretends otherwise: no form, no
-            fake session. You can still{" "}
+            ACCOUNTS OPEN SOON — your desk switches on when our database goes
+            live. Until then nothing here pretends otherwise: no form, no fake
+            sign-in. You can still{" "}
             <Link href="/report" style={{ color: "var(--link)" }}>
               file a report anonymously
             </Link>{" "}
@@ -144,19 +144,20 @@ export default async function SignInPage({
             <Link href="/standards" style={{ color: "var(--link)" }}>
               the standards
             </Link>{" "}
-            that will govern contributor credit.
+            that decide who gets credit.
           </p>
         </Panel>
       ) : sent ? (
         <Panel>
           <PanelLabel>CHECK YOUR MAIL</PanelLabel>
           <h2 style={{ ...display, fontSize: 24, margin: "8px 0" }}>
-            If that address can receive mail, a link is on its way.
+            If that address can receive email, a link is on its way.
           </h2>
           <p style={{ fontSize: 16, lineHeight: 1.55, margin: 0 }}>
-            The link signs you in once, then dies. Open it in this browser —
-            it is bound to the one that asked for it. Nothing arriving within
-            a few minutes? Check spam, then request another below.
+            The link signs you in once, then stops working. Open it in this
+            browser — it only works in the one that asked for it. Nothing
+            after a few minutes? Check your spam folder, then ask for another
+            below.
           </p>
         </Panel>
       ) : null}
@@ -205,8 +206,8 @@ export default async function SignInPage({
               }}
             >
               Used for the sign-in link and nothing else. Never published,
-              never sold, never shown on a dossier — credit lines use your
-              handle, and only if you opt in.
+              never sold, never shown on a case file — credit lines use your
+              handle, and only if you turn that on.
             </p>
           </div>
           <button
@@ -233,20 +234,23 @@ export default async function SignInPage({
         <PanelLabel>WHAT AN ACCOUNT IS · AND IS NOT</PanelLabel>
         <ul style={{ fontSize: 15, lineHeight: 1.6, paddingLeft: 20, margin: "12px 0 0" }}>
           <li>
-            Standing on the contributor ladder — reader, reporter,
-            corroborator, watchman — earned by accepted contributions. Status
-            and credit only; no tokens, no points, nothing to buy.
+            A place on the contributor ladder — reader, reporter, witness,
+            watchman — earned by work we accept. Standing and credit only; no
+            tokens, no points, nothing to buy.
           </li>
           <li>
-            Your corroborations and disputes are signals to the editors. They
-            never verify anything by themselves — the trust ladder stays
-            editorial, as written in{" "}
+            When you back up a report or dispute one, that is a signal to the
+            editors. It never verifies anything by itself — a person decides
+            every step of the proof ladder, as written in{" "}
             <Link href="/standards" style={{ color: "var(--link)" }}>
               the standards
             </Link>
             .
           </li>
-          <li>Not a gate. Every reader gets the same registry, signed in or not.</li>
+          <li>
+            Not a gate. Every reader gets the same scam database, signed in or
+            not.
+          </li>
         </ul>
       </div>
     </main>

@@ -112,10 +112,10 @@ function CreditToggle({ showCredit }: { showCredit: boolean }) {
           maxWidth: "60ch",
         }}
       >
-        Named credit on dossiers you corroborate. ON: accepted contributions
-        may carry your handle — &ldquo;Corroborated by&rdquo; on the public
-        record. OFF: you contribute anonymously; the work still counts on the
-        ladder. Change it anytime.
+        Named credit on case files you back up. ON: accepted contributions may
+        carry your handle — &ldquo;Backed up by&rdquo; on the public record.
+        OFF: you contribute anonymously; the work still counts on the ladder.
+        Change it anytime.
       </p>
       <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
         <span

@@ -76,7 +76,7 @@ function VoteLine({ vote }: { vote: DeskVote }) {
             color: vote.stance === "corroborate" ? "var(--tick-up)" : "var(--danger)",
           }}
         >
-          {vote.stance === "corroborate" ? "CORROBORATE" : "DISPUTE"}
+          {vote.stance === "corroborate" ? "SAW IT TOO" : "DISPUTE"}
         </span>
         <span style={{ ...mono, fontSize: 12, color: "var(--meta)" }}>
           {vote.voter} · {vote.createdAt.slice(0, 10)}
@@ -226,11 +226,12 @@ export default function DeskSignalsPanel({
         }}
       >
         <span style={{ ...capsLabel, color: "var(--meta)" }}>
-          VERIFY-VOTES · REPORT #{reportId} · {reportStatus.toUpperCase()}
+          VERIFY-VOTES · REPORT #{reportId} ·{" "}
+          {reportStatus === "triaged" ? "BEING REVIEWED" : reportStatus.toUpperCase()}
         </span>
         {votesOk ? (
           <>
-            <StanceCount label="CORROBORATE" count={corroborate} color="var(--tick-up)" />
+            <StanceCount label="SAW IT TOO" count={corroborate} color="var(--tick-up)" />
             <StanceCount label="DISPUTE" count={dispute} color="var(--danger)" />
           </>
         ) : (
@@ -241,7 +242,7 @@ export default function DeskSignalsPanel({
         )}
       </div>
       <p style={{ ...mono, fontSize: 11, color: "var(--meta)", margin: "6px 0 0" }}>
-        Votes and chips are signals to editors. They never auto-verify — the trust
+        Votes and chips are signals to editors. They never auto-verify — the proof
         ladder stays editorial.
       </p>
 

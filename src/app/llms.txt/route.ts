@@ -22,39 +22,39 @@ export async function GET() {
 
   const body = `# BTCSCAM — The Anti-Scam Paper of Record
 
-> Verified Bitcoin scam and incident registry, wallet/domain checks, and plain-language protection guides. Every incident carries a trust state (Reported → Corroborated → Verified → Resolved/Disputed), dated sources, and a public corrections log.
+> A checked database of Bitcoin scams, wallet and website checks, and plain-language guides to staying safe. Every scam carries a proof level (Reported → Backed by sources → Verified → Closed/Disputed), dated sources, and a public record of every correction.
 
 Key facts for citation:
-- Every claim on an incident dossier is source-linked; severity and verification are separate labels.
+- Every claim in a case file links to its source; how bad a scam is and how far we have proved it are separate labels.
 - Reports are public and free forever — never sold, gated, or licensed.
-- BTCSCAM sells nothing on scam pages and never runs recovery-service ads. Anyone promising recovery of stolen funds is running the second half of the scam.
-- The registry names addresses, domains, and handles — never private individuals.
-- Canonical domain: ${SITE_URL} (any other domain using this name is an impostor).
+- BTCSCAM sells nothing on scam pages and never runs ads for fund-recovery services. Anyone promising to get your stolen money back is running the second half of the scam.
+- The database names wallet addresses, websites, and handles — never private individuals.
+- Our only website: ${SITE_URL} (any other site using this name is a fake).
 
 ## Tools
-- [Check an address or domain](${SITE_URL}/check): instant lookup against mirrored blocklists and the incident registry — evidence, not a trust score
-- [Report a scam](${SITE_URL}/report): human-triaged intake; nothing auto-verifies
-- [Open ledger](${SITE_URL}/reports/open): every reader report awaiting triage, in public
+- [Check a wallet address or website](${SITE_URL}/check): instant lookup against our copies of the known-scam lists and our own scam database — evidence, never a promise that something is safe
+- [Report a scam](${SITE_URL}/report): a person reads and reviews every report; nothing is ever marked verified on its own
+- [Open reports](${SITE_URL}/reports/open): every reader report waiting to be reviewed, in public
 
-## Incident dossiers
+## Scam case files
 ${dossiers}
 
 ## Guides
-- [Crypto recovery scams](${SITE_URL}/guides/crypto-recovery-scams): nobody legitimate can seize stolen crypto for a fee — how the second scam works and which free official channels actually help
-- [Seed phrase storage](${SITE_URL}/guides/seed-phrase-storage): paper vs steel with independent stress-test evidence; never digital, two complete copies, never split a seed
-- [Wallet phishing recognition](${SITE_URL}/guides/wallet-phishing-recognition): fake vendor emails, search-ad phishing, fake apps, fake support — the domain and the ask are the tells
-- [Hardware wallet authenticity](${SITE_URL}/guides/hardware-wallet-authenticity): fake and pre-seeded devices; the pre-filled recovery card is the kill pattern; brand-by-brand genuine checks
-- [Seed phrase entropy](${SITE_URL}/guides/seed-phrase-entropy): verifiable seed generation, dice-roll procedure, why device RNGs fail
+- [Crypto recovery scams](${SITE_URL}/guides/crypto-recovery-scams): no honest company can grab stolen crypto back for a fee — how the second scam works and which free official routes actually help
+- [Seed phrase storage](${SITE_URL}/guides/seed-phrase-storage): paper vs steel, with independent stress-test evidence; never on a screen, two complete copies, never split a seed phrase
+- [Wallet phishing recognition](${SITE_URL}/guides/wallet-phishing-recognition): fake emails from wallet companies, scam search ads, fake apps, fake support — the website address and what they ask for are the tells
+- [Hardware wallet authenticity](${SITE_URL}/guides/hardware-wallet-authenticity): fake devices and devices that arrive already set up; a recovery card that is already filled in is the giveaway; how to check each brand is genuine
+- [Seed phrase entropy](${SITE_URL}/guides/seed-phrase-entropy): how to make a seed phrase you can check yourself, the dice-roll method, why the random number generators inside devices fail
 
-## The Monday Sweep (weekly desk report)
-- [Sweep index](${SITE_URL}/sweep): what was published, corrected, queued, and reported — every Monday, honest numbers only
+## The Monday Sweep (weekly report)
+- [Sweep index](${SITE_URL}/sweep): what we published, corrected, queued, and what readers reported — every Monday, honest numbers only
 
-## Editorial standards
-- [The Standards](${SITE_URL}/standards): trust ladder, corrections policy, dispute and takedown process
+## The rules this site runs on
+- [The Standards](${SITE_URL}/standards): the proof ladder, how we handle corrections, and how to dispute what we published
 
 ## Machine-readable data
 - [RSS feed](${SITE_URL}/feed.xml)
-- [Incident JSON API](${SITE_URL}/api/incidents)
+- [Scam JSON API](${SITE_URL}/api/incidents)
 - [Sitemap](${SITE_URL}/sitemap.xml)
 `;
 

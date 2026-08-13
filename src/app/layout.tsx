@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s — BTCSCAM",
   },
   description:
-    "Verified Bitcoin scam and incident registry, wallet checks, and plain-language protection guides. Fast AND verified AND readable.",
+    "A checked database of Bitcoin scams, free wallet and website checks, and plain-language guides to staying safe. Fast, checked, and readable.",
   alternates: {
     types: { "application/rss+xml": "/feed.xml" },
   },
@@ -48,7 +48,7 @@ const siteJsonLd = [
     name: "BTCSCAM",
     url: SITE_URL,
     description:
-      "The anti-scam paper of record: a verified Bitcoin scam and incident registry with a public trust ladder, sourced dossiers, and a permanent corrections log.",
+      "The anti-scam paper of record: a checked database of Bitcoin scams with a public proof ladder, sourced case files, and a permanent record of every correction.",
   },
   {
     "@context": "https://schema.org",

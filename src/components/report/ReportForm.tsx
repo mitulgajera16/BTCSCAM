@@ -101,11 +101,11 @@ export function ReportForm() {
           Filed. A person reads it Monday.
         </h3>
         <p style={{ fontSize: 16, lineHeight: 1.55 }}>
-          Your report is in the intake queue as REPORTED · UNVERIFIED. Every
-          report is read and triaged by a human in the Monday Sweep — our
-          weekly pass over the queue. If it corroborates something in the
-          registry, the dossier is updated and your report becomes part of the
-          public record. We never publish your contact details.
+          Your report is in the queue as REPORTED · NOT CHECKED YET. A person
+          reads and reviews every report in the Monday Sweep — our weekly pass
+          through the queue. If it backs up something already in the scam
+          database, we update that case file and your report becomes part of
+          the public record. We never publish your contact details.
         </p>
         {state.chipCount > 0 && (
           <p style={{ fontSize: 16, lineHeight: 1.55 }}>
@@ -113,7 +113,7 @@ export function ReportForm() {
               ? `Your ${state.chipCount} evidence chip${
                   state.chipCount === 1 ? " is" : "s are"
                 } attached to the report and read in the same pass.`
-              : "The report itself is filed, but its evidence chips hit a database error and did not attach. If you left a contact email, triage will ask for them; otherwise file a second report carrying just the chips and say it supplements this one."}
+              : "The report itself is filed, but its evidence chips hit a database error and did not attach. If you left an email address, we will write and ask for them; otherwise file a second report with just the chips and say it goes with this one."}
           </p>
         )}
         <a href="/" style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}>
@@ -154,12 +154,12 @@ export function ReportForm() {
               : "Your report is drafted. Copy it, then file it in the open."}
           </h3>
           <p style={{ fontSize: 16, lineHeight: 1.55 }}>
-            Our intake queue is a public GitHub tracker — on purpose. A queue
-            anyone can inspect cannot quietly bury a report, and every filing
-            is timestamped by a third party.{" "}
+            Reports come in through a public GitHub tracker — on purpose. A
+            queue anyone can look at cannot quietly bury a report, and someone
+            outside this site stamps the time on every filing.{" "}
             {github.url
-              ? "The button below opens a prefilled issue with everything you wrote. Check it, then press Submit on GitHub."
-              : "Your report is too long for a prefilled link, so nothing was dropped: copy the draft below, open a new issue, and paste it in."}
+              ? "The button below opens a filled-in issue with everything you wrote. Check it, then press Submit on GitHub."
+              : "Your report is too long to travel in a link, so nothing was dropped: copy the draft below, open a new issue, and paste it in."}
           </p>
           {github.url ? (
             <a
@@ -204,10 +204,10 @@ export function ReportForm() {
           )}
           {github.trimmed && github.url && (
             <p style={{ ...hintStyle, marginTop: 12 }}>
-              Your description was too long for the prefilled link, so the
+              Your description was too long to travel in the link, so the
               draft on GitHub carries a shortened version with a note saying
               so. After you press Submit there, paste the full draft below as
-              a comment — the complete text is preserved here.
+              a comment — the whole text is kept here.
             </p>
           )}
           {(github.trimmed || !github.url) && issueMarkdown && (
@@ -226,10 +226,11 @@ export function ReportForm() {
             </div>
           )}
           <p style={{ ...hintStyle, marginTop: 12 }}>
-            You will need a GitHub account. The issue is public: your contact
-            email, if you gave one, has already been left out of the draft —
-            and do not paste anything else you want kept private. Domains and
-            evidence links are defanged so nobody clicks them by accident.
+            You will need a GitHub account. The issue is public: your email
+            address, if you gave one, has already been left out of the draft —
+            and do not paste anything else you want kept private. Websites and
+            evidence links are broken on purpose so nobody clicks them by
+            accident.
           </p>
         </div>
       )}
@@ -307,7 +308,7 @@ export function ReportForm() {
         <Field
           label="SCAM TYPE"
           htmlFor="rf-scam-type"
-          hint="Pick the closest match. Triage can reclassify."
+          hint="Pick the closest match. We can move it if it belongs somewhere else."
         >
           <select
             id="rf-scam-type"
@@ -334,7 +335,7 @@ export function ReportForm() {
           </p>
           <p style={{ ...hintStyle, marginTop: 0, marginBottom: 12 }}>
             Give us something we can chase: the company or product involved,
-            the website, or the address funds went to.
+            the website, or the wallet address the money went to.
           </p>
           <div
             style={{
@@ -346,7 +347,7 @@ export function ReportForm() {
           >
             <div>
               <label style={labelStyle} htmlFor="rf-vendor">
-                VENDOR / PRODUCT
+                COMPANY OR PRODUCT
               </label>
               <input
                 id="rf-vendor"
@@ -361,7 +362,7 @@ export function ReportForm() {
             </div>
             <div>
               <label style={labelStyle} htmlFor="rf-domain">
-                DOMAIN
+                WEBSITE
               </label>
               <input
                 id="rf-domain"
@@ -376,7 +377,7 @@ export function ReportForm() {
             </div>
             <div>
               <label style={labelStyle} htmlFor="rf-address">
-                BITCOIN ADDRESS
+                BITCOIN WALLET ADDRESS
               </label>
               <input
                 id="rf-address"
@@ -415,9 +416,9 @@ export function ReportForm() {
           </Field>
 
           <Field
-            label="YOUR CONTACT — OPTIONAL"
+            label="YOUR EMAIL — OPTIONAL"
             htmlFor="rf-contact"
-            hint="Only used if triage has questions. Never published, never sold."
+            hint="Only used if we have questions about your report. Never published, never sold."
           >
             <input
               id="rf-contact"
@@ -433,9 +434,9 @@ export function ReportForm() {
         </div>
 
         <Field
-          label="EVIDENCE — ONE URL PER LINE"
+          label="EVIDENCE — ONE LINK PER LINE"
           htmlFor="rf-evidence"
-          hint="Screenshots on an image host, archive.org captures, block explorer links, the scam page itself. Full URLs starting with https://."
+          hint="Screenshots uploaded to an image site, archive.org copies of a page, block explorer links, the scam page itself. Full links starting with https://."
         >
           <textarea
             id="rf-evidence"
@@ -450,12 +451,12 @@ export function ReportForm() {
 
         <div style={{ marginBottom: 24 }}>
           <p style={{ ...labelStyle, marginBottom: 8 }}>
-            EVIDENCE CHIPS — TYPED, OPTIONAL
+            EVIDENCE CHIPS — OPTIONAL
           </p>
           <p style={{ ...hintStyle, marginTop: 0, marginBottom: 12 }}>
-            Pin your strongest pieces as typed chips so triage can check them
-            first: a URL, a transaction id, a screenshot link, or an exact
-            quote. Add them one at a time.
+            Pin your strongest pieces here so we check them first: a link, a
+            transaction id, a screenshot link, or an exact quote. Add them one
+            at a time.
           </p>
           <EvidenceChips name="chips" defaultValue={values?.chips ?? ""} />
         </div>
@@ -482,8 +483,8 @@ export function ReportForm() {
               : "FILE THE REPORT"}
         </button>
         <p style={{ ...hintStyle, marginTop: 12 }}>
-          Filing is free. It enters the queue as REPORTED · UNVERIFIED and a
-          human reads it in the weekly sweep.
+          Filing is free. Your report enters the queue as REPORTED · NOT
+          CHECKED YET and a person reads it in the weekly sweep.
         </p>
       </form>
     </div>

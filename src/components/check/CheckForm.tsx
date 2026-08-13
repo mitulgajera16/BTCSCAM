@@ -63,13 +63,13 @@ const linkButtonStyle: CSSProperties = {
 const KIND_LABEL: Record<string, string> = {
   "btc-address": "BITCOIN ADDRESS",
   "evm-address": "ETHEREUM-STYLE ADDRESS",
-  domain: "DOMAIN",
+  domain: "WEBSITE",
 };
 
 const SOURCE_LABEL: Record<string, string> = {
-  scamsniffer: "SCAMSNIFFER BLACKLIST",
+  scamsniffer: "SCAMSNIFFER SCAM LIST",
   metamask: "METAMASK ETH-PHISHING-DETECT",
-  "btcscam-registry": "BTCSCAM REGISTRY",
+  "btcscam-registry": "BTCSCAM DATABASE",
 };
 
 function PanelLabel({
@@ -108,7 +108,7 @@ function QueryEcho({ kind, normalized }: { kind: string; normalized: string }) {
         wordBreak: "break-all",
       }}
     >
-      <span style={{ color: "var(--meta)" }}>{KIND_LABEL[kind] ?? "QUERY"} · </span>
+      <span style={{ color: "var(--meta)" }}>{KIND_LABEL[kind] ?? "YOU PASTED"} · </span>
       {kind === "domain" ? defangDomain(normalized) : normalized}
     </p>
   );
@@ -118,7 +118,7 @@ function IncidentLinks({ incidents }: { incidents: IncidentMatch[] }) {
   if (incidents.length === 0) return null;
   return (
     <div style={{ marginTop: 16 }}>
-      <PanelLabel danger>IN THE REGISTRY — READ THE DOSSIER</PanelLabel>
+      <PanelLabel danger>IN OUR DATABASE — READ THE CASE FILE</PanelLabel>
       {incidents.map((m) => (
         <div
           key={m.slug}
@@ -194,8 +194,8 @@ function HitRows({ hits }: { hits: BlacklistHit[] }) {
           </span>
           <span style={{ ...mono, fontSize: 12, color: "var(--danger-ink)" }}>
             {h.listedAt
-              ? `IN OUR MIRROR SINCE ${h.listedAt.slice(0, 10)}`
-              : "LISTING DATE NOT RECORDED"}
+              ? `ON THIS LIST SINCE ${h.listedAt.slice(0, 10)}`
+              : "DATE IT WAS LISTED NOT RECORDED"}
           </span>
         </div>
       ))}
@@ -214,11 +214,11 @@ function CreditLine() {
         marginBottom: 0,
       }}
     >
-      Blocklist lookups run against our mirror of the ScamSniffer scam-database
-      (GPL-3.0 — served as individual lookups only, never re-exported) and
-      MetaMask&apos;s eth-phishing-detect domain list, plus the BTCSCAM
-      registry. Credit where due: without those two open datasets this desk
-      could not exist.
+      We search our copy of the ScamSniffer scam database (GPL-3.0 — one
+      lookup at a time, never handed back out) and MetaMask&apos;s
+      eth-phishing-detect list of fake websites, plus the BTCSCAM database.
+      Credit where it is due: without those two open lists, this page could
+      not exist.
     </p>
   );
 }
@@ -236,7 +236,7 @@ function ChainabuseAndReport({
         rel="noopener noreferrer"
         style={linkButtonStyle}
       >
-        CROSS-CHECK ON CHAINABUSE →
+        GET A SECOND OPINION ON CHAINABUSE →
       </a>
       <Link href="/report" style={linkButtonStyle}>
         SEEN A SCAM? REPORT IT →
@@ -261,23 +261,24 @@ function FlaggedPanel({
         marginTop: 24,
       }}
     >
-      <PanelLabel danger>⚠ FLAGGED · ON A LIST WE MIRROR</PanelLabel>
+      <PanelLabel danger>⚠ FLAGGED · ON A KNOWN-SCAM LIST</PanelLabel>
       <h3 style={{ ...display, fontSize: 24, margin: "8px 0", color: "var(--danger-ink)" }}>
-        Flagged. Do not send funds.
+        Flagged. Do not send any money.
       </h3>
       <QueryEcho kind={result.kind} normalized={result.normalized} />
       <HitRows hits={result.hits} />
       <IncidentLinks incidents={result.incidents} />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16, marginBottom: 0 }}>
-        A listing is an allegation recorded by the named source, not a court
-        finding. It is, however, exactly the kind of allegation you should
-        treat as a stop sign: do not send funds, do not enter a seed phrase,
-        do not install anything from it.
+        Being on a list means the source named above wrote down what someone
+        saw. It is not a court ruling. It is, however, exactly the kind of
+        warning you should treat as a stop sign: do not send money, do not
+        type in your seed phrase, do not install anything from it.
       </p>
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 12, marginBottom: 0, fontWeight: 700 }}>
-        We sell nothing on this page on purpose — anyone promising recovery
-        of these funds is running the second half of the scam. No legitimate
-        service cold-contacts victims or asks for a fee to "trace" money.
+        We sell nothing on this page, on purpose — anyone who promises to get
+        your money back is running the second half of the scam. No real
+        service messages victims out of the blue, or charges a fee to
+        &quot;trace&quot; stolen money.
       </p>
       <ChainabuseAndReport chainabuseUrl={result.chainabuseUrl} />
       <p style={{ ...mono, fontSize: 11, color: "var(--danger-ink)", marginTop: 16, marginBottom: 0 }}>
@@ -303,25 +304,25 @@ function NotFoundPanel({
         marginTop: 24,
       }}
     >
-      <PanelLabel>NOT FOUND · ON THE LISTS WE MIRROR</PanelLabel>
+      <PanelLabel>NOT FOUND · ON THE LISTS WE CHECKED</PanelLabel>
       <h3 style={{ ...display, fontSize: 24, margin: "8px 0" }}>
-        Not found. That is not a clearance.
+        Not found. That does not mean it is safe.
       </h3>
       <QueryEcho kind={result.kind} normalized={result.normalized} />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16 }}>
-        We checked our mirror of the ScamSniffer blacklist
-        {result.kind === "domain" ? ", the MetaMask eth-phishing-detect domain list," : ""}{" "}
-        and the published BTCSCAM registry. This{" "}
-        {result.kind === "domain" ? "domain" : "address"} is on none of them —
-        and that is all it means. We cannot certify that anything is safe to
-        send funds to, and we never will. Scams are minted faster than any
-        list can record them.
+        We searched our copy of the ScamSniffer scam list
+        {result.kind === "domain" ? ", the MetaMask eth-phishing-detect list of fake websites," : ""}{" "}
+        and the published BTCSCAM database. This{" "}
+        {result.kind === "domain" ? "website" : "address"} is on none of them
+        — and that is all it means. We cannot tell you it is safe to send
+        money to, and we never will. New scams appear faster than any list
+        can write them down.
       </p>
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 12, marginBottom: 0 }}>
-        Know the gap: the free ScamSniffer feed we mirror runs about 7 days
-        behind their live data, so a brand-new scam may not be listed here
-        yet. Cross-check on Chainabuse below — and if something about this{" "}
-        {result.kind === "domain" ? "domain" : "address"} already smells
+        Know the gap: our copy of the free ScamSniffer list runs about 7 days
+        behind their live version, so a brand-new scam may not be on it yet.
+        Get a second opinion on Chainabuse below — and if something about
+        this {result.kind === "domain" ? "website" : "address"} already feels
         wrong, trust that over any lookup.
       </p>
       <ChainabuseAndReport chainabuseUrl={result.chainabuseUrl} />
@@ -352,10 +353,10 @@ function OfflinePanel({
     >
       <PanelLabel danger={flagged}>
         {flagged
-          ? "⚠ FOUND IN THE BTCSCAM REGISTRY"
+          ? "⚠ FOUND IN THE BTCSCAM DATABASE"
           : result.reason === "unconfigured"
-            ? "LIVE DATABASE · NOT CONNECTED YET"
-            : "LIVE DATABASE · UNREACHABLE"}
+            ? "OUTSIDE SCAM LISTS · NOT CONNECTED YET"
+            : "OUTSIDE SCAM LISTS · COULD NOT REACH THEM"}
       </PanelLabel>
       <h3
         style={{
@@ -366,32 +367,32 @@ function OfflinePanel({
         }}
       >
         {flagged
-          ? "Named in a published dossier. Do not send funds."
-          : "The blocklist lookup did not run."}
+          ? "Named in a published case file. Do not send any money."
+          : "The scam-list lookup did not run."}
       </h3>
       <QueryEcho kind={result.kind} normalized={result.normalized} />
       {flagged && <IncidentLinks incidents={result.incidents} />}
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16 }}>
         {result.reason === "unconfigured"
-          ? "The live blacklist database is not connected to this deployment yet, so the ScamSniffer and MetaMask blocklists were not consulted — no lookup against them ran, and we will not pretend otherwise."
-          : "The live blacklist database could not be reached just now, so the ScamSniffer and MetaMask blocklists were not consulted for this check. Try again in a minute."}{" "}
+          ? "Our copies of the outside scam lists are not hooked up to this site yet, so the ScamSniffer and MetaMask lists were not searched at all. No lookup ran against them, and we will not pretend it did."
+          : "Our copies of the outside scam lists could not be reached just now, so the ScamSniffer and MetaMask lists were not searched for this check. Try again in a minute."}{" "}
         {result.bundledCount > 0 ? (
           <>
-            What DID run: a scan of the {result.bundledCount} published
-            dossiers bundled with this site
+            Here is what did run: a search of the {result.bundledCount}{" "}
+            published case files that ship with this site
             {flagged
-              ? " — and it matched, above."
+              ? " — and it found a match, shown above."
               : ` — this ${
-                  result.kind === "domain" ? "domain" : "address"
-                } does not appear in them. That is the whole of what we can honestly say here.`}
+                  result.kind === "domain" ? "website" : "address"
+                } does not appear in any of them. That is the whole of what we can honestly say here.`}
           </>
         ) : (
-          "The bundled registry could not be scanned either, so treat this check as not run at all."
+          "The case files that ship with this site could not be searched either, so treat this check as not having run at all."
         )}
       </p>
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 12, marginBottom: 0 }}>
-        Chainabuse runs its own community-report lookup and works regardless
-        of our database — use it below.
+        Chainabuse keeps its own set of scam reports from the public, and it
+        works whether or not ours does — use it below.
       </p>
       <ChainabuseAndReport chainabuseUrl={result.chainabuseUrl} />
       <CreditLine />
@@ -432,7 +433,7 @@ export function CheckForm({ initialValue = "" }: { initialValue?: string }) {
           }
         `}</style>
         <label style={labelStyle} htmlFor="cf-query">
-          ADDRESS OR DOMAIN — ONE AT A TIME
+          WALLET ADDRESS OR WEBSITE — ONE AT A TIME
         </label>
         <div className="cf-row" style={{ display: "flex", gap: 12 }}>
           <input
@@ -467,8 +468,8 @@ export function CheckForm({ initialValue = "" }: { initialValue?: string }) {
           }}
         >
           Bitcoin addresses (1…, 3…, bc1…), Ethereum-style addresses (0x…),
-          or a website domain. The type is detected automatically. Lookups are
-          not logged against you.
+          or a website like example.com. We work out which one you pasted.
+          We do not keep a record of what you look up.
         </p>
       </form>
 
@@ -483,7 +484,7 @@ export function CheckForm({ initialValue = "" }: { initialValue?: string }) {
             marginTop: 24,
           }}
         >
-          <PanelLabel danger>NOT CHECKED — FIX THE QUERY</PanelLabel>
+          <PanelLabel danger>NOT CHECKED — FIX WHAT YOU PASTED</PanelLabel>
           <p style={{ fontSize: 16, lineHeight: 1.55, margin: "8px 0 0" }}>
             {result.error}
           </p>

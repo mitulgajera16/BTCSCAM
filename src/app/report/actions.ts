@@ -95,7 +95,7 @@ function parseChipsField(serialized: string): {
     return {
       chips: [],
       problems: [
-        "The evidence chips arrived malformed — remove and re-add them, or put the links in the evidence box instead.",
+        "Your evidence chips came through broken — remove them and add them again, or put the links in the evidence box instead.",
       ],
     };
   }
@@ -103,7 +103,7 @@ function parseChipsField(serialized: string): {
     return {
       chips: [],
       problems: [
-        "The evidence chips arrived malformed — remove and re-add them, or put the links in the evidence box instead.",
+        "Your evidence chips came through broken — remove them and add them again, or put the links in the evidence box instead.",
       ],
     };
   }
@@ -119,7 +119,9 @@ function parseChipsField(serialized: string): {
   const seen = new Set<string>();
   for (const item of raw.slice(0, MAX_CHIPS)) {
     if (!item || typeof item !== "object") {
-      problems.push("One evidence chip is malformed — remove and re-add it.");
+      problems.push(
+        "One evidence chip came through broken — remove it and add it again.",
+      );
       continue;
     }
     const rec = item as Record<string, unknown>;
@@ -130,7 +132,7 @@ function parseChipsField(serialized: string): {
       !(CHIP_KINDS as readonly string[]).includes(kind)
     ) {
       problems.push(
-        "One evidence chip has an unknown type — chips are URL, TXID, SCREENSHOT-URL, or QUOTE.",
+        "One evidence chip is of a type we do not know — chips are URL, TXID, SCREENSHOT-URL, or QUOTE.",
       );
       continue;
     }
@@ -151,7 +153,7 @@ function parseChipsField(serialized: string): {
       }
       if (!ok) {
         problems.push(
-          `${CHIP_ISSUE_LABEL[k]} chips must be full URLs starting https:// and under ${MAX_EVIDENCE_URL_LENGTH} characters. Not valid: ${value.slice(0, 80)}`,
+          `${CHIP_ISSUE_LABEL[k]} chips must be full links starting https:// and under ${MAX_EVIDENCE_URL_LENGTH} characters. This one does not work: ${value.slice(0, 80)}`,
         );
         continue;
       }
@@ -211,7 +213,7 @@ function chipIssueLine(chip: EvidenceChipInput): string {
 
 function buildIssueTitle(v: IssueFields): string {
   const entity =
-    v.vendor || (v.domain ? defang(v.domain) : "") || v.address || "unnamed entity";
+    v.vendor || (v.domain ? defang(v.domain) : "") || v.address || "no name given";
   return `[REPORT] ${v.scamType}: ${entity}`.slice(0, 120);
 }
 
@@ -224,10 +226,10 @@ function buildIssueBody(v: IssueFields): string {
     "## Details",
     "",
     `- Scam type: ${v.scamType}`,
-    `- Vendor / product: ${v.vendor || "not given"}`,
-    `- Domain (defanged): ${v.domain ? defang(v.domain) : "not given"}`,
-    `- Address: ${v.address ? `\`${v.address}\`` : "not given"}`,
-    `- First observed: ${v.observed || "not given"}`,
+    `- Company / product: ${v.vendor || "not given"}`,
+    `- Website (link broken on purpose): ${v.domain ? defang(v.domain) : "not given"}`,
+    `- Wallet address: ${v.address ? `\`${v.address}\`` : "not given"}`,
+    `- First seen: ${v.observed || "not given"}`,
     "",
     "## Evidence",
     "",
@@ -243,13 +245,13 @@ function buildIssueBody(v: IssueFields): string {
     "## Contact",
     "",
     v.hasContact
-      ? "Provided, but withheld from this public draft. Reporter: watch this issue for follow-up."
-      : "Not provided.",
+      ? "Given, but kept out of this public draft. Reporter: watch this issue for a reply."
+      : "Not given.",
     "",
     "---",
     "",
-    "Intake trust state: REPORTED - UNVERIFIED. Reports are never auto-verified.",
-    "Evidence URLs and chip values are wrapped in backticks on purpose - do not visit raw scam links.",
+    "Proof level when filed: REPORTED - NOT CHECKED YET. Reports are never marked verified on their own.",
+    "Evidence links and chip values are wrapped in backticks on purpose - do not open raw scam links.",
     "Filed via btcscam.com/report.",
   ].join("\n");
 }
@@ -260,7 +262,7 @@ function issueUrl(title: string, body: string): string {
 }
 
 const TRIM_NOTE =
-  "[Description trimmed to fit this prefill link. The full text was shown to the reporter for pasting as a comment after filing.]";
+  "[Shortened so it would fit in the link. The reporter was shown the full text and can paste it as a comment after filing.]";
 
 /**
  * A fully valid submission can still overflow GitHub's ~8KB request-URI
@@ -327,7 +329,7 @@ export async function submitReport(
   }
   if (values.description.length > MAX_DESCRIPTION) {
     problems.push(
-      `Keep the description under ${MAX_DESCRIPTION} characters — put the long material in evidence links instead.`,
+      `Keep the description under ${MAX_DESCRIPTION} characters — put the long details in evidence links instead.`,
     );
   }
   if (!(SCAM_CATEGORIES as readonly string[]).includes(values.scamType)) {
@@ -335,17 +337,17 @@ export async function submitReport(
   }
   if (!values.vendor && !values.domain && !values.address) {
     problems.push(
-      "Name at least one thing we can chase: a vendor or product, a domain, or an address.",
+      "Name at least one thing we can chase: a company or product, a website, or a wallet address.",
     );
   }
   for (const [label, value] of [
-    ["vendor / product", values.vendor],
-    ["domain", values.domain],
-    ["address", values.address],
+    ["company / product", values.vendor],
+    ["website", values.domain],
+    ["wallet address", values.address],
   ] as const) {
     if (value.length > MAX_ENTITY_FIELD) {
       problems.push(
-        `Keep the ${label} under ${MAX_ENTITY_FIELD} characters — long material belongs in the description or evidence links.`,
+        `Keep the ${label} under ${MAX_ENTITY_FIELD} characters — long details belong in the description or evidence links.`,
       );
     }
   }
@@ -364,12 +366,12 @@ export async function submitReport(
   });
   if (evidenceUrls.some((u) => u.length > MAX_EVIDENCE_URL_LENGTH)) {
     problems.push(
-      `Each evidence URL must be under ${MAX_EVIDENCE_URL_LENGTH} characters — use an archive.org capture or a shorter canonical link.`,
+      `Each evidence link must be under ${MAX_EVIDENCE_URL_LENGTH} characters — use an archive.org copy or a shorter link.`,
     );
   }
   if (badUrls.length > 0) {
     problems.push(
-      `Evidence must be full URLs (starting https://), one per line. Not valid: ${badUrls.join(", ")}`,
+      `Evidence must be full links (starting https://), one per line. These do not work: ${badUrls.join(", ")}`,
     );
   }
   if (evidenceUrls.length > MAX_EVIDENCE_URLS) {
@@ -387,7 +389,9 @@ export async function submitReport(
       /^\d{4}-\d{2}-\d{2}$/.test(values.observed) &&
       !Number.isNaN(Date.parse(values.observed));
     if (!isDate) {
-      problems.push("The observed date must be a real date (YYYY-MM-DD).");
+      problems.push(
+        "The date you first saw it must be a real date (YYYY-MM-DD).",
+      );
     } else {
       // Compare against tomorrow's UTC date: a reporter east of UTC entering
       // today's local date must not be rejected. Day precision is enough.
@@ -395,7 +399,9 @@ export async function submitReport(
         .toISOString()
         .slice(0, 10);
       if (values.observed > tomorrowUTC) {
-        problems.push("The observed date is in the future — check it.");
+        problems.push(
+          "The date you first saw it is in the future — check it.",
+        );
       }
     }
   }

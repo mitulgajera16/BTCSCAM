@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "The Store",
   description:
-    "House products from the people who run BTCSCAM — physical seed storage and Bitcoin inheritance, sold by link-out only. No paid listings, no ads, no on-site checkout.",
+    "Products made by the people who run BTCSCAM — metal backups for your seed phrase, and a way to leave your Bitcoin to your family. Every link goes to the maker's own page. No paid listings, no ads, no checkout on this site.",
   alternates: { canonical: "/store" },
 };
 
@@ -29,9 +29,9 @@ const CATALOG: Product[] = [
     kicker: "SEED STORAGE · KEEPCRYPT",
     name: "Keepcrypt Hinge",
     description:
-      "A working door hinge with pentagon titanium beads on the pin — a full 12-word BIP39 phrase hanging in plain sight, engraved on metal that survives fire and flood.",
+      "A working door hinge with five-sided titanium beads on the pin — your full 12-word seed phrase hanging in plain sight, engraved on metal that survives fire and flood.",
     price: "$99",
-    priceNote: "12-WORD · 24-WORD $179 LISTED COMING SOON",
+    priceNote: "FOR 12 WORDS · 24-WORD VERSION $179, MAKER SAYS COMING SOON",
     url: "https://www.keepcrypt.com/hinge",
     domain: "KEEPCRYPT.COM",
   },
@@ -39,9 +39,9 @@ const CATALOG: Product[] = [
     kicker: "SEED STORAGE · KEEPCRYPT",
     name: "Keepcrypt Cell",
     description:
-      "Titanium word beads sealed inside a stainless-steel AAA battery shell, one BIP39 word per bead. Your backup sits in a drawer of dead batteries, not a branded crypto box.",
+      "Titanium word beads sealed inside a stainless-steel AAA battery shell, one seed word per bead. Your backup sits in a drawer of dead batteries instead of a box with a crypto logo on it.",
     price: "$149",
-    priceNote: "12-WORD PACK · 24-WORD $219 LISTED COMING SOON",
+    priceNote: "FOR 12 WORDS · 24-WORD VERSION $219, MAKER SAYS COMING SOON",
     url: "https://www.keepcrypt.com/cell",
     domain: "KEEPCRYPT.COM",
   },
@@ -49,9 +49,9 @@ const CATALOG: Product[] = [
     kicker: "SEED STORAGE · KEEPCRYPT",
     name: "Keepcrypt Screw",
     description:
-      "An M10 stainless fastener holding titanium word beads — first four letters on four faces, sequence notch on the fifth. Five words per screw. Ships unmarked.",
+      "An M10 stainless-steel screw holding titanium word beads — the first four letters of each word on four faces, and a notch on the fifth to keep the words in order. Five words per screw. Ships in plain packaging with nothing on the outside.",
     price: "$199",
-    priceNote: "12-WORD · $299 24-WORD",
+    priceNote: "FOR 12 WORDS · $299 FOR 24 WORDS",
     url: "https://www.keepcrypt.com/screw",
     domain: "KEEPCRYPT.COM",
   },
@@ -59,8 +59,8 @@ const CATALOG: Product[] = [
     kicker: "INHERITANCE · SERVICE",
     name: "Bitwill",
     description:
-      "Non-custodial Bitcoin inheritance built on pre-signed transactions — heirs can recover funds without Bitwill or anyone else ever holding your keys. Operating since 2018.",
-    priceNote: "NO LISTED PRICE — SET AT CONSULTATION, PER THEIR PAGE",
+      "A way to leave your Bitcoin to your family. It uses transactions signed in advance, so the people you name can claim the coins without Bitwill — or anyone else — ever holding your keys. Running since 2018.",
+    priceNote: "NO PRICE LISTED — THEIR PAGE SAYS IT IS AGREED IN A CONSULTATION",
     url: "https://www.bitwill.com/",
     domain: "BITWILL.COM",
   },
@@ -71,7 +71,7 @@ const IN_PREPARATION: Product[] = [
     kicker: "SEED STORAGE · PAPER",
     name: "SeedBook",
     description:
-      "A physical record for seed storage and inheritance instructions. Details and pricing are not yet published. When it is real and for sale, it will be listed here with a link — not before.",
+      "Something physical to keep your seed words on, along with instructions for whoever inherits your Bitcoin. Details and price are not published yet. When it is real and for sale, it will be listed here with a link — not before.",
   },
 ];
 
@@ -151,7 +151,7 @@ function ProductRow({ product }: { product: Product }) {
               color: "var(--meta)",
             }}
           >
-            IN PREPARATION — NOT YET FOR SALE
+            NOT FINISHED — NOT FOR SALE YET
           </span>
         )}
       </div>
@@ -219,12 +219,13 @@ export default function StorePage() {
             DISCLOSURE
           </span>
           <p style={{ fontSize: 14, lineHeight: 1.5, margin: 0, flex: 1, minWidth: 260 }}>
-            House products, made by the people who run BTCSCAM. Disclosed per{" "}
+            We make these products ourselves — the same people who run BTCSCAM.
+            We say so up front, because{" "}
             <Link href="/standards" style={{ fontWeight: 700, color: "var(--link)" }}>
               our standards
-            </Link>
-            : we take no paid listings and sell no ads. This store is the only
-            commerce on this site.
+            </Link>{" "}
+            require it: we take no paid listings and sell no ads. This store is
+            the only place we sell anything on this site.
           </p>
         </div>
       </div>
@@ -245,7 +246,7 @@ export default function StorePage() {
             margin: "24px 0 0",
           }}
         >
-          COMMERCE · DISCLOSED · LINK-OUT ONLY
+          OUR OWN PRODUCTS · EVERY LINK LEAVES THIS SITE
         </p>
         <h1
           style={{
@@ -258,37 +259,39 @@ export default function StorePage() {
           The Store
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.55, marginTop: 16, maxWidth: "62ch" }}>
-          A catalog of the house products this paper&rsquo;s founder makes.
-          There is no cart and no checkout here — every link below leaves this
-          site and lands on the maker&rsquo;s own page, where the purchase
-          actually happens.
+          A list of the products the founder of this site makes. There is no
+          cart and no checkout here — every link below leaves this site and
+          lands on the maker&rsquo;s own page, where the purchase actually
+          happens.
         </p>
 
         <SectionRule label="WHY A STORE ON AN ANTI-SCAM SITE" />
         <p style={{ fontSize: 16, lineHeight: 1.6, marginTop: 16, maxWidth: "68ch" }}>
-          This paper tells you, dossier after dossier, to do two things: keep
-          your seed words on something physical that survives fire and time,
-          and leave instructions so your Bitcoin does not die with you.
-          Physical seed storage and inheritance planning are those two things —
-          built by the people who run this site, so the practice we preach is
-          the practice we sell. There is a second reason to buy direct: the
-          fake-device scam category. Tampered hardware wallets and counterfeit
-          backup gear sold through third-party marketplace sellers are a
-          recurring way people lose everything — a device that ships with a
-          pre-generated seed, packaging swapped in a warehouse. Buying from the
-          maker&rsquo;s own page removes the middleman who could tamper.
+          This site tells you, case file after case file, to do two things:
+          keep your seed phrase — the 12 or 24 secret words that control your
+          Bitcoin — on something physical that survives fire and time, and
+          leave instructions so your Bitcoin does not die with you. These
+          products do those two things, and the people who run this site build
+          them, so what we sell is what we tell you to do. There is a second
+          reason to buy straight from the maker: fake devices. Tampered
+          hardware wallets — the small devices that hold your Bitcoin keys
+          offline — and counterfeit backup gear sold by outside sellers on big
+          marketplaces are a common way people lose everything. The device
+          arrives with the seed words already set by the thief, or the box was
+          swapped in a warehouse. Buying from the maker&rsquo;s own page cuts
+          out the middleman who could tamper with it.
         </p>
 
-        <SectionRule label="THE CATALOG" />
+        <SectionRule label="WHAT WE SELL" />
         <p style={{ ...mono, fontSize: 12, color: "var(--meta)", marginTop: 12 }}>
-          PRICES AS STATED ON THE MAKER&rsquo;S PAGES · CHECKED 2026-08-08 · NO
-          CHECKOUT ON THIS SITE
+          PRICES AS SHOWN ON THE MAKER&rsquo;S OWN PAGES · CHECKED 2026-08-08 ·
+          NO CHECKOUT ON THIS SITE
         </p>
         {CATALOG.map((p) => (
           <ProductRow key={p.name} product={p} />
         ))}
 
-        <SectionRule label="IN PREPARATION" />
+        <SectionRule label="NOT FINISHED YET" />
         {IN_PREPARATION.map((p) => (
           <ProductRow key={p.name} product={p} />
         ))}
@@ -302,9 +305,9 @@ export default function StorePage() {
             lineHeight: 1.6,
           }}
         >
-          NOTHING ELSE IS FOR SALE. NO THIRD-PARTY LISTINGS, PAID OR OTHERWISE.
-          IF A PRODUCT ABOVE HAS NO LINK, IT IS NOT YET REAL ENOUGH TO SELL —
-          AND WE SAY SO.
+          NOTHING ELSE IS FOR SALE HERE. WE DO NOT LIST ANYONE ELSE&rsquo;S
+          PRODUCTS, PAID OR NOT. IF A PRODUCT ABOVE HAS NO LINK, IT IS NOT REAL
+          ENOUGH TO SELL YET — AND WE SAY SO.
         </p>
       </div>
     </main>

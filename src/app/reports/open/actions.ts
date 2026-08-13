@@ -49,7 +49,7 @@ export async function castVote(
 
   const stance = String(formData.get("stance") ?? "").trim();
   if (stance !== "corroborate" && stance !== "dispute") {
-    return { ok: false, error: "Stance must be corroborate or dispute." };
+    return { ok: false, error: "Pick one: I SAW THIS TOO, or DISPUTE." };
   }
 
   let evidenceUrl: string | null = null;
@@ -60,7 +60,7 @@ export async function castVote(
       return {
         ok: false,
         error:
-          "CORROBORATE requires evidence — a URL an editor can check. No link, no stance.",
+          "I SAW THIS TOO needs evidence — a link an editor can check. No link, no answer.",
       };
     }
     if (evidenceUrl.length > MAX_EVIDENCE_URL) {
@@ -105,7 +105,7 @@ export async function castVote(
     return {
       ok: false,
       error:
-        "This report has been decided — stances close once the editors rule.",
+        "This report has been decided — answers close once the editors rule.",
     };
   }
   // No stance on your own report: corroboration only counts when it is
@@ -116,7 +116,7 @@ export async function castVote(
     return {
       ok: false,
       error:
-        "You cannot corroborate or dispute your own report — stances must be independent. Your report speaks for itself; the editors read it as filed.",
+        "You cannot back up or dispute your own report — answers must be independent. Your report speaks for itself; the editors read it as filed.",
     };
   }
 
@@ -133,10 +133,10 @@ export async function castVote(
       return {
         ok: false,
         error:
-          "You already weighed in on this report — one stance per watcher, and it stands.",
+          "You already weighed in on this report — one answer per watcher, and it stands.",
       };
     }
-    return { ok: false, error: `Stance not recorded: ${insErr.message}` };
+    return { ok: false, error: `Answer not recorded: ${insErr.message}` };
   }
 
   revalidatePath("/reports/open", "page");
@@ -145,7 +145,7 @@ export async function castVote(
     ok: true,
     message:
       stance === "corroborate"
-        ? `Corroboration filed on report #${reportId}. It is a signal to the editors — verification stays editorial.`
+        ? `What you saw is filed on report #${reportId}. It is a signal to the editors — verification stays editorial.`
         : `Dispute filed on report #${reportId}. It is a signal to the editors — verification stays editorial.`,
   };
 }

@@ -355,7 +355,7 @@ export default async function DeskPage() {
           }}
         >
           MONDAY SWEEP · EVERY PUBLISH IS A HUMAN DECISION · EVERYTHING SHIPS AS
-          REPORTED · UNVERIFIED
+          REPORTED · NOT CHECKED YET
         </p>
         <p style={{ marginTop: 12, marginBottom: 0, display: "flex", gap: 20 }}>
           <Link
@@ -369,7 +369,7 @@ export default async function DeskPage() {
               href="/desk/registry"
               style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}
             >
-              THE REGISTRY (LOCAL) →
+              THE DATABASE (LOCAL) →
             </Link>
           ) : null}
         </p>

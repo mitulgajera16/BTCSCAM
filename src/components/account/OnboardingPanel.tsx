@@ -46,7 +46,7 @@ export default function OnboardingPanel() {
           margin: "8px 0 0",
         }}
       >
-        Welcome to the desk. Three rules, then the ledger is yours.
+        Welcome to the desk. Three rules, then the record is yours.
       </h2>
 
       <ol
@@ -92,9 +92,9 @@ export default function OnboardingPanel() {
           color: "var(--meta)",
         }}
       >
-        Accepted work climbs the ladder below — reader to reporter to
-        corroborator to watchman. Status and credit are the only rewards; your
-        votes and evidence are signals to the editors, never verdicts.{" "}
+        Accepted work climbs the ladder below — reader to reporter to witness
+        to watchman. Status and credit are the only rewards; what you file and
+        the evidence you attach are signals to the editors, never verdicts.{" "}
         <Link
           href="/standards"
           style={{ ...mono, fontSize: 12, fontWeight: 600, color: "var(--link)" }}

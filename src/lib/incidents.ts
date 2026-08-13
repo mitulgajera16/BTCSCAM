@@ -85,16 +85,16 @@ export function isStale(incident: Incident, now = new Date()): boolean {
 }
 
 export const TRUST_LABEL: Record<TrustState, string> = {
-  reported: "REPORTED · UNVERIFIED",
-  corroborated: "CORROBORATED",
+  reported: "REPORTED · NOT CHECKED YET",
+  corroborated: "BACKED BY SOURCES",
   verified: "VERIFIED",
-  resolved: "RESOLVED",
+  resolved: "CLOSED",
   disputed: "DISPUTED",
 };
 
 export const SEVERITY_LABEL: Record<Incident["severity"], string> = {
-  S1: "S1 · ACTIVE LARGE-SCALE LOSS",
-  S2: "S2 · ACTIVE TARGETED LOSS",
-  S3: "S3 · PATCHED, RESIDUAL RISK",
-  S4: "S4 · HISTORICAL RECORD",
+  S1: "S1 · HAPPENING NOW · BIG LOSSES",
+  S2: "S2 · HAPPENING NOW · TARGETED",
+  S3: "S3 · FIXED · SOME RISK LEFT",
+  S4: "S4 · OVER · KEPT ON RECORD",
 };

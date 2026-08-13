@@ -39,7 +39,7 @@ export async function GET() {
         i.trustState === "verified" || i.trustState === "resolved"
           ? `${i.title}: what happened and what's verified`
           : i.title;
-      const description = `TRUST STATE: ${TRUST_LABEL[i.trustState]}. ${i.summary}`;
+      const description = `PROOF LEVEL: ${TRUST_LABEL[i.trustState]}. ${i.summary}`;
       return [
         "    <item>",
         `      <title>${esc(title)}</title>`,
@@ -58,7 +58,7 @@ export async function GET() {
     "  <channel>",
     "    <title>BTCSCAM — The Anti-Scam Paper of Record</title>",
     `    <link>${esc(SITE_URL)}</link>`,
-    "    <description>Documented bitcoin and crypto scam incidents: every entry carries a trust state and cited sources. Severity is not verification.</description>",
+    "    <description>Documented bitcoin and crypto scam incidents: every entry carries a proof level and cited sources. How bad a scam is and how far we have proved it are separate labels.</description>",
     "    <language>en</language>",
     `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
     "    <ttl>5</ttl>",
