@@ -15,6 +15,7 @@ import { SITE_URL } from "@/lib/site";
 import { liveGuidesFor } from "@/lib/guides";
 import { coverFor } from "@/lib/covers";
 import { PlateFigure } from "@/components/plate";
+import SectionRule from "@/components/primitives/section-rule";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -47,24 +48,6 @@ const CLAIM_STATUS_LABEL: Record<string, string> = {
   retracted: "TAKEN BACK BY THE SOURCE",
 };
 
-function SectionRule({ label, danger }: { label: string; danger?: boolean }) {
-  return (
-    <h2
-      style={{
-        ...mono,
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        color: danger ? "var(--danger)" : "var(--ink)",
-        borderBottom: "2px solid var(--ink)",
-        paddingBottom: 8,
-        marginTop: 40,
-      }}
-    >
-      {label}
-    </h2>
-  );
-}
 
 export default async function IncidentPage({
   params,

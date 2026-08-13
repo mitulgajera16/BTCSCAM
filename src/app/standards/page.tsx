@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import StampMark from "@/components/stamp-mark";
+import SectionRule from "@/components/primitives/section-rule";
 import {
   SEVERITY_LABEL,
   TRUST_LABEL,
@@ -18,24 +19,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/standards" },
 };
 
-function SectionRule({ label, danger }: { label: string; danger?: boolean }) {
-  return (
-    <h2
-      style={{
-        ...mono,
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        color: danger ? "var(--danger)" : "var(--ink)",
-        borderBottom: "2px solid var(--ink)",
-        paddingBottom: 8,
-        marginTop: 48,
-      }}
-    >
-      {label}
-    </h2>
-  );
-}
 
 function TrustChip({ state }: { state: TrustState }) {
   return (
@@ -158,7 +141,7 @@ export default function StandardsPage() {
       </p>
 
       {/* (a) THE TRUST LADDER */}
-      <SectionRule label="THE PROOF LADDER" />
+      <SectionRule space="--space-12" label="THE PROOF LADDER" />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16 }}>
         Every scam in the database carries exactly one of five proof levels.
         The words mean exactly this, everywhere they appear. A label says how
@@ -202,7 +185,7 @@ export default function StandardsPage() {
       </p>
 
       {/* (b) SEVERITY IS NOT VERIFICATION */}
-      <SectionRule label="HOW BAD IT IS VS HOW FAR WE HAVE PROVED IT" />
+      <SectionRule space="--space-12" label="HOW BAD IT IS VS HOW FAR WE HAVE PROVED IT" />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16 }}>
         Severity is about damage — how much money is going, how fast, and
         whether it is still happening. The proof ladder is about how far we
@@ -234,7 +217,7 @@ export default function StandardsPage() {
       </div>
 
       {/* (c) CORRECTIONS */}
-      <SectionRule label="CORRECTIONS — PUBLIC, PERMANENT, DATED" />
+      <SectionRule space="--space-12" label="CORRECTIONS — PUBLIC, PERMANENT, DATED" />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16 }}>
         We admit our mistakes out loud. When we get a fact wrong, the
         correction is public, permanent, and dated, and it is printed on the
@@ -246,7 +229,7 @@ export default function StandardsPage() {
       </p>
 
       {/* (d) DISPUTES & TAKEDOWNS */}
-      <SectionRule label="IF WE NAMED YOU AND YOU SAY WE GOT IT WRONG" />
+      <SectionRule space="--space-12" label="IF WE NAMED YOU AND YOU SAY WE GOT IT WRONG" />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16 }}>
         If we have named you and you believe the record is wrong, here is what
         to do. It works the same way for a founder, a company, an exchange, or
@@ -286,7 +269,7 @@ export default function StandardsPage() {
       </p>
 
       {/* (e) WHAT WE NEVER DO */}
-      <SectionRule label="WHAT WE NEVER DO" />
+      <SectionRule space="--space-12" label="WHAT WE NEVER DO" />
       <div style={{ marginTop: 8 }}>
         {NEVER.map((item) => (
           <div
@@ -348,7 +331,7 @@ export default function StandardsPage() {
       </div>
 
       {/* (f) HONEST NUMBERS */}
-      <SectionRule label="HONEST NUMBERS" />
+      <SectionRule space="--space-12" label="HONEST NUMBERS" />
       <p style={{ fontSize: 16, lineHeight: 1.55, marginTop: 16 }}>
         Every count on this site is counted from the scam database, or it is
         not shown at all. We do not make up member counts, victim counts, or

@@ -13,6 +13,7 @@ import {
 import StanceButtons from "@/components/votes/StanceButtons";
 import VoteTally from "@/components/votes/VoteTally";
 import { LADDER_TIERS } from "@/components/account/types";
+import SectionRule from "@/components/primitives/section-rule";
 
 // ── OPEN REPORTS ───────────────────────────────────────────────────────────
 // Public read of every reader report still waiting on the desk (status new or
@@ -60,23 +61,6 @@ type Tally = { corroborate: number; dispute: number };
 /** What this page needs to know about the signed-in visitor. */
 type LedgerViewer = { id: string; name: string; role: Role };
 
-function SectionRule({ label }: { label: string }) {
-  return (
-    <h2
-      style={{
-        ...mono,
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        borderBottom: "2px solid var(--ink)",
-        paddingBottom: 8,
-        marginTop: 40,
-      }}
-    >
-      {label}
-    </h2>
-  );
-}
 
 function StatusChip({ status }: { status: "new" | "triaged" }) {
   return (

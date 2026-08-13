@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { coverFor } from "@/lib/covers";
 import { PlateThumb } from "@/components/plate";
+import SectionRule from "@/components/primitives/section-rule";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif" };
@@ -67,23 +68,6 @@ const IN_PREPARATION = [
   },
 ];
 
-function SectionRule({ label }: { label: string }) {
-  return (
-    <h2
-      style={{
-        ...mono,
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        borderBottom: "2px solid var(--ink)",
-        paddingBottom: 8,
-        marginTop: 40,
-      }}
-    >
-      {label}
-    </h2>
-  );
-}
 
 export default function GuidesPage() {
   return (

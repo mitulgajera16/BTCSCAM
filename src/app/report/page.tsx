@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ReportForm } from "@/components/report/ReportForm";
 import { TRUST_LABEL, type TrustState } from "@/lib/incidents";
+import SectionRule from "@/components/primitives/section-rule";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -13,24 +14,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/report" },
 };
 
-function SectionRule({ label, danger }: { label: string; danger?: boolean }) {
-  return (
-    <h2
-      style={{
-        ...mono,
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        color: danger ? "var(--danger)" : "var(--ink)",
-        borderBottom: "2px solid var(--ink)",
-        paddingBottom: 8,
-        marginTop: 40,
-      }}
-    >
-      {label}
-    </h2>
-  );
-}
 
 /* Definitions abridged from /standards — the binding versions live there.
    Chips render via TRUST_LABEL so the vocabulary is identical everywhere. */

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SITE_HOST } from "@/lib/site";
+import SectionRule from "@/components/primitives/section-rule";
 
 const mono = { fontFamily: "var(--font-plex-mono), monospace" };
 const display = { fontFamily: "var(--font-fraunces), serif", fontWeight: 600 };
@@ -12,24 +13,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/sweep/2026-08-11" },
 };
 
-function SectionRule({ label, danger }: { label: string; danger?: boolean }) {
-  return (
-    <h2
-      style={{
-        ...mono,
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        color: danger ? "var(--danger)" : "var(--ink)",
-        borderBottom: "2px solid var(--ink)",
-        paddingBottom: 8,
-        marginTop: 40,
-      }}
-    >
-      {label}
-    </h2>
-  );
-}
 
 function Stat({ n, label }: { n: string; label: string }) {
   return (

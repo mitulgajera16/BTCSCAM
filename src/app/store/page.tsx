@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import SectionRule from "@/components/primitives/section-rule";
 
 export const metadata: Metadata = {
   title: "The Store",
@@ -75,24 +76,6 @@ const IN_PREPARATION: Product[] = [
   },
 ];
 
-function SectionRule({ label }: { label: string }) {
-  return (
-    <h2
-      style={{
-        ...mono,
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: ".05em",
-        color: "var(--ink)",
-        borderBottom: "2px solid var(--ink)",
-        paddingBottom: 8,
-        marginTop: 48,
-      }}
-    >
-      {label}
-    </h2>
-  );
-}
 
 function ProductRow({ product }: { product: Product }) {
   const live = Boolean(product.url);
@@ -265,7 +248,7 @@ export default function StorePage() {
           happens.
         </p>
 
-        <SectionRule label="WHY A STORE ON AN ANTI-SCAM SITE" />
+        <SectionRule space="--space-12" label="WHY A STORE ON AN ANTI-SCAM SITE" />
         <p style={{ fontSize: 16, lineHeight: 1.6, marginTop: 16, maxWidth: "68ch" }}>
           This site tells you, case file after case file, to do two things:
           keep your seed phrase — the 12 or 24 secret words that control your
@@ -282,7 +265,7 @@ export default function StorePage() {
           out the middleman who could tamper with it.
         </p>
 
-        <SectionRule label="WHAT WE SELL" />
+        <SectionRule space="--space-12" label="WHAT WE SELL" />
         <p style={{ ...mono, fontSize: 12, color: "var(--meta)", marginTop: 12 }}>
           PRICES AS SHOWN ON THE MAKER&rsquo;S OWN PAGES · CHECKED 2026-08-08 ·
           NO CHECKOUT ON THIS SITE
@@ -291,7 +274,7 @@ export default function StorePage() {
           <ProductRow key={p.name} product={p} />
         ))}
 
-        <SectionRule label="NOT FINISHED YET" />
+        <SectionRule space="--space-12" label="NOT FINISHED YET" />
         {IN_PREPARATION.map((p) => (
           <ProductRow key={p.name} product={p} />
         ))}
